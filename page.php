@@ -15,219 +15,7 @@
 get_header();
 ?>
 
-<body class="home-1-bg">
 
-    <!--====== PRELOADER PART START ======-->
-    <div class="preloader">
-        <div>
-            <div class="nb-spinner"></div>
-        </div>
-    </div>
-    <!--====== PRELOADER PART ENDS ======-->
-    
-    <!--====== HEADER PART START ======-->
-
-    <header class="header-area">
-        <div class="header-topbar">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <div class="topbar-trending">
-                            <span>Trending</span>
-                            <div class="trending-slider">
-                                <div class="trending-item">
-                                    <p>Top 10 Best Movies of 2018 So Far: Great Movies To Watch Now </p>
-                                </div>
-                                <div class="trending-item">
-                                    <p>Top 10 Best Movies of 2018 So Far: Great Movies To Watch Now </p>
-                                </div>
-                                <div class="trending-item">
-                                    <p>Top 10 Best Movies of 2018 So Far: Great Movies To Watch Now </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="topbar-social d-flex align-items-center">
-                            <p>Thursday, March 26, 2020</p>
-                            <div class="social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-centerbar">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4">
-                        <div class="logo">
-                            <a href="index.html">
-                                <img src="assets/images/logo.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="header-centerbar-ad">
-                            <a href="#"><img src="assets/images/ad/ad-1.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-menubar">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-8 col-sm-3 col-3">
-                        <div class="header-menu">
-                            <div class="stellarnav">
-                                <ul>
-                                    <li><a class="active" href="">Home</a>
-                                        <ul>
-                                            <li><a href="index.html">Home 1</a>
-                                                <ul>
-                                                    <li><a href="index-v-1.1.html">Virsion 1</a></li>
-                                                    <li><a href="index-v-1.2.html">Virsion 2</a></li>
-                                                    <li><a href="index-v-1.3.html">Virsion 3</a></li>
-                                                    <li><a href="index-v-1.4.html">Virsion 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="index-2.html">Home 2</a>
-                                                <ul>
-                                                    <li><a href="index-v-2.1.html">Virsion 1</a></li>
-                                                    <li><a href="index-v-2.2.html">Virsion 2</a></li>
-                                                    <li><a href="index-v-2.3.html">Virsion 3</a></li>
-                                                    <li><a href="index-v-2.4.html">Virsion 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="index-3.html">Home 3</a>
-                                                <ul>
-                                                    <li><a href="index-v-3.1.html">Virsion 1</a></li>
-                                                    <li><a href="index-v-3.2.html">Virsion 2</a></li>
-                                                    <li><a href="index-v-3.3.html">Virsion 3</a></li>
-                                                    <li><a href="index-v-3.4.html">Virsion 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="index-4.html">Home 4</a>
-                                                <ul>
-                                                    <li><a href="index-v-4.1.html">Virsion 1</a></li>
-                                                    <li><a href="index-v-4.2.html">Virsion 2</a></li>
-                                                    <li><a href="index-v-4.3.html">Virsion 3</a></li>
-                                                    <li><a href="index-v-4.4.html">Virsion 4</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="">Pages</a>
-                                        <ul>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="">Posts</a>
-
-                                        <ul>
-                                            <li class="has-sub"><a href="#">General Posts</a>
-                                                <ul>
-                                                    <li><a href="post-1.html">Post 1</a>
-                                                    </li>
-                                                    <li><a href="post-2.html">Post 2</a>
-                                                    </li>
-                                                    <li><a href="post-3.html">Post 3</a>
-                                                    </li>
-                                                </ul>
-                                                <a class="dd-toggle" href="#"><span class="icon-plus"></span></a>
-                                            </li>
-                                            <li class="has-sub"><a href="#">Video Posts</a>
-                                                <ul>
-                                                    <li><a href="#">Video Style 1</a>
-                                                    </li>
-                                                    <li><a href="#">Video Style 2</a>
-                                                    </li>
-                                                    <li><a href="#">Video Style 3</a>
-                                                    </li>
-                                                </ul>
-                                                <a class="dd-toggle" href="#"><span class="icon-plus"></span></a>
-                                            </li>
-                                            <li class="has-sub"><a href="#">Audio Posts</a>
-                                                <ul>
-                                                    <li><a href="#">Audio Style 1</a>
-                                                    </li>
-                                                    <li><a href="#">Audio Style 2</a>
-                                                    </li>
-                                                    <li><a href="#">Audio Style 3</a>
-                                                    </li>
-                                                </ul>
-                                                <a class="dd-toggle" href="#"><span class="icon-plus"></span></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="">Categories </a>
-                                        <ul>
-                                            <li class="active"><a href="business.html">Business</a>
-                                            </li>
-                                            <li><a href="entertainment.html">Entertainment</a>
-                                            </li>
-                                            <li><a href="features.html">Features</a>
-                                            </li>
-                                            <li><a href="sports.html">Sports</a>
-                                            </li>
-                                            <li><a href="trending.html">Trending</a>
-                                            </li>
-                                            <li><a href="technology.html">Technology</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="">World</a></li>
-                                    <li><a href="">Sports</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div><!-- .stellarnav -->
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-9 col-9">
-                        <div class="header-menu-rightbar">
-                            <div class="header-menu-search">
-                                <ul>
-                                    <li><a href="#"><i class="fal fa-search"></i></a></li>
-                                    <li><a href="#"><i class="fal fa-user-circle"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="nice-select-item">
-                                <select>
-                                    <option data-display="English">English</option>
-                                    <option value="1">Bangla</option>
-                                    <option value="2">Hindi</option>
-                                    <option value="3">option</option>
-                                    <option value="4">Potato</option>
-                                </select>
-                            </div>
-                            <div class="header-temperature">
-                                <div class="icon">
-                                    <img src="assets/images/temperature-icon.svg" alt="">
-                                </div>
-                                <div class="temperature-content text-center">
-                                    <h5 class="title">13 <sup>0<sub>C</sub></sup></h5>
-                                    <p>San Francisco</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </header>
-
-    <!--====== HEADER PART ENDS ======-->
 
     <!--====== POST PART START ======-->
 
@@ -237,7 +25,7 @@ get_header();
                 <div class="col-lg-4">
                     <div class="single__post">
                         <div class="post-thumb">
-                            <img src="assets/images/post-1.jpg" alt="post">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/post-1.jpg" alt="post">
                         </div>
                         <div class="post-content">
                             <h4 class="title"><a href="#">The home decorations document: photograph of an empty plane</a></h4>
@@ -248,7 +36,7 @@ get_header();
                 <div class="col-lg-4">
                     <div class="single__post">
                         <div class="post-thumb">
-                            <img src="assets/images/post-2.jpg" alt="post">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/post-2.jpg" alt="post">
                         </div>
                         <div class="post-content">
                             <h4 class="title"><a href="#">U.S. Response subash says he will label regions by risk of…</a></h4>
@@ -259,7 +47,7 @@ get_header();
                 <div class="col-lg-4">
                     <div class="single__post">
                         <div class="post-thumb">
-                            <img src="assets/images/post-3.jpg" alt="post">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/post-3.jpg" alt="post">
                         </div>
                         <div class="post-content">
                             <h4 class="title"><a href="#">Stimul package will fundamentally transform the government.</a></h4>
@@ -270,7 +58,7 @@ get_header();
                 <div class="col-lg-4">
                     <div class="single__post">
                         <div class="post-thumb">
-                            <img src="assets/images/post-2.jpg" alt="post">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/post-2.jpg" alt="post">
                         </div>
                         <div class="post-content">
                             <h4 class="title"><a href="#">U.S. Response subash says he will label regions by risk of…</a></h4>
@@ -474,34 +262,34 @@ get_header();
                     </div>
                     <div class="post_gallery_inner_slider">
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-1.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-1.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-2.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-2.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-3.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-3.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-4.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-4.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-5.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-5.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-6.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-6.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-7.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-7.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-2.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-2.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-3.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-3.jpg" alt="">
                         </div>
                         <div class="item">
-                            <img src="assets/images/gallery-post/item-4.jpg" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-4.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -523,7 +311,7 @@ get_header();
                                 <div class="post_gallery_items">
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-1.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -539,7 +327,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-2.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -555,7 +343,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-3.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -571,7 +359,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-4.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-4.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -587,7 +375,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-5.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-5.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -607,7 +395,7 @@ get_header();
                                 <div class="post_gallery_items">
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-1.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -623,7 +411,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-2.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -639,7 +427,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-3.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -655,7 +443,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-4.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-4.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -671,7 +459,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-5.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-5.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -691,7 +479,7 @@ get_header();
                                 <div class="post_gallery_items">
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-1.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -707,7 +495,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-2.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -723,7 +511,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-3.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -739,7 +527,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-4.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-4.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -755,7 +543,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/gallery-5.jpg" alt="gallery">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-5.jpg" alt="gallery">
                                         </div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">
@@ -795,7 +583,7 @@ get_header();
                 <div class="col-lg-3">
                     <div class="feature-post">
                         <div class="feature-post-thumb">
-                            <img src="assets/images/feature-1.jpg" alt="feature">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-1.jpg" alt="feature">
                         </div>
                         <div class="feature-post-content">
                             <div class="post-meta">
@@ -813,7 +601,7 @@ get_header();
                 <div class="col-lg-3">
                     <div class="feature-post">
                         <div class="feature-post-thumb">
-                            <img src="assets/images/feature-2.jpg" alt="feature">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-2.jpg" alt="feature">
                         </div>
                         <div class="feature-post-content">
                             <div class="post-meta">
@@ -831,7 +619,7 @@ get_header();
                 <div class="col-lg-3">
                     <div class="feature-post">
                         <div class="feature-post-thumb">
-                            <img src="assets/images/feature-3.jpg" alt="feature">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-3.jpg" alt="feature">
                         </div>
                         <div class="feature-post-content">
                             <div class="post-meta">
@@ -849,7 +637,7 @@ get_header();
                 <div class="col-lg-3">
                     <div class="feature-post">
                         <div class="feature-post-thumb">
-                            <img src="assets/images/feature-4.jpg" alt="feature">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-4.jpg" alt="feature">
                         </div>
                         <div class="feature-post-content">
                             <div class="post-meta">
@@ -867,7 +655,7 @@ get_header();
                 <div class="col-lg-3">
                     <div class="feature-post">
                         <div class="feature-post-thumb">
-                            <img src="assets/images/feature-2.jpg" alt="feature">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-2.jpg" alt="feature">
                         </div>
                         <div class="feature-post-content">
                             <div class="post-meta">
@@ -901,7 +689,7 @@ get_header();
                         <div class="col-lg-6">
                             <div class="trending-news-item">
                                 <div class="trending-news-thumb">
-                                    <img src="assets/images/trending-news-1.jpg" alt="trending">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-1.jpg" alt="trending">
                                     <div class="icon">
                                         <a href="#"><i class="fas fa-bolt"></i></a>
                                     </div>
@@ -923,7 +711,7 @@ get_header();
                         <div class="col-lg-6">
                             <div class="trending-news-item">
                                 <div class="trending-news-thumb">
-                                    <img src="assets/images/trending-news-2.jpg" alt="trending">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-2.jpg" alt="trending">
                                     <div class="icon">
                                         <a href="#"><i class="fas fa-bolt"></i></a>
                                     </div>
@@ -945,7 +733,7 @@ get_header();
                         <div class="col-lg-6">
                             <div class="trending-news-item">
                                 <div class="trending-news-thumb">
-                                    <img src="assets/images/trending-news-3.jpg" alt="trending">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-3.jpg" alt="trending">
                                     <div class="icon">
                                         <a href="#"><i class="fas fa-bolt"></i></a>
                                     </div>
@@ -970,7 +758,7 @@ get_header();
                             <div class="trending-news-post-items">
                                 <div class="gallery_item">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/gallery-1.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -987,7 +775,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/gallery-2.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1004,7 +792,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/gallery-3.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1025,7 +813,7 @@ get_header();
                             <div class="trending-news-post-items">
                                 <div class="gallery_item">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/gallery-1.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1042,7 +830,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/gallery-2.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1059,7 +847,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/gallery-3.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1140,7 +928,7 @@ get_header();
                             <div class="post_gallery_items">
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-1.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-1.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1158,7 +946,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-2.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-2.jpg" alt="gallery">
                                     </div>
                                     <div class="gallery_item_content">
                                         <div class="post-meta">
@@ -1175,7 +963,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-3.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-3.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1193,7 +981,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-4.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-4.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1211,7 +999,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-5.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-5.jpg" alt="gallery">
                                     </div>
                                     <div class="gallery_item_content">
                                         <div class="post-meta">
@@ -1228,7 +1016,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-6.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-6.jpg" alt="gallery">
                                     </div>
                                     <div class="gallery_item_content">
                                         <div class="post-meta">
@@ -1247,7 +1035,7 @@ get_header();
                             <div class="post_gallery_items">
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-1.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-1.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1265,7 +1053,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-2.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-2.jpg" alt="gallery">
                                     </div>
                                     <div class="gallery_item_content">
                                         <div class="post-meta">
@@ -1282,7 +1070,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-3.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-3.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1300,7 +1088,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-4.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-4.jpg" alt="gallery">
                                         <div class="icon"><i class="fas fa-bolt"></i></div>
                                     </div>
                                     <div class="gallery_item_content">
@@ -1318,7 +1106,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-5.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-5.jpg" alt="gallery">
                                     </div>
                                     <div class="gallery_item_content">
                                         <div class="post-meta">
@@ -1335,7 +1123,7 @@ get_header();
                                 </div>
                                 <div class="gallery_item gallery_item-style-2">
                                     <div class="gallery_item_thumb">
-                                        <img src="assets/images/most-post/most-6.jpg" alt="gallery">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-6.jpg" alt="gallery">
                                     </div>
                                     <div class="gallery_item_content">
                                         <div class="post-meta">
@@ -1368,7 +1156,7 @@ get_header();
                 <div class="row single-play-post-slider">
                     <div class="col-lg-6">
                         <div class="single-play-post-item">
-                            <img src="assets/images/play-post-1.jpg" alt="play">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-post-1.jpg" alt="play">
                             <div class="single-play-post-content">
                                 <div class="post-meta">
                                     <div class="meta-categories">
@@ -1387,7 +1175,7 @@ get_header();
                     </div>
                     <div class="col-lg-6">
                         <div class="single-play-post-item">
-                            <img src="assets/images/play-post-2.jpg" alt="play">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-post-2.jpg" alt="play">
                             <div class="single-play-post-content">
                                 <div class="post-meta">
                                     <div class="meta-categories">
@@ -1406,7 +1194,7 @@ get_header();
                     </div>
                     <div class="col-lg-6">
                         <div class="single-play-post-item">
-                            <img src="assets/images/play-post-2.jpg" alt="play">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-post-2.jpg" alt="play">
                             <div class="single-play-post-content">
                                 <div class="post-meta">
                                     <div class="meta-categories">
@@ -1443,7 +1231,7 @@ get_header();
                             </div>
                             <div class="video-news-post-item">
                                 <div class="video-news-post-thumb">
-                                    <img src="assets/images/video-post-thumb.jpg" alt="">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/video-post-thumb.jpg" alt="">
                                     <div class="play-btn">
                                         <a class="video-popup" href="https://www.youtube.com/watch?v=HalMzk1FFM0"><i class="fab fa-youtube"></i></a>
                                     </div>
@@ -1471,7 +1259,7 @@ get_header();
                                 <div class="populer-post-slider">
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-1.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-1.jpg" alt="populer">
                                             <span>1</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1481,7 +1269,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-2.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-2.jpg" alt="populer">
                                             <span>2</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1491,7 +1279,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-3.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-3.jpg" alt="populer">
                                             <span>3</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1501,7 +1289,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-4.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-4.jpg" alt="populer">
                                             <span>4</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1511,7 +1299,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-5.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-5.jpg" alt="populer">
                                             <span>5</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1523,7 +1311,7 @@ get_header();
                                 <div class="populer-post-slider">
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-1.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-1.jpg" alt="populer">
                                             <span>1</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1533,7 +1321,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-2.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-2.jpg" alt="populer">
                                             <span>2</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1543,7 +1331,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-3.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-3.jpg" alt="populer">
                                             <span>3</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1553,7 +1341,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-4.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-4.jpg" alt="populer">
                                             <span>4</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1563,7 +1351,7 @@ get_header();
                                     </div>
                                     <div class="gallery_item populer_item-style">
                                         <div class="gallery_item_thumb">
-                                            <img src="assets/images/populer/populer-post-5.jpg" alt="populer">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/populer/populer-post-5.jpg" alt="populer">
                                             <span>5</span>
                                         </div>
                                         <div class="gallery_item_content">
@@ -1596,7 +1384,7 @@ get_header();
                             <div class="col-lg-6 col-md-6">
                                 <div class="trending-news-item mb-30">
                                     <div class="trending-news-thumb">
-                                        <img src="assets/images/entertainment-1.jpg" alt="trending">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-1.jpg" alt="trending">
                                         <div class="circle-bar">
 
                                             <div class="first circle">
@@ -1621,7 +1409,7 @@ get_header();
                             <div class="col-lg-6 col-md-6">
                                 <div class="trending-news-item mb-30">
                                     <div class="trending-news-thumb">
-                                        <img src="assets/images/entertainment-2.jpg" alt="trending">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-2.jpg" alt="trending">
                                         <div class="circle-bar">
 
                                             <div class="first circle">
@@ -1646,7 +1434,7 @@ get_header();
                             <div class="col-lg-6 col-md-6">
                                 <div class="trending-news-item mb-30">
                                     <div class="trending-news-thumb">
-                                        <img src="assets/images/entertainment-3.jpg" alt="trending">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-3.jpg" alt="trending">
                                         <div class="circle-bar">
 
                                             <div class="first circle">
@@ -1671,7 +1459,7 @@ get_header();
                             <div class="col-lg-6 col-md-6">
                                 <div class="trending-news-item mb-30">
                                     <div class="trending-news-thumb">
-                                        <img src="assets/images/entertainment-4.jpg" alt="trending">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-4.jpg" alt="trending">
                                         <div class="circle-bar">
 
                                             <div class="first circle">
@@ -1703,7 +1491,7 @@ get_header();
                             <div class="col-lg-6 col-md-6">
                                 <div class="trending-news-item mb-30">
                                     <div class="trending-news-thumb">
-                                        <img src="assets/images/sports-news.jpg" alt="sports">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports-news.jpg" alt="sports">
                                     </div>
                                     <div class="trending-news-content">
                                         <div class="post-meta">
@@ -1725,7 +1513,7 @@ get_header();
                                     <div class="post_gallery_items">
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-1.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-1.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1741,7 +1529,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-2.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-2.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1757,7 +1545,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-3.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-3.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1773,7 +1561,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-4.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-4.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1789,7 +1577,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-5.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-5.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1807,7 +1595,7 @@ get_header();
                                     <div class="post_gallery_items">
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-1.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-1.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1823,7 +1611,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-2.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-2.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1839,7 +1627,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-3.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-3.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1855,7 +1643,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-4.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-4.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1871,7 +1659,7 @@ get_header();
                                         </div>
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="assets/images/sports/sports-5.jpg" alt="sports">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sports/sports-5.jpg" alt="sports">
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">
@@ -1891,7 +1679,7 @@ get_header();
                         </div>
                     </div>
                     <div class="post-add mt-30">
-                        <a href="#"><img src="assets/images/ad/ad-1.png" alt="ad"></a>
+                        <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ad/ad-1.png" alt="ad"></a>
                     </div>
                     <div class="business-news-post pt-40">
                         <div class="section-title d-flex justify-content-between align-items-center">
@@ -1903,7 +1691,7 @@ get_header();
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="business-post-thumb">
-                                            <img src="assets/images/business-1.jpg" alt="business">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/business-1.jpg" alt="business">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -1929,7 +1717,7 @@ get_header();
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="business-post-thumb">
-                                            <img src="assets/images/business-2.jpg" alt="business">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/business-2.jpg" alt="business">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -1955,7 +1743,7 @@ get_header();
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="business-post-thumb">
-                                            <img src="assets/images/business-3.jpg" alt="business">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/business-3.jpg" alt="business">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -1981,7 +1769,7 @@ get_header();
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="business-post-thumb">
-                                            <img src="assets/images/business-4.jpg" alt="business">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/business-4.jpg" alt="business">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -2207,7 +1995,7 @@ get_header();
                             <div class="upcoming-matches-post-items">
                                 <div class="upcoming-matches-post-item d-flex align-items-center">
                                     <div class="upcoming-matches-flag">
-                                        <img src="assets/images/flag/flag-1.png" alt="flag">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/flag/flag-1.png" alt="flag">
                                     </div>
                                     <div class="upcoming-matches-content">
                                         <span>Germany <span>VS</span> France</span>
@@ -2226,7 +2014,7 @@ get_header();
                                 </div>
                                 <div class="upcoming-matches-post-item d-flex align-items-center">
                                     <div class="upcoming-matches-flag">
-                                        <img src="assets/images/flag/flag-2.png" alt="flag">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/flag/flag-2.png" alt="flag">
                                     </div>
                                     <div class="upcoming-matches-content">
                                         <span>Spain <span>VS</span> Portugal</span>
@@ -2245,7 +2033,7 @@ get_header();
                                 </div>
                                 <div class="upcoming-matches-post-item d-flex align-items-center">
                                     <div class="upcoming-matches-flag">
-                                        <img src="assets/images/flag/flag-3.png" alt="flag">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/flag/flag-3.png" alt="flag">
                                     </div>
                                     <div class="upcoming-matches-content">
                                         <span>Russia <span>VS</span> Italy</span>
@@ -2264,7 +2052,7 @@ get_header();
                                 </div>
                                 <div class="upcoming-matches-post-item d-flex align-items-center">
                                     <div class="upcoming-matches-flag">
-                                        <img src="assets/images/flag/flag-4.png" alt="flag">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/flag/flag-4.png" alt="flag">
                                     </div>
                                     <div class="upcoming-matches-content">
                                         <span>Croatia <span>VS</span> England</span>
@@ -2283,7 +2071,7 @@ get_header();
                                 </div>
                                 <div class="upcoming-matches-post-item d-flex align-items-center">
                                     <div class="upcoming-matches-flag">
-                                        <img src="assets/images/flag/flag-5.png" alt="flag">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/flag/flag-5.png" alt="flag">
                                     </div>
                                     <div class="upcoming-matches-content">
                                         <span>Germany <span>VS</span> France</span>
@@ -2320,62 +2108,62 @@ get_header();
                             </div>
                             <div class="Categories-item">
                                 <div class="item">
-                                    <img src="assets/images/categories-1.jpg" alt="categories">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-1.jpg" alt="categories">
                                     <div class="Categories-content">
                                         <a href="#">
                                             <span>Restaurant</span>
-                                            <img src="assets/images/arrow.svg" alt="">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="assets/images/categories-2.jpg" alt="categories">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-2.jpg" alt="categories">
                                     <div class="Categories-content">
                                         <a href="#">
                                             <span>Entertainment</span>
-                                            <img src="assets/images/arrow.svg" alt="">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="assets/images/categories-3.jpg" alt="categories">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-3.jpg" alt="categories">
                                     <div class="Categories-content">
                                         <a href="#">
                                             <span>Financial</span>
-                                            <img src="assets/images/arrow.svg" alt="">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="assets/images/categories-4.jpg" alt="categories">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-4.jpg" alt="categories">
                                     <div class="Categories-content">
                                         <a href="#">
                                             <span>Business</span>
-                                            <img src="assets/images/arrow.svg" alt="">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="assets/images/categories-5.jpg" alt="categories">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-5.jpg" alt="categories">
                                     <div class="Categories-content">
                                         <a href="#">
                                             <span>Scientists</span>
-                                            <img src="assets/images/arrow.svg" alt="">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="assets/images/categories-6.jpg" alt="categories">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-6.jpg" alt="categories">
                                     <div class="Categories-content">
                                         <a href="#">
                                             <span>International’s</span>
-                                            <img src="assets/images/arrow.svg" alt="">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="sidebar-add pt-35">
-                                <a href="#"><img src="assets/images/ad/ad-2.jpg" alt="ad"></a>
+                                <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ad/ad-2.jpg" alt="ad"></a>
                             </div>
                         </div>
                     </div>
@@ -2394,7 +2182,7 @@ get_header();
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-5">
                         <div class="footer-logo">
-                            <a href="#"><img src="assets/images/logo-2.png" alt=""></a>
+                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-2.png" alt=""></a>
                             <ul>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -2684,5 +2472,5 @@ get_header();
 </body>
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();
