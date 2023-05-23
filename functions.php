@@ -109,6 +109,7 @@ add_action( 'wp_enqueue_scripts', 'nepaleseinfinland_scripts' );
 
 require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
