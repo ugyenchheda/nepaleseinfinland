@@ -117,3 +117,14 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+//image sizes.....
+add_image_size('item_image', 300, 300, true);
+add_image_size('post_image_xs', 100, 90, true);
+add_image_size('post_image_s', 240, 186, true);
+add_image_size('widget_right_thumbnail', 232, 123, true);
+add_image_size('post_image_m', 263, 175, true);
+add_image_size('post_image_l', 387, 242, true);
+add_image_size('post_image_xl', 774, 484, true);
+add_image_size('post_feat_xl', 1090, 521, true);
+add_image_size('feature_galleries', 1090, 521, true);
