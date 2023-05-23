@@ -110,8 +110,10 @@ add_action( 'wp_enqueue_scripts', 'nepaleseinfinland_scripts' );
 require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/post-types.php';
+require get_template_directory() . '/inc/post-types-meta.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
+require_once __DIR__ . '/library/CMB2/init.php';
 
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
@@ -128,3 +130,4 @@ add_image_size('post_image_l', 387, 242, true);
 add_image_size('post_image_xl', 774, 484, true);
 add_image_size('post_feat_xl', 1090, 521, true);
 add_image_size('feature_galleries', 1090, 521, true);
+
