@@ -79,6 +79,14 @@ add_action( 'widgets_init', 'nepaleseinfinland_widgets_init' );
 
 function nepaleseinfinland_scripts() {
 	wp_enqueue_style( 'nepaleseinfinland-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'bootstrap.min', get_template_directory_uri() . '/assets/css/bootstrap.min.css' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css' );
+	wp_enqueue_style( 'magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css' );
+	wp_enqueue_style( 'nice-select', get_template_directory_uri() . '/assets/css/nice-select.css' );
+	wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/css/slick.css' );
+	wp_enqueue_style( 'stellarnav', get_template_directory_uri() . '/assets/css/stellarnav.css' );
+	wp_enqueue_style( 'default', get_template_directory_uri() . '/assets/css/default.css' );
+	wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/css/style.css' );
 	wp_style_add_data( 'nepaleseinfinland-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'nepaleseinfinland-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
