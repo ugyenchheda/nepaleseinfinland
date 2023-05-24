@@ -56,3 +56,61 @@ function news_post_type() {
 
 }
 add_action( 'init', 'news_post_type', 0 );
+
+
+// Register Custom Post Type
+function uas_post_type() {
+
+	$labels = array(
+		'name'                  => _x( 'UAS', 'Post Type General Name', 'nepaleseinfinland' ),
+		'singular_name'         => _x( 'UAS', 'Post Type Singular Name', 'nepaleseinfinland' ),
+		'menu_name'             => __( 'UAS', 'nepaleseinfinland' ),
+		'name_admin_bar'        => __( 'UAS', 'nepaleseinfinland' ),
+		'archives'              => __( 'UAS Archives', 'nepaleseinfinland' ),
+		'attributes'            => __( 'UAS Attributes', 'nepaleseinfinland' ),
+		'parent_item_colon'     => __( 'Parent UAS :', 'nepaleseinfinland' ),
+		'all_items'             => __( 'All UAS', 'nepaleseinfinland' ),
+		'add_new_item'          => __( 'Add New UAS', 'nepaleseinfinland' ),
+		'add_new'               => __( 'Add UAS', 'nepaleseinfinland' ),
+		'new_item'              => __( 'New UAS', 'nepaleseinfinland' ),
+		'edit_item'             => __( 'Edit UAS', 'nepaleseinfinland' ),
+		'update_item'           => __( 'Update UAS', 'nepaleseinfinland' ),
+		'view_item'             => __( 'View UAS', 'nepaleseinfinland' ),
+		'view_items'            => __( 'View UAS', 'nepaleseinfinland' ),
+		'search_items'          => __( 'Search UAS', 'nepaleseinfinland' ),
+		'not_found'             => __( 'Not found', 'nepaleseinfinland' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'nepaleseinfinland' ),
+		'featured_image'        => __( 'Featured Image', 'nepaleseinfinland' ),
+		'set_featured_image'    => __( 'Set featured image', 'nepaleseinfinland' ),
+		'remove_featured_image' => __( 'Remove featured image', 'nepaleseinfinland' ),
+		'use_featured_image'    => __( 'Use as featured image', 'nepaleseinfinland' ),
+		'insert_into_item'      => __( 'Insert into UAS', 'nepaleseinfinland' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this UAS', 'nepaleseinfinland' ),
+		'items_list'            => __( 'UAS list', 'nepaleseinfinland' ),
+		'items_list_navigation' => __( 'UAS list navigation', 'nepaleseinfinland' ),
+		'filter_items_list'     => __( 'Filter UAS list', 'nepaleseinfinland' ),
+	);
+	$args = array(
+		'label'                 => __( 'UAS', 'nepaleseinfinland' ),
+		'description'           => __( 'Add all universities', 'nepaleseinfinland' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments' ),
+		'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 6,
+		'menu_icon'				=>'dashicons-welcome-learn-more',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'uas', $args );
+
+}
+add_action( 'init', 'uas_post_type', 0 );
