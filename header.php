@@ -64,10 +64,27 @@
 					?>
 						<div class="social">
 							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-youtube"></i></a></li>
-								<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<?php $facebook_link = get_theme_mod('facebook_link');
+								  $twitter_link = get_theme_mod('twitter_link');
+								  $instagram_link = get_theme_mod('instagram_link');
+								  $youtube_link = get_theme_mod('youtube_link');
+								  $linkedin_link = get_theme_mod('linkedin_link');
+							if (!empty($facebook_link)) {
+								echo '<li><a href="'.$facebook_link.'"><i class="fab fa-facebook"></i></a></li>';
+							}
+							if (!empty($twitter_link)) {
+								echo '<li><a href="'.$twitter_link.'"><i class="fab fa-twitter"></i></a></li>';
+							}
+							if (!empty($linkedin_link)) {
+								echo '<li><a href="'.$linkedin_link.'"><i class="fab fa-linkedin"></i></a></li>';
+							}
+							if (!empty($instagram_link)) {
+								echo '<li><a href="'.$instagram_link.'"><i class="fab fa-instagram"></i></a></li>';
+							}
+							if (!empty($youtube_link)) {
+								echo '<li><a href="'.$youtube_link.'"><i class="fab fa-youtube"></i></a></li>';
+							}
+					?>
 							</ul>
 						</div>
 					</div>

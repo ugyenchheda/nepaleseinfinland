@@ -510,7 +510,7 @@
             size: 40,
             thickness: 4,
             fill: {
-                gradient: ['#FF5555', '#FF5555']
+                gradient: ['#DC143C', '#DC143C']
             },
             lineCap: "round",
             emptyFill: "rgba(255, 255, 255, .75)",

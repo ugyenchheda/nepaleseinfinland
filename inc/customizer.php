@@ -90,6 +90,82 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 			 'settings'	=> 'link_to_adv',
 			)
 	);
+	$wp_customize->add_setting(
+		'facebook_link',
+		array(
+			'default'			=> '#',
+		)
+   );
+	$wp_customize->add_control(
+		'facebook_link',
+			array(
+			 'label'		=> __('Facebook', 'nepaleseinfinland'),
+			 'section' 	=> 'section_headersetting',
+			 'type' 		=> 'text',
+			 'settings'	=> 'facebook_link',
+			)
+	);
+	$wp_customize->add_setting(
+		'twitter_link',
+		array(
+			'default'			=> '#',
+		)
+   );
+	$wp_customize->add_control(
+		'twitter_link',
+			array(
+			 'label'		=> __('Twitter', 'nepaleseinfinland'),
+			 'section' 	=> 'section_headersetting',
+			 'type' 		=> 'text',
+			 'settings'	=> 'twitter_link',
+			)
+	);
+	$wp_customize->add_setting(
+		'instagram_link',
+		array(
+			'default'			=> '#',
+		)
+   );
+	$wp_customize->add_control(
+		'instagram_link',
+			array(
+			 'label'		=> __('Instagram', 'nepaleseinfinland'),
+			 'section' 	=> 'section_headersetting',
+			 'type' 		=> 'text',
+			 'settings'	=> 'instagram_link',
+			)
+	);
+	$wp_customize->add_setting(
+		'youtube_link',
+		array(
+			'default'			=> '#',
+		)
+   );
+	$wp_customize->add_control(
+		'youtube_link',
+			array(
+			 'label'		=> __('Youtube', 'nepaleseinfinland'),
+			 'section' 	=> 'section_headersetting',
+			 'type' 		=> 'text',
+			 'settings'	=> 'youtube_link',
+			)
+	);
+	
+	$wp_customize->add_setting(
+		'linkedin_link',
+		array(
+			'default'			=> '#',
+		)
+   );
+	$wp_customize->add_control(
+		'linkedin_link',
+			array(
+			 'label'		=> __('Linkedin', 'nepaleseinfinland'),
+			 'section' 	=> 'section_headersetting',
+			 'type' 		=> 'text',
+			 'settings'	=> 'linkedin_link',
+			)
+	);
 	/*Archive Page*/
 	$wp_customize->add_section(
 		'section_archieve_page' ,
