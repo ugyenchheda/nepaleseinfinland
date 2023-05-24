@@ -89,7 +89,11 @@
 				</div>
 				<div class="col-lg-8">
 					<div class="header-centerbar-ad">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ad/ad-1.png" alt=""></a>
+						
+					<?php $adv_link = get_theme_mod('link_to_adv');
+					$adv_banner = get_theme_mod('adv_banner', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
+					?>
+						<a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>" alt=""></a>
 					</div>
 				</div>
 			</div>
