@@ -19,7 +19,9 @@ function nepaleseinfinland_setup() {
 	add_theme_support( 'post-thumbnails' );
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'nepaleseinfinland' ),
+			
+	    	'primary_menu' => __( 'Primary Menu', 'nepaleseinfinland' ),
+	    	'footer_menu'  => __( 'Footer Menu', 'nepaleseinfinland' ),
 		)
 	);
 	add_theme_support(
@@ -131,3 +133,10 @@ add_image_size('post_image_xl', 774, 484, true);
 add_image_size('post_feat_xl', 1090, 521, true);
 add_image_size('feature_galleries', 1090, 521, true);
 
+function li_new_class($classes, $item, $args) {
+	if(isset($args->add_li_class)) {
+		$classes[] = $args->add_li_class;
+	}
+	return $classes;
+	}
+	add_filter('nav_menu_li_class', 'li_new_class', 1, 3);
