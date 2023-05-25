@@ -140,3 +140,46 @@ function li_new_class($classes, $item, $args) {
 	return $classes;
 	}
 	add_filter('nav_menu_li_class', 'li_new_class', 1, 3);
+
+	if ( ! function_exists( 'news_category' ) ) {
+
+		// Register Custom Taxonomy
+		function news_category() {
+		
+			$labels = array(
+				'name'                       => _x( 'categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
+				'singular_name'              => _x( 'category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
+				'menu_name'                  => __( 'News Categories', 'nepaleseinfinland' ),
+				'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
+				'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
+				'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
+				'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
+				'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
+				'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
+				'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
+				'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
+				'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
+				'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
+				'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
+				'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
+				'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
+				'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
+				'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
+				'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
+				'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
+			);
+			$args = array(
+				'labels'                     => $labels,
+				'hierarchical'               => true,
+				'public'                     => true,
+				'show_ui'                    => true,
+				'show_admin_column'          => true,
+				'show_in_nav_menus'          => true,
+				'show_tagcloud'              => true,
+			);
+			register_taxonomy( 'news category', array( 'news' ), $args );
+		
+		}
+		add_action( 'init', 'news_category', 0 );
+		
+		}

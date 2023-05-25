@@ -43,7 +43,6 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 				'priority' 			=> 12,
 		));
 
-   /* Searchox Section */
 
 	$wp_customize->add_section(
 		'section_headersetting' ,
@@ -54,42 +53,69 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 		)
 	);
 
-	/* Search Logo*/
 	$wp_customize->add_setting(
-	 'adv_banner',
-	 array(
-		 'default'			=> get_template_directory_uri() . '/assets/images/ad/ad-1.png',
-	 )
-	);
-
-	$wp_customize->add_control(
-	new WP_Customize_Image_Control(
-		$wp_customize,
-		'adv_banner',
-			array(
-				'label'    => __( 'Header Advertisement Banner', 'nepaleseinfinland' ),
-				'section'  => 'section_headersetting',
-				'settings' => 'adv_banner',
-			)
-		)
-	);
-	
-	/* Header Text*/
-	$wp_customize->add_setting(
-		'link_to_adv',
+		'news_title',
 		array(
-			'default'			=> '#',
+			'default'			=> 'Trending',
 		)
    );
 	$wp_customize->add_control(
-		'header_text',
+		'news_title',
 			array(
-			 'label'		=> __('Link to ad.', 'nepaleseinfinland'),
+			 'label'		=> __('Title for News', 'nepaleseinfinland'),
 			 'section' 	=> 'section_headersetting',
-			 'type' 		=> 'textarea',
-			 'settings'	=> 'link_to_adv',
+			 'type' 		=> 'text',
+			 'settings'	=> 'news_title',
 			)
 	);
+	
+	$terms = get_terms(array(
+		'taxonomy'=> 'news category',
+		'hide_empty'=> false,
+	));
+	$cats = array();
+	$i = 0;
+	foreach($terms as $category){
+		$cats[$category->term_id] = $category->name;
+	}
+	
+	$wp_customize->add_setting('news_highlight', 
+		array(
+			
+			)
+	);
+		
+	$wp_customize->add_control(
+		'news_highlight',
+			array(
+			'label'		=> __('Choose Category:', 'nepaleseinfinland'),
+			'description' => 'Select news category to display in slider on top bar.',
+			'section' 	=> 'section_headersetting',
+			'type' 		=> 'text',
+			'settings'	=> 'news_highlight',
+			'type'    => 'select',
+			'choices' => $cats
+			)
+	);
+
+	$wp_customize->add_setting(
+		'news_number',
+		array(
+			'default'			=> '5',
+		)
+   );
+	$wp_customize->add_control(
+		'news_number',
+			array(
+			 'label'		=> __('Select total news to display:', 'nepaleseinfinland'),
+			 'section' 	=> 'section_headersetting',
+			 'type' 		=> 'text',
+			 'settings'	=> 'news_number',
+			)
+	);
+
+
+	//for social medias
 	$wp_customize->add_setting(
 		'facebook_link',
 		array(
@@ -166,6 +192,45 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 			 'settings'	=> 'linkedin_link',
 			)
 	);
+	
+	/*Adv section*/
+	$wp_customize->add_setting(
+		'adv_banner',
+		array(
+			'default'			=> get_template_directory_uri() . '/assets/images/ad/ad-1.png',
+		)
+	   );
+   
+	   $wp_customize->add_control(
+	   new WP_Customize_Image_Control(
+		   $wp_customize,
+		   'adv_banner',
+			   array(
+				   'label'    => __( 'Header Advertisement Banner', 'nepaleseinfinland' ),
+				   'section'  => 'section_headersetting',
+				   'settings' => 'adv_banner',
+			   )
+		   )
+	   );
+	   
+	   /* Header Text*/
+	   $wp_customize->add_setting(
+		   'link_to_adv',
+		   array(
+			   'default'			=> '#',
+		   )
+	  );
+	   $wp_customize->add_control(
+		   'header_text',
+			   array(
+				'label'		=> __('Link to ad.', 'nepaleseinfinland'),
+				'section' 	=> 'section_headersetting',
+				'type' 		=> 'text',
+				'settings'	=> 'link_to_adv',
+			   )
+	   );
+
+
 	/*Archive Page*/
 	$wp_customize->add_section(
 		'section_archieve_page' ,

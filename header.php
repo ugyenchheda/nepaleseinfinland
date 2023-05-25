@@ -43,48 +43,67 @@
 			<div class="row align-items-center">
 				<div class="col-lg-8">
 					<div class="topbar-trending">
-						<span>Trending</span>
+					<?php $news_title = get_theme_mod('news_title');?>
+						<span><?php echo $news_title; ?></span>
 						<div class="trending-slider">
-							<div class="trending-item">
-								<p>Top 10 Best Movies of 2018 So Far: Great Movies To Watch Now </p>
-							</div>
-							<div class="trending-item">
-								<p>Top 10 Best Movies of 2018 So Far: Great Movies To Watch Now </p>
-							</div>
-							<div class="trending-item">
-								<p>Top 10 Best Movies of 2018 So Far: Great Movies To Watch Now </p>
-							</div>
+							<?php 
+
+								$news_highlight = get_theme_mod('news_highlight');
+								$news_number = get_theme_mod('news_number');
+								$custom_terms = get_terms('news category');
+
+								foreach($custom_terms as $custom_term) {
+									wp_reset_query();
+									$args = array('post_type' => 'news',
+										'tax_query' => array(
+											array(
+												'taxonomy' => 'news category',
+												'field' => 'term_id',
+												'terms' => $news_highlight,
+											),
+										),
+									);
+
+									$loop = new WP_Query($args);
+									if($loop->have_posts()) {
+										while($loop->have_posts()) : $loop->the_post();
+											echo '<div class="trending-item"><p><a href="'.get_permalink().'">'.get_the_title().'</a></p></div>';
+										endwhile;
+									} else {
+										echo '<div class="trending-item"><p>There is no NEWS trending currenlty...</p></div>';
+									}
+								}?>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="topbar-social d-flex align-items-center">
-					<?php date_default_timezone_set('Europe/Helsinki');
-						echo date('l, F j,  Y');
-					?>
+						<?php date_default_timezone_set('Europe/Helsinki');
+								echo date('l, F j,  Y');
+						?>
 						<div class="social">
 							<ul>
-							<?php $facebook_link = get_theme_mod('facebook_link');
-								  $twitter_link = get_theme_mod('twitter_link');
-								  $instagram_link = get_theme_mod('instagram_link');
-								  $youtube_link = get_theme_mod('youtube_link');
-								  $linkedin_link = get_theme_mod('linkedin_link');
-							if (!empty($facebook_link)) {
-								echo '<li><a href="'.$facebook_link.'"><i class="fab fa-facebook"></i></a></li>';
-							}
-							if (!empty($twitter_link)) {
-								echo '<li><a href="'.$twitter_link.'"><i class="fab fa-twitter"></i></a></li>';
-							}
-							if (!empty($linkedin_link)) {
-								echo '<li><a href="'.$linkedin_link.'"><i class="fab fa-linkedin"></i></a></li>';
-							}
-							if (!empty($instagram_link)) {
-								echo '<li><a href="'.$instagram_link.'"><i class="fab fa-instagram"></i></a></li>';
-							}
-							if (!empty($youtube_link)) {
-								echo '<li><a href="'.$youtube_link.'"><i class="fab fa-youtube"></i></a></li>';
-							}
-					?>
+								<?php $facebook_link = get_theme_mod('facebook_link');
+									$twitter_link = get_theme_mod('twitter_link');
+									$instagram_link = get_theme_mod('instagram_link');
+									$youtube_link = get_theme_mod('youtube_link');
+									$linkedin_link = get_theme_mod('linkedin_link');
+									if (!empty($facebook_link)) {
+										echo '<li><a href="'.$facebook_link.'"><i class="fab fa-facebook"></i></a></li>';
+									}
+									if (!empty($twitter_link)) {
+										echo '<li><a href="'.$twitter_link.'"><i class="fab fa-twitter"></i></a></li>';
+									}
+									if (!empty($linkedin_link)) {
+										echo '<li><a href="'.$linkedin_link.'"><i class="fab fa-linkedin"></i></a></li>';
+									}
+									if (!empty($instagram_link)) {
+										echo '<li><a href="'.$instagram_link.'"><i class="fab fa-instagram"></i></a></li>';
+									}
+									if (!empty($youtube_link)) {
+										echo '<li><a href="'.$youtube_link.'"><i class="fab fa-youtube"></i></a></li>';
+									}
+								?>
 							</ul>
 						</div>
 					</div>
@@ -95,7 +114,7 @@
 	<div class="header-centerbar">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<div class="logo">
 						<a href="<?php echo get_home_url(); ?>">
 						<?php $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -110,7 +129,7 @@
 					<?php $adv_link = get_theme_mod('link_to_adv');
 					$adv_banner = get_theme_mod('adv_banner', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
 					?>
-						<a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>" alt=""></a>
+						<a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>"  class="img-responsive"></a>
 					</div>
 				</div>
 			</div>
@@ -152,16 +171,10 @@
 							</select>
 						</div>
 						<div class="header-temperature">
-							<div class="icon">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/temperature-icon.svg" alt="">
-							</div>
 							<div class="temperature-content text-center">
-								<h5 class="title">13 <sup>0<sub>C</sub></sup></h5>
-								<p>San Francisco</p>
-							</div>
-						</div>
-					</div>
-				</div>
+							<h5 class="title">
+							
+							<div id="id9097fe44a8977" a='{"t":"s","v":"1.2","lang":"en","locs":[],"ssot":"c","sics":"ds","cbkg":"#FFFFFF","cfnt":"rgba(139,134,134,1)","slfs":19,"slis":20,"slgp":1,"slbr":0,"slpd":3}'><a href="https://sharpweather.com/widgets/">HTML Weather widget for website by sharpweather.com</a></div><script async src="https://static1.sharpweather.com/widgetjs/?id=id9097fe44a8977"></script>				</div>
 			</div>
 		</div>
 
