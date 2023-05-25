@@ -564,100 +564,37 @@ get_header();
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h3 class="title">Feature News</h3>
+                        <h3 class="title">Universitites of Applied Sciences</h3>
                     </div>
                 </div>
             </div>
             <div class="row feature-post-slider">
-                <div class="col-lg-3">
-                    <div class="feature-post">
-                        <div class="feature-post-thumb">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-1.jpg" alt="feature">
-                        </div>
-                        <div class="feature-post-content">
-                            <div class="post-meta">
-                                <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
-                                </div>
-                                <div class="meta-date">
-                                    <span>March 26, 2020</span>
-                                </div>
+                <?php 
+                    query_posts(array( 
+                        'post_type' => 'uas',
+                    ) );  
+                    ?>
+                    <?php while (have_posts()) : the_post(); ?>
+                    <div class="col-lg-3">
+                        <div class="feature-post">
+                            <div class="feature-post-thumb">
+                                <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'large'); ?>" class="img-responsive" alt="<?php the_title(); ?>">
+                                
                             </div>
-                            <h4 class="title"><a href="#">Best garden wing supplies for the horticu ltural</a></h4>
+                            <div class="feature-post-content">
+                                <div class="post-meta">
+                                    <div class="meta-categories">
+                                        <a href="#"><?php echo get_post_type( get_the_ID() );?></a>
+                                    </div>
+                                    <div class="meta-date">
+                                        <span><?php echo get_the_date('l, F j,  Y'); ?></span>
+                                    </div>
+                                </div>
+                                <h4 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="feature-post">
-                        <div class="feature-post-thumb">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-2.jpg" alt="feature">
-                        </div>
-                        <div class="feature-post-content">
-                            <div class="post-meta">
-                                <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
-                                </div>
-                                <div class="meta-date">
-                                    <span>March 26, 2020</span>
-                                </div>
-                            </div>
-                            <h4 class="title"><a href="#">Best garden wing supplies for the horticu ltural</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="feature-post">
-                        <div class="feature-post-thumb">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-3.jpg" alt="feature">
-                        </div>
-                        <div class="feature-post-content">
-                            <div class="post-meta">
-                                <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
-                                </div>
-                                <div class="meta-date">
-                                    <span>March 26, 2020</span>
-                                </div>
-                            </div>
-                            <h4 class="title"><a href="#">Best garden wing supplies for the horticu ltural</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="feature-post">
-                        <div class="feature-post-thumb">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-4.jpg" alt="feature">
-                        </div>
-                        <div class="feature-post-content">
-                            <div class="post-meta">
-                                <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
-                                </div>
-                                <div class="meta-date">
-                                    <span>March 26, 2020</span>
-                                </div>
-                            </div>
-                            <h4 class="title"><a href="#">Best garden wing supplies for the horticu ltural</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="feature-post">
-                        <div class="feature-post-thumb">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-2.jpg" alt="feature">
-                        </div>
-                        <div class="feature-post-content">
-                            <div class="post-meta">
-                                <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
-                                </div>
-                                <div class="meta-date">
-                                    <span>March 26, 2020</span>
-                                </div>
-                            </div>
-                            <h4 class="title"><a href="#">Best garden wing supplies for the horticu ltural</a></h4>
-                        </div>
-                    </div>
+                    <?php endwhile;?>
                 </div>
             </div>
         </div>

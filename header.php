@@ -115,7 +115,7 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-3">
-					<div class="logo">
+					<div class="logo text-center">
 						<a href="<?php echo get_home_url(); ?>">
 						<?php $custom_logo_id = get_theme_mod( 'custom_logo' );
 								$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
