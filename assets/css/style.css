@@ -5616,8 +5616,7 @@ p {
     .post-author {
       display: block; } }
   .post-author .author-info {
-    position: relative;
-    padding-left: 60px; }
+    position: relative; }
     @media (max-width: 767px) {
       .post-author .author-info {
         padding-left: 55px; } }

@@ -55,7 +55,7 @@ function events_post_meta()
 
     $cmb->add_field(array(
 		'name' => 'Cost of Ticket',
-		'desc' => 'Add ticket price if event is not free..',
+		'desc' => 'Add ticket price if event is not free event.',
 		'id'   => 'events_price',
 		'type' => 'text',
     ));
@@ -68,13 +68,54 @@ function events_post_meta()
     ));
     
     $cmb->add_field(array(
-		'name' => 'Event Date',
-		'desc' => 'Select the date and time of event.',
-		'id'   => 'events_date',
-    'type' => 'text_date',
+		'name' => 'Starting Date',
+		'desc' => 'Select event starting date.',
+		'id'   => 'event_sdate',
     // 'timezone_meta_key' => 'wiki_test_timezone',
-    'type' => 'text_datetime_timestamp',
-    ));$cmb->add_field( array(
+    'type' => 'text_date',
+    'date_format' => 'l j \of F Y',
+    ));
+    
+    $cmb->add_field(array(
+		'name' => 'Ending Date',
+		'desc' => 'Select event ending date.',
+		'id'   => 'event_edate',
+    // 'timezone_meta_key' => 'wiki_test_timezone',
+    'type' => 'text_date',
+    'date_format' => 'l j \of F Y',
+    ));
+    $cmb->add_field( array(
+      'name' => 'Starting Time',
+      'desc' => 'Select event starting time.',
+      'id' => 'event_stime',
+      'type' => 'text_time'
+      // Override default time-picker attributes:
+      // 'attributes' => array(
+      //     'data-timepicker' => json_encode( array(
+      //         'timeOnlyTitle' => __( 'Choose your Time', 'cmb2' ),
+      //         'timeFormat' => 'HH:mm',
+      //         'stepMinute' => 1, // 1 minute increments instead of the default 5
+      //     ) ),
+      // ),
+      // 'time_format' => 'h:i:s A',
+  ) );
+  $cmb->add_field( array(
+    'name' => 'Ending Time',
+    'desc' => 'Select event ending time.',
+    'id' => 'event_etime',
+    'type' => 'text_time'
+    // Override default time-picker attributes:
+    // 'attributes' => array(
+    //     'data-timepicker' => json_encode( array(
+    //         'timeOnlyTitle' => __( 'Choose your Time', 'cmb2' ),
+    //         'timeFormat' => 'HH:mm',
+    //         'stepMinute' => 1, // 1 minute increments instead of the default 5
+    //     ) ),
+    // ),
+    // 'time_format' => 'h:i:s A',
+) );
+    
+    ;$cmb->add_field( array(
       'name'    => 'Event Photos',
       'desc'    => 'Upload an image or enter an URL of image.',
       'id'      => 'event_banner',

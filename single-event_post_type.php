@@ -8,38 +8,34 @@
  */
 
 get_header();
-?>
 
-<section class="post-layout-1-area post-layout-2-area pb-80">
-        <div class="container">
-		<?php
 		while ( have_posts() ) :
 			the_post(); 
 
-$events_hot = get_post_meta( get_the_ID(), 'events_hot', true );
-$events_free = get_post_meta( get_the_ID(), 'events_free', true );
-$events_price = get_post_meta( get_the_ID(), 'events_price', true );
-$events_organizer = get_post_meta( get_the_ID(), 'events_organizer', true );
-$events_date = get_post_meta( get_the_ID(), 'events_date', true );
-$event_banner = get_post_meta( get_the_ID(), 'event_banner', true );
-$event_video = get_post_meta( get_the_ID(), 'event_video', true );
-$event_location = get_post_meta( get_the_ID(), 'event_location', true );
+            $events_hot = get_post_meta( get_the_ID(), 'events_hot', true );
+            $events_free = get_post_meta( get_the_ID(), 'events_free', true );
+            $events_price = get_post_meta( get_the_ID(), 'events_price', true );
+            $events_organizer = get_post_meta( get_the_ID(), 'events_organizer', true );
+            $event_sdate = get_post_meta( get_the_ID(), 'event_sdate', true );
+            $event_edate = get_post_meta( get_the_ID(), 'event_edate', true );
+            $event_banner = get_post_meta( get_the_ID(), 'event_banner', true );
+            $event_video = get_post_meta( get_the_ID(), 'event_video', true );
+            $event_location = get_post_meta( get_the_ID(), 'event_location', true );
+            ?>
+<section class="post-layout-1-area post-layout-2-area pb-80">
+        <div class="container">
+            <?php
 
+                if ($event_video) {
+                    ?>
+                            <div class="video-background">
 
-    if ($event_video) {
-        ?>
-				<div class="video-background">
-
-					<div class="video-foreground">
-					    <iframe width="560" height="315" src="<?php echo $event_video; ?>" allow="autoplay" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-				    </div>
-				</div>
-            <?php }
-
-
-echo $event_location['latitude'];
-echo $event_location['longitude'];
-?>
+                                <div class="video-foreground">
+                                    <iframe width="560" height="315" src="<?php echo $event_video; ?>" allow="autoplay" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+                                </div>
+                            </div>
+                        <?php }
+            ?>
 
             <div id="map" style="height: 350px;" class="kindergarden_map"></div>
 
@@ -51,7 +47,8 @@ echo $event_location['longitude'];
                         var marker = new google.maps.Marker({position: uluru, map: map});
                     }   
                 </script>
-            <div class="row justify-content-center">
+     
+     <div class="row justify-content-center">
 				
 			<div class="post-content">
                             <h3 class="title"><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></h3>
@@ -67,27 +64,29 @@ echo $event_location['longitude'];
                                 <div class="thumb">
                                     <img src="assets/images/author.png" alt="">
                                 </div>
-                                <h5 class="title">Subash Chandra</h5>
+                                <h5 class="title"><i class="far fa-id-badge event_small" alt="Organizer"></i> Organizer: <?php echo $events_organizer ?></h5>
                                 <ul>
-                                    <li>March 26, 2020</li>
+                                    <li><i class="far fa-calendar-alt event_small" alt="Organizer"></i><?php   echo $event_sdate;?></li>
                                     <li>Updated 1:58 p.m. ET</li>
                                 </ul>
                             </div>
+
                             <div class="author-social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fal fa-bookmark"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-ellipsis-v"></i></a></li>
+                                <ul>                            
+                                    <?php
+                                        echo '<li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-facebook-f"></i></a></li>'; 
+                                        echo '<li><a target="_blank" href="https://twitter.com/intent/tweet?text='. esc_attr(wp_get_document_title()) .'. '. esc_url(get_permalink()) .'"><i class="fab fa-twitter"></i></a></li>';
+                                        echo '<li><a target="_blank" href="https://plus.google.com/share?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-google-plus"></i></a></li>';
+                                        echo '<li><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url='. urlencode(esc_url(get_permalink())) .'&title='. esc_attr(wp_get_document_title()) .'"><i class="fab fa-linkedin"></i></a></li>';
+                                        echo '<li><a target="_blank" href="https://pinterest.com/pin/find/?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-pinterest"></i></a></li>';
+                                        echo '<li><a target="_blank" href="mailto:?subject='. esc_attr(wp_get_document_title()) .'. '. esc_url(get_permalink()) .'"><i class="far fa-envelope"></i></a></li>';
+                                    ?>  
                                 </ul>
                             </div>
                         </div>
                         <div class="post-categories d-flex justify-content-start align-content-center">
                             <div class="categories-item">
-                                <span>HEALTH</span>
+                                <span>Event</span>
                             </div>
                             <div class="categories-share">
                                 <ul>
