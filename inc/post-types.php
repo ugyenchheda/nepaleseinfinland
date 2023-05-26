@@ -114,3 +114,59 @@ function uas_post_type() {
 
 }
 add_action( 'init', 'uas_post_type', 0 );
+
+// Register Custom Post Type
+function event_post_type() {
+
+	$labels = array(
+		'name'                  => _x( 'Events', 'Post Type General Name', 'nepaleseinfinland' ),
+		'singular_name'         => _x( 'Event', 'Post Type Singular Name', 'nepaleseinfinland' ),
+		'menu_name'             => __( 'Events', 'nepaleseinfinland' ),
+		'name_admin_bar'        => __( 'Events', 'nepaleseinfinland' ),
+		'archives'              => __( 'Events Archives', 'nepaleseinfinland' ),
+		'attributes'            => __( 'Events Attributes', 'nepaleseinfinland' ),
+		'parent_item_colon'     => __( 'Parent Events :', 'nepaleseinfinland' ),
+		'all_items'             => __( 'All Events', 'nepaleseinfinland' ),
+		'add_new_item'          => __( 'Add New Event', 'nepaleseinfinland' ),
+		'add_new'               => __( 'Add New Event', 'nepaleseinfinland' ),
+		'new_item'              => __( 'New Event', 'nepaleseinfinland' ),
+		'edit_item'             => __( 'Edit Event', 'nepaleseinfinland' ),
+		'update_item'           => __( 'Update Event', 'nepaleseinfinland' ),
+		'view_item'             => __( 'View Event', 'nepaleseinfinland' ),
+		'view_items'            => __( 'View Event', 'nepaleseinfinland' ),
+		'search_items'          => __( 'Search Event', 'nepaleseinfinland' ),
+		'not_found'             => __( 'Not found', 'nepaleseinfinland' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'nepaleseinfinland' ),
+		'featured_image'        => __( 'Featured Image', 'nepaleseinfinland' ),
+		'set_featured_image'    => __( 'Set featured image', 'nepaleseinfinland' ),
+		'remove_featured_image' => __( 'Remove featured image', 'nepaleseinfinland' ),
+		'use_featured_image'    => __( 'Use as featured image', 'nepaleseinfinland' ),
+		'insert_into_item'      => __( 'Insert into Event', 'nepaleseinfinland' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Event', 'nepaleseinfinland' ),
+		'items_list'            => __( 'Events list', 'nepaleseinfinland' ),
+		'items_list_navigation' => __( 'Events list navigation', 'nepaleseinfinland' ),
+		'filter_items_list'     => __( 'Filter Events list', 'nepaleseinfinland' ),
+	);
+	$args = array(
+		'label'                 => __( 'Event', 'nepaleseinfinland' ),
+		'description'           => __( 'Add event and description.', 'nepaleseinfinland' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 7,
+		'menu_icon'				=>'dashicons-calendar-alt',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'Event_post_type', $args );
+
+}
+add_action( 'init', 'event_post_type', 0 );
