@@ -89,19 +89,19 @@
 									$youtube_link = get_theme_mod('youtube_link');
 									$linkedin_link = get_theme_mod('linkedin_link');
 									if (!empty($facebook_link)) {
-										echo '<li><a href="'.$facebook_link.'"><i class="fab fa-facebook"></i></a></li>';
+										echo '<li><a href="'.$facebook_link.'" target="_blank"><i class="fab fa-facebook"></i></a></li>';
 									}
 									if (!empty($twitter_link)) {
-										echo '<li><a href="'.$twitter_link.'"><i class="fab fa-twitter"></i></a></li>';
+										echo '<li><a href="'.$twitter_link.'" target="_blank"><i class="fab fa-twitter"></i></a></li>';
 									}
 									if (!empty($linkedin_link)) {
-										echo '<li><a href="'.$linkedin_link.'"><i class="fab fa-linkedin"></i></a></li>';
+										echo '<li><a href="'.$linkedin_link.'" target="_blank"><i class="fab fa-linkedin"></i></a></li>';
 									}
 									if (!empty($instagram_link)) {
-										echo '<li><a href="'.$instagram_link.'"><i class="fab fa-instagram"></i></a></li>';
+										echo '<li><a href="'.$instagram_link.'" target="_blank"><i class="fab fa-instagram"></i></a></li>';
 									}
 									if (!empty($youtube_link)) {
-										echo '<li><a href="'.$youtube_link.'"><i class="fab fa-youtube"></i></a></li>';
+										echo '<li><a href="'.$youtube_link.'" target="_blank"><i class="fab fa-youtube"></i></a></li>';
 									}
 								?>
 							</ul>
