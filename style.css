@@ -7,3 +7,23 @@ Description: Description
 Version: 1.0.0
 
 */
+.event_banner {
+    background-size: cover;
+    padding: 300px 10px 50px 10px;
+}
+.event_banner_wrap {
+    min-height: 150px;
+    padding: 50px 0px;
+}
+span.event_bg {
+    background: #004566;
+    padding: 27px 13px;
+}
+span.event_title {
+    background: #ffffff29;
+    padding: 15px 21px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: verdana;
+    font-size: 30px;
+}

@@ -68,21 +68,21 @@ function events_post_meta()
     ));
     
     $cmb->add_field(array(
-		'name' => 'Starting Date',
+		'name' => 'Event Starting Date',
 		'desc' => 'Select event starting date.',
 		'id'   => 'event_sdate',
     // 'timezone_meta_key' => 'wiki_test_timezone',
     'type' => 'text_date',
-    'date_format' => 'l j \of F Y',
+    'date_format' => 'l, F j,  Y',
     ));
     
     $cmb->add_field(array(
-		'name' => 'Ending Date',
+		'name' => 'Event Ending Date',
 		'desc' => 'Select event ending date.',
 		'id'   => 'event_edate',
     // 'timezone_meta_key' => 'wiki_test_timezone',
     'type' => 'text_date',
-    'date_format' => 'l j \of F Y',
+    'date_format' => 'l, F j,  Y',
     ));
     $cmb->add_field( array(
       'name' => 'Starting Time',
