@@ -116,6 +116,7 @@ require get_template_directory() . '/inc/post-types-meta.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 require_once __DIR__ . '/library/CMB2/init.php';
+//require_once __DIR__ . '/library/CMB2/cmb_field_map/cmb-field-map.php';
 
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
@@ -183,3 +184,8 @@ function li_new_class($classes, $item, $args) {
 		add_action( 'init', 'news_category', 0 );
 		
 		}
+
+		function pw_google_api_key() {
+			return 'AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU';
+		}
+		add_filter( 'pw_google_api_key', 'pw_google_api_key' );
