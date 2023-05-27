@@ -24,10 +24,10 @@ get_header();
 
 
 
-            function addressfromlatlng($latitude,$longitude) {
+            function getAddressFromGoogle($latitude,$longitude) {
                 //Google Map API URL
                 $API_KEY = "AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU"; // Google Map Free API Key
-                $url = "https://maps.google.com/maps/api/geocode/json?latlng=".trim($latitude).",".trim($longitude)."&key=".$API_KEY."";
+                $url = "https://maps.google.com/maps/api/geocode/json?latlng=".$latitude.",".$longitude."&key=".$API_KEY."";
                 // Send CURL Request
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
@@ -48,9 +48,8 @@ get_header();
                 return $result;
                 }
             $latitude = $event_location['latitude'];
-            $longitude = $event_location['latitude'];
-            echo$latitude;
-            $result = addressfromlatlng($latitude, $longitude);
+            $longitude = $event_location['longitude'];
+            $result = getAddressFromGoogle($latitude, $longitude);
             echo 'Address: ' . $result;
 
             ?>
