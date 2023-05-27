@@ -93,13 +93,15 @@ get_header();
                                                 <?php echo get_the_content();?></div>
                                     </div>
                                 </div>
+                                    <iframe width="100%" height="315" src=" <?php echo $event_video;?>"></iframe>
                                 <div class="post-text pt-20">
                                     <?php
                                         if ($event_video) {echo $event_video;?>
                                         <div class="play-thumb mt-20 mb-35">
                                             <img src="<?php echo $event_banner;?>" alt="">
                                             <span>I just had a baby - now I’m going to the frontline.</span>
-                                            <a class="video-popup" href="https://youtu.be/JIY8wk4KBhI"><i class="fas fa-play"></i></a>
+                                            
+                                            <a class="video-popup" href="https://www.youtube.com/embed/4caenhy-KHQ"><i class="fas fa-play"></i></a>
                                         </div>
                                     <?php } ?>
                                 </div>
