@@ -10,6 +10,9 @@ Version: 1.0.0
 .event_banner {
     background-size: cover;
     padding: 300px 10px 50px 10px;
+    margin-bottom: -65px;
+    box-shadow: 7px 3px 19px 5px #2a2a2a;
+    background-position-y: 50%;
 }
 .event_banner_wrap {
     min-height: 150px;
@@ -27,3 +30,61 @@ span.event_title {
     font-family: verdana;
     font-size: 30px;
 }
+.button {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  .overlay {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: none;
+  }
+  .popup {
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 6px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    border: 1px solid #c7c7c7;
+    background: #fff;
+    color: #000;
+    box-shadow: 2px 3px 18px #8d8d8d;
+}
+  .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 23px;
+      height: 23px;
+      cursor: pointer;
+  }
+  
+  .close-popup:before {
+    content: '';
+    background-color: #181515;
+    position: absolute;
+    height: 1px;
+    width: 15px;
+    top: 1px;
+    left: 14px;
+    transform: rotate(-45deg);
+  }
+  
+  .close-popup:after {
+    content: '';
+    background-color: #181515;
+    position: absolute;
+    height: 1px;
+    width: 15px;
+    top: 1px;
+    transform: rotate(45deg);
+    left: 14px;
+  }
+  

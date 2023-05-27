@@ -21,6 +21,38 @@ get_header();
             $event_banner = get_post_meta( $post_id, 'event_banner', true );
             $event_video = get_post_meta( $post_id, 'event_video', true );
             $event_location = get_post_meta( $post_id, 'event_location', true );
+
+
+
+            function addressfromlatlng($latitude,$longitude) {
+                //Google Map API URL
+                $API_KEY = "AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU"; // Google Map Free API Key
+                $url = "https://maps.google.com/maps/api/geocode/json?latlng=".trim($latitude).",".trim($longitude)."&key=".$API_KEY."";
+                // Send CURL Request
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                $response = curl_exec($ch);
+                curl_close($ch);
+                $returnBody = json_decode($response);
+                // Google MAP
+                $status = $returnBody->status;
+                if($status == "REQUEST_DENIED"){ 
+                $result = $returnBody->error_message;
+                } else { 
+                $result = $returnBody->results[0]->formatted_address;
+                }
+                return $result;
+                }
+            $latitude = $event_location['latitude'];
+            $longitude = $event_location['latitude'];
+            echo$latitude;
+            $result = addressfromlatlng($latitude, $longitude);
+            echo 'Address: ' . $result;
+
             ?>
             <div class="event_banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
                 <div class=container>
@@ -32,10 +64,6 @@ get_header();
 <section class="post-layout-1-area post-layout-2-area pb-80">
         <div class="container">
             <div class="row justify-content-center">
-                        
-                    <div class="post-content">
-                                    
-                                </div>
                         <div class="col-lg-8">
                             <div class="post-layout-top-content post-layout-top-content-2">
                                 <div class="thumb">
@@ -49,11 +77,14 @@ get_header();
                                         <h5 class="title"><i class="far fa-id-badge event_small" alt="Organizer"></i> Organizer: <?php echo $events_organizer;?></h5>
                                         <ul>
                                             <li><i class="far fa-calendar-alt event_small" alt="Organizer"></i> Date of Event: <?php   echo $event_sdate; if ($event_edate) { echo " - $event_edate";}?></li>
-                                        </ul>
+                                        </ul>   
+                                    <ul>                             
+                                        <li class="button"><i class="fas fa-map-marker-alt event_small" alt="Organizer"></i> View Location</li>
+                                    </ul>
                                     </div>
 
                                     <div class="author-social">
-                                        <ul>                            
+                                        <ul>  Share:                          
                                             <?php
                                                 echo '<li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-facebook-f"></i></a></li>'; 
                                                 echo '<li><a target="_blank" href="https://twitter.com/intent/tweet?text='. esc_attr(wp_get_document_title()) .'. '. esc_url(get_permalink()) .'"><i class="fab fa-twitter"></i></a></li>';
@@ -76,35 +107,29 @@ get_header();
                                         </ul>
                                     </div>
                                 </div>
-
-                                    <div id="map" style="height: 350px;" class="kindergarden_map"></div>
-
-                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr2q08BHCBK-HWA3y0InCwKsCcxPwHDcU&callback=initMap"></script>
-                                    <script>
-                                        function initMap() {
-                                            var uluru = {lat: <?php echo $event_location['latitude'] ?>, lng: <?php echo $event_location['longitude'] ?>};
-                                            var map = new google.maps.Map( document.getElementById("map"), {zoom: 16, center: uluru});
-                                            var marker = new google.maps.Marker({position: uluru, map: map});
-                                        }   
-                                    </script>
                                 <div class="post-text">
                                     <div class="row pt-10">
                                             <div class="text">
                                                 <?php echo get_the_content();?></div>
                                     </div>
                                 </div>
-                                    <iframe width="100%" height="315" src=" <?php echo $event_video;?>"></iframe>
-                                <div class="post-text pt-20">
-                                    <?php
-                                        if ($event_video) {echo $event_video;?>
-                                        <div class="play-thumb mt-20 mb-35">
-                                            <img src="<?php echo $event_banner;?>" alt="">
-                                            <span>I just had a baby - now I’m going to the frontline.</span>
-                                            
-                                            <a class="video-popup" href="https://www.youtube.com/embed/4caenhy-KHQ"><i class="fas fa-play"></i></a>
+
+                                <!-- Map shown in pop up -->
+                                <div class="overlay">
+                                        <div class="popup">
+                                            <div id="map" style="height: 450px;" class="kindergarden_map"></div>
+                                            <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU&callback=initMap">   </script>
+                                            <script>
+                                                function initMap() {
+                                                    var uluru = {lat: <?php echo $event_location['latitude'] ?>, lng: <?php echo $event_location['longitude'] ?>};
+                                                    var map = new google.maps.Map( document.getElementById("map"), {zoom: 13, center: uluru});
+                                                    var marker = new google.maps.Marker({position: uluru, map: map});
+                                                }   
+                                            </script><div class="close-popup"></div>
                                         </div>
-                                    <?php } ?>
                                 </div>
+                                <!-- Map ends here... -->
+
                                 <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
                                     <div class="post-quote-content">
                                         <p>I must explain to you how all this mistake idea denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure because it is pleasure.</p>

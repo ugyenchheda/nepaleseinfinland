@@ -102,6 +102,7 @@ function nepaleseinfinland_scripts() {
 	wp_enqueue_script( 'circle-progress.min', get_template_directory_uri() . '/assets/js/circle-progress.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'jquery.magnific-popup.min', get_template_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -184,8 +185,3 @@ function li_new_class($classes, $item, $args) {
 		add_action( 'init', 'news_category', 0 );
 		
 		}
-
-		function pw_google_api_key() {
-			return 'AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU';
-		}
-		add_filter( 'pw_google_api_key', 'pw_google_api_key' );
