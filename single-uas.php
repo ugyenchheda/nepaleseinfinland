@@ -28,7 +28,7 @@ get_header();
             }
             ?>
                     <div class="row uas_banner">
-                            <div class="col-lg-6 map_block">
+                            <div class="col-lg-8 map_block">
                         
                         <div class="uas_banner_main" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
                                 <div class="row">
@@ -42,9 +42,9 @@ get_header();
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 map_block">
+                        <div class="col-lg-4 map_block">
                             <!-- Map shown in pop up -->
-                            <div id="map" style="height: 450px;" class="kindergarden_map"></div>
+                            <div id="map" style="height: 502px;" class="kindergarden_map"></div>
                             <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU&callback=initMap">   </script>
                             <script>
                                 function initMap() {
