@@ -21,14 +21,9 @@ get_header();
             $event_banner = get_post_meta( $post_id, 'event_banner', true );
             $event_video = get_post_meta( $post_id, 'event_video', true );
             $event_location = get_post_meta( $post_id, 'event_location', true );
-
-
-
-            
             $latitude = $event_location['latitude'];
             $longitude = $event_location['longitude'];
-            $result = getAddressFromGoogle($latitude, $longitude);
-            echo 'Address: ' . $result;
+            $event_address = getAddressFromGoogle($latitude, $longitude);
 
             ?>
             <div class="event_banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
@@ -56,7 +51,7 @@ get_header();
                                             <li><i class="far fa-calendar-alt event_small" alt="Organizer"></i> Date of Event: <?php   echo $event_sdate; if ($event_edate) { echo " - $event_edate";}?></li>
                                         </ul>   
                                     <ul>                             
-                                        <li class="button"><i class="fas fa-map-marker-alt event_small" alt="Organizer"></i> View Location</li>
+                                        <li class="button"><i class="fas fa-map-marker-alt event_small" alt="Organizer"></i> <?php echo $event_address;?></li>
                                     </ul>
                                     </div>
 
@@ -93,7 +88,7 @@ get_header();
                                 <?php
                                 if($event_video ) {
                                 ?>
-                                  <iframe width="100%" height="315" src="<?php echo $event_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+                                  <iframe width="100%" height="400" src="<?php echo $event_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
                                 <?php }  ?>
                                 <!-- Map shown in pop up -->
                                 <div class="overlay">
