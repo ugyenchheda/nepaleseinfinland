@@ -27,13 +27,35 @@ get_header();
                 $uas_address = event_location($latitude, $longitude);
             }
             ?>
-            <div class="uas_banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
-                <div class=container>
-                    <div class="uas_banner_wrap">
-                        <h3 class="title"><span class="uas_bg"><span class="uas_title"><?php the_title(); ?></span></span></h3>
+                    <div class="row uas_banner">
+                            <div class="col-lg-6 map_block">
+                        
+                        <div class="uas_banner_main" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="event_banner_wrap">
+                                            <h3 class="title"><span class="event_bg"><span class="event_title"><?php the_title(); ?></span></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 map_block">
+                            <!-- Map shown in pop up -->
+                            <div id="map" style="height: 450px;" class="kindergarden_map"></div>
+                            <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU&callback=initMap">   </script>
+                            <script>
+                                function initMap() {
+                                    var uluru = {lat: <?php echo $uas_location['latitude'] ?>, lng: <?php echo $uas_location['longitude'] ?>};
+                                    var map = new google.maps.Map( document.getElementById("map"), {zoom: 13, center: uluru});
+                                    var marker = new google.maps.Marker({position: uluru, map: map});
+                                }   
+                            </script>
+                            <!-- Map ends here... -->
+                        </div>
                     </div>
-                </div>
-            </div>
 <section class="post-layout-1-area post-layout-2-area pb-80">
         <div class="container">
             <div class="row justify-content-center">
@@ -91,21 +113,6 @@ get_header();
                                 ?>
                                   <iframe width="100%" height="400" src="<?php echo $uas_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
                                 <?php }  ?>
-                                <!-- Map shown in pop up -->
-                                <div class="overlay">
-                                        <div class="popup">
-                                            <div id="map" style="height: 450px;" class="kindergarden_map"></div>
-                                            <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU&callback=initMap">   </script>
-                                            <script>
-                                                function initMap() {
-                                                    var uluru = {lat: <?php echo $uas_location['latitude'] ?>, lng: <?php echo $uas_location['longitude'] ?>};
-                                                    var map = new google.maps.Map( document.getElementById("map"), {zoom: 13, center: uluru});
-                                                    var marker = new google.maps.Marker({position: uluru, map: map});
-                                                }   
-                                            </script><div class="close-popup"></div>
-                                        </div>
-                                </div>
-                                <!-- Map ends here... -->
 
                                 <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
                                     <div class="post-quote-content">

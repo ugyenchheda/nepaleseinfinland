@@ -14,6 +14,16 @@ Version: 1.0.0
     box-shadow: 7px 3px 19px 5px #2a2a2a;
     background-position-y: 50%;
 }
+.uas_banner_main {
+  background-size: cover;
+  padding: 300px 10px 50px 10px;
+  margin-bottom: -65px;
+  background-position-y: 50%;
+  max-height: 450px;
+}
+.uas_banner{
+  box-shadow: 7px 3px 19px 5px #2a2a2a;
+}
 .event_banner_wrap {
     min-height: 150px;
     padding: 50px 0px;
@@ -87,4 +97,9 @@ span.event_title {
     transform: rotate(45deg);
     left: 14px;
   }
-  
+  .uas_banner {
+    margin: 0px !important;
+}
+.map_block {
+  padding: 0px !important;
+}
