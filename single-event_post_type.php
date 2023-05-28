@@ -23,7 +23,7 @@ get_header();
             $event_location = get_post_meta( $post_id, 'event_location', true );
             $latitude = $event_location['latitude'];
             $longitude = $event_location['longitude'];
-            $event_address = getAddressFromGoogle($latitude, $longitude);
+            $event_address = event_location($latitude, $longitude);
 
             ?>
             <div class="event_banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
