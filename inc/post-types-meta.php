@@ -273,11 +273,19 @@ function uas_post_meta() {
         'type' => 'oembed',
     ) );
     $cmb->add_field( array(
-      'name' => 'uas Location',
+      'name' => 'UAS Location',
       'desc' => 'Drag the marker to set the exact location',
       'id' => 'uas_location',
       'type' => 'pw_map',
       'split_values' => true, // Save latitude and longitude as two separate fields
       'api_key' => 'AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU', // Google API Key
-    ) );
+    ) )
+    ;$cmb->add_field( [
+      'name' => __( 'Facebook Page Link', 'cmb2' ),
+      'desc' => __( 'Add link of facebook page..', 'cmb2' ),
+      'id' => 'uas_facebook',
+      'type' => 'text',
+      //'repeatable' => true,
+      ],
+    );
 }
