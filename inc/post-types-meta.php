@@ -174,7 +174,7 @@ function uas_post_meta() {
       ));
 
       $cmb->add_field(array(
-      'name' => 'Cost of Ticket',
+      'name' => 'Fees',
       'desc' => 'Add ticket price if uas is not free uas.',
       'id'   => 'uas_price',
       'type' => 'text',
@@ -199,7 +199,7 @@ function uas_post_meta() {
       ));
           
       ;$cmb->add_field( array(
-        'name'    => 'uas Photos',
+        'name'    => 'University Photos',
         'desc'    => 'Upload an image or enter an URL of image.',
         'id'      => 'uas_banner',
         'type'    => 'file',
@@ -282,6 +282,13 @@ function uas_post_meta() {
       'name' => __( 'Contact Number', 'nepaleseinfinland' ),
       'desc' => __( 'Contact number of University', 'nepaleseinfinland' ),
       'id' => 'uas_phone',
+      'type' => 'text',
+      ],
+    );
+    ;$cmb->add_field( [
+      'name' => __( 'Website Url', 'nepaleseinfinland' ),
+      'desc' => __( 'Add website or university.', 'nepaleseinfinland' ),
+      'id' => 'uas_website',
       'type' => 'text',
       ],
     );

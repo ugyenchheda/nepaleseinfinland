@@ -13,7 +13,6 @@ get_header();
 			the_post(); 
             $post_id =get_the_ID();
             $uas_hot = get_post_meta( $post_id, 'uas_hot', true );
-            $uas_free = get_post_meta( $post_id, 'uas_free', true );
             $uas_price = get_post_meta( $post_id, 'uas_price', true );
             $uas_organizer = get_post_meta( $post_id, 'uas_organizer', true );
             $uas_sdate = get_post_meta( $post_id, 'uas_sdate', true );
@@ -21,6 +20,14 @@ get_header();
             $uas_banner = get_post_meta( $post_id, 'uas_banner', true );
             $uas_video = get_post_meta( $post_id, 'uas_video', true );
             $uas_location = get_post_meta( $post_id, 'uas_location', true );
+            $uas_location = get_post_meta( $post_id, 'uas_phone', true );
+            $uas_location = get_post_meta( $post_id, 'uas_email', true );
+            $uas_location = get_post_meta( $post_id, 'uas_facebook', true );
+            $uas_location = get_post_meta( $post_id, 'uas_twitter', true );
+            $uas_location = get_post_meta( $post_id, 'uas_youtube', true );
+            $uas_location = get_post_meta( $post_id, 'uas_instagram', true );
+            $uas_location = get_post_meta( $post_id, 'uas_linkedin', true );
+            $uas_location = get_post_meta( $post_id, 'uas_website', true );
             if(!empty($uas_location)){
                 $latitude = $uas_location['latitude'];
                 $longitude = $uas_location['longitude'];
@@ -69,7 +76,6 @@ get_header();
                                         <div class="thumb">
                                             <img src="assets/images/author.png" alt="">
                                         </div>
-                                        <h5 class="title"><i class="far fa-id-badge uas_small" alt="Organizer"></i> Organizer: <?php echo $uas_organizer;?></h5>
                                         <ul>
                                             <li><i class="far fa-calendar-alt uas_small" alt="Organizer"></i> Date of uas: <?php   echo $uas_sdate; if ($uas_edate) { echo " - $uas_edate";}?></li>
                                         </ul>   
