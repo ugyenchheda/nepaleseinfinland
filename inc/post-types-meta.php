@@ -174,28 +174,14 @@ function uas_post_meta() {
       ));
 
       $cmb->add_field(array(
-      'name' => 'Free uas',
-      'desc' => 'Check if the uas is free of cost to attend.',
-      'id'   => 'uas_free',
-      'type' => 'checkbox',
-      ));
-
-      $cmb->add_field(array(
       'name' => 'Cost of Ticket',
       'desc' => 'Add ticket price if uas is not free uas.',
       'id'   => 'uas_price',
       'type' => 'text',
       ));
-
-      $cmb->add_field(array(
-      'name' => 'Organizer',
-      'desc' => 'Add the name of the organizer.',
-      'id'   => 'uas_organizer',
-      'type' => 'text',
-      ));
       
       $cmb->add_field(array(
-      'name' => 'uas Starting Date',
+      'name' => 'Admission Starting Date',
       'desc' => 'Select uas starting date.',
       'id'   => 'uas_sdate',
       // 'timezone_meta_key' => 'wiki_test_timezone',
@@ -204,43 +190,13 @@ function uas_post_meta() {
       ));
       
       $cmb->add_field(array(
-      'name' => 'uas Ending Date',
+      'name' => 'Admission ending date',
       'desc' => 'Select uas ending date.',
       'id'   => 'uas_edate',
       // 'timezone_meta_key' => 'wiki_test_timezone',
       'type' => 'text_date',
       'date_format' => 'l, F j,  Y',
       ));
-      $cmb->add_field( array(
-        'name' => 'Starting Time',
-        'desc' => 'Select uas starting time.',
-        'id' => 'uas_stime',
-        'type' => 'text_time'
-        // Override default time-picker attributes:
-        // 'attributes' => array(
-        //     'data-timepicker' => json_encode( array(
-        //         'timeOnlyTitle' => __( 'Choose your Time', 'cmb2' ),
-        //         'timeFormat' => 'HH:mm',
-        //         'stepMinute' => 1, // 1 minute increments instead of the default 5
-        //     ) ),
-        // ),
-        // 'time_format' => 'h:i:s A',
-    ) );
-        $cmb->add_field( array(
-          'name' => 'Ending Time',
-          'desc' => 'Select uas ending time.',
-          'id' => 'uas_etime',
-          'type' => 'text_time'
-          // Override default time-picker attributes:
-          // 'attributes' => array(
-          //     'data-timepicker' => json_encode( array(
-          //         'timeOnlyTitle' => __( 'Choose your Time', 'cmb2' ),
-          //         'timeFormat' => 'HH:mm',
-          //         'stepMinute' => 1, // 1 minute increments instead of the default 5
-          //     ) ),
-          // ),
-          // 'time_format' => 'h:i:s A',
-      ) );
           
       ;$cmb->add_field( array(
         'name'    => 'uas Photos',
@@ -285,7 +241,6 @@ function uas_post_meta() {
       'desc' => __( 'Add link of facebook page..', 'nepaleseinfinland' ),
       'id' => 'uas_facebook',
       'type' => 'text',
-      //'repeatable' => true,
       ],
     );
     ;$cmb->add_field( [
@@ -293,7 +248,6 @@ function uas_post_meta() {
       'desc' => __( 'Add link of Twitter page..', 'nepaleseinfinland' ),
       'id' => 'uas_twitter',
       'type' => 'text',
-      //'repeatable' => true,
       ],
     );
     ;$cmb->add_field( [
@@ -301,7 +255,34 @@ function uas_post_meta() {
       'desc' => __( 'Add link of Youtube page..', 'nepaleseinfinland' ),
       'id' => 'uas_youtube',
       'type' => 'text',
-      //'repeatable' => true,
+      ],
+    );
+    ;$cmb->add_field( [
+      'name' => __( 'Instagram Page Link', 'nepaleseinfinland' ),
+      'desc' => __( 'Add link of Instagram page..', 'nepaleseinfinland' ),
+      'id' => 'uas_instagram',
+      'type' => 'text',
+      ],
+    );
+    ;$cmb->add_field( [
+      'name' => __( 'Linkedin Page Link', 'nepaleseinfinland' ),
+      'desc' => __( 'Add link of Linkedin page..', 'nepaleseinfinland' ),
+      'id' => 'uas_linkedin',
+      'type' => 'text',
+      ],
+    );
+    ;$cmb->add_field( [
+      'name' => __( 'Official Email', 'nepaleseinfinland' ),
+      'desc' => __( 'Email address of University', 'nepaleseinfinland' ),
+      'id' => 'uas_email',
+      'type' => 'text',
+      ],
+    );
+    ;$cmb->add_field( [
+      'name' => __( 'Contact Number', 'nepaleseinfinland' ),
+      'desc' => __( 'Contact number of University', 'nepaleseinfinland' ),
+      'id' => 'uas_phone',
+      'type' => 'text',
       ],
     );
 }
