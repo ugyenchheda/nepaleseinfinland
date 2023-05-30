@@ -281,9 +281,25 @@ function uas_post_meta() {
       'api_key' => 'AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU', // Google API Key
     ) )
     ;$cmb->add_field( [
-      'name' => __( 'Facebook Page Link', 'cmb2' ),
-      'desc' => __( 'Add link of facebook page..', 'cmb2' ),
+      'name' => __( 'Facebook Page Link', 'nepaleseinfinland' ),
+      'desc' => __( 'Add link of facebook page..', 'nepaleseinfinland' ),
       'id' => 'uas_facebook',
+      'type' => 'text',
+      //'repeatable' => true,
+      ],
+    );
+    ;$cmb->add_field( [
+      'name' => __( 'Twitter Page Link', 'nepaleseinfinland' ),
+      'desc' => __( 'Add link of Twitter page..', 'nepaleseinfinland' ),
+      'id' => 'uas_twitter',
+      'type' => 'text',
+      //'repeatable' => true,
+      ],
+    );
+    ;$cmb->add_field( [
+      'name' => __( 'Youtube Page Link', 'nepaleseinfinland' ),
+      'desc' => __( 'Add link of Youtube page..', 'nepaleseinfinland' ),
+      'id' => 'uas_youtube',
       'type' => 'text',
       //'repeatable' => true,
       ],
