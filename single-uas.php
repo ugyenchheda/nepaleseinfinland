@@ -34,167 +34,158 @@ get_header();
                 $uas_address = event_location($latitude, $longitude);
             }
             ?>
-                    <div class="row uas_banner">
-                            <div class="col-lg-8 map_block">
-                        
-                        <div class="uas_banner_main" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="event_banner_wrap">
-                                            <h3 class="title"><span class="event_bg"><span class="event_title"><?php the_title(); ?></span></span></h3>
-                                        </div>
-                                    </div>
+            <div class="row uas_banner">
+                    <div class="col-lg-8 map_block">
+                
+                <div class="uas_banner_main" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
+                        <div class="row">
+                            <div class="col-lg-6">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="event_banner_wrap">
+                                    <h3 class="title"><span class="event_bg"><span class="event_title"><?php the_title(); ?></span></span></h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 map_block">
-                            <!-- Map shown in pop up -->
-                            <div id="map" style="height: 502px;" class="kindergarden_map"></div>
-                            <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU&callback=initMap">   </script>
-                            <script>
-                                function initMap() {
-                                    var uluru = {lat: <?php echo $uas_location['latitude'] ?>, lng: <?php echo $uas_location['longitude'] ?>};
-                                    var map = new google.maps.Map( document.getElementById("map"), {zoom: 13, center: uluru});
-                                    var marker = new google.maps.Marker({position: uluru, map: map});
-                                }   
-                            </script>
-                            <!-- Map ends here... -->
-                        </div>
                     </div>
-<section class="post-layout-1-area post-layout-2-area pb-80">
-        <div class="container">
-            <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="post-layout-top-content post-layout-top-content-2">
-                                <div class="thumb">
-                                    <img src="assets/images/post-thumb-5.png" alt="">
-                                </div>
-                                <div class="post-author">
-                                    <div class="author-info">
-                                        <div class="thumb">
-                                            <img src="assets/images/author.png" alt="">
-                                        </div>
-                                        <ul>
-                                            <li><i class="far fa-calendar-alt uas_small" alt="Organizer"></i> Date of uas: <?php   echo $uas_sdate; if ($uas_edate) { echo " - $uas_edate";}?></li>
-                                        </ul>   
-                                    <ul>                             
-                                        <li class="button"><i class="fas fa-map-marker-alt uas_small" alt="Organizer"></i> <?php echo $uas_address;?></li>
-                                    </ul>
-                                    </div>
-
-                                    <div class="author-social">
-                                        <ul>                       
-                                            <?php
-                                                $uas_website = get_post_meta( $post_id, 'uas_website', true );
-                                                if($uas_phone ) {
-                                                    echo '<li><a target="_blank" href="tel:'. $uas_phone .'"><i class="fas fa-phone-volume" alt="college Contact Number"></i></a></li>'; 
-                                                }
-                                                if($uas_email ) {
-                                                    echo '<li><a target="_blank" href="mailto:'. $uas_email .'"><i class="far fa-envelope"></i></a></li>'; 
-                                                }
-                                                if($uas_website ) {
-                                                    echo '<li><a target="_blank" href="'. $uas_website .'"><i class="fas fa-globe"></i></a></li>'; 
-                                                }
-                                                if($uas_facebook ) {
-                                                    echo '<li><a target="_blank" href="'. $uas_facebook .'"><i class="fab fa-facebook-f"></i></a></li>'; 
-                                                }
-                                                if($uas_twitter ) {
-                                                    echo '<li><a target="_blank" href="'. $uas_twitter .'"><i class="fab fa-twitter"></i></a></li>';
-                                                }
-                                                if($uas_linkedin ) {
-                                                    echo '<li><a target="_blank" href="'.$uas_linkedin.'"><i class="fab fa-linkedin"></i></a></li>';
-                                                }
-                                                if($uas_youtube ) {
-                                                    echo '<li><a target="_blank" href="'.$uas_youtube.'" alt="Youtube Page"><i class="fab fa-youtube"></i></a></li>';
-                                                }
-                                                if($uas_instagram ) {
-                                                    echo '<li><a target="_blank" href="'.$uas_instagram.'" alt="Instagram Page"><i class="fab fa-instagram"></i></a></li>';
-                                                }
-                                            ?>  
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="post-categories d-flex justify-content-start align-content-center">
-                                    <div class="categories-item">	
-                                        <span><i class="fas fa-award uas_small" alt="Organizer"></i> uas</span>
-                                    </div>
-                                    <div class="categories-share">
-                                        <ul>
-                                            <li><i class="fas fa-comment"></i>45020</li>
-                                            <li><i class="fas fa-fire"></i>45020</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="post-text">
-                                    <div class="row pt-10">
-                                            <div class="text">
-                                                <?php echo get_the_content();?></div>
-                                    </div>
-                                </div>
-                                <?php
-                                if($uas_video ) {
-                                ?>
-                                  <iframe width="100%" height="400" src="<?php echo $uas_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-                                <?php }  ?>
-
-                                <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
-                                    <div class="post-quote-content">
-                                        <p>I must explain to you how all this mistake idea denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure because it is pleasure.</p>
-                                        <div class="user">
-                                            <img src="assets/images/author.png" alt="">
-                                            <h5 class="title">Subash Chandra</h5>
-                                            <span>Founder at Seative Digital</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-tags">
-                                    <ul>
-                                        <li><a href="#"><i class="fas fa-tag"></i> Tags</a></li>
-                                        <li><a href="#">Health</a></li>
-                                        <li><a href="#">World</a></li>
-                                        <li><a href="#">Corona</a></li>
-                                    </ul>
-                                </div>
-                                <div class="post-reader-text post-reader-text-2 pt-50">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="post-reader-prev">
-                                                <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
-                                                <h4 class="title"><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h4>
+                </div>
+                <div class="col-lg-4 map_block">
+                    <!-- Map shown in pop up -->
+                    <div id="map" style="height: 502px;" class="kindergarden_map"></div>
+                    <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU&callback=initMap">   </script>
+                    <script>
+                        function initMap() {
+                            var uluru = {lat: <?php echo $uas_location['latitude'] ?>, lng: <?php echo $uas_location['longitude'] ?>};
+                            var map = new google.maps.Map( document.getElementById("map"), {zoom: 13, center: uluru});
+                            var marker = new google.maps.Marker({position: uluru, map: map});
+                        }   
+                    </script>
+                    <!-- Map ends here... -->
+                </div>
+            </div>
+            <section class="post-layout-1-area post-layout-2-area pb-80">
+                <div class="container">
+                    <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="post-layout-top-content post-layout-top-content-2">
+                                        <div class="post-author">
+                                        <?php if($uas_sdate ) { ?>
+                                            <div class="author-info">
+                                                <ul>
+                                                    <li><i class="far fa-calendar-alt uas_small" alt="Organizer"></i> Admission Period: <?php   echo $uas_sdate; if ($uas_edate) { echo " - $uas_edate";}?></li>
+                                                </ul>
+                                            </div>
+                                        <?php } ?>
+                                            <div class="author-social">
+                                                <ul>                       
+                                                    <?php
+                                                        if($uas_phone ) {
+                                                            echo '<li><a target="_blank" href="tel:'. $uas_phone .'"><i class="fas fa-phone-volume" alt="college Contact Number"></i></a></li>'; 
+                                                        }
+                                                        if($uas_email ) {
+                                                            echo '<li><a target="_blank" href="mailto:'. $uas_email .'"><i class="far fa-envelope"></i></a></li>'; 
+                                                        }
+                                                        if($uas_website ) {
+                                                            echo '<li><a target="_blank" href="'. $uas_website .'"><i class="fas fa-globe"></i></a></li>'; 
+                                                        }
+                                                        if($uas_facebook ) {
+                                                            echo '<li><a target="_blank" href="'. $uas_facebook .'"><i class="fab fa-facebook-f"></i></a></li>'; 
+                                                        }
+                                                        if($uas_twitter ) {
+                                                            echo '<li><a target="_blank" href="'. $uas_twitter .'"><i class="fab fa-twitter"></i></a></li>';
+                                                        }
+                                                        if($uas_linkedin ) {
+                                                            echo '<li><a target="_blank" href="'.$uas_linkedin.'"><i class="fab fa-linkedin"></i></a></li>';
+                                                        }
+                                                        if($uas_youtube ) {
+                                                            echo '<li><a target="_blank" href="'.$uas_youtube.'" alt="Youtube Page"><i class="fab fa-youtube"></i></a></li>';
+                                                        }
+                                                        if($uas_instagram ) {
+                                                            echo '<li><a target="_blank" href="'.$uas_instagram.'" alt="Instagram Page"><i class="fab fa-instagram"></i></a></li>';
+                                                        }
+                                                    ?>  
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="post-reader-prev">
-                                                <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
-                                                <h4 class="title"><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h4>
+                                        <div class="post-categories d-flex justify-content-start align-content-center">
+                                            <div class="categories-item">	
+                                                <span><i class="fas fa-award uas_small" alt="Organizer"></i> University</span>
+                                            </div>
+                                            <div class="categories-share">
+                                                <ul>
+                                                    <li><i class="fas fa-comment"></i>45020</li>
+                                                    <li><i class="fas fa-fire"></i>45020</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="post-text">
+                                            <div class="row pt-10">
+                                                    <div class="text">
+                                                        <?php echo get_the_content();?></div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if($uas_video ) {
+                                        ?>
+                                        <iframe width="100%" height="400" src="<?php echo $uas_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+                                        <?php }  ?>
+
+                                        <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
+                                            <div class="post-quote-content">
+                                                <p>I must explain to you how all this mistake idea denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure because it is pleasure.</p>
+                                                <div class="user">
+                                                    <img src="assets/images/author.png" alt="">
+                                                    <h5 class="title">Subash Chandra</h5>
+                                                    <span>Founder at Seative Digital</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="post-tags">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-tag"></i> Tags</a></li>
+                                                <li><a href="#">Health</a></li>
+                                                <li><a href="#">World</a></li>
+                                                <li><a href="#">Corona</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="post-reader-text post-reader-text-2 pt-50">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="post-reader-prev">
+                                                        <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                                        <h4 class="title"><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="post-reader-prev">
+                                                        <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                                        <h4 class="title"><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h4>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-            <?php
+                    <?php
 
-                    the_post_navigation(
-                        array(
-                            'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'nepaleseinfinland' ) . '</span> <span class="nav-title">%title</span>',
-                            'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'nepaleseinfinland' ) . '</span> <span class="nav-title">%title</span>',
-                        )
-                    );
+                            the_post_navigation(
+                                array(
+                                    'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'nepaleseinfinland' ) . '</span> <span class="nav-title">%title</span>',
+                                    'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'nepaleseinfinland' ) . '</span> <span class="nav-title">%title</span>',
+                                )
+                            );
 
-                    // If comments are open or we have at least one comment, load up the comment template.
-                    if ( comments_open() || get_comments_number() ) :
-                        comments_template();
-                    endif;
+                            // If comments are open or we have at least one comment, load up the comment template.
+                            if ( comments_open() || get_comments_number() ) :
+                                comments_template();
+                            endif;
 
-                endwhile; // End of the loop.
-                ?>
+                        endwhile; // End of the loop.
+                        ?>
 
-        </div>
-    </section>
+                </div>
+            </section>
 
 <?php
 get_sidebar();
