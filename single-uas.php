@@ -87,34 +87,31 @@ get_header();
                                     <div class="author-social">
                                         <ul>                       
                                             <?php
-                                            
-            $uas_twitter = get_post_meta( $post_id, 'uas_twitter', true );
-            $uas_youtube = get_post_meta( $post_id, 'uas_youtube', true );
-            $uas_instagram = get_post_meta( $post_id, 'uas_instagram', true );
-            $uas_linkedin = get_post_meta( $post_id, 'uas_linkedin', true );
-            $uas_website = get_post_meta( $post_id, 'uas_website', true );
-            if($uas_phone ) {
-                echo '<li><a target="_blank" href="'. $uas_phone .'"><i class="fas fa-phone-volume"></i></a></li>'; 
-            }
-            if($uas_email ) {
-                echo '<li><a target="_blank" href="'. $uas_email .'" target="_blank"><i class="far fa-envelope"></i></a></li>'; 
-            }
-            if($uas_facebook ) {
-                echo '<li><a target="_blank" href="'. $uas_facebook .'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>'; 
-            }
-            if($uas_twitter ) {
-                echo '<li><a target="_blank" href="'. $uas_twitter .'" target="_blank"><i class="fab fa-twitter"></i></a></li>';
-            }
-            if($uas_linkedin ) {
-                echo '<li><a target="_blank" href="'.$uas_linkedin.'"><i class="fab fa-linkedin"></i></a></li>';
-            }
-            
-            
-                                                
-                                               
-                                                
-                                                
-                                                echo '<li><a target="_blank" href="https://pinterest.com/pin/find/?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-pinterest"></i></a></li>';
+                                                $uas_website = get_post_meta( $post_id, 'uas_website', true );
+                                                if($uas_phone ) {
+                                                    echo '<li><a target="_blank" href="tel:'. $uas_phone .'"><i class="fas fa-phone-volume" alt="college Contact Number"></i></a></li>'; 
+                                                }
+                                                if($uas_email ) {
+                                                    echo '<li><a target="_blank" href="mailto:'. $uas_email .'"><i class="far fa-envelope"></i></a></li>'; 
+                                                }
+                                                if($uas_website ) {
+                                                    echo '<li><a target="_blank" href="'. $uas_website .'"><i class="fas fa-globe"></i></a></li>'; 
+                                                }
+                                                if($uas_facebook ) {
+                                                    echo '<li><a target="_blank" href="'. $uas_facebook .'"><i class="fab fa-facebook-f"></i></a></li>'; 
+                                                }
+                                                if($uas_twitter ) {
+                                                    echo '<li><a target="_blank" href="'. $uas_twitter .'"><i class="fab fa-twitter"></i></a></li>';
+                                                }
+                                                if($uas_linkedin ) {
+                                                    echo '<li><a target="_blank" href="'.$uas_linkedin.'"><i class="fab fa-linkedin"></i></a></li>';
+                                                }
+                                                if($uas_youtube ) {
+                                                    echo '<li><a target="_blank" href="'.$uas_youtube.'" alt="Youtube Page"><i class="fab fa-youtube"></i></a></li>';
+                                                }
+                                                if($uas_instagram ) {
+                                                    echo '<li><a target="_blank" href="'.$uas_instagram.'" alt="Instagram Page"><i class="fab fa-instagram"></i></a></li>';
+                                                }
                                             ?>  
                                         </ul>
                                     </div>
