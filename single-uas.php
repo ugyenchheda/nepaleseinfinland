@@ -20,14 +20,14 @@ get_header();
             $uas_banner = get_post_meta( $post_id, 'uas_banner', true );
             $uas_video = get_post_meta( $post_id, 'uas_video', true );
             $uas_location = get_post_meta( $post_id, 'uas_location', true );
-            $uas_location = get_post_meta( $post_id, 'uas_phone', true );
-            $uas_location = get_post_meta( $post_id, 'uas_email', true );
-            $uas_location = get_post_meta( $post_id, 'uas_facebook', true );
-            $uas_location = get_post_meta( $post_id, 'uas_twitter', true );
-            $uas_location = get_post_meta( $post_id, 'uas_youtube', true );
-            $uas_location = get_post_meta( $post_id, 'uas_instagram', true );
-            $uas_location = get_post_meta( $post_id, 'uas_linkedin', true );
-            $uas_location = get_post_meta( $post_id, 'uas_website', true );
+            $uas_phone = get_post_meta( $post_id, 'uas_phone', true );
+            $uas_email = get_post_meta( $post_id, 'uas_email', true );
+            $uas_facebook = get_post_meta( $post_id, 'uas_facebook', true );
+            $uas_twitter = get_post_meta( $post_id, 'uas_twitter', true );
+            $uas_youtube = get_post_meta( $post_id, 'uas_youtube', true );
+            $uas_instagram = get_post_meta( $post_id, 'uas_instagram', true );
+            $uas_linkedin = get_post_meta( $post_id, 'uas_linkedin', true );
+            $uas_website = get_post_meta( $post_id, 'uas_website', true );
             if(!empty($uas_location)){
                 $latitude = $uas_location['latitude'];
                 $longitude = $uas_location['longitude'];
@@ -87,7 +87,18 @@ get_header();
                                     <div class="author-social">
                                         <ul>  Share:                          
                                             <?php
-                                                echo '<li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-facebook-f"></i></a></li>'; 
+                                            
+            $uas_phone = get_post_meta( $post_id, 'uas_phone', true );
+            $uas_email = get_post_meta( $post_id, 'uas_email', true );
+            $uas_facebook = get_post_meta( $post_id, 'uas_facebook', true );
+            $uas_twitter = get_post_meta( $post_id, 'uas_twitter', true );
+            $uas_youtube = get_post_meta( $post_id, 'uas_youtube', true );
+            $uas_instagram = get_post_meta( $post_id, 'uas_instagram', true );
+            $uas_linkedin = get_post_meta( $post_id, 'uas_linkedin', true );
+            $uas_website = get_post_meta( $post_id, 'uas_website', true );
+            if($uas_phone ) {
+                echo '<li><a target="_blank" href="'. $uas_phone .'"><i class="fas fa-phone-volume"></i></a></li>'; 
+            }
                                                 echo '<li><a target="_blank" href="https://twitter.com/intent/tweet?text='. esc_attr(wp_get_document_title()) .'. '. esc_url(get_permalink()) .'"><i class="fab fa-twitter"></i></a></li>';
                                                 echo '<li><a target="_blank" href="https://plus.google.com/share?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-google-plus"></i></a></li>';
                                                 echo '<li><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url='. urlencode(esc_url(get_permalink())) .'&title='. esc_attr(wp_get_document_title()) .'"><i class="fab fa-linkedin"></i></a></li>';
