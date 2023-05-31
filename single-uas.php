@@ -85,12 +85,9 @@ get_header();
                                     </div>
 
                                     <div class="author-social">
-                                        <ul>  Share:                          
+                                        <ul>                       
                                             <?php
                                             
-            $uas_phone = get_post_meta( $post_id, 'uas_phone', true );
-            $uas_email = get_post_meta( $post_id, 'uas_email', true );
-            $uas_facebook = get_post_meta( $post_id, 'uas_facebook', true );
             $uas_twitter = get_post_meta( $post_id, 'uas_twitter', true );
             $uas_youtube = get_post_meta( $post_id, 'uas_youtube', true );
             $uas_instagram = get_post_meta( $post_id, 'uas_instagram', true );
@@ -105,11 +102,18 @@ get_header();
             if($uas_facebook ) {
                 echo '<li><a target="_blank" href="'. $uas_facebook .'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>'; 
             }
+            if($uas_twitter ) {
+                echo '<li><a target="_blank" href="'. $uas_twitter .'" target="_blank"><i class="fab fa-twitter"></i></a></li>';
+            }
+            if($uas_linkedin ) {
+                echo '<li><a target="_blank" href="'.$uas_linkedin.'"><i class="fab fa-linkedin"></i></a></li>';
+            }
+            
             
                                                 
-                                                echo '<li><a target="_blank" href="https://twitter.com/intent/tweet?text='. esc_attr(wp_get_document_title()) .'. '. esc_url(get_permalink()) .'"><i class="fab fa-twitter"></i></a></li>';
-                                                echo '<li><a target="_blank" href="https://plus.google.com/share?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-google-plus"></i></a></li>';
-                                                echo '<li><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url='. urlencode(esc_url(get_permalink())) .'&title='. esc_attr(wp_get_document_title()) .'"><i class="fab fa-linkedin"></i></a></li>';
+                                               
+                                                
+                                                
                                                 echo '<li><a target="_blank" href="https://pinterest.com/pin/find/?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-pinterest"></i></a></li>';
                                             ?>  
                                         </ul>
