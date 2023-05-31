@@ -99,11 +99,18 @@ get_header();
             if($uas_phone ) {
                 echo '<li><a target="_blank" href="'. $uas_phone .'"><i class="fas fa-phone-volume"></i></a></li>'; 
             }
+            if($uas_email ) {
+                echo '<li><a target="_blank" href="'. $uas_email .'" target="_blank"><i class="far fa-envelope"></i></a></li>'; 
+            }
+            if($uas_facebook ) {
+                echo '<li><a target="_blank" href="'. $uas_facebook .'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>'; 
+            }
+            
+                                                
                                                 echo '<li><a target="_blank" href="https://twitter.com/intent/tweet?text='. esc_attr(wp_get_document_title()) .'. '. esc_url(get_permalink()) .'"><i class="fab fa-twitter"></i></a></li>';
                                                 echo '<li><a target="_blank" href="https://plus.google.com/share?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-google-plus"></i></a></li>';
                                                 echo '<li><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url='. urlencode(esc_url(get_permalink())) .'&title='. esc_attr(wp_get_document_title()) .'"><i class="fab fa-linkedin"></i></a></li>';
                                                 echo '<li><a target="_blank" href="https://pinterest.com/pin/find/?url='. urlencode(esc_url(get_permalink())) .'"><i class="fab fa-pinterest"></i></a></li>';
-                                                echo '<li><a target="_blank" href="mailto:?subject='. esc_attr(wp_get_document_title()) .'. '. esc_url(get_permalink()) .'"><i class="far fa-envelope"></i></a></li>';
                                             ?>  
                                         </ul>
                                     </div>
