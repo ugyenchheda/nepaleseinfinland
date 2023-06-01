@@ -157,7 +157,7 @@ add_action('cmb2_admin_init', 'uas_post_meta');
 function uas_post_meta() {
       $cmb = new_cmb2_box(array(
           'id' => 'uas',
-          'title' => __('More Info:', 'cmb2'),
+          'title' => __('More Info:', 'nepaleseinfinland'),
           'object_types' => array('uas'),
           'context' => 'normal',
           'priority' => 'high',
@@ -184,7 +184,6 @@ function uas_post_meta() {
       'name' => 'Admission Starting Date',
       'desc' => 'Select uas starting date.',
       'id'   => 'uas_sdate',
-      // 'timezone_meta_key' => 'wiki_test_timezone',
       'type' => 'text_date',
       'date_format' => 'l, F j,  Y',
       ));
@@ -193,7 +192,6 @@ function uas_post_meta() {
       'name' => 'Admission ending date',
       'desc' => 'Select uas ending date.',
       'id'   => 'uas_edate',
-      // 'timezone_meta_key' => 'wiki_test_timezone',
       'type' => 'text_date',
       'date_format' => 'l, F j,  Y',
       ));
@@ -292,4 +290,57 @@ function uas_post_meta() {
       'type' => 'text',
       ],
     );
+}
+add_action('cmb2_admin_init', 'univeristy_study_fields');
+function univeristy_study_fields()
+{
+
+  $cmb_group = new_cmb2_box(array(
+        'id' => 'uas_classes',
+        'title' => __('Courses', 'nepaleseinfinland'),
+        'object_types' => array('uas'),
+        'context' => 'normal',
+        'priority' => 'high',
+        'show_names' => true,
+        'closed' => false,
+
+    ));
+
+    $group_field_id = $cmb_group->add_field(array(
+      'id' => 'faculties',
+      'type' => 'group',
+      'options' => array(
+          'group_title' => esc_html__('Courses Conducting {#}', 'nepaleseinfinland'),
+          'add_button' => esc_html__('Add New Course', 'nepaleseinfinland'),
+          'remove_button' => esc_html__('Remove Courses', 'nepaleseinfinland'),
+          'sortable' => true,
+
+      ),
+  ));
+
+  $cmb_group->add_group_field($group_field_id, array(
+      'name' => esc_html__('Course Name', 'nepaleseinfinland'),
+      'id' => 'course_name',
+      'type' => 'text',
+  ));
+
+  $cmb_group->add_group_field($group_field_id, array(
+      'name' => 'Course Inforamtion.',
+      'desc' => 'Add the description of courses here...',
+      'id' => 'course_desc',
+      'type' => 'wysiwyg',
+      'options' => array(
+          'wpautop' => true,
+          'media_buttons' => true,
+          'textarea_name' => 'course_desc',
+          'textarea_rows' => get_option('default_post_edit_rows', 10),
+          'tabindex' => '',
+          'editor_css' => '',
+          'editor_class' => '',
+          'teeny' => false,
+          'dfw' => false,
+          'tinymce' => true,
+          'quicktags' => true,
+      ),
+  ));
 }
