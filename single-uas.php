@@ -28,6 +28,7 @@ get_header();
             $uas_instagram = get_post_meta( $post_id, 'uas_instagram', true );
             $uas_linkedin = get_post_meta( $post_id, 'uas_linkedin', true );
             $uas_website = get_post_meta( $post_id, 'uas_website', true );
+            $faculties_detail = get_post_meta( get_the_ID(), 'faculties', true );
             if(!empty($uas_location)){
                 $latitude = $uas_location['latitude'];
                 $longitude = $uas_location['longitude'];
@@ -132,38 +133,42 @@ get_header();
 
                                         <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
                                             <div class="post-quote-content">
-                                                <p>I must explain to you how all this mistake idea denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure because it is pleasure.</p>
-                                                <div class="user">
-                                                    <img src="assets/images/author.png" alt="">
-                                                    <h5 class="title">Subash Chandra</h5>
-                                                    <span>Founder at Seative Digital</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-tags">
-                                            <ul>
-                                                <li><a href="#"><i class="fas fa-tag"></i> Tags</a></li>
-                                                <li><a href="#">Health</a></li>
-                                                <li><a href="#">World</a></li>
-                                                <li><a href="#">Corona</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="post-reader-text post-reader-text-2 pt-50">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="post-reader-prev">
-                                                        <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
-                                                        <h4 class="title"><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h4>
+                                                <nav>
+					                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                                        <?php
+
+                                                        foreach ( (array) $faculties_detail as $key => $entry ) {
+                                                        
+                                                            $course_name = ''; if ( isset( $entry['course_name'] ) ) {
+                                                            $title = esc_html( $entry['course_name'] ); ?>
+                                                            <a class="nav-item nav-link active" id="nav-<?php echo $token = strtok($title, " "); ?>-tab" data-toggle="tab" href="#<?php echo $title; ?>" role="tab" aria-controls="<?php echo $token = strtok($title, " "); ?>" aria-selected="true"><?php echo $token = strtok($title, " "); ?></a>
+                                                            <?php } 
+                                                        } ?>
                                                     </div>
+                                                </nav>
+                                                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                                    <?php
+                                                        foreach ( (array) $faculties_detail as $key => $entry ) {
+
+                                                            $course_name = $course_desc = $faculty_banner = '';
+                                                            if ( isset( $entry['course_name'] ) ) {
+                                                                $title = esc_html( $entry['course_name'] ); 
+                                                            }
+                                                            if ( isset( $entry['course_desc'] ) ) {
+                                                                $desc = wpautop( $entry['course_desc'] );
+                                                            }
+
+                                                            if ( isset( $entry['faculty_banner'] ) ) {
+                                                                $img = wp_get_attachment_image( $entry['faculty_banner'], 'share-pick', null, array(
+                                                                    'class' => 'thumb',
+                                                                ) );
+                                                            } 
+                                                        ?>
+                                                        <div class="tab-pane fade show active" id="<?php echo $token = strtok($title, " "); ?>" role="tabpanel" aria-labelledby="nav-<?php echo $token = strtok($title, " "); ?>-tab">
+                                                            <?php echo $desc; ?>
+                                                        </div>
+                                                    <?php } ?>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="post-reader-prev">
-                                                        <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
-                                                        <h4 class="title"><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

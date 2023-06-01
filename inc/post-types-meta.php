@@ -343,4 +343,10 @@ function univeristy_study_fields()
           'quicktags' => true,
       ),
   ));
+
+  $cmb_group->add_group_field( $group_field_id, array(
+      'name' => 'Add Banner',
+      'id'   => 'faculty_banner',
+      'type' => 'file',
+  ) );
 }
