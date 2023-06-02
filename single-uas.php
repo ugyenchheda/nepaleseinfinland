@@ -132,19 +132,17 @@ get_header();
                                         <?php }  ?>
 
                                         <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
-                                            <div class="post-quote-content">
-                                                <nav>
-					                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                                        <?php
-                                                        foreach ( (array) $faculties_detail as $key => $entry ) {
-                                                            $course_name = ''; if ( isset( $entry['course_name'] ) ) {
-                                                            $title = esc_html( $entry['course_name'] ); ?>
-                                                            <a class="nav-item nav-link active" id="nav-<?php echo $token = strtok($title, " "); ?>-tab" data-toggle="tab" href="#<?php echo $title; ?>" role="tab" aria-controls="<?php echo $token = strtok($title, " "); ?>" aria-selected="true"><?php echo $token = strtok($title, " "); ?></a>
-                                                            <?php } 
-                                                        } ?>
-                                                    </div>
-                                                </nav>
-                                                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                            <div class="uas-tab-wrapper">
+                                                <ul class="uas-click-button">
+                                                    <?php
+                                                    foreach ( (array) $faculties_detail as $key => $entry ) {
+                                                        $course_name = ''; if ( isset( $entry['course_name'] ) ) {
+                                                        $title = esc_html( $entry['course_name'] ); ?>
+                                                        <li><?php echo $token = strtok($title, " "); ?></li>
+                                                        <?php } 
+                                                    } ?>
+                                                </ul>
+                                                <div class="uas-tab-content">
                                                     <?php
                                                         foreach ( (array) $faculties_detail as $key => $entry ) {
 
@@ -161,12 +159,14 @@ get_header();
                                                                     'class' => 'thumb',
                                                                 ) );
                                                             } 
-                                                        ?>
-                                                        <div class="tab-pane fade show active" id="<?php echo $token = strtok($title, " "); ?>" role="tabpanel" aria-labelledby="nav-<?php echo $token = strtok($title, " "); ?>-tab">
+                                                    ?>
+                                                        <div class="uas-tab-panel">
                                                             <?php echo $desc; ?>
                                                         </div>
                                                     <?php } ?>
                                                 </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -190,22 +190,7 @@ get_header();
                 </div>
             </section>
             
-            <div class="uas-tab-wrapper">
-  <ul class="uas-click-button">
-    <li>Tab01</li>
-    <li>Tab02</li>
-    <li>Tab03</li>
-    <li>Tab04</li>
-    <li>Tab05</li>
-  </ul>
-  <div class="uas-tab-content">
-    <div class="uas-tab-panel">Content01</div>
-    <div class="uas-tab-panel">Content02</div>
-    <div class="uas-tab-panel">Content03</div>
-    <div class="uas-tab-panel">Content04</div>
-    <div class="uas-tab-panel">Content05</div>
-  </div>
-</div>
+
 <?php
 get_sidebar();
 get_footer();
