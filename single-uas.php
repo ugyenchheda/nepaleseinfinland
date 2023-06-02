@@ -136,9 +136,7 @@ get_header();
                                                 <nav>
 					                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                                         <?php
-
                                                         foreach ( (array) $faculties_detail as $key => $entry ) {
-                                                        
                                                             $course_name = ''; if ( isset( $entry['course_name'] ) ) {
                                                             $title = esc_html( $entry['course_name'] ); ?>
                                                             <a class="nav-item nav-link active" id="nav-<?php echo $token = strtok($title, " "); ?>-tab" data-toggle="tab" href="#<?php echo $title; ?>" role="tab" aria-controls="<?php echo $token = strtok($title, " "); ?>" aria-selected="true"><?php echo $token = strtok($title, " "); ?></a>
@@ -191,7 +189,23 @@ get_header();
 
                 </div>
             </section>
-
+            
+            <div class="uas-tab-wrapper">
+  <ul class="uas-click-button">
+    <li>Tab01</li>
+    <li>Tab02</li>
+    <li>Tab03</li>
+    <li>Tab04</li>
+    <li>Tab05</li>
+  </ul>
+  <div class="uas-tab-content">
+    <div class="uas-tab-panel">Content01</div>
+    <div class="uas-tab-panel">Content02</div>
+    <div class="uas-tab-panel">Content03</div>
+    <div class="uas-tab-panel">Content04</div>
+    <div class="uas-tab-panel">Content05</div>
+  </div>
+</div>
 <?php
 get_sidebar();
 get_footer();
