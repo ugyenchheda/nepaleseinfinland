@@ -131,6 +131,7 @@ get_header();
                                         <iframe width="100%" height="400" src="<?php echo $uas_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
                                         <?php }  ?>
 
+                                        <div class="uas-courses"><h2>Courses Available</h2></div>
                                         <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
                                             <div class="uas-tab-wrapper">
                                                 <ul class="uas-click-button">
@@ -138,7 +139,7 @@ get_header();
                                                     foreach ( (array) $faculties_detail as $key => $entry ) {
                                                         $course_name = ''; if ( isset( $entry['course_name'] ) ) {
                                                         $title = esc_html( $entry['course_name'] ); ?>
-                                                        <li><?php echo $token = strtok($title, " "); ?></li>
+                                                        <li><i class='fas fa-graduation-cap'></i><?php echo $token = strtok($title, " "); ?></li>
                                                         <?php } 
                                                     } ?>
                                                 </ul>

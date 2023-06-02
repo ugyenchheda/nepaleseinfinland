@@ -151,16 +151,35 @@ ul.uas-click-button li.active {
 
 .uas-tab-content {
   position: relative;
-  width: calc(100% - 40px);
   bottom: 0;
   padding: 20px;
   height: calc(100% - 75px);
+  background: #f9f9f9;
 }
 
 .uas-tab-content div {
   display: none;
 }
+ul.uas-click-button li i {
+  padding-right: 5px;
+}
+.uas-courses h2 {
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 15px;
+  font-size: 27px;
+  color: #747474;
+  display: grid;
+  grid-template-columns: minmax(50px, 1fr) auto minmax(50px, 1fr);
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}
 
+.uas-courses h2::before, .uas-courses h2::after {
+  content: '';
+  border-top: 6px double;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
