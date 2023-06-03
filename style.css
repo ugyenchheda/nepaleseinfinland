@@ -122,10 +122,9 @@ ul.uas-click-button {
 }
 
 ul.uas-click-button li {
-  padding: 10px 5px;
+  padding: 12px 12px;
   list-style: none;
   background: #ffffff;
-  flex: 1;
   cursor: pointer;
   border: 1px solid #ebebeb;
   text-align: center;
@@ -145,7 +144,7 @@ ul.uas-click-button li:hover {
 }
 ul.uas-click-button li.active {
   background: #003580b3 !important;
-  flex: 2;
+  padding: 12px 12px;
   color: #fff;
 }
 

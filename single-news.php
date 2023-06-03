@@ -12,32 +12,13 @@ get_header();
 		while ( have_posts() ) :
 			the_post(); 
             $post_id =get_the_ID();
-            $uas_hot = get_post_meta( $post_id, 'uas_hot', true );
-            $uas_price = get_post_meta( $post_id, 'uas_price', true );
-            $uas_organizer = get_post_meta( $post_id, 'uas_organizer', true );
-            $uas_sdate = get_post_meta( $post_id, 'uas_sdate', true );
-            $uas_edate = get_post_meta( $post_id, 'uas_edate', true );
-            $uas_banner = get_post_meta( $post_id, 'uas_banner', true );
-            $uas_video = get_post_meta( $post_id, 'uas_video', true );
-            $uas_location = get_post_meta( $post_id, 'uas_location', true );
-            $uas_phone = get_post_meta( $post_id, 'uas_phone', true );
-            $uas_email = get_post_meta( $post_id, 'uas_email', true );
-            $uas_facebook = get_post_meta( $post_id, 'uas_facebook', true );
-            $uas_twitter = get_post_meta( $post_id, 'uas_twitter', true );
-            $uas_youtube = get_post_meta( $post_id, 'uas_youtube', true );
-            $uas_instagram = get_post_meta( $post_id, 'uas_instagram', true );
-            $uas_linkedin = get_post_meta( $post_id, 'uas_linkedin', true );
-            $uas_website = get_post_meta( $post_id, 'uas_website', true );
+
             $faculties_detail = get_post_meta( get_the_ID(), 'faculties', true );
-            if(!empty($uas_location)){
-                $latitude = $uas_location['latitude'];
-                $longitude = $uas_location['longitude'];
-                $uas_address = event_location($latitude, $longitude);
-            }
+
             ?>
             <div class="row uas_banner">
                     <div class="col-lg-8 map_block">
-                
+                new
                 <div class="uas_banner_main" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
                         <div class="row">
                             <div class="col-lg-6">
