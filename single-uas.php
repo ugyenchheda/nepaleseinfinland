@@ -156,12 +156,14 @@ get_header();
                                                                 }
 
                                                                 if ( isset( $entry['faculty_banner'] ) ) {
-                                                                    $img = wp_get_attachment_image( $entry['faculty_banner'], 'share-pick', null, array(
-                                                                        'class' => 'thumb',
-                                                                    ) );
+                                                                    $img = esc_html( $entry['faculty_banner'] );
                                                                 } 
+                                                                
                                                         ?>
                                                             <div class="uas-tab-panel">
+                                                                <?php if($img) {
+                                                                    echo '<p class="faculty-image text-center"><img src="'.$img.'" class="img-responsive"></p>';
+                                                                } ?>
                                                                 <?php echo $desc; ?>
                                                             </div>
                                                         <?php } ?>
