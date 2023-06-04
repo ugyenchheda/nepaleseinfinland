@@ -12,9 +12,9 @@ get_header();
 		while ( have_posts() ) :
 			the_post(); 
             $post_id =get_the_ID();
-            $events_hot = get_post_meta( $post_id, 'news_hot', true );
-            $events_free = get_post_meta( $post_id, 'news_author', true );
-            $events_price = get_post_meta( $post_id, 'news_image', true );
+            $news_hot = get_post_meta( $post_id, 'news_hot', true );
+            $news_author = get_post_meta( $post_id, 'news_author', true );
+            $news_image = wp_get_attachment_image( get_post_meta( $post_id, 'news_image', 1 ), 'medium' );
 
             ?>
     <section class="post-layout-1-area post-layout-3-area pb-80">
@@ -49,7 +49,7 @@ get_header();
                                     <div class="thumb">
                                         <img src="assets/images/author.png" alt="">
                                     </div>
-                                    <h5 class="title">Author: <?php echo get_the_author(); ?></h5>
+                                    <h5 class="title">Author: <?php echo $news_author; ?></h5>
                                     <ul>
                                         <li><?php echo get_the_date(); ?></li>
                                     </ul>
@@ -72,13 +72,8 @@ get_header();
                             </div>
                         </div>
                         <div class="post-text mt-35">
-                            <p>Both the US Centers for Disease Control (CDC) and the World Health Organization are reassessing their guidance on face masks, as experts race to find ways to fight the highly contagious virus.</p>
-                            <p>Covid-19 is carried in airborne droplets from people coughing or sneezing, but there is some dispute over how far people should distance themselves from each other, and whether masks are useful when used by the public.</p>
-                            <div class="thumb pt-10 pb-35">
-                                <img src="assets/images/post-thumb-4.png" alt="">
-                            </div>
-                            <p>The next day I came back to my team and said, This is what I just heard, we have to get ready, he said. We knew that it wasn’t going to be long before we were going to have to deal with it.</p>
-                            <p>Mr. Hogan has also leaned on his wife, Yumi Hogan, a Korean immigrant, who was also at the governor’s convention, which included a dinner at the Korean ambassador’s home. As the first Korean first lady in American history, Ms. Hogan has become something of an icon in South Korea. I just grabbed my wife and said, Look, you speak Korean. You know the president. You know the first lady. You know the ambassador. Let’s talk to them in Korean, and tell them we need their help.</p>
+                            <?php echo get_the_content();?>
+                            <?php echo $news_image;?>
                         </div>
                         <div class="post-tags">
                             <ul>
