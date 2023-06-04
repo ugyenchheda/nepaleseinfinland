@@ -14,7 +14,7 @@ get_header();
             $post_id =get_the_ID();
             $news_hot = get_post_meta( $post_id, 'news_hot', true );
             $news_author = get_post_meta( $post_id, 'news_author', true );
-            $news_image = wp_get_attachment_image( get_post_meta( $post_id, 'news_image', 1 ), 'medium' );
+            $news_image = get_post_meta( $post_id, 'news_image', true );
 
             ?>
     <section class="post-layout-1-area post-layout-3-area pb-80">
@@ -72,8 +72,12 @@ get_header();
                             </div>
                         </div>
                         <div class="post-text mt-35">
-                            <?php echo get_the_content();?>
-                            <?php echo $news_image;?>
+                            <?php the_content();?>
+                            
+                            <?php if($news_image) {
+                                echo '<p class="faculty-image text-center"><img src="'.$news_image.'" class="img-responsive"></p>';
+                            } ?>
+
                         </div>
                         <div class="post-tags">
                             <ul>
