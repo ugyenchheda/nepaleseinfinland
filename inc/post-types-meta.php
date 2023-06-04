@@ -28,13 +28,6 @@ function news_post_meta()
 		'id'   => 'news_author',
 		'type' => 'text',
     ));
-
-    $cmb->add_field(array(
-		'name' => 'Author',
-		'desc' => 'Add the name of the author.',
-		'id'   => 'news_author',
-		'type' => 'text',
-    ))
     ;$cmb->add_field( array(
       'name'    => 'News Image',
       'desc'    => 'Upload an image or enter an URL.',

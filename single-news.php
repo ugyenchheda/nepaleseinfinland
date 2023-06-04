@@ -12,7 +12,9 @@ get_header();
 		while ( have_posts() ) :
 			the_post(); 
             $post_id =get_the_ID();
-
+            $events_hot = get_post_meta( $post_id, 'news_hot', true );
+            $events_free = get_post_meta( $post_id, 'news_author', true );
+            $events_price = get_post_meta( $post_id, 'news_image', true );
 
             ?>
     <section class="post-layout-1-area post-layout-3-area pb-80">
