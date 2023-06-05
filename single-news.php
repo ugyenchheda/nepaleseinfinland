@@ -69,6 +69,7 @@ get_header();
                             </div>
                             <div class="thumb">
                                 <img src="<?php the_post_thumbnail_url(); ?>" alt="">
+                                
                             </div>
                         </div>
                         <div class="post-text mt-35">
