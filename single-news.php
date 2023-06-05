@@ -94,18 +94,45 @@ get_header();
                     </div>
                     <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="post-reader-prev">
-                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
-                                    <h4 class="title"><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h4>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="post-reader-prev">
-                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
-                                    <h4 class="title"><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h4>
-                                </div>
-                            </div>
+                        <?php
+if ($terms && !is_wp_error($terms)) {
+    foreach($terms as $term) {
+
+        // Query arguments for related posts
+        $related_args = array(
+            'post_type' => 'news',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'news category',
+                    'field' => 'slug',
+                    'terms' => $term->slug,
+                ),
+            ),
+            'post__not_in' => array($post->ID), // Exclude the current post
+        );
+
+        // The Query for related posts
+        $related_query = new WP_Query($related_args);
+
+        // The Loop for related posts
+        if ($related_query->have_posts()) {
+            while ($related_query->have_posts()) {
+                $related_query->the_post();
+                // Display the title of the related post
+                echo '<div class="col-md-6">
+                <div class="post-reader-prev">
+                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                    <h4 class="title"><a href="'. get_the_permalink(). '">'.get_the_title().'</a></h4>
+                </div>
+            </div>';
+            }
+        }
+
+        // Reset Post Data for related posts
+        wp_reset_postdata();
+    }
+}
+?>
                         </div>
                     </div>
                 </div>
