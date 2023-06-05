@@ -95,44 +95,45 @@ get_header();
                     <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
                         <div class="row">
                         <?php
-if ($terms && !is_wp_error($terms)) {
-    foreach($terms as $term) {
+                            if ($terms && !is_wp_error($terms)) {
+                                foreach($terms as $term) {
 
-        // Query arguments for related posts
-        $related_args = array(
-            'post_type' => 'news',
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'news category',
-                    'field' => 'slug',
-                    'terms' => $term->slug,
-                ),
-            ),
-            'post__not_in' => array($post->ID), // Exclude the current post
-        );
+                                    // Query arguments for related posts
+                                    $related_args = array(
+                                        'post_type' => 'news',
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => 'news category',
+                                                'field' => 'slug',
+                                                'terms' => $term->slug,
+                                            ),
+                                        ),
+                                        'post__not_in' => array($post->ID), // Exclude the current post
+                                        'posts_per_page' => 2,
+                                    );
 
-        // The Query for related posts
-        $related_query = new WP_Query($related_args);
+                                    // The Query for related posts
+                                    $related_query = new WP_Query($related_args);
 
-        // The Loop for related posts
-        if ($related_query->have_posts()) {
-            while ($related_query->have_posts()) {
-                $related_query->the_post();
-                // Display the title of the related post
-                echo '<div class="col-md-6">
-                <div class="post-reader-prev">
-                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
-                    <h4 class="title"><a href="'. get_the_permalink(). '">'.get_the_title().'</a></h4>
-                </div>
-            </div>';
-            }
-        }
+                                    // The Loop for related posts
+                                    if ($related_query->have_posts()) {
+                                        while ($related_query->have_posts()) {
+                                            $related_query->the_post();
+                                            // Display the title of the related post
+                                            echo '<div class="col-md-6">
+                                            <div class="post-reader-prev">
+                                                <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                                <h4 class="title"><a href="'. get_the_permalink(). '">'.get_the_title().'</a></h4>
+                                            </div>
+                                        </div>';
+                                        }
+                                    }
 
-        // Reset Post Data for related posts
-        wp_reset_postdata();
-    }
-}
-?>
+                                    // Reset Post Data for related posts
+                                    wp_reset_postdata();
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -485,165 +486,54 @@ if ($terms && !is_wp_error($terms)) {
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+            <?php 
+            // Query arguments for the latest news posts
+            $latest_news_args = array(
+                'post_type' => 'news',
+                'posts_per_page' => 3, // Display 3 latest news posts
+                'orderby' => 'date', // Order by the latest date
+                'order' => 'DESC', // Display in descending order
+            );
+
+            // The Query for the latest news posts
+            $latest_news_query = new WP_Query($latest_news_args);
+
+            // The Loop for the latest news posts
+            if ($latest_news_query->have_posts()) {
+                while ($latest_news_query->have_posts()) {
+                    $latest_news_query->the_post();
+                    // Display the title of the news post
+                    echo '<div class="col-lg-4">
                     <div class="trending-news-item mb-30">
                         <div class="trending-news-thumb">
-                            <img src="assets/images/latest-news-1.png" alt="trending">
+                            '.get_the_post_thumbnail($post->ID, 'post_image_l').'
                         </div>
                         <div class="trending-news-content">
                             <div class="post-meta">
                                 <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
+                                    <a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a>
                                 </div>
                                 <div class="meta-date">
-                                    <span>March 26, 2020</span>
+                                    <span>'.get_the_date().'</span>
                                 </div>
                             </div>
-                            <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                            <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                            <h3 class="title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h3>
+                            <p class="text">'.wp_trim_words(get_the_excerpt(), 25, '...').'</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trending-news-item mb-30">
-                        <div class="trending-news-thumb">
-                            <img src="assets/images/latest-news-2.png" alt="trending">
-                        </div>
-                        <div class="trending-news-content">
-                            <div class="post-meta">
-                                <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
-                                </div>
-                                <div class="meta-date">
-                                    <span>March 26, 2020</span>
-                                </div>
-                            </div>
-                            <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                            <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trending-news-item mb-30">
-                        <div class="trending-news-thumb">
-                            <img src="assets/images/latest-news-3.png" alt="trending">
-                        </div>
-                        <div class="trending-news-content">
-                            <div class="post-meta">
-                                <div class="meta-categories">
-                                    <a href="#">TECHNOLOGY</a>
-                                </div>
-                                <div class="meta-date">
-                                    <span>March 26, 2020</span>
-                                </div>
-                            </div>
-                            <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                            <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </div>';
+                }
+            }
+
+            // Reset Post Data for the latest news posts
+            wp_reset_postdata();
+        ?>
         </div>
     </section>
 
     <!--====== LATEST NEWS PART ENDS ======-->
 
-    <!--====== POST FORM PART START ======-->
 
-    <div class="post-form-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="section-title">
-                        <h3 class="title">Leave an opinion</h3>
-                    </div>
-                    <div class="post-form-box">
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="input-box">
-                                        <input type="text" placeholder="Full name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="input-box">
-                                        <input type="text" placeholder="Email address">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="input-box">
-                                        <textarea name="#" id="#" cols="30" rows="10" placeholder="Tell us about your opinion…"></textarea>
-                                        <button class="main-btn" type="button">POST OPINION</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--====== POST FORM PART ENDS ======-->
-
-    <!--====== POST COMMENTS PART START ======-->
-
-    <section class="post-comments-area pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="section-title">
-                        <h3 class="title">Post Comments</h3>
-                    </div>
-                    <div class="post-comments-list">
-                        <div class="post-comments-item">
-                            <div class="thumb">
-                                <img src="assets/images/comments-1.png" alt="comments">
-                            </div>
-                            <div class="post">
-                                <a href="#">Reply</a>
-                                <h5 class="title">Subash Chandra</h5>
-                                <p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-                            </div>
-                        </div>
-                        <div class="post-comments-item">
-                            <div class="thumb">
-                                <img src="assets/images/comments-2.png" alt="comments">
-                            </div>
-                            <div class="post">
-                                <a href="#">Reply</a>
-                                <h5 class="title">Subash Chandra</h5>
-                                <p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-                            </div>
-                        </div>
-                        <div class="post-comments-item ml-30">
-                            <div class="thumb">
-                                <img src="assets/images/comments-3.png" alt="comments">
-                            </div>
-                            <div class="post">
-                                <a href="#">Reply</a>
-                                <h5 class="title">Subash Chandra</h5>
-                                <p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-                            </div>
-                        </div>
-                        <div class="post-comments-item">
-                            <div class="thumb">
-                                <img src="assets/images/comments-4.png" alt="comments">
-                            </div>
-                            <div class="post">
-                                <a href="#">Reply</a>
-                                <h5 class="title">Subash Chandra</h5>
-                                <p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-load-btn">
-                        <a class="main-btn" href="#">LOAD MORE</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
             <?php
 
 
