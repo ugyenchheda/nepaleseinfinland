@@ -82,10 +82,13 @@ get_header();
                         </div>
                         <div class="post-tags">
                             <ul>
-                                <li><a href="#"><i class="fas fa-tag"></i> Tags</a></li>
-                                <li><a href="#">Health</a></li>
-                                <li><a href="#">World</a></li>
-                                <li><a href="#">Corona</a></li>
+                                <li><a href="#"><i class="fas fa-tag"></i> Categories</a></li>
+                            <?php 
+                                $terms = get_the_terms( $post->ID, 'news category' ); 
+                                foreach($terms as $term) {
+                                echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                }
+                            ?>
                             </ul>
                         </div>
                     </div>

@@ -179,6 +179,12 @@ ul.uas-click-button li i {
   content: '';
   border-top: 6px double;
 }
+li.category-link {
+    padding: 0 1px;
+}
+.post-layout-top-content .post-tags ul li a:hover {
+  background: #e4e5e6;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
