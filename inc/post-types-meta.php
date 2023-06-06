@@ -42,14 +42,10 @@ function news_post_meta()
       ),
       // query_args are passed to wp.media's library query.
       'query_args' => array(
-          'type' => 'application/pdf', // Make library only display PDFs.
-          // Or only allow gif, jpg, or png images
-          // 'type' => array(
-          //     'image/gif',
-          //     'image/jpeg',
-          //     'image/png',
-          // ),
-      ),
+          'type' => array(
+           'image/jpeg',
+          'image/png',
+                ),
       'preview_size' => 'large', // Image size to use when previewing in the admin.
   ) );
 
