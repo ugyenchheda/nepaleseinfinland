@@ -487,7 +487,6 @@ get_header();
             </div>
             <div class="row">
             <?php 
-            // Query arguments for the latest news posts
             $latest_news_args = array(
                 'post_type' => 'news',
                 'posts_per_page' => 3, // Display 3 latest news posts
@@ -520,8 +519,6 @@ get_header();
                 </div>';
                 }
             }
-
-            // Reset Post Data for the latest news posts
             wp_reset_postdata();
         ?>
         </div>
@@ -539,6 +536,4 @@ get_header();
                             endif;
 
                         endwhile; // End of the loop.
-                      
-get_sidebar();
 get_footer();
