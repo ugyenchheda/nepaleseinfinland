@@ -494,15 +494,11 @@ get_header();
                 'orderby' => 'date', // Order by the latest date
                 'order' => 'DESC', // Display in descending order
             );
-
-            // The Query for the latest news posts
+            
             $latest_news_query = new WP_Query($latest_news_args);
-
-            // The Loop for the latest news posts
             if ($latest_news_query->have_posts()) {
                 while ($latest_news_query->have_posts()) {
                     $latest_news_query->the_post();
-                    // Display the title of the news post
                     echo '<div class="col-lg-4">
                     <div class="trending-news-item mb-30">
                         <div class="trending-news-thumb">
