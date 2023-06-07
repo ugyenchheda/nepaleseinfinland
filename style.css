@@ -295,6 +295,7 @@ span.comment-text {
   border-radius: 3px;
   box-shadow: 1px 2px 4px #000;
 }
+
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;

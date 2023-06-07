@@ -520,6 +520,10 @@ get_header();
                 }
             }
             wp_reset_postdata();
+            if ( comments_open() || get_comments_number() ) :
+                comments_template();
+            endif;
+            endwhile; // End of the loop.
         ?>
         </div>
     </section>
@@ -528,12 +532,5 @@ get_header();
 
 
             <?php
-
-
-                            // If comments are open or we have at least one comment, load up the comment template.
-                            if ( comments_open() || get_comments_number() ) :
-                                comments_template();
-                            endif;
-
-                        endwhile; // End of the loop.
+                      
 get_footer();

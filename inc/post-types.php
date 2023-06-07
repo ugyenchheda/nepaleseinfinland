@@ -36,7 +36,7 @@ function news_post_type() {
 		'label'                 => __( 'News', 'nepaleseinfinland' ),
 		'description'           => __( 'Add news', 'nepaleseinfinland' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments' ),
 		'taxonomies'            => array( 'News category', 'post_tag' ),
 		'hierarchical'          => false,
 		'public'                => true,
