@@ -46,7 +46,7 @@ function news_post_meta()
            'image/jpeg',
           'image/png',
                 ),
-      'preview_size' => 'large', // Image size to use when previewing in the admin.
+      'preview_size' => 'large',) // Image size to use when previewing in the admin.
   ) );
 
 }
