@@ -36,9 +36,8 @@ get_header();
             }
             ?>
             <div class="row uas_banner">
-                    <div class="col-lg-8 map_block">
-                
-                <div class="uas_banner_main" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
+                <div class="col-lg-8 map_block">
+                    <div class="uas_banner_main" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
                         <div class="row">
                             <div class="col-lg-6">
                             </div>
@@ -67,133 +66,119 @@ get_header();
             <section class="post-layout-1-area post-layout-2-area pb-80">
                 <div class="container">
                     <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="post-layout-top-content post-layout-top-content-2">
-                                        <div class="post-author">
-                                        <?php if($uas_sdate ) { ?>
-                                            <div class="author-info">
-                                                <ul>
-                                                    <li><i class="far fa-calendar-alt uas_small" alt="Organizer"></i> Admission Period: <?php   echo $uas_sdate; if ($uas_edate) { echo " - $uas_edate";}?></li>
-                                                </ul>
-                                            </div>
-                                        <?php } ?>
-                                            <div class="author-social">
-                                                <ul>                       
-                                                    <?php
-                                                        if($uas_phone ) {
-                                                            echo '<li><a target="_blank" href="tel:'. $uas_phone .'"><i class="fas fa-phone-volume" alt="college Contact Number"></i></a></li>'; 
-                                                        }
-                                                        if($uas_email ) {
-                                                            echo '<li><a target="_blank" href="mailto:'. $uas_email .'"><i class="far fa-envelope"></i></a></li>'; 
-                                                        }
-                                                        if($uas_website ) {
-                                                            echo '<li><a target="_blank" href="'. $uas_website .'"><i class="fas fa-globe"></i></a></li>'; 
-                                                        }
-                                                        if($uas_facebook ) {
-                                                            echo '<li><a target="_blank" href="'. $uas_facebook .'"><i class="fab fa-facebook-f"></i></a></li>'; 
-                                                        }
-                                                        if($uas_twitter ) {
-                                                            echo '<li><a target="_blank" href="'. $uas_twitter .'"><i class="fab fa-twitter"></i></a></li>';
-                                                        }
-                                                        if($uas_linkedin ) {
-                                                            echo '<li><a target="_blank" href="'.$uas_linkedin.'"><i class="fab fa-linkedin"></i></a></li>';
-                                                        }
-                                                        if($uas_youtube ) {
-                                                            echo '<li><a target="_blank" href="'.$uas_youtube.'" alt="Youtube Page"><i class="fab fa-youtube"></i></a></li>';
-                                                        }
-                                                        if($uas_instagram ) {
-                                                            echo '<li><a target="_blank" href="'.$uas_instagram.'" alt="Instagram Page"><i class="fab fa-instagram"></i></a></li>';
-                                                        }
-                                                    ?>  
-                                                </ul>
-                                            </div>
+                        <div class="col-lg-8">
+                            <div class="post-layout-top-content post-layout-top-content-2">
+                                <div class="post-author">
+                                    <?php if($uas_sdate ) { ?>
+                                        <div class="author-info">
+                                            <ul>
+                                                <li><i class="far fa-calendar-alt uas_small" alt="Organizer"></i> Admission Period: <?php   echo $uas_sdate; if ($uas_edate) { echo " - $uas_edate";}?></li>
+                                            </ul>
                                         </div>
-                                        <div class="post-categories d-flex justify-content-start align-content-center">
-                                            <div class="categories-item">	
-                                                <span><i class="fas fa-award uas_small" alt="Organizer"></i> University</span>
-                                            </div>
-                                            <div class="categories-share">
-                                                <ul>
-                                                    <li><i class="fas fa-comment"></i>45020</li>
-                                                    <li><i class="fas fa-fire"></i>45020</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="post-text">
-                                            <div class="row pt-10">
-                                                    <div class="text">
-                                                        <?php echo get_the_content();?></div>
-                                            </div>
-                                        </div>
-                                        <?php
-                                        if($uas_video ) {
-                                        ?>
-                                        <iframe width="100%" height="400" src="<?php echo $uas_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-                                        <?php }  ?>
+                                    <?php } ?>
+                                    <div class="author-social">
+                                        <ul>                       
+                                            <?php
+                                                if($uas_phone ) {
+                                                    echo '<li><a target="_blank" href="tel:'. $uas_phone .'"><i class="fas fa-phone-volume" alt="college Contact Number"></i></a></li>'; 
+                                                }
+                                                if($uas_email ) {
+                                                    echo '<li><a target="_blank" href="mailto:'. $uas_email .'"><i class="far fa-envelope"></i></a></li>'; 
+                                                }
+                                                if($uas_website ) {
+                                                    echo '<li><a target="_blank" href="'. $uas_website .'"><i class="fas fa-globe"></i></a></li>'; 
+                                                }
+                                                if($uas_facebook ) {
+                                                    echo '<li><a target="_blank" href="'. $uas_facebook .'"><i class="fab fa-facebook-f"></i></a></li>'; 
+                                                }
+                                                if($uas_twitter ) {
+                                                    echo '<li><a target="_blank" href="'. $uas_twitter .'"><i class="fab fa-twitter"></i></a></li>';
+                                                }
+                                                if($uas_linkedin ) {
+                                                    echo '<li><a target="_blank" href="'.$uas_linkedin.'"><i class="fab fa-linkedin"></i></a></li>';
+                                                }
+                                                if($uas_youtube ) {
+                                                    echo '<li><a target="_blank" href="'.$uas_youtube.'" alt="Youtube Page"><i class="fab fa-youtube"></i></a></li>';
+                                                }
+                                                if($uas_instagram ) {
+                                                    echo '<li><a target="_blank" href="'.$uas_instagram.'" alt="Instagram Page"><i class="fab fa-instagram"></i></a></li>';
+                                                }
+                                            ?>  
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="post-categories d-flex justify-content-start align-content-center">
+                                    <div class="categories-item">	
+                                        <span><i class="fas fa-award uas_small" alt="Organizer"></i> University</span>
+                                    </div>
+                                    <div class="categories-share">
+                                        <ul>
+                                            <li><i class="fas fa-comment"></i>45020</li>
+                                            <li><i class="fas fa-fire"></i>45020</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="post-text">
+                                    <div class="row pt-10">
+                                            <div class="text">
+                                                <?php echo get_the_content();?></div>
+                                    </div>
+                                </div>
+                                <?php
+                                if($uas_video ) {
+                                ?>
+                                <iframe width="100%" height="400" src="<?php echo $uas_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+                                <?php }  ?>
 
-                                        <div class="uas-courses"><h2>Courses Available</h2></div>
-                                            <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
-                                                <div class="uas-tab-wrapper">
-                                                    <ul class="uas-click-button">
-                                                        <?php
-                                                        foreach ( (array) $faculties_detail as $key => $entry ) {
-                                                            $course_name = ''; if ( isset( $entry['course_name'] ) ) {
-                                                            $title = esc_html( $entry['course_name'] ); ?>
-                                                            <li><i class='fas fa-graduation-cap'></i><?php echo $title ; ?></li>
-                                                            <?php } 
+                                <div class="uas-courses"><h2>Courses Available</h2></div>
+                                    <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
+                                        <div class="uas-tab-wrapper">
+                                            <ul class="uas-click-button">
+                                                <?php
+                                                foreach ( (array) $faculties_detail as $key => $entry ) {
+                                                    $course_name = ''; if ( isset( $entry['course_name'] ) ) {
+                                                    $title = esc_html( $entry['course_name'] ); ?>
+                                                    <li><i class='fas fa-graduation-cap'></i><?php echo $title ; ?></li>
+                                                    <?php } 
+                                                } ?>
+                                            </ul>
+                                            <div class="uas-tab-content">
+                                                <?php
+                                                    foreach ( (array) $faculties_detail as $key => $entry ) {
+
+                                                        $course_name = $course_desc = $faculty_banner = '';
+                                                        if ( isset( $entry['course_name'] ) ) {
+                                                            $title = esc_html( $entry['course_name'] ); 
+                                                        }
+                                                        if ( isset( $entry['course_desc'] ) ) {
+                                                            $desc = wpautop( $entry['course_desc'] );
+                                                        }
+
+                                                        if ( isset( $entry['faculty_banner'] ) ) {
+                                                            $img = esc_html( $entry['faculty_banner'] );
+                                                        } 
+                                                        
+                                                ?>
+                                                    <div class="uas-tab-panel">
+                                                        <?php if($img) {
+                                                            echo '<p class="faculty-image text-center"><img src="'.$img.'" class="img-responsive"></p>';
                                                         } ?>
-                                                    </ul>
-                                                    <div class="uas-tab-content">
-                                                        <?php
-                                                            foreach ( (array) $faculties_detail as $key => $entry ) {
-
-                                                                $course_name = $course_desc = $faculty_banner = '';
-                                                                if ( isset( $entry['course_name'] ) ) {
-                                                                    $title = esc_html( $entry['course_name'] ); 
-                                                                }
-                                                                if ( isset( $entry['course_desc'] ) ) {
-                                                                    $desc = wpautop( $entry['course_desc'] );
-                                                                }
-
-                                                                if ( isset( $entry['faculty_banner'] ) ) {
-                                                                    $img = esc_html( $entry['faculty_banner'] );
-                                                                } 
-                                                                
-                                                        ?>
-                                                            <div class="uas-tab-panel">
-                                                                <?php if($img) {
-                                                                    echo '<p class="faculty-image text-center"><img src="'.$img.'" class="img-responsive"></p>';
-                                                                } ?>
-                                                                <?php echo $desc; ?>
-                                                            </div>
-                                                        <?php } ?>
+                                                        <?php echo $desc; ?>
                                                     </div>
-                                                </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     <?php
+                        if ( comments_open() || get_comments_number() ) :
+                            comments_template();
+                        endif;
 
-                            the_post_navigation(
-                                array(
-                                    'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'nepaleseinfinland' ) . '</span> <span class="nav-title">%title</span>',
-                                    'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'nepaleseinfinland' ) . '</span> <span class="nav-title">%title</span>',
-                                )
-                            );
-
-                            // If comments are open or we have at least one comment, load up the comment template.
-                            if ( comments_open() || get_comments_number() ) :
-                                comments_template();
-                            endif;
-
-                        endwhile; // End of the loop.
-                        ?>
-<div class="input-box">
-                                        <textarea name="#" id="#" cols="30" rows="10" placeholder="Tell us about your opinion…"></textarea>
-                                        <button class="main-btn" type="button">POST OPINION</button>
-                                    </div>
-                </div>
+                    endwhile; 
+                    ?>
             </section>
             
 

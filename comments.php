@@ -26,7 +26,7 @@ if ( post_password_required() ) {
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h2 class="comments-title">
+		<h2 class="comments-title"><span class="comment-text"><i class='fas fa-comments'></i>
 			<?php
 			$nepaleseinfinland_comment_count = get_comments_number();
 			if ( '1' === $nepaleseinfinland_comment_count ) {
@@ -44,6 +44,7 @@ if ( post_password_required() ) {
 				);
 			}
 			?>
+			</span>
 		</h2><!-- .comments-title -->
 
 		<?php the_comments_navigation(); ?>
