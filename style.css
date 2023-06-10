@@ -295,7 +295,16 @@ span.comment-text {
   border-radius: 3px;
   box-shadow: 1px 2px 4px #000;
 }
-
+.site-footer {
+  background: #04388e;
+  padding: 27px 5px;
+  color: #fff;
+}
+.site-footer a {
+  color: #d9d9d9;
+  font-style: italic;
+  font-size: 18px;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
