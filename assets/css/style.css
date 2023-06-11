@@ -4132,8 +4132,9 @@ p {
           @media (max-width: 767px) {
             .footer-copyright .copyright-item ul li a {
               margin: 0px 10px 0; } }
-          .footer-copyright .copyright-item ul li a:hover {
-            color: #002f6c; }
+              .footer-copyright .copyright-item ul li a:hover {
+                color: #dbdbdb;
+            }
   .footer-copyright.footer-copyright-style-2 {
     background: #F2F6F8; }
     .footer-copyright.footer-copyright-style-2 .copyright-item p {

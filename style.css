@@ -295,20 +295,15 @@ span.comment-text {
   border-radius: 3px;
   box-shadow: 1px 2px 4px #000;
 }
-.sitemain-footer {
-  background: #04388e;
-  padding: 27px 5px;
-  color: #fff;
-}
-.sitemain-footer a {
-  color: #d9d9d9;
-  font-style: italic;
-  font-size: 18px;
-}
-.copyright-text {
+.copyright-item a {
   font-style: italic;
   color: #c8cdd5;
 }
+
+.copyright-item a:hover {
+color: #cdcdcd;
+}
+
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;

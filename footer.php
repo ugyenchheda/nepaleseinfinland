@@ -22,10 +22,27 @@
 								echo '<img src="'.$image[0].'" class="img-responsive">';?>
 						</a>
                             <ul>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<?php $facebook_link = get_theme_mod('facebook_link');
+									$twitter_link = get_theme_mod('twitter_link');
+									$instagram_link = get_theme_mod('instagram_link');
+									$youtube_link = get_theme_mod('youtube_link');
+									$linkedin_link = get_theme_mod('linkedin_link');
+									if (!empty($facebook_link)) {
+										echo '<li><a href="'.$facebook_link.'" target="_blank"><i class="fab fa-facebook"></i></a></li>';
+									}
+									if (!empty($twitter_link)) {
+										echo '<li><a href="'.$twitter_link.'" target="_blank"><i class="fab fa-twitter"></i></a></li>';
+									}
+									if (!empty($linkedin_link)) {
+										echo '<li><a href="'.$linkedin_link.'" target="_blank"><i class="fab fa-linkedin"></i></a></li>';
+									}
+									if (!empty($instagram_link)) {
+										echo '<li><a href="'.$instagram_link.'" target="_blank"><i class="fab fa-instagram"></i></a></li>';
+									}
+									if (!empty($youtube_link)) {
+										echo '<li><a href="'.$youtube_link.'" target="_blank"><i class="fab fa-youtube"></i></a></li>';
+									}
+								?>
                             </ul>
                         </div>
                     </div>
@@ -100,51 +117,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="footer-twitter-post">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-5">
-                                        <div class="widget widget-list">
-                                            <div class="section-title section-title-2">
-                                                <h3 class="title">Opinion</h3>
-                                            </div>
-                                            <div class="list">
-                                                <ul>
-                                                    <li><a href="#">Today’s Opinion</a></li>
-                                                    <li><a href="#">Op-Ed Contributing</a></li>
-                                                    <li><a href="#">Contributing Writers</a></li>
-                                                    <li><a href="#">Business News</a></li>
-                                                    <li><a href="#">Collections</a></li>
-                                                    <li><a href="#">Today’s Paper</a></li>
-                                                    <li><a href="#">Saturday Review</a></li>
-                                                    <li><a href="#">Product Review</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 col-md-7">
-                                        <div class="widget widget-twitter-post">
-                                            <div class="twitter-post">
-                                                <div class="icon">
-                                                    <i class="fab fa-twitter"></i>
-                                                </div>
-                                                <div class="twitter-content">
-                                                    <p>Cyber Monday Sale, Save 33% on Jannah theme during our year-end Sale, Purchase a new license for your next project… <a href="#">@newspark #technology https://dribbble.com/subash_chandra</a></p>
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <div class="twitter-post">
-                                                <div class="icon">
-                                                    <i class="fab fa-twitter"></i>
-                                                </div>
-                                                <div class="twitter-content">
-                                                    <p>Cyber Monday Sale, Save 33% on Jannah theme during our year-end Sale, Purchase a new license for your next project… <a href="#">@newspark #technology https://dribbble.com/subash_chandra</a></p>
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -184,62 +156,6 @@
                                                     <span>2</span>
                                                 </div>
                                             </div>
-                                            <div class="gallery_item gallery_item-style-2 footer_gallery_item">
-                                                <div class="gallery_item_content">
-                                                    <div class="post-meta">
-                                                        <div class="meta-categories">
-                                                            <a href="#" tabindex="0">TECHNOLOGY</a>
-                                                        </div>
-                                                        <div class="meta-date">
-                                                            <span>March 26, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="title"><a href="#" tabindex="0">Cheap smartphone sensor could help you old food safe</a></h4>
-                                                    <span>3</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery_item gallery_item-style-2 footer_gallery_item">
-                                                <div class="gallery_item_content">
-                                                    <div class="post-meta">
-                                                        <div class="meta-categories">
-                                                            <a href="#" tabindex="0">TECHNOLOGY</a>
-                                                        </div>
-                                                        <div class="meta-date">
-                                                            <span>March 26, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="title"><a href="#" tabindex="0">Class property employ ancho red multi humble</a></h4>
-                                                    <span>4</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery_item gallery_item-style-2 footer_gallery_item">
-                                                <div class="gallery_item_content">
-                                                    <div class="post-meta">
-                                                        <div class="meta-categories">
-                                                            <a href="#" tabindex="0">TECHNOLOGY</a>
-                                                        </div>
-                                                        <div class="meta-date">
-                                                            <span>March 26, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="title"><a href="#" tabindex="0">Best garden wing supplies for the horticu ltural</a></h4>
-                                                    <span>5</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-6">
-                                    <div class="widget wedget-service">
-                                        <div class="section-title section-title-2">
-                                            <h3 class="title">Newspark news services</h3>
-                                        </div>
-                                        <div class="service-item">
-                                            <ul>
-                                                <li><a href="#"><i class="fal fa-mobile-android-alt"></i> On your mobile</a></li>
-                                                <li><a href="#"><i class="fal fa-microphone-alt"></i> On smart speakers</a></li>
-                                                <li><a href="#"><i class="fal fa-envelope"></i> Contact Newspark news</a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
