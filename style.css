@@ -303,7 +303,12 @@ span.comment-text {
 .copyright-item a:hover {
 color: #cdcdcd;
 }
-
+.footer-logo a img {
+  max-width: 250px;
+  box-shadow: -1px 2px 20px #FFC;
+  background: #fff;
+  border-radius: 5px;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
