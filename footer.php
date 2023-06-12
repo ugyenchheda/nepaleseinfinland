@@ -69,14 +69,14 @@
                                         </div>
                                         <div class="list d-flex justify-content-between">
                                             <ul>
-                                                <li><a href="#">Politics</a></li>
-                                                <li><a href="#">Business</a></li>
-                                                <li><a href="#">Technology</a></li>
-                                                <li><a href="#">Science</a></li>
-                                                <li><a href="#">Health</a></li>
-                                                <li><a href="#">Sports</a></li>
-                                                <li><a href="#">Entertainment</a></li>
-                                            </ul>
+                                               <?php $terms = get_terms([
+													'taxonomy' => 'news category',
+													'hide_empty' => false,
+												]); 
+												foreach ($terms as $term){
+													echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+												}?>
+																							</ul>
                                             <ul>
                                                 <li><a href="#">Education</a></li>
                                                 <li><a href="#">Obituaries</a></li>
