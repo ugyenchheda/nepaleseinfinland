@@ -175,10 +175,15 @@
 						printf( esc_html__( 'Developed and Powered by: %2$s.', 'nepaleseinfinland' ), 'nepaleseinfinland', '<a href="https://ugyen.com.np/">Ugyen</a>' );
 					?></p>
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Advertise</a></li>
-                            <li><a href="#">Privacy & Policy</a></li>
-                            <li><a href="#">Contact Us</a></li>
+						<?php
+							$defaults = array( 'menu' => 'primary_menu', 
+							'container' => false, 
+							'fallback_cb' => 'wp_page_menu', 
+							'items_wrap' => '<ul id="myTab">%3$s</ul>', 
+							'add_li_class'  => 'ugyen',
+							'theme_location' => 'footer_menu' );
+							wp_nav_menu( $defaults ); 
+						?>
                         </ul>
                     </div>
                 </div>
