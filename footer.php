@@ -125,36 +125,12 @@
                                 <div class="col-lg-12 col-md-6">
                                     <div class="widget widget-news">
                                         <div class="section-title section-title-2">
-                                            <h3 class="title">News categories</h3>
+                                            <h3 class="title">Visit Our Facebook Page</h3>
                                         </div>
                                         <div class="footer-news">
-                                            <div class="gallery_item gallery_item-style-2 footer_gallery_item">
-                                                <div class="gallery_item_content">
-                                                    <div class="post-meta">
-                                                        <div class="meta-categories">
-                                                            <a href="#" tabindex="0">TECHNOLOGY</a>
-                                                        </div>
-                                                        <div class="meta-date">
-                                                            <span>March 26, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="title"><a href="#" tabindex="0">Nancy zhang a chinese busy woman and dhaka</a></h4>
-                                                    <span>1</span>
-                                                </div>
-                                            </div>
-                                            <div class="gallery_item gallery_item-style-2 footer_gallery_item">
-                                                <div class="gallery_item_content">
-                                                    <div class="post-meta">
-                                                        <div class="meta-categories">
-                                                            <a href="#" tabindex="0">TECHNOLOGY</a>
-                                                        </div>
-                                                        <div class="meta-date">
-                                                            <span>March 26, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4 class="title"><a href="#" tabindex="0">Success is not a good teacher failure makes you humble</a></h4>
-                                                    <span>2</span>
-                                                </div>
+										<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0&appId=295072851144465&autoLogAppEvents=1" nonce="Al0PyavC"></script>
+		<div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="" data-height="280" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>                                               
                                             </div>
                                         </div>
                                     </div>
