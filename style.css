@@ -329,6 +329,26 @@ p.comment-form-comment label {
 textarea#comment {
   width: 100%;
 }
+p.form-submit {
+  text-align: right;
+}
+.submit {
+  background: #04388e;
+  color: #fff;
+  padding: 5px 13px;
+  border-radius: 3px;
+  border: 1px solid #04388e;
+  box-shadow: 2px 1px 3px 0px #d5d5d5;
+  transition: background-color 2s ease-out;
+}
+.submit:hover {
+  background: #bf0a30;
+  color: #fff;
+  border-radius: 0px;
+  border: 1px solid #bf0a30;
+  box-shadow: 2px 1px 3px 0px #ffffff;    
+  transition: cubic-bezier(0.4, 0, 1, 1) out 1s;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
