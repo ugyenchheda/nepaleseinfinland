@@ -321,6 +321,14 @@ h3#reply-title {
   color: #9f2d2d;
   font-style: italic;
 }
+p.comment-form-comment label {
+  width: 100%;
+  font-style: italic;
+  text-decoration: wavy;
+}
+textarea#comment {
+  width: 100%;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;

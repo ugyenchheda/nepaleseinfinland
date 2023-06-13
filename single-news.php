@@ -520,12 +520,16 @@ get_header();
                 }
             }
             wp_reset_postdata();
-            if ( comments_open() || get_comments_number() ) :
+            
+        ?>
+        </div>
+        <div class="container">
+            <?php if ( comments_open() || get_comments_number() ) :
                 comments_template();
             endif;
             endwhile; // End of the loop.
-        ?>
-        </div>
+            ?>
+            </div>
     </section>
 
     <!--====== LATEST NEWS PART ENDS ======-->
