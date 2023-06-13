@@ -309,6 +309,18 @@ color: #cdcdcd;
   background: #fff;
   border-radius: 5px;
 }
+h3#reply-title {
+  font-size: 19px;
+  text-decoration: underline;
+  font-style: italic;
+}
+.logged-in-as {
+  font-size: 15px;
+  background: #fff;
+  padding: 5px 14px;
+  color: #9f2d2d;
+  font-style: italic;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
