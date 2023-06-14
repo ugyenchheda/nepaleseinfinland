@@ -209,3 +209,10 @@ function li_new_class($classes, $item, $args) {
 			}
 			return $result;
 			}
+
+function remove_comment_url($arg) {
+$arg['url'] = '';
+return $arg;
+}
+ 
+add_filter('comment_form_default_fields', 'remove_comment_url');
