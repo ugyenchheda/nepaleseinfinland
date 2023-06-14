@@ -336,6 +336,10 @@ p.comment-form-email label {
   font-style: italic;
   text-decoration: wavy;
 }
+p.comment-form-cookies-consent label {
+  font-style: italic;
+  text-decoration: wavy;
+}
 textarea#comment {
   width: 100%;
 }
@@ -349,7 +353,7 @@ p.form-submit {
   border-radius: 3px;
   border: 1px solid #04388e;
   box-shadow: 2px 1px 3px 0px #d5d5d5;
-  transition: background-color 2s ease-out;
+  transition: cubic-bezier(0.4, 0, 1, 1) out 1s;
 }
 .submit:hover {
   background: #bf0a30;
