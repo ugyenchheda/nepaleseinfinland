@@ -326,6 +326,16 @@ p.comment-form-comment label {
   font-style: italic;
   text-decoration: wavy;
 }
+p.comment-form-author label {
+  width: 100%;
+  font-style: italic;
+  text-decoration: wavy;
+}
+p.comment-form-email label {
+  width: 100%;
+  font-style: italic;
+  text-decoration: wavy;
+}
 textarea#comment {
   width: 100%;
 }
