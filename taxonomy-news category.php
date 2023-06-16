@@ -17,9 +17,9 @@ get_header();
                     <div class="about-author-content pt-15">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Category</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Features</li>
+                                <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">News Category</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><?php echo single_term_title();?></li>
                             </ol>
                         </nav>
                     </div>
@@ -28,7 +28,7 @@ get_header();
                     <div class="about-tab-btn mt-40">
                         <div class="archive-btn">
                             <ul>
-                                <li><span>Category: <span>Features</span></span></li>
+                                <li><span>News Category: <span><?php echo single_term_title();?></span></span></li>
                             </ul>
                         </div>
                         <div class="about-post-items">
@@ -41,7 +41,7 @@ get_header();
 											<div class="trending-image-content" id="post-<?php the_ID(); ?>">
 												<div class="post-meta">
 													<div class="meta-categories">
-														<a href="#">TECHNOLOGY</a>
+														<a href="#"><?php echo single_term_title();?></a>
 													</div>
 													<div class="meta-date">
 														<span><?php echo get_the_date(); ?></span>
