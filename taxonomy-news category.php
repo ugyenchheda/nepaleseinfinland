@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages
+ * The template for displaying news- category archive pages
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -52,38 +52,34 @@ get_header();
 										</div>
 									</div>
 									<?php endwhile; endif; ?>
-</div>
+							</div>
 
-<?php
-                global $wp_query;
-                $big = 999999999; // need an unlikely integer
+								<?php
+									global $wp_query;
+									$big = 999999999; // need an unlikely integer
 
-                $pages = paginate_links( array(
-                        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                        'format' => '?paged=%#%',
-                        'current' => max( 1, get_query_var('paged') ),
-                        'total' => $wp_query->max_num_pages,
-                        'prev_text' => '<li class="page-link" href="#" aria-label="Next">
-						<span aria-hidden="true"><i class="fas fa-caret-left"></i></span>
-					</li>',
-                        'next_text' => '<li class="page-link" href="#" aria-label="Next">
-						<span aria-hidden="true"><i class="fas fa-caret-right"></i></span>
-					</li>',
-                        'type'  => 'array',
-                    ) );
-            if( is_array( $pages ) ) {
-                $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged'); ?>
-                <div class="pagination-item pt-40">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<?php
-							foreach ( $pages as $page ) { ?>
-								<li><?php echo $page; ?></li>
-							<?php } ?>
-						</ul>
-					</nav>
-				</div>
-            <?php } ?>
+									$pages = paginate_links( array(
+											'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+											'format' => '?paged=%#%',
+											'current' => max( 1, get_query_var('paged') ),
+											'total' => $wp_query->max_num_pages,
+											'prev_text' => '<span aria-hidden="true"><i class="fas fa-caret-left"></i></span>',
+											'next_text' => '<span aria-hidden="true"><i class="fas fa-caret-right"></i></span>',
+											'type'  => 'array',
+										) );
+								if( is_array( $pages ) ) {
+									$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged'); ?>
+									<div class="pagination-item pt-40">
+										<nav aria-label="Page navigation example">
+											<ul class="pagination">
+												<?php
+												foreach ( $pages as $page ) { ?>
+													<li><?php echo $page; ?></li>
+												<?php } ?>
+											</ul>
+										</nav>
+									</div>
+								<?php } ?>
                                             
                             </div>
                         </div>
@@ -95,5 +91,4 @@ get_header();
 
 
 <?php
-get_sidebar();
 get_footer();
