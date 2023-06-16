@@ -55,43 +55,35 @@ get_header();
 </div>
 
 <?php
-global $wp_query;
-$big = 999999999; // Set a large number
+                global $wp_query;
+                $big = 999999999; // need an unlikely integer
 
-$pagination_args = array(
-    'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-    'format'    => '?paged=%#%',
-    'current'   => max(1, get_query_var('paged')),
-    'total'     => $wp_query->max_num_pages,
-    'prev_next' => true,
-    'prev_text' => __('&laquo; Previous'),
-    'next_text' => __('Next &raquo;'),
-    'type'      => 'array', // Set pagination type to 'array'
-);
-
-$pagination_links = paginate_links($pagination_args);
-if ($pagination_links) {
-    echo '<div class="pagination-item pt-40">
-	<nav aria-label="Page navigation example">
-		<ul class="pagination"><li class="page-item">'; // Replace 'custom-class' with your desired class name
-    foreach ($pagination_links as $link) {
-        echo $link;
-    }
-    echo '</li></ul>
-	</nav>
-	</div>';
-}
-?>
-                                    
-                                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">50</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#" aria-label="Next">
-                                                        <span aria-hidden="true"><i class="fas fa-caret-right"></i></span>
-                                                    </a>
-                                                </li>
+                $pages = paginate_links( array(
+                        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                        'format' => '?paged=%#%',
+                        'current' => max( 1, get_query_var('paged') ),
+                        'total' => $wp_query->max_num_pages,
+                        'prev_text' => '<li class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true"><i class="fas fa-caret-left"></i></span>
+					</li>',
+                        'next_text' => '<li class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true"><i class="fas fa-caret-right"></i></span>
+					</li>',
+                        'type'  => 'array',
+                    ) );
+            if( is_array( $pages ) ) {
+                $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged'); ?>
+                <div class="pagination-item pt-40">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<?php
+							foreach ( $pages as $page ) { ?>
+								<li><?php echo $page; ?></li>
+							<?php } ?>
+						</ul>
+					</nav>
+				</div>
+            <?php } ?>
                                             
                             </div>
                         </div>

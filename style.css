@@ -370,6 +370,19 @@ p.form-submit {
 .trending-news-thumb {
   min-height: 219px;
 }
+span.page-numbers.current {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  line-height: 60px;
+  background: rgb(220 20 60);
+  border: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-right: 5px;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
