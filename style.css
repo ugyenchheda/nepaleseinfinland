@@ -363,6 +363,13 @@ p.form-submit {
   box-shadow: 2px 1px 3px 0px #ffffff;    
   transition: cubic-bezier(0.4, 0, 1, 1) out 1s;
 }
+.comment-author.vcard {
+  width: 200px;
+  float: left;
+}
+.trending-news-thumb {
+  min-height: 219px;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
