@@ -353,7 +353,7 @@ p.form-submit {
   border-radius: 3px;
   border: 1px solid #04388e;
   box-shadow: 2px 1px 3px 0px #d5d5d5;
-  transition: cubic-bezier(0.4, 0, 1, 1) out 1s;
+  transition: ease 1s;
 }
 .submit:hover {
   background: #bf0a30;
@@ -361,7 +361,7 @@ p.form-submit {
   border-radius: 0px;
   border: 1px solid #bf0a30;
   box-shadow: 2px 1px 3px 0px #ffffff;    
-  transition: cubic-bezier(0.4, 0, 1, 1) out 1s;
+  transition: ease 1s;
 }
 .comment-author.vcard {
   width: 200px;
