@@ -186,6 +186,49 @@ function li_new_class($classes, $item, $args) {
 		
 		}
 
+		if ( ! function_exists( 'event_taxonomy' ) ) {
+
+			// Register Custom Taxonomy
+			function event_taxonomy() {
+			
+				$labels = array(
+					'name'                       => _x( 'Categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
+					'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
+					'menu_name'                  => __( 'Event Categories', 'nepaleseinfinland' ),
+					'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
+					'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
+					'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
+					'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
+					'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
+					'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
+					'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
+					'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
+					'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
+					'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
+					'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
+					'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
+					'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
+					'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
+					'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
+					'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
+					'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
+				);
+				$args = array(
+					'labels'                     => $labels,
+					'hierarchical'               => true,
+					'public'                     => true,
+					'show_ui'                    => true,
+					'show_admin_column'          => true,
+					'show_in_nav_menus'          => true,
+					'show_tagcloud'              => true,
+				);
+				register_taxonomy( 'event_category', array( 'event_post_type' ), $args );
+			
+			}
+			add_action( 'init', 'event_taxonomy', 0 );
+			
+			}
+
 		function event_location($latitude,$longitude) {
 			//Google Map API URL
 			$API_KEY = "AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU"; // Google Map Free API Key
@@ -218,25 +261,22 @@ return $arg;
 add_filter('comment_form_default_fields', 'remove_comment_url');
 
 function good_comment_policy($arg) {
- 
 	$arg['comment_notes_before'] = '<p class="comment-policy">We are glad you have chosen to leave a comment. Please keep in mind that comments are moderated according to our <a href="https://nepaleseinfinland/comment-policy-page/" style="text-decoration: underline;">comment policy</a>.</p>';
-	 
 	return $arg;
-	}
-	 
-	add_filter('comment_form_defaults', 'good_comment_policy');
+}
+add_filter('comment_form_defaults', 'good_comment_policy');
 
-	function move_comment_form_to_bottom( $fields ) {
-		$comment_field = $fields['comment'];
-		unset( $fields['comment'] );
-		$fields['comment'] = $comment_field;
-		return $fields;
-		}
-		 
-		add_filter( 'comment_form_fields', 'move_comment_form_to_bottom');
-		function custom_taxonomy_pagination( $query ) {
-			if ( ! is_admin() && $query->is_main_query() && is_tax( 'news category' ) ) {
-				$query->set( 'posts_per_page', 1 );
-			}
-		}
-		add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
+function move_comment_form_to_bottom( $fields ) {
+	$comment_field = $fields['comment'];
+	unset( $fields['comment'] );
+	$fields['comment'] = $comment_field;
+	return $fields;
+}
+add_filter( 'comment_form_fields', 'move_comment_form_to_bottom');
+
+function custom_taxonomy_pagination( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && is_tax( 'news category' ) ) {
+		$query->set( 'posts_per_page', 1 );
+	}
+}
+add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
