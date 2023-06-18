@@ -275,7 +275,7 @@ function move_comment_form_to_bottom( $fields ) {
 add_filter( 'comment_form_fields', 'move_comment_form_to_bottom');
 
 function custom_taxonomy_pagination( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && is_tax( 'news category' ) ) {
+	if ( ! is_admin() && $query->is_main_query() && ( is_tax( 'news category' ) || is_tax( 'event_category' ) ) ) {
 		$query->set( 'posts_per_page', 1 );
 	}
 }
