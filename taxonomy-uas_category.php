@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying UAS - category archive pages
+ * The template for displaying Event - category archive pages
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -18,7 +18,7 @@ get_header();
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">UAS Category</a></li>
+                                <li class="breadcrumb-item"><a href="#">Event Category</a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><?php echo single_term_title();?></li>
                             </ol>
                         </nav>
