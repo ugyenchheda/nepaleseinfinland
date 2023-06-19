@@ -643,32 +643,36 @@ get_header();
                         );
                         
                         $query = new WP_Query($args);
-                        
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
                                 echo '<div class="col-lg-6">
-                                <div class="trending-news-item">
-                                    <div class="trending-news-thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-1.jpg" alt="trending">
-                                        <div class="icon">
-                                            <a href="#"><i class="fas fa-bolt"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="trending-news-content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
+                                        <div class="trending-news-item">
+                                            <div class="trending-news-thumb">
+                                                ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
+                                                <div class="icon">
+                                                    <a href="#"><i class="fas fa-bolt"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                        <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                                            <div class="trending-news-content">
+                                                <div class="post-meta">';
+                                $categories = get_the_category();
+                                if (!empty($categories)) {
+                                    echo '<div class="meta-categories">';
+                                    foreach ($categories as $category) {
+                                        echo '<a href="'. esc_url( get_term_link( $category )). '">' . $category->name . '</a>';
+                                    }
+                                    echo '</div>';
+                                }
+                                echo '<div class="meta-date">
+                                        <span>' . get_the_date('F j, Y') . '</span>
                                     </div>
                                 </div>
-                            </div>';
+                                <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                                <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p>
+                            </div>
+                        </div>
+                        </div>';
                             }
                         } else {
                             // No posts found
