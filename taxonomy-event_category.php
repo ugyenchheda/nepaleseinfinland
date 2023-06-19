@@ -18,7 +18,7 @@ get_header();
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">UAS Category</a></li>
+                                <li class="breadcrumb-item"><a href="#">Event Category</a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><?php echo single_term_title();?></li>
                             </ol>
                         </nav>
@@ -28,7 +28,7 @@ get_header();
                     <div class="about-tab-btn mt-40">
                         <div class="archive-btn">
                             <ul>
-                                <li><span>News Category: <span><?php echo single_term_title();?></span></span></li>
+                                <li><span>Event Category: <span><?php echo single_term_title();?></span></span></li>
                             </ul>
                         </div>
                         <div class="about-post-items">
@@ -36,7 +36,7 @@ get_header();
 								<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 									<div class="col-lg-6 col-md-6">
 										<div class="trending-image-post feature-item mt-30">
-											<?php echo get_the_post_thumbnail(get_the_ID(), 'post_image_l'); ?>
+											<?php echo get_the_post_thumbnail(get_the_ID(), 'post_image_xl'); ?>
 											
 											<div class="trending-image-content" id="post-<?php the_ID(); ?>">
 												<div class="post-meta">
