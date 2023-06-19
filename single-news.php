@@ -84,7 +84,7 @@ get_header();
                             <ul>
                                 <li><a href="#"><i class="fas fa-tag"></i> Categories</a></li>
                             <?php 
-                                $terms = get_the_terms( $post->ID, 'news category' ); 
+                                $terms = get_the_terms( $post->ID, 'news_category' ); 
                                 foreach($terms as $term) {
                                 echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
                                 }
@@ -103,7 +103,7 @@ get_header();
                                         'post_type' => 'news',
                                         'tax_query' => array(
                                             array(
-                                                'taxonomy' => 'news category',
+                                                'taxonomy' => 'news_category',
                                                 'field' => 'slug',
                                                 'terms' => $term->slug,
                                             ),

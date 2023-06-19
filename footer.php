@@ -70,7 +70,7 @@
                                         <div class="list d-flex justify-content-between">
                                             <ul>
                                                <?php $terms = get_terms([
-													'taxonomy' => 'news category',
+													'taxonomy' => 'news_category',
 													'hide_empty' => false,
 												]); 
 												foreach ($terms as $term){

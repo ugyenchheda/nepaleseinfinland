@@ -57,7 +57,7 @@
 									$args = array('post_type' => 'news',
 										'tax_query' => array(
 											array(
-												'taxonomy' => 'news category',
+												'taxonomy' => 'news_category',
 												'field' => 'term_id',
 												'terms' => $news_highlight,
 											),

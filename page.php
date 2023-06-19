@@ -557,7 +557,7 @@ get_header();
 
     <!--====== POST GALLERY PART ENDS ======-->
 
-    <!--====== FEATURE PART START ======-->
+    <!--====== UAS PART START ======-->
 
     <section class="feature-area">
         <div class="container">
@@ -600,7 +600,7 @@ get_header();
         </div>
     </section>
 
-    <!--====== FEATURE PART ENDS ======-->
+    <!--====== UAS PART ENDS ======-->
 
     <!--====== TRENDING NEWS PART START ======-->
 
@@ -612,6 +612,36 @@ get_header();
                         <h3 class="title">Trending News</h3>
                     </div>
                     <div class="row trending-news-slider">
+                    <?php
+                        $args = array(
+                            'post_type' => 'news', 
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'news_category', 
+                                ),
+                            ),
+                            'meta_key' => 'news_hot',
+                            'meta_value' => '1', // Assuming the meta value is '1' for hotnews posts
+                        );
+
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()) {
+                            while ($query->have_posts()) {
+                                $query->the_post();
+
+                                // Display the post information as needed
+                                the_title('<h2>', '</h2>');
+                                the_content();
+                            }
+
+                            // Restore original post data
+                            wp_reset_postdata();
+                        } else {
+                            // No posts found
+                            echo 'No posts found.';
+                        }
+                    ?>
                         <div class="col-lg-6">
                             <div class="trending-news-item">
                                 <div class="trending-news-thumb">
