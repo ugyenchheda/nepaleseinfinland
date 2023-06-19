@@ -614,100 +614,70 @@ get_header();
                     <div class="row trending-news-slider">
                     <?php
                         $args = array(
-                            'post_type' => 'news', 
-                            'tax_query' => array(
+                            'post_type' => 'news', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                            'meta_key' => 'news_hot',
+                            'orderby' => 'meta_value_num', // Sort by meta value as numeric
+                            'order' => 'DESC', // Sort in descending order
+                            'meta_query' => array(
+                                'relation' => 'OR',
                                 array(
-                                    'taxonomy' => 'news_category', 
+                                    'key' => 'news_hot',
+                                    'value' => '3',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '2',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '1',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
                                 ),
                             ),
-                            'meta_key' => 'news_hot',
-                            'meta_value' => '1', // Assuming the meta value is '1' for hotnews posts
+                            'posts_per_page' => 5,
                         );
-
+                        
                         $query = new WP_Query($args);
-
+                        
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-
-                                // Display the post information as needed
-                                the_title('<h2>', '</h2>');
-                                the_content();
+                                echo '<div class="col-lg-6">
+                                <div class="trending-news-item">
+                                    <div class="trending-news-thumb">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-1.jpg" alt="trending">
+                                        <div class="icon">
+                                            <a href="#"><i class="fas fa-bolt"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="trending-news-content">
+                                        <div class="post-meta">
+                                            <div class="meta-categories">
+                                                <a href="#">TECHNOLOGY</a>
+                                            </div>
+                                            <div class="meta-date">
+                                                <span>March 26, 2020</span>
+                                            </div>
+                                        </div>
+                                        <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
+                                        <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                                    </div>
+                                </div>
+                            </div>';
                             }
-
-                            // Restore original post data
-                            wp_reset_postdata();
                         } else {
                             // No posts found
-                            echo 'No posts found.';
                         }
+                        
+                        // Restore original post data
+                        wp_reset_postdata();
+                        
                     ?>
-                        <div class="col-lg-6">
-                            <div class="trending-news-item">
-                                <div class="trending-news-thumb">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-1.jpg" alt="trending">
-                                    <div class="icon">
-                                        <a href="#"><i class="fas fa-bolt"></i></a>
-                                    </div>
-                                </div>
-                                <div class="trending-news-content">
-                                    <div class="post-meta">
-                                        <div class="meta-categories">
-                                            <a href="#">TECHNOLOGY</a>
-                                        </div>
-                                        <div class="meta-date">
-                                            <span>March 26, 2020</span>
-                                        </div>
-                                    </div>
-                                    <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                    <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="trending-news-item">
-                                <div class="trending-news-thumb">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-2.jpg" alt="trending">
-                                    <div class="icon">
-                                        <a href="#"><i class="fas fa-bolt"></i></a>
-                                    </div>
-                                </div>
-                                <div class="trending-news-content">
-                                    <div class="post-meta">
-                                        <div class="meta-categories">
-                                            <a href="#">TECHNOLOGY</a>
-                                        </div>
-                                        <div class="meta-date">
-                                            <span>March 26, 2020</span>
-                                        </div>
-                                    </div>
-                                    <h3 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h3>
-                                    <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="trending-news-item">
-                                <div class="trending-news-thumb">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/trending-news-3.jpg" alt="trending">
-                                    <div class="icon">
-                                        <a href="#"><i class="fas fa-bolt"></i></a>
-                                    </div>
-                                </div>
-                                <div class="trending-news-content">
-                                    <div class="post-meta">
-                                        <div class="meta-categories">
-                                            <a href="#">TECHNOLOGY</a>
-                                        </div>
-                                        <div class="meta-date">
-                                            <span>March 26, 2020</span>
-                                        </div>
-                                    </div>
-                                    <h3 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h3>
-                                    <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">

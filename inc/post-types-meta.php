@@ -19,7 +19,14 @@ function news_post_meta()
 		'name' => 'Hot News',
 		'desc' => 'Check if this is hot news.',
 		'id'   => 'news_hot',
-		'type' => 'checkbox',
+    'type' => 'select',
+    'show_option_none' => true,
+    'default'          => 'custom',
+    'options'          => array(
+        '1' => __( 'Level One', 'cmb2' ),
+        '2'   => __( 'Level Two', 'cmb2' ),
+        '3'     => __( 'Level Three', 'cmb2' ),
+    ),
     ));
 
     $cmb->add_field(array(
