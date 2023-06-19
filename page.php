@@ -695,33 +695,28 @@ get_header();
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-                                echo '<div class="col-lg-6">
-                                        <div class="trending-news-item">
-                                            <div class="trending-news-thumb">
-                                                ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
-                                                <div class="icon">
-                                                    <a href="#"><i class="fas fa-bolt"></i></a>
-                                                </div>
+                                echo '
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="trending-news-post-items">
+                                        <div class="gallery_item">
+                                            <div class="gallery_item_thumb">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
+                                                <div class="icon"><i class="fas fa-bolt"></i></div>
                                             </div>
-                                            <div class="trending-news-content">
-                                                <div class="post-meta">';
-                                $categories = get_the_category();
-                                if (!empty($categories)) {
-                                    echo '<div class="meta-categories">';
-                                    foreach ($categories as $category) {
-                                        echo '<a href="'. esc_url(get_term_link($category)). '">' . $category->name . '</a>';
-                                    }
-                                    echo '</div>';
-                                }
-                                echo '<div class="meta-date">
-                                        <span>' . get_the_date('F j, Y') . '</span>
+                                            <div class="gallery_item_content">
+                                                <div class="post-meta">
+                                                    <div class="meta-categories">
+                                                        <a href="#">TECHNOLOGY</a>
+                                                    </div>
+                                                    <div class="meta-date">
+                                                        <span>March 26, 2020</span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="title"><a href="#">Nancy zhang a chinese busy woman and dhaka</a></h4>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
-                                <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p>
-                            </div>
-                        </div>
-                        </div>';
+                                </div>';
                             }
                         } else {
                             // No posts found
@@ -731,27 +726,6 @@ get_header();
                         wp_reset_postdata();
                         
                     ?>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="trending-news-post-items">
-                                <div class="gallery_item">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
-                                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Nancy zhang a chinese busy woman and dhaka</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
