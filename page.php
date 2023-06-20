@@ -700,7 +700,7 @@ get_header();
                                     <div class="trending-news-post-items">
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
+                                            ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
                                                 <div class="icon"><i class="fas fa-bolt"></i></div>
                                             </div>
                                             <div class="gallery_item_content">
@@ -709,10 +709,10 @@ get_header();
                                                         <a href="#">TECHNOLOGY</a>
                                                     </div>
                                                     <div class="meta-date">
-                                                        <span>March 26, 2020</span>
+                                                        <span>' . get_the_date('F j, Y') . '</span>
                                                     </div>
                                                 </div>
-                                                <h4 class="title"><a href="#">Nancy zhang a chinese busy woman and dhaka</a></h4>
+                                                <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
                                             </div>
                                         </div>
                                     </div>
