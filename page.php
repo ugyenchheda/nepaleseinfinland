@@ -704,11 +704,16 @@ get_header();
                                                 <div class="icon"><i class="fas fa-bolt"></i></div>
                                             </div>
                                             <div class="gallery_item_content">
-                                                <div class="post-meta">
-                                                    <div class="meta-categories">
-                                                        <a href="#">TECHNOLOGY</a>
-                                                    </div>
-                                                    <div class="meta-date">
+                                                <div class="post-meta">';?>
+                                               <?php $categories = get_the_category();
+                                                if (!empty($categories)) {
+                                                    echo '<div class="meta-categories">';
+                                                    foreach ($categories as $category) {
+                                                        echo '<a href="'. esc_url(get_term_link($category)). '">' . $category->name . '</a>';
+                                                    }
+                                                    echo '</div>';
+                                                }
+                                                echo '<div class="meta-date">
                                                         <span>' . get_the_date('F j, Y') . '</span>
                                                     </div>
                                                 </div>
