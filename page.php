@@ -314,70 +314,6 @@ get_header();
                                             <h4 class="title"><a href="#">Copa America: Luis Suarez from devastated US</a></h4>
                                         </div>
                                     </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">U.S. Response subash says he will label regions by risk of…</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-4.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Venezuela elan govt and opposit the property collect</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-5.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Cheap smartphone sensor could help you old food safe</a></h4>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -398,70 +334,6 @@ get_header();
                                             <h4 class="title"><a href="#">Copa America: Luis Suarez from devastated US</a></h4>
                                         </div>
                                     </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">U.S. Response subash says he will label regions by risk of…</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-4.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Venezuela elan govt and opposit the property collect</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-5.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Cheap smartphone sensor could help you old food safe</a></h4>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -480,70 +352,6 @@ get_header();
                                                 </div>
                                             </div>
                                             <h4 class="title"><a href="#">Copa America: Luis Suarez from devastated US</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-2.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-3.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">U.S. Response subash says he will label regions by risk of…</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-4.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Venezuela elan govt and opposit the property collect</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-5.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Cheap smartphone sensor could help you old food safe</a></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -700,7 +508,7 @@ get_header();
                                     <div class="trending-news-post-items">
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
-                                            ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
+                                            ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
                                                 <div class="icon"><i class="fas fa-bolt"></i></div>
                                             </div>
                                             <div class="gallery_item_content">
@@ -735,57 +543,6 @@ get_header();
                 </div>
                 <div class="col-lg-4">
                     <div class="trending-right-sidebar">
-                        <div class="trending-social">
-                            <div class="section-title">
-                                <h3 class="title">Follow us</h3>
-                            </div>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                        <span>34,456</span>
-                                        <p>Fans</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="item-2" href="#">
-                                        <i class="fab fa-twitter"></i>
-                                        <span>34,456</span>
-                                        <p>Followers</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="item-3" href="#">
-                                        <i class="fab fa-youtube"></i>
-                                        <span>34,456</span>
-                                        <p>Subscribers</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <a class="item-4" href="#">
-                                        <i class="fab fa-instagram"></i>
-                                        <span>34,456</span>
-                                        <p>Followers</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="item-5" href="#">
-                                        <i class="fab fa-vimeo-v"></i>
-                                        <span>34,456</span>
-                                        <p>Followers</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="item-6" href="#">
-                                        <i class="fab fa-maxcdn"></i>
-                                        <span>34,456</span>
-                                        <p>Fans</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="trending-most-view mt-25">
                             <div class="section-title">
                                 <h3 class="title">Most View</h3>
