@@ -558,223 +558,64 @@ get_header();
                     <div class="trending-right-sidebar">
                         <div class="trending-most-view mt-25">
                             <div class="section-title">
-                                <h3 class="title">Most View</h3>
+                                <h3 class="title">Most Interacted News</h3>
                             </div>
                         </div>
                         <div class="trending-sidebar-slider">
-                            <div class="post_gallery_items">
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-1.jpg" alt="gallery">
-                                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
+                            <div class="post_gallery_items"><?php
+                            $args = array(
+                                'post_type'      => 'news', // Change 'post' to your desired post type if needed
+                                'posts_per_page' => 5,     // Adjust the number of posts you want to retrieve
+                                'orderby'        => 'comment_count',
+                            );
+                            
+                            $query = new WP_Query($args);
+                            
+                            if ($query->have_posts()) {
+                                $count = 1;
+                                while ($query->have_posts()) {
+                                    $query->the_post();
+                                    // Output the post title or perform other actions
+                                    echo '
+                                    <div class="gallery_item gallery_item-style-2">
+                                        <div class="gallery_item_thumb">
+                                        ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
+                                            <div class="icon"><i class="fas fa-star"></i></div>
                                         </div>
-                                        <h4 class="title"><a href="#">Nancy zhang a chinese busy woman and dhaka</a></h4>
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-2.jpg" alt="gallery">
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
+                                        <div class="gallery_item_content">
+                                            <div class="post-meta">
+                                            ';?>
+                                            <?php 
+                                             $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                             foreach ($taxonomies as $taxonomy) {
+                                                 if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                     $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                     if ($terms && !is_wp_error($terms)) {
+                                                         echo '<div class="meta-categories">';
+                                                         foreach ($terms as $term) {
+                                                             echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                         }
+                                                         echo '</div>';
+                                                     }
+                                                 }
+                                             }
+                                             echo '
+                                                <div class="meta-date">
+                                                    <span>' . get_the_date('F j, Y') . '</span>
+                                                </div>
                                             </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
+                                            <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
+                                            <span>'.$count++.'</span>
                                         </div>
-                                        <h4 class="title"><a href="#">The billionaire Philan thropist read to learn</a></h4>
-                                        <span>2</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-3.jpg" alt="gallery">
-                                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Cheap smartphone sensor could help you old food safe</a></h4>
-                                        <span>3</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-4.jpg" alt="gallery">
-                                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Class property employ ancho red multi</a></h4>
-                                        <span>4</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-5.jpg" alt="gallery">
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Best garden wing supplies for the horticu ltural</a></h4>
-                                        <span>5</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-6.jpg" alt="gallery">
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Ratiffe to be Director of nation talent Trump ignored</a></h4>
-                                        <span>6</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post_gallery_items">
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-1.jpg" alt="gallery">
-                                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Nancy zhang a chinese busy woman and dhaka</a></h4>
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-2.jpg" alt="gallery">
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">The billionaire Philan thropist read to learn</a></h4>
-                                        <span>2</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-3.jpg" alt="gallery">
-                                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Cheap smartphone sensor could help you old food safe</a></h4>
-                                        <span>3</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-4.jpg" alt="gallery">
-                                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Class property employ ancho red multi</a></h4>
-                                        <span>4</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-5.jpg" alt="gallery">
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Best garden wing supplies for the horticu ltural</a></h4>
-                                        <span>5</span>
-                                    </div>
-                                </div>
-                                <div class="gallery_item gallery_item-style-2">
-                                    <div class="gallery_item_thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/most-post/most-6.jpg" alt="gallery">
-                                    </div>
-                                    <div class="gallery_item_content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h4 class="title"><a href="#">Ratiffe to be Director of nation talent Trump ignored</a></h4>
-                                        <span>6</span>
-                                    </div>
-                                </div>
+                                    </div>';
+                                }
+                            } else {
+                                echo 'No posts found.';
+                            }
+                            
+                            wp_reset_postdata();
+                            ?>
                             </div>
                         </div>
                     </div>
