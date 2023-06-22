@@ -829,31 +829,35 @@ get_header();
                                 echo '<div class="col-lg-6">
                                         <div class="single-play-post-item">
                                             <div class="trending-news-thumb">
-                                                ' . get_the_post_thumbnail($post->ID, 'post_feat_xl') . '
+                                                ' . get_the_post_thumbnail($post->ID, 'post_image_xl') . '
                                                 <div class="icon">
                                                     <a href="#"><i class="fas fa-bolt"></i></a>
                                                 </div>
                                             </div>
                                             <div class="single-play-post-content">
                                                 <div class="post-meta">';
-                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                                                $taxonomies = get_object_taxonomies('event_post_type'); // Replace 'post' with your desired post type
 
                                                 foreach ($taxonomies as $taxonomy) {
                                                     if (!in_array($taxonomy, ['category', 'post_tag'])) {
                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                                                         if ($terms && !is_wp_error($terms)) {
-                                                            echo '<div class="meta-taxonomy">';
+                                                            echo '<div class="meta-categories">';
                                                             foreach ($terms as $term) {
-                                                                echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
                                                             }
                                                             echo '</div>';
                                                         }
                                                     }
                                                 }
-                                echo '<div class="meta-date">
-                                        <span>' . get_the_date('F j, Y') . '</span>
+                                ?>
+                                <div class="meta-date">
+                                        <span><?php 
+            $event_sdate = get_post_meta( get_the_ID(), 'event_sdate', true );
+            $event_edate = get_post_meta( get_the_ID(), 'event_edate', true );
+            echo $event_sdate; if ($event_edate) { echo " - $event_edate";}?> </span>
                                     </div>
-                                </div>
+                                    <?php echo '</div>
                                 <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
                             </div>
                             <div class="play-btn">

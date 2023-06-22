@@ -383,6 +383,18 @@ span.page-numbers.current {
   color: #ffffff;
   margin-right: 5px;
 }
+a.home-event {
+  background: #fff;
+  color: #000 !important;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: ease 1s;
+}
+a.home-event:hover {
+  color: #fff !important;
+  background: #000 !important;
+  transition: ease 1s;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
