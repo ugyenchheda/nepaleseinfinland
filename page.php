@@ -791,10 +791,34 @@ get_header();
         <div class="container custom-container">
             <div class="single-play-box">
                 <div class="row single-play-post-slider">
+                
                 <?php
                         $args = array(
                             'post_type' => 'event_post_type', // Replace 'your_custom_post_type' with the actual name of your custom post type
-                            'meta_key' => 'news_hot',
+                            'meta_key' => 'event_hot',
+                            'orderby' => 'meta_value_num', // Sort by meta value as numeric
+                            'order' => 'DESC', // Sort in descending order
+                            'meta_query' => array(
+                                'relation' => 'OR',
+                                array(
+                                    'key' => 'event_hot',
+                                    'value' => '3',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'event_hot',
+                                    'value' => '2',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'event_hot',
+                                    'value' => '1',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                            ),
                             'posts_per_page' => 5,
                         );
                         
@@ -802,17 +826,16 @@ get_header();
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-                                echo '
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="trending-news-post-items">
-                                        <div class="gallery_item">
-                                            <div class="gallery_item_thumb">
-                                            ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
-                                                <div class="icon"><i class="fas fa-bolt"></i></div>
+                                echo '<div class="col-lg-6">
+                                        <div class="single-play-post-item">
+                                            <div class="trending-news-thumb">
+                                                ' . get_the_post_thumbnail($post->ID, 'post_feat_xl') . '
+                                                <div class="icon">
+                                                    <a href="#"><i class="fas fa-bolt"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="gallery_item_content">
-                                                <div class="post-meta">';?>
-                                               <?php 
+                                            <div class="single-play-post-content">
+                                                <div class="post-meta">';
                                                 $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
 
                                                 foreach ($taxonomies as $taxonomy) {
@@ -827,15 +850,17 @@ get_header();
                                                         }
                                                     }
                                                 }
-                                                echo '<div class="meta-date">
-                                                        <span>' . get_the_date('F j, Y') . '</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
-                                            </div>
-                                        </div>
+                                echo '<div class="meta-date">
+                                        <span>' . get_the_date('F j, Y') . '</span>
                                     </div>
-                                </div>';
+                                </div>
+                                <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                            </div>
+                            <div class="play-btn">
+                                <a class="video-popup" href="' . get_the_permalink() . '"><i class="far fa-calendar-alt"></i></a>
+                            </div>
+                        </div>
+                        </div>';
                             }
                         } else {
                             // No posts found
@@ -845,25 +870,6 @@ get_header();
                         wp_reset_postdata();
                         
                     ?>
-                    <div class="col-lg-6">
-                        <div class="single-play-post-item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-post-1.jpg" alt="play">
-                            <div class="single-play-post-content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h3 class="title"><a href="#">Success is not a good food failure makes you humble</a></h3>
-                            </div>
-                            <div class="play-btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=HalMzk1FFM0"><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
