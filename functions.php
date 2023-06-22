@@ -287,12 +287,14 @@ function li_new_class($classes, $item, $args) {
 			$returnBody = json_decode($response);
 			// Google MAP
 			$status = $returnBody->status;
-			if($status == "REQUEST_DENIED"){ 
-			$result = $returnBody->error_message;
-			} else { 
-			$result = $returnBody->results[0]->formatted_address;
-			}
-			return $result;
+			if($longitude||$latitude){
+				if($status == "REQUEST_DENIED"){ 
+					$result = $returnBody->error_message;
+				} else { 
+					$result = $returnBody->results[0]->formatted_address;
+				}
+				return $result;
+		}
 			}
 
 function remove_comment_url($arg) {

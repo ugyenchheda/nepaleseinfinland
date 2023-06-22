@@ -70,7 +70,7 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 	);
 	
 	$terms = get_terms(array(
-		'taxonomy'=> 'news category',
+		'taxonomy'=> 'news_category',
 		'hide_empty'=> false,
 	));
 	$cats = array();

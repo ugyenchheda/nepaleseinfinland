@@ -50,7 +50,7 @@
 
 								$news_highlight = get_theme_mod('news_highlight');
 								$news_number = get_theme_mod('news_number');
-								$custom_terms = get_terms('news category');
+								$custom_terms = get_terms('news_category');
 
 								foreach($custom_terms as $custom_term) {
 									wp_reset_query();
