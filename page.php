@@ -464,14 +464,20 @@ get_header();
                                             </div>
                                             <div class="trending-news-content">
                                                 <div class="post-meta">';
-                                $categories = get_the_category();
-                                if (!empty($categories)) {
-                                    echo '<div class="meta-categories">';
-                                    foreach ($categories as $category) {
-                                        echo '<a href="'. esc_url(get_term_link($category)). '">' . $category->name . '</a>';
-                                    }
-                                    echo '</div>';
-                                }
+                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-taxonomy">';
+                                                            foreach ($terms as $term) {
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                            }
+                                                            echo '</div>';
+                                                        }
+                                                    }
+                                                }
                                 echo '<div class="meta-date">
                                         <span>' . get_the_date('F j, Y') . '</span>
                                     </div>
@@ -513,13 +519,20 @@ get_header();
                                             </div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">';?>
-                                               <?php $categories = get_the_category();
-                                                if (!empty($categories)) {
-                                                    echo '<div class="meta-categories">';
-                                                    foreach ($categories as $category) {
-                                                        echo '<a href="'. esc_url(get_term_link($category)). '">' . $category->name . '</a>';
+                                               <?php 
+                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-taxonomy">';
+                                                            foreach ($terms as $term) {
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                            }
+                                                            echo '</div>';
+                                                        }
                                                     }
-                                                    echo '</div>';
                                                 }
                                                 echo '<div class="meta-date">
                                                         <span>' . get_the_date('F j, Y') . '</span>
@@ -778,6 +791,60 @@ get_header();
         <div class="container custom-container">
             <div class="single-play-box">
                 <div class="row single-play-post-slider">
+                <?php
+                        $args = array(
+                            'post_type' => 'event_post_type', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                            'meta_key' => 'news_hot',
+                            'posts_per_page' => 5,
+                        );
+                        
+                        $query = new WP_Query($args);
+                        if ($query->have_posts()) {
+                            while ($query->have_posts()) {
+                                $query->the_post();
+                                echo '
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="trending-news-post-items">
+                                        <div class="gallery_item">
+                                            <div class="gallery_item_thumb">
+                                            ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
+                                                <div class="icon"><i class="fas fa-bolt"></i></div>
+                                            </div>
+                                            <div class="gallery_item_content">
+                                                <div class="post-meta">';?>
+                                               <?php 
+                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-taxonomy">';
+                                                            foreach ($terms as $term) {
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                            }
+                                                            echo '</div>';
+                                                        }
+                                                    }
+                                                }
+                                                echo '<div class="meta-date">
+                                                        <span>' . get_the_date('F j, Y') . '</span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                            }
+                        } else {
+                            // No posts found
+                        }
+                        
+                        // Restore original post data
+                        wp_reset_postdata();
+                        
+                    ?>
                     <div class="col-lg-6">
                         <div class="single-play-post-item">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-post-1.jpg" alt="play">
@@ -794,44 +861,6 @@ get_header();
                             </div>
                             <div class="play-btn">
                                 <a class="video-popup" href="https://www.youtube.com/watch?v=HalMzk1FFM0"><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="single-play-post-item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-post-2.jpg" alt="play">
-                            <div class="single-play-post-content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h3 class="title"><a href="#">Success is not a good food failure makes you humble</a></h3>
-                            </div>
-                            <div class="trending-btn">
-                                <a href="#"><i class="fas fa-bolt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="single-play-post-item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/play-post-2.jpg" alt="play">
-                            <div class="single-play-post-content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h3 class="title"><a href="#">Success is not a good food failure makes you humble</a></h3>
-                            </div>
-                            <div class="trending-btn">
-                                <a href="#"><i class="fas fa-bolt"></i></a>
                             </div>
                         </div>
                     </div>

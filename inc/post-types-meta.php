@@ -72,10 +72,17 @@ function events_post_meta() {
       ));
 
       $cmb->add_field(array(
-      'name' => 'Hot events',
-      'desc' => 'Check if this is hot events.',
-      'id'   => 'events_hot',
-      'type' => 'checkbox',
+      'name' => 'Hot Event',
+      'desc' => 'Check if this is hot event.',
+      'id'   => 'event_hot',
+      'type' => 'select',
+      'show_option_none' => true,
+      'default'          => 'custom',
+      'options'          => array(
+          '1' => __( 'Level One', 'cmb2' ),
+          '2'   => __( 'Level Two', 'cmb2' ),
+          '3'     => __( 'Level Three', 'cmb2' ),
+      ),
       ));
 
       $cmb->add_field(array(
