@@ -1001,43 +1001,41 @@ get_header();
                             <div class="Categories-item">
                                 
                             <?php
-$custom_post_type = 'news'; // Replace 'your_custom_post_type' with the actual name of your custom post type
+                                $custom_post_type = 'news'; // Replace 'your_custom_post_type' with the actual name of your custom post type
 
-$taxonomies = get_object_taxonomies($custom_post_type, 'objects');
+                                $taxonomies = get_object_taxonomies($custom_post_type, 'objects');
 
-if ($taxonomies) {
-    echo '<ul>';
-    foreach ($taxonomies as $taxonomy) {
-        // Exclude the "tags" taxonomy
-        if ($taxonomy->name === 'post_tag') {
-            continue;
-        }
+                                if ($taxonomies) {
+                                    foreach ($taxonomies as $taxonomy) {
+                                        // Exclude the "tags" taxonomy
+                                        if ($taxonomy->name === 'post_tag') {
+                                            continue;
+                                        }
 
-        $terms = get_terms($taxonomy->name);
-        if ($terms) {
-            echo '<ul>';
-            foreach ($terms as $term) {
-                echo '<div class="item">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-1.jpg" alt="categories">
-                <div class="Categories-content">
-                    <a href="' . esc_url(get_term_link($term)) . '">
-                        <span>' . $term->name . '</span>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
-                    </a>
-                </div>
-            </div>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<li>No terms found for ' . $taxonomy->label . '</li>';
-        }
-    }
-    echo '</ul>';
-} else {
-    echo 'No taxonomies found for this post type.';
-}
-?>
-
+                                        $terms = get_terms($taxonomy->name);
+                                        if ($terms) {
+                                            foreach ($terms as $term) {
+                                                echo '<div class="item">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-1.jpg" alt="categories">
+                                                <div class="Categories-content">
+                                                    <a href="' . esc_url(get_term_link($term)) . '">
+                                                        <span>' . $term->name . '</span>
+                                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>';
+                                            }
+                                            echo '</div>';
+                                        } else {
+                                            echo '<li>No terms found for ' . $taxonomy->label . '</li>';
+                                        }
+                                    }
+                                    echo '
+                                    </div>';
+                                } else {
+                                    echo 'No taxonomies found for this post type.';
+                                }
+                            ?>
                                 
                             </div>
                             <div class="sidebar-add pt-35">
