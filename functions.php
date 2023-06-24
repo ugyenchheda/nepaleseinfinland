@@ -141,165 +141,165 @@ function li_new_class($classes, $item, $args) {
 	}
 	return $classes;
 }
-	add_filter('nav_menu_li_class', 'li_new_class', 1, 3);
+add_filter('nav_menu_li_class', 'li_new_class', 1, 3);
 
-	if ( ! function_exists( 'nepaleseinfinland_news_category' ) ) {
+if ( ! function_exists( 'nepaleseinfinland_news_category' ) ) {
 
-		// Register Custom Taxonomy
-		function nepaleseinfinland_news_category() {
-		
-			$labels = array(
-				'name'                       => _x( 'categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
-				'singular_name'              => _x( 'category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
-				'menu_name'                  => __( 'News Categories', 'nepaleseinfinland' ),
-				'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
-				'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
-				'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
-				'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
-				'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
-				'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
-				'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
-				'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
-				'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
-				'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
-				'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
-				'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
-				'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
-				'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
-				'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
-				'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
-				'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
-			);
-			$args = array(
-				'labels'                     => $labels,
-				'hierarchical'               => true,
-				'public'                     => true,
-				'show_ui'                    => true,
-				'show_admin_column'          => true,
-				'show_in_nav_menus'          => true,
-				'show_tagcloud'              => true,
-			);
-			register_taxonomy( 'news_category', array( 'news' ), $args );
-		
-		}
-		add_action( 'init', 'nepaleseinfinland_news_category', 0 );
-		
+	// Register Custom Taxonomy
+	function nepaleseinfinland_news_category() {
+	
+		$labels = array(
+			'name'                       => _x( 'categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
+			'singular_name'              => _x( 'category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
+			'menu_name'                  => __( 'News Categories', 'nepaleseinfinland' ),
+			'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
+			'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
+			'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
+			'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
+			'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
+			'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
+			'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
+			'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
+			'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
+			'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
+			'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
+			'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
+			'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
+			'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
+			'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
+			'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
+		);
+		$args = array(
+			'labels'                     => $labels,
+			'hierarchical'               => true,
+			'public'                     => true,
+			'show_ui'                    => true,
+			'show_admin_column'          => true,
+			'show_in_nav_menus'          => true,
+			'show_tagcloud'              => true,
+		);
+		register_taxonomy( 'news_category', array( 'news' ), $args );
+	
 	}
+	add_action( 'init', 'nepaleseinfinland_news_category', 0 );
+	
+}
 
-		if ( ! function_exists( 'event_taxonomy' ) ) {
+if ( ! function_exists( 'event_taxonomy' ) ) {
 
-			// Register Custom Taxonomy
-			function event_taxonomy() {
+	// Register Custom Taxonomy
+	function event_taxonomy() {
+	
+		$labels = array(
+			'name'                       => _x( 'Categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
+			'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
+			'menu_name'                  => __( 'Event Categories', 'nepaleseinfinland' ),
+			'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
+			'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
+			'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
+			'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
+			'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
+			'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
+			'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
+			'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
+			'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
+			'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
+			'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
+			'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
+			'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
+			'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
+			'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
+			'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
+		);
+		$args = array(
+			'labels'                     => $labels,
+			'hierarchical'               => true,
+			'public'                     => true,
+			'show_ui'                    => true,
+			'show_admin_column'          => true,
+			'show_in_nav_menus'          => true,
+			'show_tagcloud'              => true,
+		);
+		register_taxonomy( 'event_category', array( 'event_post_type' ), $args );
+	
+	}
+	add_action( 'init', 'event_taxonomy', 0 );
+}		
 			
-				$labels = array(
-					'name'                       => _x( 'Categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
-					'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
-					'menu_name'                  => __( 'Event Categories', 'nepaleseinfinland' ),
-					'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
-					'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
-					'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
-					'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
-					'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
-					'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
-					'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
-					'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
-					'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
-					'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
-					'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
-					'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
-					'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
-					'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
-					'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
-					'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
-					'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
-				);
-				$args = array(
-					'labels'                     => $labels,
-					'hierarchical'               => true,
-					'public'                     => true,
-					'show_ui'                    => true,
-					'show_admin_column'          => true,
-					'show_in_nav_menus'          => true,
-					'show_tagcloud'              => true,
-				);
-				register_taxonomy( 'event_category', array( 'event_post_type' ), $args );
-			
-			}
-			add_action( 'init', 'event_taxonomy', 0 );
-		}		
-			
-		if ( ! function_exists( 'uas_taxonomy' ) ) {
+if ( ! function_exists( 'uas_taxonomy' ) ) {
 
-			// Register Custom Taxonomy
-			function uas_taxonomy() {
-			
-				$labels = array(
-					'name'                       => _x( 'Categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
-					'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
-					'menu_name'                  => __( 'UAS Categories', 'nepaleseinfinland' ),
-					'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
-					'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
-					'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
-					'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
-					'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
-					'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
-					'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
-					'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
-					'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
-					'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
-					'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
-					'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
-					'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
-					'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
-					'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
-					'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
-					'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
-				);
-				$args = array(
-					'labels'                     => $labels,
-					'hierarchical'               => true,
-					'public'                     => true,
-					'show_ui'                    => true,
-					'show_admin_column'          => true,
-					'show_in_nav_menus'          => true,
-					'show_tagcloud'              => true,
-				);
-				register_taxonomy( 'uas_category', array( 'uas' ), $args );
-			
-			}
-			add_action( 'init', 'uas_taxonomy', 0 );
-			
+	// Register Custom Taxonomy
+	function uas_taxonomy() {
+	
+		$labels = array(
+			'name'                       => _x( 'Categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
+			'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
+			'menu_name'                  => __( 'UAS Categories', 'nepaleseinfinland' ),
+			'all_items'                  => __( 'All Categories', 'nepaleseinfinland' ),
+			'parent_item'                => __( 'Parent Categories', 'nepaleseinfinland' ),
+			'parent_item_colon'          => __( 'Parent Categories:', 'nepaleseinfinland' ),
+			'new_item_name'              => __( 'New Item Category', 'nepaleseinfinland' ),
+			'add_new_item'               => __( 'Add New Category', 'nepaleseinfinland' ),
+			'edit_item'                  => __( 'Edit Category', 'nepaleseinfinland' ),
+			'update_item'                => __( 'Update Category', 'nepaleseinfinland' ),
+			'view_item'                  => __( 'View Category', 'nepaleseinfinland' ),
+			'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
+			'add_or_remove_items'        => __( 'Add or remove Categories', 'nepaleseinfinland' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
+			'popular_items'              => __( 'Popular Categories', 'nepaleseinfinland' ),
+			'search_items'               => __( 'Search Categories', 'nepaleseinfinland' ),
+			'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
+			'no_terms'                   => __( 'No Categories', 'nepaleseinfinland' ),
+			'items_list'                 => __( 'Categories list', 'nepaleseinfinland' ),
+			'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
+		);
+		$args = array(
+			'labels'                     => $labels,
+			'hierarchical'               => true,
+			'public'                     => true,
+			'show_ui'                    => true,
+			'show_admin_column'          => true,
+			'show_in_nav_menus'          => true,
+			'show_tagcloud'              => true,
+		);
+		register_taxonomy( 'uas_category', array( 'uas' ), $args );
+	
+	}
+	add_action( 'init', 'uas_taxonomy', 0 );
+	
+}
+
+function event_location($latitude,$longitude) {
+	//Google Map API URL
+	$API_KEY = "AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU"; // Google Map Free API Key
+	$url = "https://maps.google.com/maps/api/geocode/json?latlng=".$latitude.",".$longitude."&key=".$API_KEY."";
+	// Send CURL Request
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+	$response = curl_exec($ch);
+	curl_close($ch);
+	$returnBody = json_decode($response);
+	// Google MAP
+	$status = $returnBody->status;
+	if($longitude||$latitude){
+		if($status == "REQUEST_DENIED"){ 
+			$result = $returnBody->error_message;
+		} else { 
+			$result = $returnBody->results[0]->formatted_address;
 		}
-
-		function event_location($latitude,$longitude) {
-			//Google Map API URL
-			$API_KEY = "AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU"; // Google Map Free API Key
-			$url = "https://maps.google.com/maps/api/geocode/json?latlng=".$latitude.",".$longitude."&key=".$API_KEY."";
-			// Send CURL Request
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-			$response = curl_exec($ch);
-			curl_close($ch);
-			$returnBody = json_decode($response);
-			// Google MAP
-			$status = $returnBody->status;
-			if($longitude||$latitude){
-				if($status == "REQUEST_DENIED"){ 
-					$result = $returnBody->error_message;
-				} else { 
-					$result = $returnBody->results[0]->formatted_address;
-				}
-				return $result;
-		}
-			}
+		return $result;
+	}
+}
 
 function remove_comment_url($arg) {
-$arg['url'] = '';
-return $arg;
+	$arg['url'] = '';
+	return $arg;
 }
  
 add_filter('comment_form_default_fields', 'remove_comment_url');
