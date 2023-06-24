@@ -693,12 +693,12 @@ get_header();
                                                 }
                                 ?>
                                 <div class="meta-date">
-                                        <span><?php 
-            $event_sdate = get_post_meta( get_the_ID(), 'event_sdate', true );
-            $event_edate = get_post_meta( get_the_ID(), 'event_edate', true );
-            echo $event_sdate; if ($event_edate) { echo " - $event_edate";}?> </span>
-                                    </div>
-                                    <?php echo '</div>
+                                    <span><?php 
+                                    $event_sdate = get_post_meta( get_the_ID(), 'event_sdate', true );
+                                    $event_edate = get_post_meta( get_the_ID(), 'event_edate', true );
+                                    echo $event_sdate; if ($event_edate) { echo " - $event_edate";}?> </span>
+                                </div>
+                                <?php echo '</div>
                                 <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
                             </div>
                             <div class="play-btn">
@@ -999,6 +999,37 @@ get_header();
                                 <a href="#">ALL SEE</a>
                             </div>
                             <div class="Categories-item">
+                                
+                            <?php
+$custom_post_type = 'news'; // Replace 'your_custom_post_type' with the actual name of your custom post type
+
+$taxonomies = get_object_taxonomies($custom_post_type, 'objects');
+
+if ($taxonomies) {
+    echo '<ul>';
+    foreach ($taxonomies as $taxonomy) {
+        // Exclude the "tags" taxonomy
+        if ($taxonomy->name === 'post_tag') {
+            continue;
+        }
+
+        $terms = get_terms($taxonomy->name);
+        if ($terms) {
+            echo '<ul>';
+            foreach ($terms as $term) {
+                echo '<li>' . $term->name . '</li>';
+            }
+            echo '</ul>';
+        } else {
+            echo '<li>No terms found for ' . $taxonomy->label . '</li>';
+        }
+    }
+    echo '</ul>';
+} else {
+    echo 'No taxonomies found for this post type.';
+}
+?>
+
                                 <div class="item">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-1.jpg" alt="categories">
                                     <div class="Categories-content">
@@ -1089,25 +1120,6 @@ get_header();
     <!--====== GO TO TOP PART ENDS ======-->
 
 
-
-
-
-
-
-
-    <!--====== PART START ======-->
-
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-">
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--====== PART ENDS ======-->
 
 
 </body>
