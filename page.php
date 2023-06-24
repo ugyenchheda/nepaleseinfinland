@@ -1017,7 +1017,15 @@ if ($taxonomies) {
         if ($terms) {
             echo '<ul>';
             foreach ($terms as $term) {
-                echo '<li>' . $term->name . '</li>';
+                echo '<div class="item">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-1.jpg" alt="categories">
+                <div class="Categories-content">
+                    <a href="' . esc_url(get_term_link($term)) . '">
+                        <span>' . $term->name . '</span>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
+                    </a>
+                </div>
+            </div>';
             }
             echo '</ul>';
         } else {
@@ -1030,60 +1038,7 @@ if ($taxonomies) {
 }
 ?>
 
-                                <div class="item">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-1.jpg" alt="categories">
-                                    <div class="Categories-content">
-                                        <a href="#">
-                                            <span>Restaurant</span>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-2.jpg" alt="categories">
-                                    <div class="Categories-content">
-                                        <a href="#">
-                                            <span>Entertainment</span>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-3.jpg" alt="categories">
-                                    <div class="Categories-content">
-                                        <a href="#">
-                                            <span>Financial</span>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-4.jpg" alt="categories">
-                                    <div class="Categories-content">
-                                        <a href="#">
-                                            <span>Business</span>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-5.jpg" alt="categories">
-                                    <div class="Categories-content">
-                                        <a href="#">
-                                            <span>Scientists</span>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-6.jpg" alt="categories">
-                                    <div class="Categories-content">
-                                        <a href="#">
-                                            <span>International’s</span>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="sidebar-add pt-35">
                                 <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ad/ad-2.jpg" alt="ad"></a>
