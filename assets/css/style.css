@@ -2565,6 +2565,8 @@ p {
   padding-bottom: 5px; }
 .Categories-post .Categories-item .item {
   position: relative;
+  max-height: 100px;
+  overflow: hidden;
   margin-bottom: 15px; }
   .Categories-post .Categories-item .item > img {
     width: 100%; }
@@ -2576,7 +2578,7 @@ p {
     height: 100%;
     width: 100%;
     background: #17222b;
-    opacity: .6; }
+    opacity: .4; }
   .Categories-post .Categories-item .item .Categories-content {
     position: absolute;
     top: 50%;
