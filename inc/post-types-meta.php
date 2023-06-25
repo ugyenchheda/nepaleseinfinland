@@ -390,3 +390,22 @@ function univeristy_study_fields()
       'type' => 'file',
   ) );
 }
+
+add_action( 'cmb2_admin_init', 'news_taxonomy_image' ); 
+function news_taxonomy_image () {
+  $cmb_term = new_cmb2_box ( array (
+    'id'                =>  'edit' ,
+    'title'             => esc_html__ ( 'Category Metabox' , 'cmb2' ),
+    'object_types'      => array ( 'term' ),
+    'taxonomies'        => array ( 'news_category' ),
+  ) );
+  $cmb_term -> add_field ( array (
+    'name' => esc_html__ ( 'Feature Image' , 'cmb2' ),
+    'desc' => esc_html__ ( 'Add feature image for branch.' , 'cmb2' ),
+    'id'    => 'news_category_thumbnail' ,
+    'type' => 'file' ,
+  ) );
+
+
+}
+
