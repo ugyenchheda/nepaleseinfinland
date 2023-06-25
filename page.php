@@ -1015,12 +1015,13 @@ get_header();
                                         $terms = get_terms($taxonomy->name);
                                         if ($terms) {
                                             foreach ($terms as $term) {
+                                                $news_taxonomy_banner = get_term_meta($term->term_id, 'news_category_thumbnail', true);
                                                 echo '<div class="item">
-                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/categories-1.jpg" alt="categories">
+                                                <img src="'.$news_taxonomy_banner.'" alt="categories">
                                                 <div class="Categories-content">
                                                     <a href="' . esc_url(get_term_link($term)) . '">
                                                         <span>' . $term->name . '</span>
-                                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="post image">
+                                                        <img src="'.get_template_directory_uri().'/assets/images/arrow.svg" alt="post image">
                                                     </a>
                                                 </div>
                                             </div>';
