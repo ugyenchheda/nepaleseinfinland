@@ -1020,7 +1020,7 @@ get_header();
                                                 <div class="Categories-content">
                                                     <a href="' . esc_url(get_term_link($term)) . '">
                                                         <span>' . $term->name . '</span>
-                                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="">
+                                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg" alt="post image">
                                                     </a>
                                                 </div>
                                             </div>';
