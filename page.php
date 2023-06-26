@@ -1016,11 +1016,13 @@ get_header();
                                         if ($terms) {
                                             foreach ($terms as $term) {
                                                 $news_taxonomy_banner = get_term_meta($term->term_id, 'news_category_thumbnail', true);
+                                                $post_count = $term->count;
                                                 echo '<div class="item">
                                                 <img src="'.$news_taxonomy_banner.'" alt="categories">
                                                 <div class="Categories-content">
                                                     <a href="' . esc_url(get_term_link($term)) . '">
-                                                        <span>' . $term->name . '</span>
+                                                        <span>' . $term->name . '<span class="post-count">(' . $post_count . ')</span></span>
+                                                        
                                                         <img src="'.get_template_directory_uri().'/assets/images/arrow.svg" alt="post image">
                                                     </a>
                                                 </div>
@@ -1028,7 +1030,7 @@ get_header();
                                             }
                                             echo '</div>';
                                         } else {
-                                            echo '<li>No terms found for ' . $taxonomy->label . '</li>';
+                                            echo '<li>No terms found for ' . $taxonomy->label .'</li>';
                                         }
                                     }
                                     echo '

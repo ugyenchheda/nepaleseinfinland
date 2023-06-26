@@ -395,6 +395,11 @@ a.home-event:hover {
   background: #000 !important;
   transition: ease 1s;
 }
+span.post-count {
+  padding-left: 5px;
+  font-style: italic;
+  font-size: 17px !important;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
