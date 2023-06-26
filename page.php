@@ -1021,7 +1021,7 @@ get_header();
                                                 <img src="'.$news_taxonomy_banner.'" alt="categories">
                                                 <div class="Categories-content">
                                                     <a href="' . esc_url(get_term_link($term)) . '">
-                                                        <span>' . $term->name . '<span class="post-count">(' . $post_count . ')</span></span>
+                                                        <span>' . $term->name . '<b class="post-count">(' . $post_count . ')</b></span>
                                                         
                                                         <img src="'.get_template_directory_uri().'/assets/images/arrow.svg" alt="post image">
                                                     </a>
