@@ -231,12 +231,12 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 	   );
 
 
-	/*Archive Page*/
+	/*Adv*/
 	$wp_customize->add_section(
-		'section_archieve_page' ,
+		'section_banner' ,
 			array(
-				'title'       	=> __( 'Archive Page Setting', 'nepaleseinfinland' ),
-				'description' 	=> __( 'Setup Archive Page.', 'nepaleseinfinland' ),
+				'title'       	=> __( 'Adv Banners', 'nepaleseinfinland' ),
+				'description' 	=> __( 'Add Adv Banners.', 'nepaleseinfinland' ),
 				'panel'			=> 'nepaleseinfinland_setting_panel',
 			)
 	   );
@@ -253,8 +253,8 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 			'archive_banner_image',
 			array(
 				'label'    => __( 'Upload Image Archive Page', 'nepaleseinfinland' ),
-				'section'  => 'section_archieve_page',
-				'settings' => 'archive_banner',
+				'section'  => 'section_banner',
+				'settings' => 'adv_banner',
 			)
 		)
 
@@ -269,11 +269,54 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 		'archive_header',
 			array(
 			 'label'		=> __('Add Title for archive page.', 'nepaleseinfinland'),
-			 'section' 	=> 'section_archieve_page',
+			 'section' 	=> 'section_banner',
 			 'type' 		=> 'textarea',
 			 'settings'	=> 'archive_header',
 			)
 	);
+		/*Archive Page*/
+		$wp_customize->add_section(
+			'section_banner' ,
+				array(
+					'title'       	=> __( 'Archive Page Setting', 'nepaleseinfinland' ),
+					'description' 	=> __( 'Setup Archive Page.', 'nepaleseinfinland' ),
+					'panel'			=> 'nepaleseinfinland_setting_panel',
+				)
+		   );
+		   $wp_customize->add_setting(
+			'adv_banner',
+			array(
+				'default' 			=> get_template_directory_uri() . '/images/pagebanner-img.jpg',
+			)
+		);
+	
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				'adv_banner_image',
+				array(
+					'label'    => __( 'Upload Image Archive Page', 'nepaleseinfinland' ),
+					'section'  => 'section_banner',
+					'settings' => 'adv_banner',
+				)
+			)
+	
+		);
+		$wp_customize->add_setting(
+			'archive_header',
+				array(
+				 'default' 			=>  __( 'Archive Page', 'nepaleseinfinland' ),
+			 )
+		);
+		$wp_customize->add_control(
+			'archive_header',
+				array(
+				 'label'		=> __('Add Title for archive page.', 'nepaleseinfinland'),
+				 'section' 	=> 'section_banner',
+				 'type' 		=> 'textarea',
+				 'settings'	=> 'archive_header',
+				)
+		);
 	/* Footer Section */
 	$wp_customize->add_section(
 	 'section_footer' ,
