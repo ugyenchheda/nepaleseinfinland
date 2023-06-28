@@ -61,227 +61,91 @@ get_header();
 
     <!--====== POST PART ENDS ======-->
 
-    <!--====== POST GALLERY PART START ======-->
+    <!--====== Video Blogs Presentation ======-->
 
     <div class="post__gallery__area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="post_gallery_slider">
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
+                        
+                    <?php
+                        $args = array(
+                            'post_type' => 'video_blogs', 
+                            'meta_key' => 'news_hot',
+                            'orderby' => 'meta_value_num',
+                            'order' => 'DESC', 
+                            'meta_query' => array(
+                                'relation' => 'OR',
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '3',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '2',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '1',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                            ),
+                            'posts_per_page' => 5,
+                        );
+                        
+                        $query = new WP_Query($args);
+                        if ($query->have_posts()) {
+                            while ($query->have_posts()) {
+                                $query->the_post();
+                                echo '
+                                <div class="post_gallery_play">
+                                    <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
+                                    <div class="post__gallery_play_content">
+                                        <div class="post-meta">';
+                                            $taxonomies = get_object_taxonomies('video_blogs'); // Replace 'post' with your desired post type
+
+                                            foreach ($taxonomies as $taxonomy) {
+                                                if (!in_array($taxonomy, ['video_blogs_category', 'post_tag'])) {
+                                                    $terms = get_the_terms($post->ID, $taxonomy);
+                                                    if ($terms && !is_wp_error($terms)) {
+                                                        echo '<div class="meta-categories">';
+                                                        foreach ($terms as $term) {
+                                                            echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                        }
+                                                        echo '</div>';
+                                                    }
+                                                }
+                                            }
+                                    echo '<div class="meta-date">
+                                                <span>' . get_the_date('F j, Y') . '</span>
+                                            </div>
+                                        </div>
+                                        
+                                <h3 class="title"><a class="video-popup" href="'.get_post_meta($post->ID,'video_link', true).'" a>' . get_the_title() . '</a></h3>
+                                <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p></div>
+                                    <div class="post_play_btn">
+                                        <a class="video-popup" href="'.get_post_meta($post->ID,'video_link', true).'" a><i class="fas fa-play"></i></a>
                                     </div>
                                 </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
                             </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_gallery_play">
-                            <div class="bg-image"></div>
-                            <div class="post__gallery_play_content">
-                                <div class="post-meta">
-                                    <div class="meta-categories">
-                                        <a href="#">TECHNOLOGY</a>
-                                    </div>
-                                    <div class="meta-date">
-                                        <span>March 26, 2020</span>
-                                    </div>
-                                </div>
-                                <h2 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h2>
-                                <p>The property, complete with a 30-seat screening room, a 100-seat amphitheater and a swimming pond with sandy beach and outdoor shower…</p>
-                            </div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post_gallery_inner_slider">
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-1.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-2.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-3.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-4.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-5.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-6.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-7.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-2.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-3.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-post/item-4.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
+                            <div class="post_gallery_inner_slider">
+                                <div class="item">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
+                            </div>';
+                            }
+                        } else {
+                            // No posts found
+                        }
+                        
+                        // Restore original post data
+                        wp_reset_postdata();
+                        
+                    ?>
                 <div class="col-lg-4">
                     <div class="post_gallery_sidebar">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -464,7 +328,7 @@ get_header();
                                             </div>
                                             <div class="trending-news-content">
                                                 <div class="post-meta">';
-                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                                                $taxonomies = get_object_taxonomies('news');
 
                                                 foreach ($taxonomies as $taxonomy) {
                                                     if (!in_array($taxonomy, ['category', 'post_tag'])) {
@@ -520,7 +384,7 @@ get_header();
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">';?>
                                                <?php 
-                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                                                $taxonomies = get_object_taxonomies('news'); 
 
                                                 foreach ($taxonomies as $taxonomy) {
                                                     if (!in_array($taxonomy, ['category', 'post_tag'])) {
