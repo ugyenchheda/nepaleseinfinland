@@ -987,9 +987,15 @@ get_header();
                             </div>
                         </div>
                     </div>
-                    <div class="post-add mt-30">
-                        <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ad/ad-1.png" alt="ad"></a>
-                    </div>
+                    
+                    <?php 
+                                $footer_adv_link = get_theme_mod('footer_adv_link');
+                                $adv_banner_footer = get_theme_mod('adv_banner_footer', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
+                                if(!empty($adv_banner_footer)) {?>
+                                    <div class="sidebar-add mt-30">
+                                        <a href="<?php echo $footer_adv_link; ?>"><img src="<?php echo $adv_banner_footer ; ?>"  class="img-responsive"></a>
+                                    </div>
+                                <?php }; ?>
                 </div>
                 <div class="col-lg-4">
                     <div class="all-post-sidebar">
@@ -1041,13 +1047,14 @@ get_header();
                             ?>
                                 
                             </div>
-                            <?php $adv_link = get_theme_mod('adv_banner_link');
-                            $adv_banner = get_theme_mod('adv_banner', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
-                            if(!empty($adv_banner)) {?>
-                                <div class="sidebar-add pt-35">
-                                    <a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>"  class="img-responsive"></a>
-                                </div>
-                            <?php }; ?>
+                            <?php 
+                                $adv_link = get_theme_mod('adv_banner_link');
+                                $adv_banner = get_theme_mod('adv_banner', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
+                                if(!empty($adv_banner)) {?>
+                                    <div class="sidebar-add pt-35">
+                                        <a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>"  class="img-responsive"></a>
+                                    </div>
+                                <?php }; ?>
                         </div>
                     </div>
                 </div>

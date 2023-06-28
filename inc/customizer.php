@@ -249,7 +249,8 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 				'panel'			=> 'nepaleseinfinland_setting_panel',
 			)
 		);
-		   	/*header Adv section*/
+		   	
+	/*header Adv section*/
 	$wp_customize->add_setting(
 		'adv_banner_head',
 		array(
@@ -290,7 +291,7 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 				'default' 			=> get_template_directory_uri() . '/images/ad/ad-2.jpg',
 			)
 		);
-	
+	// adv banner for sidebar
 		$wp_customize->add_control(
 			new WP_Customize_Image_Control(
 				$wp_customize,
@@ -318,6 +319,48 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 				 'settings'	=> 'adv_banner_link',
 				)
 		);
+
+// adv banner for footer
+$wp_customize->add_setting(
+	'adv_banner_footer',
+	array(
+		'default'			=> get_template_directory_uri() . '/assets/images/ad/ad-1.png',
+	)
+   );
+
+   $wp_customize->add_control(
+   new WP_Customize_Image_Control(
+	   $wp_customize,
+	   'adv_banner_footer',
+		   array(
+			   'label'    => __( 'Footer Adv Banner', 'nepaleseinfinland' ),
+			   'section'  => 'section_adv_banner',
+			   'settings' => 'adv_banner_footer',
+		   )
+	   )
+   );
+   
+   $wp_customize->add_setting(
+	   'footer_adv_link',
+	   array(
+		   'default'			=> '#',
+	   )
+  );
+   $wp_customize->add_control(
+	   'header_text',
+		   array(
+			'label'		=> __('Link to Footer Adv.', 'nepaleseinfinland'),
+			'section' 	=> 'section_adv_banner',
+			'type' 		=> 'text',
+			'settings'	=> 'footer_adv_link',
+		   )
+   );
+	   $wp_customize->add_setting(
+		'adv_banner',
+		array(
+			'default' 			=> get_template_directory_uri() . '/images/ad/ad-2.jpg',
+		)
+	);
 
 	/* Footer Section */
 	$wp_customize->add_section(
