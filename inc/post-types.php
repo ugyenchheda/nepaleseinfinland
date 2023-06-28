@@ -170,3 +170,59 @@ function event_post_type() {
 
 }
 add_action( 'init', 'event_post_type', 0 );
+
+// Register Custom Post Type
+function video_blogs() {
+
+	$labels = array(
+		'name'                  => _x( 'Video Blogs', 'Post Type General Name', 'nepaleseinfinland' ),
+		'singular_name'         => _x( 'Video Blog', 'Post Type Singular Name', 'nepaleseinfinland' ),
+		'menu_name'             => __( 'Video Blogs', 'nepaleseinfinland' ),
+		'name_admin_bar'        => __( 'Video Blogs', 'nepaleseinfinland' ),
+		'archives'              => __( 'Video Blogs Archives', 'nepaleseinfinland' ),
+		'attributes'            => __( 'Video Blogs Attributes', 'nepaleseinfinland' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'nepaleseinfinland' ),
+		'all_items'             => __( 'All Video Blogs', 'nepaleseinfinland' ),
+		'add_new_item'          => __( 'Add New Video Blog', 'nepaleseinfinland' ),
+		'add_new'               => __( 'Add New Video Blog', 'nepaleseinfinland' ),
+		'new_item'              => __( 'New Video Blog', 'nepaleseinfinland' ),
+		'edit_item'             => __( 'Edit Video Blog', 'nepaleseinfinland' ),
+		'update_item'           => __( 'Update Video Blog', 'nepaleseinfinland' ),
+		'view_item'             => __( 'View Video Blog', 'nepaleseinfinland' ),
+		'view_items'            => __( 'View Video Blogs', 'nepaleseinfinland' ),
+		'search_items'          => __( 'Search Video Blog', 'nepaleseinfinland' ),
+		'not_found'             => __( 'Not found', 'nepaleseinfinland' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'nepaleseinfinland' ),
+		'featured_image'        => __( 'Featured Image', 'nepaleseinfinland' ),
+		'set_featured_image'    => __( 'Set featured image', 'nepaleseinfinland' ),
+		'remove_featured_image' => __( 'Remove featured image', 'nepaleseinfinland' ),
+		'use_featured_image'    => __( 'Use as featured image', 'nepaleseinfinland' ),
+		'insert_into_item'      => __( 'Insert into Video Blog', 'nepaleseinfinland' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Video Blog', 'nepaleseinfinland' ),
+		'items_list'            => __( 'Video Blog list', 'nepaleseinfinland' ),
+		'items_list_navigation' => __( 'Video Blogs list navigation', 'nepaleseinfinland' ),
+		'filter_items_list'     => __( 'Filter Video Blog list', 'nepaleseinfinland' ),
+	);
+	$args = array(
+		'label'                 => __( 'Video Blog', 'nepaleseinfinland' ),
+		'description'           => __( 'For adding video blogs', 'nepaleseinfinland' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments' ),
+		'taxonomies'            => array( 'video_category'),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'video_blogs', $args );
+
+}
+add_action( 'init', 'video_blogs', 0 );

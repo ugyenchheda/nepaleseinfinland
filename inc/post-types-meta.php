@@ -193,6 +193,8 @@ function events_post_meta() {
       'api_key' => 'AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU', // Google API Key
     ) );
 }
+
+
 add_action('cmb2_admin_init', 'uas_post_meta');
 function uas_post_meta() {
       $cmb = new_cmb2_box(array(
@@ -331,6 +333,8 @@ function uas_post_meta() {
       ],
     );
 }
+
+
 add_action('cmb2_admin_init', 'univeristy_study_fields');
 function univeristy_study_fields()
 {
@@ -390,6 +394,45 @@ function univeristy_study_fields()
       'type' => 'file',
   ) );
 }
+
+add_action('cmb2_admin_init', 'video_blogs_meta');
+function video_blogs_meta()
+{
+
+    $cmb = new_cmb2_box(array(
+        'id' => 'vb',
+        'title' => __('More Info:', 'cmb2'),
+        'object_types' => array('video_blogs'),
+        'context' => 'normal',
+        'priority' => 'high',
+        'show_names' => true,
+        'closed' => false,
+
+    ));
+
+    $cmb->add_field(array(
+		'name' => 'Hot News',
+		'desc' => 'Check if this is hot news.',
+		'id'   => 'news_hot',
+    'type' => 'select',
+    'show_option_none' => true,
+    'default'          => 'custom',
+    'options'          => array(
+        '1' => __( 'Level One', 'cmb2' ),
+        '2'   => __( 'Level Two', 'cmb2' ),
+        '3'     => __( 'Level Three', 'cmb2' ),
+    ),
+    ));
+
+    $cmb->add_field(array(
+		'name' => 'Video Link',
+		'desc' => 'Add the the link to video.',
+		'id'   => 'video_link',
+		'type' => 'text',
+    ));
+
+}
+
 
 add_action( 'cmb2_admin_init', 'news_taxonomy_image' ); 
 function news_taxonomy_image () {

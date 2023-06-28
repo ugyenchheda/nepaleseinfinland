@@ -270,7 +270,47 @@ if ( ! function_exists( 'uas_taxonomy' ) ) {
 	add_action( 'init', 'uas_taxonomy', 0 );
 	
 }
-
+if ( ! function_exists( 'video_blogs_taxonomy' ) ) {
+	// Register Custom Taxonomy
+	function video_blogs_taxonomy() {
+	
+		$labels = array(
+			'name'                       => _x( 'Video Blog Categories', 'Taxonomy General Name', 'nepaleseinfinland' ),
+			'singular_name'              => _x( 'Video Blog Category', 'Taxonomy Singular Name', 'nepaleseinfinland' ),
+			'menu_name'                  => __( 'Video Blog Categories', 'nepaleseinfinland' ),
+			'all_items'                  => __( 'All Video Blog Categories', 'nepaleseinfinland' ),
+			'parent_item'                => __( 'Parent Video Blog Categories', 'nepaleseinfinland' ),
+			'parent_item_colon'          => __( 'Parent Video Blog Categories:', 'nepaleseinfinland' ),
+			'new_item_name'              => __( 'New Item Video Blog Category', 'nepaleseinfinland' ),
+			'add_new_item'               => __( 'Add New Video Blog Category', 'nepaleseinfinland' ),
+			'edit_item'                  => __( 'Edit Video Blog Category', 'nepaleseinfinland' ),
+			'update_item'                => __( 'Update Video Blog Category', 'nepaleseinfinland' ),
+			'view_item'                  => __( 'View Video Blog Category', 'nepaleseinfinland' ),
+			'separate_items_with_commas' => __( 'Separate Categories with commas', 'nepaleseinfinland' ),
+			'add_or_remove_items'        => __( 'Add or remove Video Blog Categories', 'nepaleseinfinland' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'nepaleseinfinland' ),
+			'popular_items'              => __( 'Popular Video Blog Categories', 'nepaleseinfinland' ),
+			'search_items'               => __( 'Search Video Blog Categories', 'nepaleseinfinland' ),
+			'not_found'                  => __( 'Not Found', 'nepaleseinfinland' ),
+			'no_terms'                   => __( 'No Video Blog Categories', 'nepaleseinfinland' ),
+			'items_list'                 => __( 'Video Blog Categories list', 'nepaleseinfinland' ),
+			'items_list_navigation'      => __( 'Items list navigation', 'nepaleseinfinland' ),
+		);
+		$args = array(
+			'labels'                     => $labels,
+			'hierarchical'               => true,
+			'public'                     => true,
+			'show_ui'                    => true,
+			'show_admin_column'          => true,
+			'show_in_nav_menus'          => true,
+			'show_tagcloud'              => true,
+		);
+		register_taxonomy( 'video_blogs_category', array( 'video_blogs' ), $args );
+	
+	}
+	add_action( 'init', 'video_blogs_taxonomy', 0 );
+	
+}
 function event_location($latitude,$longitude) {
 	//Google Map API URL
 	$API_KEY = "AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU"; // Google Map Free API Key
