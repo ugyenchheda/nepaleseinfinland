@@ -103,40 +103,26 @@ get_header();
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-                                echo '
+                                echo ' 
                                 <div class="post_gallery_play">
-                                    <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
-                                    <div class="post__gallery_play_content">
-                                        <div class="post-meta">';
-                                            $taxonomies = get_object_taxonomies('video_blogs'); // Replace 'post' with your desired post type
-
-                                            foreach ($taxonomies as $taxonomy) {
-                                                if (!in_array($taxonomy, ['video_blogs_category', 'post_tag'])) {
-                                                    $terms = get_the_terms($post->ID, $taxonomy);
-                                                    if ($terms && !is_wp_error($terms)) {
-                                                        echo '<div class="meta-categories">';
-                                                        foreach ($terms as $term) {
-                                                            echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                        }
-                                                        echo '</div>';
-                                                    }
-                                                }
-                                            }
-                                    echo '<div class="meta-date">
-                                                <span>' . get_the_date('F j, Y') . '</span>
-                                            </div>
+                                <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
+                                <div class="post__gallery_play_content">
+                                    <div class="post-meta">';
+                                    $terms = get_the_terms($post->ID, 'video_blogs_category'); // Replace 'post' with your desired post type
+                                    if ($terms && !is_wp_error($terms)) {
+                                        echo '<div class="meta-categories">';
+                                        foreach ($terms as $term) {
+                                            echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                        }
+                                        echo '</div>';
+                                    }
+                                echo '<div class="meta-date">
+                                            <span>' . get_the_date('F j, Y') . '</span>
                                         </div>
-                                        
-                                <h3 class="title"><a class="video-popup" href="'.get_post_meta($post->ID,'video_link', true).'" a>' . get_the_title() . '</a></h3>
-                                <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p></div>
-                                    <div class="post_play_btn">
-                                        <a class="video-popup" href="'.get_post_meta($post->ID,'video_link', true).'" a><i class="fas fa-play"></i></a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="post_gallery_inner_slider">
-                                <div class="item">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
-                            </div>';
+                                    
+                            <h3 class="title"><a class="video-popup" href="'.get_post_meta($post->ID,'video_link', true).'" a>' . get_the_title() . '</a></h3>
+                            <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p></div></div>';
                             }
                         } else {
                             // No posts found
@@ -146,6 +132,57 @@ get_header();
                         wp_reset_postdata();
                         
                     ?>
+                </div>
+                <div class="post_gallery_inner_slider">
+                <?php
+                        $args = array(
+                            'post_type' => 'video_blogs', 
+                            'meta_key' => 'news_hot',
+                            'orderby' => 'meta_value_num',
+                            'order' => 'DESC', 
+                            'meta_query' => array(
+                                'relation' => 'OR',
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '3',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '2',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                                array(
+                                    'key' => 'news_hot',
+                                    'value' => '1',
+                                    'compare' => '=',
+                                    'type' => 'NUMERIC',
+                                ),
+                            ),
+                            'posts_per_page' => 5,
+                        );
+                        
+                        $query = new WP_Query($args);
+                        if ($query->have_posts()) {
+                            while ($query->have_posts()) {
+                                $query->the_post();
+                                echo ' 
+                    <div class="item">
+                    ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
+                    </div>';
+                            }
+                        } else {
+                            // No posts found
+                        }
+                        
+                        // Restore original post data
+                        wp_reset_postdata();
+                        
+                    ?>
+                </div>
+                </div>
                 <div class="col-lg-4">
                     <div class="post_gallery_sidebar">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
