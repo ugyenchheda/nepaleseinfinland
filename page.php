@@ -1041,9 +1041,13 @@ get_header();
                             ?>
                                 
                             </div>
-                            <div class="sidebar-add pt-35">
-                                <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ad/ad-2.jpg" alt="ad"></a>
-                            </div>
+                            <?php $adv_link = get_theme_mod('adv_banner_link');
+                            $adv_banner = get_theme_mod('adv_banner', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
+                            if(!empty($adv_banner)) {?>
+                                <div class="sidebar-add pt-35">
+                                    <a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>"  class="img-responsive"></a>
+                                </div>
+                            <?php }; ?>
                         </div>
                     </div>
                 </div>

@@ -193,50 +193,15 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 			)
 	);
 	
-	/*Adv section*/
-	$wp_customize->add_setting(
-		'adv_banner',
-		array(
-			'default'			=> get_template_directory_uri() . '/assets/images/ad/ad-1.png',
-		)
-	   );
-   
-	   $wp_customize->add_control(
-	   new WP_Customize_Image_Control(
-		   $wp_customize,
-		   'adv_banner',
-			   array(
-				   'label'    => __( 'Header Advertisement Banner', 'nepaleseinfinland' ),
-				   'section'  => 'section_headersetting',
-				   'settings' => 'adv_banner',
-			   )
-		   )
-	   );
-	   
-	   /* Header Text*/
-	   $wp_customize->add_setting(
-		   'link_to_adv',
-		   array(
-			   'default'			=> '#',
-		   )
-	  );
-	   $wp_customize->add_control(
-		   'header_text',
-			   array(
-				'label'		=> __('Link to ad.', 'nepaleseinfinland'),
-				'section' 	=> 'section_headersetting',
-				'type' 		=> 'text',
-				'settings'	=> 'link_to_adv',
-			   )
-	   );
 
 
-	/*Adv*/
+
+	/*Archive Page*/
 	$wp_customize->add_section(
-		'section_banner' ,
+		'section_archieve_page' ,
 			array(
-				'title'       	=> __( 'Adv Banners', 'nepaleseinfinland' ),
-				'description' 	=> __( 'Add Adv Banners.', 'nepaleseinfinland' ),
+				'title'       	=> __( 'Archive Page Setting', 'nepaleseinfinland' ),
+				'description' 	=> __( 'Setup Archive Page.', 'nepaleseinfinland' ),
 				'panel'			=> 'nepaleseinfinland_setting_panel',
 			)
 	   );
@@ -253,8 +218,8 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 			'archive_banner_image',
 			array(
 				'label'    => __( 'Upload Image Archive Page', 'nepaleseinfinland' ),
-				'section'  => 'section_banner',
-				'settings' => 'adv_banner',
+				'section'  => 'section_archieve_page',
+				'settings' => 'archive_banner',
 			)
 		)
 
@@ -269,54 +234,91 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 		'archive_header',
 			array(
 			 'label'		=> __('Add Title for archive page.', 'nepaleseinfinland'),
-			 'section' 	=> 'section_banner',
+			 'section' 	=> 'section_archieve_page',
 			 'type' 		=> 'textarea',
 			 'settings'	=> 'archive_header',
 			)
 	);
-		/*Archive Page*/
-		$wp_customize->add_section(
-			'section_banner' ,
-				array(
-					'title'       	=> __( 'Archive Page Setting', 'nepaleseinfinland' ),
-					'description' 	=> __( 'Setup Archive Page.', 'nepaleseinfinland' ),
-					'panel'			=> 'nepaleseinfinland_setting_panel',
-				)
-		   );
+
+	/*adv banner */
+	$wp_customize->add_section(
+		'section_adv_banner' ,
+			array(
+				'title'       	=> __( 'Adv Banner Setting', 'nepaleseinfinland' ),
+				'description' 	=> __( 'Setup Adv Banner.', 'nepaleseinfinland' ),
+				'panel'			=> 'nepaleseinfinland_setting_panel',
+			)
+		);
+		   	/*header Adv section*/
+	$wp_customize->add_setting(
+		'adv_banner_head',
+		array(
+			'default'			=> get_template_directory_uri() . '/assets/images/ad/ad-1.png',
+		)
+	   );
+   
+	   $wp_customize->add_control(
+	   new WP_Customize_Image_Control(
+		   $wp_customize,
+		   'adv_banner_head',
+			   array(
+				   'label'    => __( 'Header Advertisement Banner', 'nepaleseinfinland' ),
+				   'section'  => 'section_adv_banner',
+				   'settings' => 'adv_banner_head',
+			   )
+		   )
+	   );
+	   
+	   $wp_customize->add_setting(
+		   'link_to_adv',
+		   array(
+			   'default'			=> '#',
+		   )
+	  );
+	   $wp_customize->add_control(
+		   'header_text',
+			   array(
+				'label'		=> __('Link to Header Adv.', 'nepaleseinfinland'),
+				'section' 	=> 'section_adv_banner',
+				'type' 		=> 'text',
+				'settings'	=> 'link_to_adv',
+			   )
+	   );
 		   $wp_customize->add_setting(
 			'adv_banner',
 			array(
-				'default' 			=> get_template_directory_uri() . '/images/pagebanner-img.jpg',
+				'default' 			=> get_template_directory_uri() . '/images/ad/ad-2.jpg',
 			)
 		);
 	
 		$wp_customize->add_control(
 			new WP_Customize_Image_Control(
 				$wp_customize,
-				'adv_banner_image',
+				'adv_banner_image_control',
 				array(
-					'label'    => __( 'Upload Image Archive Page', 'nepaleseinfinland' ),
-					'section'  => 'section_banner',
+					'label'    => __( 'Upload Image Adv For Sidebar', 'nepaleseinfinland' ),
+					'section'  => 'section_adv_banner',
 					'settings' => 'adv_banner',
 				)
 			)
 	
 		);
 		$wp_customize->add_setting(
-			'archive_header',
+			'adv_banner_link',
 				array(
-				 'default' 			=>  __( 'Archive Page', 'nepaleseinfinland' ),
+				 'default' 			=>  __( '#', 'nepaleseinfinland' ),
 			 )
 		);
 		$wp_customize->add_control(
-			'archive_header',
+			'adv_banner_link',
 				array(
-				 'label'		=> __('Add Title for archive page.', 'nepaleseinfinland'),
-				 'section' 	=> 'section_banner',
-				 'type' 		=> 'textarea',
-				 'settings'	=> 'archive_header',
+				 'label'		=> __('Add link to the adv.', 'nepaleseinfinland'),
+				 'section' 	=> 'section_adv_banner',
+				 'type' 		=> 'text',
+				 'settings'	=> 'adv_banner_link',
 				)
 		);
+
 	/* Footer Section */
 	$wp_customize->add_section(
 	 'section_footer' ,

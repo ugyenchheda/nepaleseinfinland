@@ -127,7 +127,7 @@
 					<div class="header-centerbar-ad">
 						
 					<?php $adv_link = get_theme_mod('link_to_adv');
-					$adv_banner = get_theme_mod('adv_banner', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
+					$adv_banner = get_theme_mod('adv_banner_head', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
 					?>
 						<a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>"  class="img-responsive"></a>
 					</div>
