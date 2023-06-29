@@ -319,7 +319,7 @@ get_header();
     <section class="trending-news-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="section-title">
                         <h3 class="title">Trending News</h3>
                     </div>
@@ -351,14 +351,14 @@ get_header();
                                     'type' => 'NUMERIC',
                                 ),
                             ),
-                            'posts_per_page' => 5,
+                            'posts_per_page' => 6,
                         );
                         
                         $query = new WP_Query($args);
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-                                echo '<div class="col-lg-6">
+                                echo '<div class="col-lg-3 col-md-3">
                                         <div class="trending-news-item">
                                             <div class="trending-news-thumb">
                                                 ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
@@ -414,7 +414,7 @@ get_header();
                             while ($query->have_posts()) {
                                 $query->the_post();
                                 echo '
-                                <div class="col-lg-6 col-md-6">
+                                <div class="col-lg-4 col-md-4">
                                     <div class="trending-news-post-items">
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
@@ -456,72 +456,6 @@ get_header();
                         wp_reset_postdata();
                         
                     ?>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trending-right-sidebar">
-                        <div class="trending-most-view mt-25">
-                            <div class="section-title">
-                                <h3 class="title">Most Interacted News</h3>
-                            </div>
-                        </div>
-                        <div class="trending-sidebar-slider">
-                            <div class="post_gallery_items"><?php
-                            $args = array(
-                                'post_type'      => 'news', // Change 'post' to your desired post type if needed
-                                'posts_per_page' => 5,     // Adjust the number of posts you want to retrieve
-                                'orderby'        => 'comment_count',
-                            );
-                            
-                            $query = new WP_Query($args);
-                            
-                            if ($query->have_posts()) {
-                                $count = 1;
-                                while ($query->have_posts()) {
-                                    $query->the_post();
-                                    // Output the post title or perform other actions
-                                    echo '
-                                    <div class="gallery_item gallery_item-style-2">
-                                        <div class="gallery_item_thumb">
-                                        ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
-                                            <div class="icon"><i class="fas fa-star"></i></div>
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                            ';?>
-                                            <?php 
-                                             $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
-
-                                             foreach ($taxonomies as $taxonomy) {
-                                                 if (!in_array($taxonomy, ['category', 'post_tag'])) {
-                                                     $terms = get_the_terms(get_the_ID(), $taxonomy);
-                                                     if ($terms && !is_wp_error($terms)) {
-                                                         echo '<div class="meta-categories">';
-                                                         foreach ($terms as $term) {
-                                                             echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                         }
-                                                         echo '</div>';
-                                                     }
-                                                 }
-                                             }
-                                             echo '
-                                                <div class="meta-date">
-                                                    <span>' . get_the_date('F j, Y') . '</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
-                                            <span>'.$count++.'</span>
-                                        </div>
-                                    </div>';
-                                }
-                            } else {
-                                echo 'No posts found.';
-                            }
-                            
-                            wp_reset_postdata();
-                            ?>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
