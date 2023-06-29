@@ -777,15 +777,6 @@ get_header();
                             </div>
                         </div>
                     </div>
-                    
-                    <?php 
-                                $footer_adv_link = get_theme_mod('footer_adv_link');
-                                $adv_banner_footer = get_theme_mod('adv_banner_footer', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
-                                if(!empty($adv_banner_footer)) {?>
-                                    <div class="sidebar-add mt-30">
-                                        <a href="<?php echo $footer_adv_link; ?>"><img src="<?php echo $adv_banner_footer ; ?>"  class="img-responsive"></a>
-                                    </div>
-                                <?php }; ?>
                 </div>
                 <div class="col-lg-4">
                     <div class="all-post-sidebar">
@@ -847,6 +838,16 @@ get_header();
                                 <?php }; ?>
                         </div>
                     </div>
+                    
+                    
+                    <?php 
+                                $footer_adv_link = get_theme_mod('footer_adv_link');
+                                $adv_banner_footer = get_theme_mod('adv_banner_footer', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
+                                if(!empty($adv_banner_footer)) {?>
+                                    <div class="sidebar-add mt-30">
+                                        <a href="<?php echo $footer_adv_link; ?>"><img src="<?php echo $adv_banner_footer ; ?>"  class="img-responsive"></a>
+                                    </div>
+                                <?php }; ?>
                 </div>
             </div>
         </div>
