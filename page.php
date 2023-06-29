@@ -96,7 +96,7 @@ get_header();
                                     'type' => 'NUMERIC',
                                 ),
                             ),
-                            'posts_per_page' => 5,
+                            'posts_per_page' => 10,
                         );
                         
                         $query = new WP_Query($args);
@@ -122,7 +122,10 @@ get_header();
                                     </div>
                                     
                             <h3 class="title"><a class="video-popup" href="'.get_post_meta($post->ID,'video_link', true).'" a>' . get_the_title() . '</a></h3>
-                            <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p></div></div>';
+                            <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p></div>
+                            <div class="post_play_btn">
+                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
+                            </div></div>';
                             }
                         } else {
                             // No posts found
