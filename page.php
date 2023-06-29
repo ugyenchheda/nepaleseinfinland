@@ -406,7 +406,7 @@ get_header();
                         $args = array(
                             'post_type' => 'news', // Replace 'your_custom_post_type' with the actual name of your custom post type
                             'meta_key' => 'news_hot',
-                            'posts_per_page' => 5,
+                            'posts_per_page' => 6,
                         );
                         
                         $query = new WP_Query($args);
@@ -414,7 +414,7 @@ get_header();
                             while ($query->have_posts()) {
                                 $query->the_post();
                                 echo '
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-6 col-md-6">
                                     <div class="trending-news-post-items">
                                         <div class="gallery_item">
                                             <div class="gallery_item_thumb">
