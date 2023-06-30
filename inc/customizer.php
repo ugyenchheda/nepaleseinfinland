@@ -107,7 +107,7 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'news_number',
 			array(
-			 'label'		=> __('Select total news to display:', 'nepaleseinfinland'),
+			 'label'		=> __('Select total news to display on the top bar:', 'nepaleseinfinland'),
 			 'section' 	=> 'section_headersetting',
 			 'type' 		=> 'text',
 			 'settings'	=> 'news_number',
@@ -456,6 +456,96 @@ $wp_customize->add_setting(
 			 'settings'	=> 'cookies_policy_link',
 			)
 	);
+
+
+
+
+
+	//News feed to display
+
+	/* Custom codes for customizer
+	.........................................  */
+
+	$wp_customize->add_panel('nepaleseinfinland_setting_panel', array(
+		'capability' 		=> 'edit_theme_options',
+		'theme_supports' 	=> '',
+		'title' 			=> __('Nepalese In Finland Settings', 'nepaleseinfinland'),
+		'description' 		=> __('Setup website Settings', 'nepaleseinfinland'),
+		'priority' 			=> 12,
+));
+
+
+$wp_customize->add_section(
+'section_newslist' ,
+array(
+	'title'       	=> __( 'Homepage News', 'nepaleseinfinland' ),
+	'description' 	=> __( 'Setup Homepage News.', 'nepaleseinfinland' ),
+	'panel'			=> 'nepaleseinfinland_setting_panel',
+)
+);
+
+$wp_customize->add_setting(
+'news_title',
+array(
+	'default'			=> 'Homepage News List',
+)
+);
+$wp_customize->add_control(
+'news_title',
+	array(
+	 'label'		=> __('Title for News', 'nepaleseinfinland'),
+	 'section' 	=> 'section_newslist',
+	 'type' 		=> 'text',
+	 'settings'	=> 'news_title',
+	)
+);
+
+$terms = get_terms(array(
+'taxonomy'=> 'news_category',
+'hide_empty'=> false,
+));
+$cats = array();
+$i = 0;
+foreach($terms as $category){
+$cats[$category->term_id] = $category->name;
+}
+
+$wp_customize->add_setting('news_highlight', 
+array(
+	
+	)
+);
+
+$wp_customize->add_control(
+'news_highlight',
+	array(
+	'label'		=> __('Choose Category:', 'nepaleseinfinland'),
+	'description' => 'Select news category to display in slider on top bar.',
+	'section' 	=> 'section_newslist',
+	'type' 		=> 'text',
+	'settings'	=> 'news_highlight',
+	'type'    => 'select',
+	'choices' => $cats
+	)
+);
+
+$wp_customize->add_setting(
+'news_number',
+array(
+	'default'			=> '5',
+)
+);
+$wp_customize->add_control(
+'news_number',
+	array(
+	 'label'		=> __('Select total news to display on the top bar:', 'nepaleseinfinland'),
+	 'section' 	=> 'section_newslist',
+	 'type' 		=> 'text',
+	 'settings'	=> 'news_number',
+	)
+);
+
+
 }
 add_action( 'customize_register', 'nepaleseinfinland_customize_register' );
 
