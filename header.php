@@ -60,6 +60,7 @@
 												'taxonomy' => 'news_category',
 												'field' => 'term_id',
 												'terms' => $news_highlight,
+                                                'posts_per_page' => $news_number,  
 											),
 										),
 									);

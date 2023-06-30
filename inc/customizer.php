@@ -485,18 +485,18 @@ array(
 );
 
 $wp_customize->add_setting(
-'news_title',
+'hompage_news_title',
 array(
 	'default'			=> 'Homepage News List',
 )
 );
 $wp_customize->add_control(
-'news_title',
+'hompage_news_title',
 	array(
 	 'label'		=> __('Title for News', 'nepaleseinfinland'),
 	 'section' 	=> 'section_newslist',
 	 'type' 		=> 'text',
-	 'settings'	=> 'news_title',
+	 'settings'	=> 'hompage_news_title',
 	)
 );
 
@@ -510,29 +510,29 @@ foreach($terms as $category){
 $cats[$category->term_id] = $category->name;
 }
 
-$wp_customize->add_setting('news_highlight', 
+$wp_customize->add_setting('hompeage_news', 
 array(
-	
+	'default'			=> 'Latest News',
 	)
 );
 
 $wp_customize->add_control(
-'news_highlight',
+'hompeage_news',
 	array(
 	'label'		=> __('Choose Category:', 'nepaleseinfinland'),
-	'description' => 'Select news category to display in slider on top bar.',
+	'description' => 'Select news category to display in slider  in home page.',
 	'section' 	=> 'section_newslist',
 	'type' 		=> 'text',
-	'settings'	=> 'news_highlight',
+	'settings'	=> 'hompeage_news',
 	'type'    => 'select',
 	'choices' => $cats
 	)
 );
 
 $wp_customize->add_setting(
-'news_number',
+'homepage_news_number',
 array(
-	'default'			=> '5',
+	'default'			=> '6',
 )
 );
 $wp_customize->add_control(
@@ -541,7 +541,7 @@ $wp_customize->add_control(
 	 'label'		=> __('Select total news to display on the top bar:', 'nepaleseinfinland'),
 	 'section' 	=> 'section_newslist',
 	 'type' 		=> 'text',
-	 'settings'	=> 'news_number',
+	 'settings'	=> 'homepage_news_number',
 	)
 );
 

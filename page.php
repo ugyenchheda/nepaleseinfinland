@@ -672,109 +672,64 @@ get_header();
                 <div class="col-lg-8">
                     <div class="post-entertainment">
                         <div class="section-title">
-                            <h3 class="title">Entertainment News</h3>
+                            
+					<?php $hompage_news_title = get_theme_mod('hompage_news_title');?>
+                            <h3 class="title"><?php echo $hompage_news_title; ?></h3>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="trending-news-item mb-30">
-                                    <div class="trending-news-thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-1.jpg" alt="trending">
-                                        <div class="circle-bar">
+                            
+							<?php 
+                                $hompeage_news = get_theme_mod('hompeage_news');
+                                $news_number = get_theme_mod('homepage_news_number');
+                                $custom_terms = get_terms('news_category');
+                                foreach($custom_terms as $custom_term) {
+                                    wp_reset_query();
+                                    $args = array('post_type' => 'news',
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => 'news_category',
+                                                'field' => 'term_id',
+                                                'terms' => $hompeage_news,
+                                                'posts_per_page' => $news_number,  
+                                            ),
+                                        ),
+                                    );
 
-                                            <div class="first circle">
-                                                <strong></strong>
+                                    $loop = new WP_Query($args);
+                                    if($loop->have_posts()) {
+                                        while($loop->have_posts()) : $loop->the_post();
+                                            echo '<div class="col-lg-6 col-md-6">
+                                            <div class="trending-news-item mb-30">
+                                                <div class="trending-news-thumb">
+                                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-1.jpg" alt="trending">
+                                                    <div class="circle-bar">
+            
+                                                        <div class="first circle">
+                                                            <strong></strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="trending-news-content">
+                                                    <div class="post-meta">
+                                                        <div class="meta-categories">
+                                                            <a href="#">TECHNOLOGY</a>
+                                                        </div>
+                                                        <div class="meta-date">
+                                                            <span>March 26, 2020</span>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
+                                                    <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="trending-news-content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                        <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="trending-news-item mb-30">
-                                    <div class="trending-news-thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-2.jpg" alt="trending">
-                                        <div class="circle-bar">
+                                        </div>';
+                                        endwhile;
+                                    } else {
+                                        echo '<div class="trending-item"><p>There is no NEWS trending currenlty...</p></div>';
+                                    }
+                                }?>
 
-                                            <div class="first circle">
-                                                <strong></strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="trending-news-content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                        <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="trending-news-item mb-30">
-                                    <div class="trending-news-thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-3.jpg" alt="trending">
-                                        <div class="circle-bar">
-
-                                            <div class="first circle">
-                                                <strong></strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="trending-news-content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                        <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="trending-news-item mb-30">
-                                    <div class="trending-news-thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-4.jpg" alt="trending">
-                                        <div class="circle-bar">
-
-                                            <div class="first circle">
-                                                <strong></strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="trending-news-content">
-                                        <div class="post-meta">
-                                            <div class="meta-categories">
-                                                <a href="#">TECHNOLOGY</a>
-                                            </div>
-                                            <div class="meta-date">
-                                                <span>March 26, 2020</span>
-                                            </div>
-                                        </div>
-                                        <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                        <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
