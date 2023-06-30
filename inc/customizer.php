@@ -504,44 +504,44 @@ $terms = get_terms(array(
 'taxonomy'=> 'news_category',
 'hide_empty'=> false,
 ));
-$cats = array();
+$caters = array();
 $i = 0;
 foreach($terms as $category){
-$cats[$category->term_id] = $category->name;
+$caters[$category->term_id] = $category->name;
 }
 
-$wp_customize->add_setting('hompeage_news', 
+$wp_customize->add_setting('homepage_news_category', 
 array(
 	'default'			=> 'Latest News',
 	)
 );
 
 $wp_customize->add_control(
-'hompeage_news',
+'homepage_news_category',
 	array(
 	'label'		=> __('Choose Category:', 'nepaleseinfinland'),
 	'description' => 'Select news category to display in slider  in home page.',
 	'section' 	=> 'section_newslist',
 	'type' 		=> 'text',
-	'settings'	=> 'hompeage_news',
+	'settings'	=> 'homepage_news_category',
 	'type'    => 'select',
-	'choices' => $cats
+	'choices' => $caters
 	)
 );
 
 $wp_customize->add_setting(
-'homepage_news_number',
+'no_of_news_hp',
 array(
-	'default'			=> '6',
+	'default'			=> '4',
 )
 );
 $wp_customize->add_control(
-'news_number',
+'no_of_news_hp',
 	array(
-	 'label'		=> __('Select total news to display on the top bar:', 'nepaleseinfinland'),
+	 'label'		=> __('Select total news to display on homepage:', 'nepaleseinfinland'),
 	 'section' 	=> 'section_newslist',
 	 'type' 		=> 'text',
-	 'settings'	=> 'homepage_news_number',
+	 'settings'	=> 'no_of_news_hp',
 	)
 );
 

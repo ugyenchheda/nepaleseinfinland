@@ -664,7 +664,7 @@ get_header();
 
     <!--====== VIDEO NEWS PART ENDS ======-->
 
-    <!--====== ALL POST PART START ======-->
+    <!--====== all news display  ======-->
 
     <section class="all-post-area">
         <div class="container">
@@ -672,64 +672,78 @@ get_header();
                 <div class="col-lg-8">
                     <div class="post-entertainment">
                         <div class="section-title">
-                            
-					<?php $hompage_news_title = get_theme_mod('hompage_news_title');?>
-                            <h3 class="title"><?php echo $hompage_news_title; ?></h3>
+					        <?php $homepage_news_title = get_theme_mod('hompage_news_title');?>
+                            <h3 class="title"><?php echo $homepage_news_title; ?></h3>
                         </div>
                         <div class="row">
-                            
-							<?php 
-                                $hompeage_news = get_theme_mod('hompeage_news');
-                                $news_number = get_theme_mod('homepage_news_number');
-                                $custom_terms = get_terms('news_category');
-                                foreach($custom_terms as $custom_term) {
-                                    wp_reset_query();
-                                    $args = array('post_type' => 'news',
-                                        'tax_query' => array(
+                            <?php
+                                $homepage_news_category = get_theme_mod('homepage_news_category');
+                                $no_of_news_hp = get_theme_mod('no_of_news_hp');
+
+                                // Check if $homepage_news is an array and not empty
+                                if (!empty($homepage_news_category)) {
+
+                                    $args = array(
+                                        'posts_per_page' => $no_of_news_hp,
+                                        'post_type'      => 'news',
+                                        'tax_query'      => array(
                                             array(
                                                 'taxonomy' => 'news_category',
-                                                'field' => 'term_id',
-                                                'terms' => $hompeage_news,
-                                                'posts_per_page' => $news_number,  
+                                                'field'    => 'term_id',
+                                                'terms'    => $homepage_news_category,
                                             ),
                                         ),
                                     );
 
-                                    $loop = new WP_Query($args);
-                                    if($loop->have_posts()) {
-                                        while($loop->have_posts()) : $loop->the_post();
-                                            echo '<div class="col-lg-6 col-md-6">
-                                            <div class="trending-news-item mb-30">
-                                                <div class="trending-news-thumb">
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/entertainment-1.jpg" alt="trending">
-                                                    <div class="circle-bar">
-            
-                                                        <div class="first circle">
-                                                            <strong></strong>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="trending-news-content">
-                                                    <div class="post-meta">
-                                                        <div class="meta-categories">
-                                                            <a href="#">TECHNOLOGY</a>
-                                                        </div>
-                                                        <div class="meta-date">
-                                                            <span>March 26, 2020</span>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                                    <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                                </div>
-                                            </div>
-                                        </div>';
-                                        endwhile;
-                                    } else {
-                                        echo '<div class="trending-item"><p>There is no NEWS trending currenlty...</p></div>';
-                                    }
-                                }?>
+                                    $query = new WP_Query($args);
 
-                            
+                                    if ($query->have_posts()) {
+                                        while ($query->have_posts()) {
+                                            $query->the_post();
+                                            echo '<div class="col-lg-6 col-md-6">
+                                                    <div class="trending-news-item mb-30">
+                                                        <div class="trending-news-thumb">
+                                                        ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
+                                                            <div class="circle-bar">
+                                                                <div class="first circle">
+                                                                    <strong></strong>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="trending-news-content">
+                                                            <div class="post-meta">';
+
+                                            $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                            foreach ($taxonomies as $taxonomy) {
+                                                if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                    $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                    if ($terms && !is_wp_error($terms)) {
+                                                        echo '<div class="meta-categories">';
+                                                        foreach ($terms as $term) {
+                                                            echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+                                                        }
+                                                        echo '</div>';
+                                                    }
+                                                }
+                                            }
+                                            echo '
+                                                                <div class="meta-date">
+                                                                    <span>' . get_the_date('F j, Y') . '</span>
+                                                                </div>
+                                                            </div>
+                                                            <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                                                            <p class="text">' . wp_trim_words(get_the_excerpt(), 15) . '</p>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+                                        }
+                                    } else {
+                                        echo '<div class="trending-item"><p>No news available currently.</p></div>';
+                                    }
+                                }
+                                wp_reset_postdata(); // Restore original post data
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -808,17 +822,9 @@ get_header();
         </div>
     </section>
 
-    <!--====== ALL POST PART ENDS ======-->
-
-    <!--====== FOOTER PART START ======-->
-
-
-
-
-    <!--====== FOOTER PART ENDS ======-->
+    <!--====== all news display ENDS ======-->
 
     <!--====== GO TO TOP PART START ======-->
-
     <div class="go-top-area">
         <div class="go-top-wrap">
             <div class="go-top-btn-wrap">
@@ -829,7 +835,6 @@ get_header();
             </div>
         </div>
     </div>
-
     <!--====== GO TO TOP PART ENDS ======-->
 
 
