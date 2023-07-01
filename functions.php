@@ -103,6 +103,12 @@ function nepaleseinfinland_scripts() {
 	wp_enqueue_script( 'jquery.magnific-popup.min', get_template_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(), _S_VERSION, true );
+    wp_localize_script( 'custom', 'my_ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'homepage_news_category' => get_theme_mod('homepage_news_category'),
+        'no_of_news_hp' => get_theme_mod('no_of_news_hp'),
+        // Add any other variables you need to pass to your custom script here
+    ));
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -364,3 +370,83 @@ function custom_taxonomy_pagination( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
+
+
+
+
+add_action('wp_ajax_load_more_news', 'load_more_news');
+add_action('wp_ajax_nopriv_load_more_news', 'load_more_news');
+
+function load_more_news() {
+    $homepage_news_category = $_POST['homepage_news_category'];
+    $no_of_news_hp = $_POST['no_of_news_hp'];
+    $page = $_POST['page'];
+
+    $args = array(
+        'posts_per_page' => $no_of_news_hp,
+        'post_type'      => 'news',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'news_category',
+                'field'    => 'term_id',
+                'terms'    => $homepage_news_category,
+            ),
+        ),
+        'paged' => $page,
+    );
+
+    $query = new WP_Query($args);
+
+    ob_start(); // Start output buffering
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+echo '<div class="col-lg-6 col-md-6">
+                                                    <div class="trending-news-item mb-30">
+                                                        <div class="trending-news-thumb">
+                                                        ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
+                                                            <div class="circle-bar">
+                                                                <div class="first circle">
+                                                                    <strong></strong>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="trending-news-content">
+                                                            <div class="post-meta">';
+
+                                            $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                            foreach ($taxonomies as $taxonomy) {
+                                                if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                    $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                    if ($terms && !is_wp_error($terms)) {
+                                                        echo '<div class="meta-categories">';
+                                                        foreach ($terms as $term) {
+                                                            echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+                                                        }
+                                                        echo '</div>';
+                                                    }
+                                                }
+                                            }
+                                            echo '
+                                                                <div class="meta-date">
+                                                                    <span>' . get_the_date('F j, Y') . '</span>
+                                                                </div>
+                                                            </div>
+                                                            <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                                                            <p class="text">' . wp_trim_words(get_the_excerpt(), 15) . '</p>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+        }
+        wp_reset_postdata();
+    }
+
+    $response = ob_get_clean(); // Get the buffered output and store it in $response variable
+
+    // Send JSON response with the HTML
+    wp_send_json($response);
+}

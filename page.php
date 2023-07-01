@@ -685,7 +685,9 @@ get_header();
 
                                     $args = array(
                                         'posts_per_page' => $no_of_news_hp,
-                                        'post_type'      => 'news',
+                                        'post_type'      => 'news',// Display 3 latest news posts
+                                        'orderby' => 'date', // Order by the latest date
+                                        'order' => 'DESC', // Display in descending order
                                         'tax_query'      => array(
                                             array(
                                                 'taxonomy' => 'news_category',
@@ -745,6 +747,10 @@ get_header();
                                 wp_reset_postdata(); // Restore original post data
                             ?>
                         </div>
+                            <div class="trending-news-container"></div>
+                            <div class="load-more-container">
+                                <button id="load-more-btn">Load More</button>
+                            </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
