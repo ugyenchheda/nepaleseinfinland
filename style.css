@@ -399,6 +399,31 @@ a.home-event:hover {
   padding-left: 4px;
   font-size: 17px;
 }
+.load-more-container {
+  text-align: center;
+}
+.load-more-container button#load-more-news {
+  background: #fff;
+  font-style: italic;
+  padding: 6px 18px;
+  border: 1px solid #c9c2c2;
+  transition: ease-in 0.3s;
+}
+.load-more-container button#load-more-news:hover {
+  background: #dc143c;
+  font-style: italic;
+  padding: 6px 18px;
+  border: 1px solid #c9c2c2;
+  color: #fff;
+}
+.load-more-container button#fully-loaded {
+  background: #003580;
+  font-style: italic;
+  padding: 6px 18px;
+  border: 1px solid #c9c2c2;
+  transition: ease-in 0.3s;
+  color: #fff;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
