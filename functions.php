@@ -376,27 +376,21 @@ add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
 
 
 
-add_action('wp_ajax_load_more_news', 'loadingNews');
-add_action('wp_ajax_nopriv_load_more_news', 'loadingNews');
+add_action('wp_ajax_loadingNews', 'loadingNews');
+add_action('wp_ajax_nopriv_loadingNews', 'loadingNews');
 
 function loadingNews() {
     $homepage_news_category = $_POST['homepage_news_category'];
     $no_of_news_hp = $_POST['no_of_news_hp'];
     $page = $_POST['page'];
+	$loaded_post_ids = isset($_POST['loaded_post_ids']) ? $_POST['loaded_post_ids'] : array();
 
     $args = array(
         'posts_per_page' => $no_of_news_hp,
         'post_type'      => 'news',
         'orderby' => 'date',
         'order' => 'DESC',
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'news_category',
-                'field'    => 'term_id',
-                'terms'    => $homepage_news_category,
-            ),
-        ),
-        'paged' => $page,
+		'post__not_in' => $loaded_post_ids,
     );
 
     $query = new WP_Query($args);

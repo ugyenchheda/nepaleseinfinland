@@ -32,7 +32,7 @@ $('.uas-click-button li').eq(tabClicked).addClass('active');
 $('.uas-tab-content > div').eq(tabClicked).show();
 });
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function() {
     var currentPage = 1;
     var maxPages = my_ajax_object.max_pages;
 
@@ -41,6 +41,7 @@ jQuery(document).ready(function($) {
 
             var nextPage = currentPage + 1;
             var ajaxurl = my_ajax_object.ajax_url; // Corrected the variable name here
+			var loadedPostIds = []; // Array to store the loaded post IDs
 
             $.ajax({
                 url: ajaxurl, // Use the correct variable name here
@@ -50,6 +51,7 @@ jQuery(document).ready(function($) {
                     page: nextPage,
                     homepage_news_category: my_ajax_object.homepage_news_category,
                     no_of_news_hp: my_ajax_object.no_of_news_hp,
+					loaded_post_ids: loadedPostIds,
                 },
                 beforeSend: function() {
                     $('#load-more-news').text('Loading...');
@@ -57,7 +59,7 @@ jQuery(document).ready(function($) {
                 success: function(response) {
                     $('#load-more-news').text('Load More'); // Reset the button text
                     if (response) {
-                        $('.trending-news-container').append(response); // Append the new news items to the container
+                        $('#append-here').append(response); // Append the new news items to the container
                         currentPage = nextPage; // Update the current page
                         loading = false; // Reset loading flag after success
                         if (currentPage === maxPages) {

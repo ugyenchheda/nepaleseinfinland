@@ -2,6 +2,7 @@
  /* Template Name: Homepage */ 
 
 get_header();
+global $wp_query;
 ?>
 
 
@@ -675,10 +676,11 @@ get_header();
 					        <?php $homepage_news_title = get_theme_mod('hompage_news_title');?>
                             <h3 class="title"><?php echo $homepage_news_title; ?></h3>
                         </div>
-                        <div class="row">
+                        <div class="row" id="append-here">
                             <?php
                                 $homepage_news_category = get_theme_mod('homepage_news_category');
                                 $no_of_news_hp = get_theme_mod('no_of_news_hp');
+                                $loaded_post_ids = isset($_POST['loaded_post_ids']) ? $_POST['loaded_post_ids'] : array();
 
                                 // Check if $homepage_news is an array and not empty
                                 if (!empty($homepage_news_category)) {
@@ -687,14 +689,7 @@ get_header();
                                         'posts_per_page' => $no_of_news_hp,
                                         'post_type'      => 'news',// Display 3 latest news posts
                                         'orderby' => 'date', // Order by the latest date
-                                        'order' => 'DESC', // Display in descending order
-                                        'tax_query'      => array(
-                                            array(
-                                                'taxonomy' => 'news_category',
-                                                'field'    => 'term_id',
-                                                'terms'    => $homepage_news_category,
-                                            ),
-                                        ),
+                                        'order' => 'DESC', 
                                     );
 
                                     $query = new WP_Query($args);
@@ -702,6 +697,7 @@ get_header();
                                     if ($query->have_posts()) {
                                         while ($query->have_posts()) {
                                             $query->the_post();
+                                            $loaded_post_ids[] = get_the_ID();
                                             echo '<div class="col-lg-6 col-md-6">
                                                     <div class="trending-news-item mb-30">
                                                         <div class="trending-news-thumb">
@@ -747,9 +743,11 @@ get_header();
                                 wp_reset_postdata(); // Restore original post data
                             ?>
                         </div>
+                        <div class="trending-news-container"></div>
                             <div class="load-more-container">
                                 <button id="load-more-news">Load More</button>
                             </div>
+                            
                     </div>
                 </div>
                 <div class="col-lg-4">
