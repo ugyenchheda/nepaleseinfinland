@@ -690,6 +690,7 @@ global $wp_query;
                                         'post_type'      => 'news',// Display 3 latest news posts
                                         'orderby' => 'date', // Order by the latest date
                                         'order' => 'DESC', 
+                                        'post__not_in' => $loaded_post_ids,
                                     );
 
                                     $query = new WP_Query($args);
@@ -710,23 +711,20 @@ global $wp_query;
                                                         </div>
                                                         <div class="trending-news-content">
                                                             <div class="post-meta">';
-
-                                            $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
-
-                                            foreach ($taxonomies as $taxonomy) {
-                                                if (!in_array($taxonomy, ['category', 'post_tag'])) {
-                                                    $terms = get_the_terms(get_the_ID(), $taxonomy);
-                                                    if ($terms && !is_wp_error($terms)) {
-                                                        echo '<div class="meta-categories">';
-                                                        foreach ($terms as $term) {
-                                                            echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
-                                                        }
-                                                        echo '</div>';
-                                                    }
-                                                }
-                                            }
-                                            echo '
-                                                                <div class="meta-date">
+                                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                                                                foreach ($taxonomies as $taxonomy) {
+                                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                                        if ($terms && !is_wp_error($terms)) {
+                                                                            echo '<div class="meta-categories">';
+                                                                            foreach ($terms as $term) {
+                                                                                echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+                                                                            }
+                                                                            echo '</div>';
+                                                                        }
+                                                                    }
+                                                                }
+                                            echo '<div class="meta-date">
                                                                     <span>' . get_the_date('F j, Y') . '</span>
                                                                 </div>
                                                             </div>
@@ -743,9 +741,9 @@ global $wp_query;
                                 wp_reset_postdata(); // Restore original post data
                             ?>
                         </div>
-                        <div class="trending-news-container"></div>
                             <div class="load-more-container">
                                 <button id="load-more-news">Load More</button>
+                                <button id="fully-loaded">End</button>
                             </div>
                             
                     </div>

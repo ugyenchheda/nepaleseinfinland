@@ -34,37 +34,50 @@ $('.uas-tab-content > div').eq(tabClicked).show();
 
 jQuery(document).ready(function() {
     var currentPage = 1;
-    var maxPages = my_ajax_object.max_pages;
-
+    var maxPages = 1; // Initialize maxPages to 1
+    var loading = false;
+	jQuery('#fully-loaded').hide();
     jQuery(document).on('click', '#load-more-news', function() {
+        if (!loading && currentPage <= maxPages) { // Modify the condition to include equal to
             loading = true; // Set loading to true to prevent multiple AJAX requests
-
             var nextPage = currentPage + 1;
-            var ajaxurl = my_ajax_object.ajax_url; // Corrected the variable name here
-			var loadedPostIds = []; // Array to store the loaded post IDs
+            var ajaxurl = my_ajax_object.ajax_url;
+            var loadedPostIds = []; // Array to store the loaded post IDs
+
+            // Get the container element where the news items will be appended
+            var $appendContainer = jQuery('#append-here');
 
             $.ajax({
-                url: ajaxurl, // Use the correct variable name here
+                url: ajaxurl,
                 type: 'POST',
                 data: {
                     action: 'loadingNews',
                     page: nextPage,
                     homepage_news_category: my_ajax_object.homepage_news_category,
                     no_of_news_hp: my_ajax_object.no_of_news_hp,
-					loaded_post_ids: loadedPostIds,
+                    loaded_post_ids: loadedPostIds,
                 },
                 beforeSend: function() {
                     $('#load-more-news').text('Loading...');
                 },
                 success: function(response) {
                     $('#load-more-news').text('Load More'); // Reset the button text
-                    if (response) {
-                        $('#append-here').append(response); // Append the new news items to the container
+                    if (response.content) {
+                        $appendContainer.append(response.content); // Append the new news items to the container
                         currentPage = nextPage; // Update the current page
                         loading = false; // Reset loading flag after success
-                        if (currentPage === maxPages) {
-                            $('#load-more-news').hide(); // Hide the button when no more items to load
+                        loadedPostIds = response.loaded_post_ids; // Update the loaded post IDs
+
+                        // Check if it's the last page and hide the button if true
+						if (currentPage >= response.max_pages) {
+                            jQuery('#load-more-news').hide();
+                            jQuery('#fully-loaded').show(); // Show the fully-loaded element
+                        } else {
+                            jQuery('#load-more-news').show(); // Show the load more button if there are more pages
+                            jQuery('#fully-loaded').hide(); // Hide the fully-loaded element if there are more pages
                         }
+                        // Update maxPages with the actual value from the server response
+                        maxPages = response.max_pages;
                     }
                 },
                 error: function(xhr, status, error) {
@@ -72,5 +85,6 @@ jQuery(document).ready(function() {
                     loading = false; // Reset loading to false in case of an error
                 }
             });
+        }
     });
 });
