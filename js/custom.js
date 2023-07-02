@@ -58,7 +58,7 @@ jQuery(document).ready(function() {
                     loaded_post_ids: loadedPostIds,
                 },
                 beforeSend: function() {
-                    $('#load-more-news').text('Loading...');
+                    $('#load-more-news').html('<span>Loading <i class="fa fa-spinner fa-spin"></i></span>');
                 },
                 success: function(response) {
                     $('#load-more-news').text('Load More'); // Reset the button text

@@ -743,7 +743,7 @@ global $wp_query;
                         </div>
                             <div class="load-more-container">
                                 <button id="load-more-news">View More News</button>
-                                <button id="fully-loaded">Hooray! You caught up all the news for today.</button>
+                                <p id="fully-loaded">Hooray! You caught up with all the news for today.</p>
                             </div>
                             
                     </div>

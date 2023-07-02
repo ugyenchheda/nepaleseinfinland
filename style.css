@@ -416,7 +416,7 @@ a.home-event:hover {
   border: 1px solid #c9c2c2;
   color: #fff;
 }
-.load-more-container button#fully-loaded {
+p#fully-loaded {
   background: #003580;
   font-style: italic;
   padding: 6px 18px;
@@ -424,6 +424,7 @@ a.home-event:hover {
   transition: ease-in 0.3s;
   color: #fff;
 }
+
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
