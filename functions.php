@@ -460,3 +460,9 @@ function loadingNews() {
 		$last_page = $query->max_num_pages === $page;
 		wp_send_json(array('content' => $response, 'max_pages' => $max_pages));
 	}
+
+
+	function flush_rewrite_rules_custom() {
+		flush_rewrite_rules();
+	}
+	add_action('after_switch_theme', 'flush_rewrite_rules_custom');

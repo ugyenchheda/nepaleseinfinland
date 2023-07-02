@@ -664,7 +664,11 @@ global $wp_query;
                         <div class="Categories-post mt-40">
                             <div class="section-title d-flex justify-content-between align-items-center">
                                 <h3 class="title">Categories</h3>
-                                <?php echo '<a href="' . esc_url(get_permalink(get_page_by_path('template-all-taxonomy-terms'))) . '">ALL SEE</a>'; ?>
+                                <?php $taxonomy_slug = 'news_category';
+$archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
+
+echo '<a href="' . esc_url($archive_link) . '">ALL SEE</a>';
+                                ?>
 
                             </div>
                             <div class="Categories-item">

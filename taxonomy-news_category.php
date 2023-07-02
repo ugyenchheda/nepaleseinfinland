@@ -8,8 +8,23 @@
  */
 
 get_header();
-?>
+if (is_tax('news_category')) {
+    // This is the archive page for the "news_category" taxonomy
+    // Display your content for the archive here
+    echo '<h1>News Category Archive</h1>';
 
+    // Display the list of terms within the "news_category" taxonomy
+    $terms = get_terms('news_category');
+    if ($terms && !is_wp_error($terms)) {
+        echo '<ul>';
+        foreach ($terms as $term) {
+            echo '<li><a href="' . esc_url(get_term_link($term)) . '">' . $term->name . '</a></li>';
+        }
+        echo '</ul>';
+    } else {
+        echo 'No terms found for this taxonomy.';
+    }
+} else { ?>
 <section class="about-item-area">
         <div class="container">
             <div class="row">
@@ -90,5 +105,5 @@ get_header();
     </section>
 
 
-<?php
+<?php }
 get_footer();
