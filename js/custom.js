@@ -35,11 +35,8 @@ $('.uas-tab-content > div').eq(tabClicked).show();
 jQuery(document).ready(function($) {
     var currentPage = 1;
     var maxPages = my_ajax_object.max_pages;
-    var loading = false; // Track if an AJAX request is already in progress
 
-    $(document).on('click', '#load-more-btn', function() {
-		console.log('Load More button clicked.');
-        if (!loading && currentPage < maxPages) {
+    jQuery(document).on('click', '#load-more-news', function() {
             loading = true; // Set loading to true to prevent multiple AJAX requests
 
             var nextPage = currentPage + 1;
@@ -49,22 +46,22 @@ jQuery(document).ready(function($) {
                 url: ajaxurl, // Use the correct variable name here
                 type: 'POST',
                 data: {
-                    action: 'load_more_news',
+                    action: 'loadingNews',
                     page: nextPage,
                     homepage_news_category: my_ajax_object.homepage_news_category,
                     no_of_news_hp: my_ajax_object.no_of_news_hp,
                 },
                 beforeSend: function() {
-                    $('#load-more-btn').text('Loading...');
+                    $('#load-more-news').text('Loading...');
                 },
                 success: function(response) {
-                    $('#load-more-btn').text('Load More'); // Reset the button text
+                    $('#load-more-news').text('Load More'); // Reset the button text
                     if (response) {
                         $('.trending-news-container').append(response); // Append the new news items to the container
                         currentPage = nextPage; // Update the current page
                         loading = false; // Reset loading flag after success
                         if (currentPage === maxPages) {
-                            $('#load-more-btn').hide(); // Hide the button when no more items to load
+                            $('#load-more-news').hide(); // Hide the button when no more items to load
                         }
                     }
                 },
@@ -73,6 +70,5 @@ jQuery(document).ready(function($) {
                     loading = false; // Reset loading to false in case of an error
                 }
             });
-        }
     });
 });

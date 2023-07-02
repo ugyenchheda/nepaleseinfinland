@@ -747,9 +747,8 @@ get_header();
                                 wp_reset_postdata(); // Restore original post data
                             ?>
                         </div>
-                            <div class="trending-news-container"></div>
                             <div class="load-more-container">
-                                <button id="load-more-btn">Load More</button>
+                                <button id="load-more-news">Load More</button>
                             </div>
                     </div>
                 </div>
