@@ -1,4 +1,12 @@
+const element = document.getElementById('myElementId');
+
+
+function handleTouchStart(event) {
+
+	element.addEventListener('touchstart', handleTouchStart, { passive: true });
+}
 jQuery(document).ready(function(){
+
 	$('.button').click( function() {
 		$('.overlay').fadeIn();
 	});
@@ -30,14 +38,15 @@ jQuery(document).ready(function($) {
     var loading = false; // Track if an AJAX request is already in progress
 
     $(document).on('click', '#load-more-btn', function() {
+		console.log('Load More button clicked.');
         if (!loading && currentPage < maxPages) {
             loading = true; // Set loading to true to prevent multiple AJAX requests
 
             var nextPage = currentPage + 1;
-            var ajaxurl = my_ajax_object.ajax_url;
+            var ajaxurl = my_ajax_object.ajax_url; // Corrected the variable name here
 
             $.ajax({
-                url: ajaxurl,
+                url: ajaxurl, // Use the correct variable name here
                 type: 'POST',
                 data: {
                     action: 'load_more_news',
@@ -47,17 +56,18 @@ jQuery(document).ready(function($) {
                 },
                 beforeSend: function() {
                     $('#load-more-btn').text('Loading...');
-                },success: function(response) {
-					$('#load-more-btn').text('Load More'); // Reset the button text
-					if (response) {
-						$('.trending-news-container').append(response); // Append the new news items to the container
-						currentPage = nextPage; // Update the current page
-						loading = false; // Reset loading flag after success
-						if (currentPage === maxPages) {
-							$('#load-more-btn').hide(); // Hide the button when no more items to load
-						}
-					}
-				},
+                },
+                success: function(response) {
+                    $('#load-more-btn').text('Load More'); // Reset the button text
+                    if (response) {
+                        $('.trending-news-container').append(response); // Append the new news items to the container
+                        currentPage = nextPage; // Update the current page
+                        loading = false; // Reset loading flag after success
+                        if (currentPage === maxPages) {
+                            $('#load-more-btn').hide(); // Hide the button when no more items to load
+                        }
+                    }
+                },
                 error: function(xhr, status, error) {
                     console.log(xhr.responseText);
                     loading = false; // Reset loading to false in case of an error
