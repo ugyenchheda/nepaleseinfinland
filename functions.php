@@ -414,15 +414,15 @@ function loadingNews() {
             $query->the_post();
             $loaded_post_ids[] = get_the_ID();
             // Output the news items HTML
-            echo '<div class="col-lg-6 col-md-6">
+            echo '<div class="col-lg-4 col-md-4">
                 <div class="trending-news-item mb-30">
                     <div class="trending-news-thumb">
                     ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
-                        <div class="circle-bar">
-                            <div class="first circle">
-                                <strong></strong>
-                            </div>
-                        </div>
+					<div class="circle-bar">
+					<div class="first circle"><canvas width="40" height="40"></canvas>
+						<strong>25</strong>
+					</div>
+				</div>
                     </div>
                     <div class="trending-news-content">
                         <div class="post-meta">';

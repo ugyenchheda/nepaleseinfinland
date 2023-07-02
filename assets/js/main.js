@@ -277,7 +277,7 @@
 
         var Slider9 = jQuery('.trending-news-slider');
         Slider9.slick({
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             dots: false,
             infinite: true,
@@ -291,7 +291,7 @@
                 {
                     breakpoint: 1140,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 2,
                     }
                 },
                 {

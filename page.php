@@ -320,7 +320,7 @@ global $wp_query;
     <section class="trending-news-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <div class="section-title">
                         <h3 class="title">Trending News</h3>
                     </div>
@@ -359,7 +359,7 @@ global $wp_query;
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-                                echo '<div class="col-lg-4 col-md-4">
+                                echo '<div class="col-lg-6 col-md-6">
                                         <div class="trending-news-item">
                                             <div class="trending-news-thumb">
                                                 ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
@@ -459,6 +459,73 @@ global $wp_query;
                     ?>
                     </div>
                 </div>
+
+                <div class="col-lg-4">
+                        <div class="trending-right-sidebar">
+                            <div class="trending-most-view mt-25">
+                                <div class="section-title">
+                                    <h3 class="title">Most Interacted News</h3>
+                                </div>
+                            </div>
+                            <div class="trending-sidebar-slider">
+                                <div class="post_gallery_items"><?php
+                                $args = array(
+                                    'post_type'      => 'news', // Change 'post' to your desired post type if needed
+                                    'posts_per_page' => 5,     // Adjust the number of posts you want to retrieve
+                                    'orderby'        => 'comment_count',
+                                );
+                                
+                                $query = new WP_Query($args);
+                                
+                                if ($query->have_posts()) {
+                                    $count = 1;
+                                    while ($query->have_posts()) {
+                                        $query->the_post();
+                                        // Output the post title or perform other actions
+                                        echo '
+                                        <div class="gallery_item gallery_item-style-2">
+                                            <div class="gallery_item_thumb">
+                                            ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
+                                                <div class="icon"><i class="fas fa-star"></i></div>
+                                            </div>
+                                            <div class="gallery_item_content">
+                                                <div class="post-meta">
+                                                ';?>
+                                                <?php 
+                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-categories">';
+                                                            foreach ($terms as $term) {
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                            }
+                                                            echo '</div>';
+                                                        }
+                                                    }
+                                                }
+                                                echo '
+                                                    <div class="meta-date">
+                                                        <span>' . get_the_date('F j, Y') . '</span>
+                                                    </div>
+                                                </div>
+                                                <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
+                                                <span>'.$count++.'</span>
+                                            </div>
+                                        </div>';
+                                    }
+                                } else {
+                                    echo 'No posts found.';
+                                }
+                                
+                                wp_reset_postdata();
+                                ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -470,8 +537,10 @@ global $wp_query;
     <section class="single-play-post-area mt-10">
         <div class="container custom-container">
             <div class="single-play-box">
+                <div class="section-title">
+					<h3 class="title">Upcoming Events</h3>
+                </div>
                 <div class="row single-play-post-slider">
-                
                 <?php
                         $args = array(
                             'post_type' => 'event_post_type', // Replace 'your_custom_post_type' with the actual name of your custom post type
@@ -510,9 +579,6 @@ global $wp_query;
                                         <div class="single-play-post-item">
                                             <div class="trending-news-thumb">
                                                 ' . get_the_post_thumbnail($post->ID, 'post_image_xl') . '
-                                                <div class="icon">
-                                                    <a href="#"><i class="fas fa-bolt"></i></a>
-                                                </div>
                                             </div>
                                             <div class="single-play-post-content">
                                                 <div class="post-meta">';
@@ -592,68 +658,74 @@ global $wp_query;
                                 </div>
                             </div>
                         </div>
-                    </div> <div class="col-lg-4">
-                    <div class="trending-right-sidebar">
-                        <div class="trending-most-view mt-25">
-                            <div class="section-title">
-                                <h3 class="title">Most Interacted News</h3>
-                            </div>
-                        </div>
-                        <div class="trending-sidebar-slider">
-                            <div class="post_gallery_items"><?php
-                            $args = array(
-                                'post_type'      => 'news', // Change 'post' to your desired post type if needed
-                                'posts_per_page' => 5,     // Adjust the number of posts you want to retrieve
-                                'orderby'        => 'comment_count',
-                            );
-                            
-                            $query = new WP_Query($args);
-                            
-                            if ($query->have_posts()) {
-                                $count = 1;
-                                while ($query->have_posts()) {
-                                    $query->the_post();
-                                    // Output the post title or perform other actions
-                                    echo '
-                                    <div class="gallery_item gallery_item-style-2">
-                                        <div class="gallery_item_thumb">
-                                        ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
-                                            <div class="icon"><i class="fas fa-star"></i></div>
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                            ';?>
-                                            <?php 
-                                             $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                    </div> 
+                <div class="col-lg-4">
+                    <div class="all-post-sidebar">
+                        <div class="Categories-post mt-40">
+                            <div class="section-title d-flex justify-content-between align-items-center">
+                                <h3 class="title">Categories</h3>
+                                <?php echo '<a href="' . esc_url(get_permalink(get_page_by_path('template-all-taxonomy-terms'))) . '">ALL SEE</a>'; ?>
 
-                                             foreach ($taxonomies as $taxonomy) {
-                                                 if (!in_array($taxonomy, ['category', 'post_tag'])) {
-                                                     $terms = get_the_terms(get_the_ID(), $taxonomy);
-                                                     if ($terms && !is_wp_error($terms)) {
-                                                         echo '<div class="meta-categories">';
-                                                         foreach ($terms as $term) {
-                                                             echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                         }
-                                                         echo '</div>';
-                                                     }
-                                                 }
-                                             }
-                                             echo '
-                                                <div class="meta-date">
-                                                    <span>' . get_the_date('F j, Y') . '</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
-                                            <span>'.$count++.'</span>
-                                        </div>
-                                    </div>';
+                            </div>
+                            <div class="Categories-item">
+                            <?php
+                                $custom_post_type = 'news'; 
+                                function get_top_three_taxonomies($custom_post_type) {
+                                    $taxonomies = get_object_taxonomies($custom_post_type, 'objects');
+                                    $taxonomy_counts = array();
+
+                                    if ($taxonomies) {
+                                        foreach ($taxonomies as $taxonomy) {
+                                            if ($taxonomy->name === 'post_tag') {
+                                                continue;
+                                            }
+
+                                            $terms = get_terms($taxonomy->name);
+                                            if ($terms) {
+                                                $post_count = 0;
+                                                foreach ($terms as $term) {
+                                                    $post_count += $term->count;
+                                                }
+                                                $taxonomy_counts[$taxonomy->name] = $post_count;
+                                            }
+                                        }
+                                        arsort($taxonomy_counts);
+                                        $top_three_taxonomies = array_slice($taxonomy_counts, 0, 3);
+                                        return array_keys($top_three_taxonomies);
+                                    }
+                                    return array();
                                 }
-                            } else {
-                                echo 'No posts found.';
-                            }
-                            
-                            wp_reset_postdata();
-                            ?>
+                                $top_three_taxonomies = get_top_three_taxonomies($custom_post_type);
+                                if (!empty($top_three_taxonomies)) {
+                                    echo '<div>';
+                                    foreach ($top_three_taxonomies as $taxonomy_name) {
+                                        $taxonomy = get_taxonomy($taxonomy_name);
+                                        $terms = get_terms($taxonomy_name);
+
+                                        if ($terms) {
+                                            foreach ($terms as $term) {
+                                                $news_taxonomy_banner = get_term_meta($term->term_id, 'news_category_thumbnail', true);
+                                                $post_count = $term->count;
+                                                echo '<div class="item">
+                                                        <img src="'.$news_taxonomy_banner.'" alt="categories">
+                                                        <div class="Categories-content">
+                                                            <a href="' . esc_url(get_term_link($term)) . '">
+                                                                <span>' . $term->name . '<b class="post-count">(' . $post_count . ')</b></span>
+                                                                <img src="'.get_template_directory_uri().'/assets/images/arrow.svg" alt="post image">
+                                                            </a>
+                                                        </div>
+                                                    </div>';
+                                            }
+                                        } else {
+                                            echo '<li>No terms found for ' . $taxonomy->label .'</li>';
+                                        }
+                                    }
+                                    echo '</div>';
+                                } else {
+                                    echo 'No taxonomies found for this post type.';
+                                }
+                                ?>
+
                             </div>
                         </div>
                     </div>
@@ -670,7 +742,7 @@ global $wp_query;
     <section class="all-post-area">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="post-entertainment">
                         <div class="section-title">
 					        <?php $homepage_news_title = get_theme_mod('hompage_news_title');?>
@@ -699,7 +771,7 @@ global $wp_query;
                                         while ($query->have_posts()) {
                                             $query->the_post();
                                             $loaded_post_ids[] = get_the_ID();
-                                            echo '<div class="col-lg-6 col-md-6">
+                                            echo '<div class="col-lg-4 col-md-4">
                                                     <div class="trending-news-item mb-30">
                                                         <div class="trending-news-thumb">
                                                         ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
@@ -748,78 +820,15 @@ global $wp_query;
                             
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="all-post-sidebar">
-                        <div class="Categories-post mt-40">
-                            <div class="section-title d-flex justify-content-between align-items-center">
-                                <h3 class="title">Categories</h3>
-                                <a href="#">ALL SEE</a>
-                            </div>
-                            <div class="Categories-item">
-                                
-                            <?php
-                                $custom_post_type = 'news'; // Replace 'your_custom_post_type' with the actual name of your custom post type
-
-                                $taxonomies = get_object_taxonomies($custom_post_type, 'objects');
-
-                                if ($taxonomies) {
-                                    foreach ($taxonomies as $taxonomy) {
-                                        // Exclude the "tags" taxonomy
-                                        if ($taxonomy->name === 'post_tag') {
-                                            continue;
-                                        }
-
-                                        $terms = get_terms($taxonomy->name);
-                                        if ($terms) {
-                                            foreach ($terms as $term) {
-                                                $news_taxonomy_banner = get_term_meta($term->term_id, 'news_category_thumbnail', true);
-                                                $post_count = $term->count;
-                                                echo '<div class="item">
-                                                <img src="'.$news_taxonomy_banner.'" alt="categories">
-                                                <div class="Categories-content">
-                                                    <a href="' . esc_url(get_term_link($term)) . '">
-                                                        <span>' . $term->name . '<b class="post-count">(' . $post_count . ')</b></span>
-                                                        
-                                                        <img src="'.get_template_directory_uri().'/assets/images/arrow.svg" alt="post image">
-                                                    </a>
-                                                </div>
-                                            </div>';
-                                            }
-                                            echo '</div>';
-                                        } else {
-                                            echo '<li>No terms found for ' . $taxonomy->label .'</li>';
-                                        }
-                                    }
-                                    echo '
-                                    </div>';
-                                } else {
-                                    echo 'No taxonomies found for this post type.';
-                                }
-                            ?>
-                                
-                            </div>
-                            <?php 
-                                $adv_link = get_theme_mod('adv_banner_link');
-                                $adv_banner = get_theme_mod('adv_banner', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
-                                if(!empty($adv_banner)) {?>
-                                    <div class="sidebar-add pt-35">
-                                        <a href="<?php echo $adv_link; ?>"><img src="<?php echo $adv_banner ; ?>"  class="img-responsive"></a>
-                                    </div>
-                                <?php }; ?>
-                        </div>
-                    </div>
-                    
-                    
-                    <?php 
-                                $footer_adv_link = get_theme_mod('footer_adv_link');
-                                $adv_banner_footer = get_theme_mod('adv_banner_footer', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
-                                if(!empty($adv_banner_footer)) {?>
-                                    <div class="sidebar-add mt-30">
-                                        <a href="<?php echo $footer_adv_link; ?>"><img src="<?php echo $adv_banner_footer ; ?>"  class="img-responsive"></a>
-                                    </div>
-                                <?php }; ?>
-                </div>
             </div>
+            <?php 
+                $footer_adv_link = get_theme_mod('footer_adv_link');
+                $adv_banner_footer = get_theme_mod('adv_banner_footer', get_template_directory_uri() . '/assets/images/ad/ad-1.png');
+                if(!empty($adv_banner_footer)) {?>
+                    <div class="sidebar-add mt-30">
+                        <a href="<?php echo $footer_adv_link; ?>"><img src="<?php echo $adv_banner_footer ; ?>"  class="img-responsive"></a>
+                    </div>
+            <?php }; ?>
         </div>
     </section>
 
