@@ -184,13 +184,14 @@ function events_post_meta() {
         'id'   => 'event_video',
         'type' => 'oembed',
     ) );
+    $API_KEY = get_theme_mod('google_map_api');
     $cmb->add_field( array(
       'name' => 'Event Location',
       'desc' => 'Drag the marker to set the exact location',
       'id' => 'event_location',
       'type' => 'pw_map',
       'split_values' => true, // Save latitude and longitude as two separate fields
-      'api_key' => 'AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU', // Google API Key
+      'api_key' => $API_KEY, // Google API Key
     ) );
 }
 
@@ -268,13 +269,14 @@ function uas_post_meta() {
         'id'   => 'uas_video',
         'type' => 'oembed',
     ) );
+   $API_KEY = get_theme_mod('google_map_api'); 
     $cmb->add_field( array(
       'name' => 'UAS Location',
       'desc' => 'Drag the marker to set the exact location',
       'id' => 'uas_location',
       'type' => 'pw_map',
       'split_values' => true, // Save latitude and longitude as two separate fields
-      'api_key' => 'AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU', // Google API Key
+      'api_key' => $API_KEY, // Google API Key
     ) )
     ;$cmb->add_field( [
       'name' => __( 'Facebook Page Link', 'nepaleseinfinland' ),

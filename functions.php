@@ -332,7 +332,7 @@ if ( ! function_exists( 'video_blogs_taxonomy' ) ) {
 }
 function event_location($latitude,$longitude) {
 	//Google Map API URL
-	$API_KEY = "AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU"; // Google Map Free API Key
+	$API_KEY = get_theme_mod('google_map_api'); // Google Map Free API Key
 	$url = "https://maps.google.com/maps/api/geocode/json?latlng=".$latitude.",".$longitude."&key=".$API_KEY."";
 	// Send CURL Request
 	$ch = curl_init();

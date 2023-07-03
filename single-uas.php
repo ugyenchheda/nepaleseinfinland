@@ -52,7 +52,8 @@ get_header();
                 <div class="col-lg-4 map_block">
                     <!-- Map shown in pop up -->
                     <div id="map" style="height: 502px;" class="kindergarden_map"></div>
-                    <script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_g4sqti9HeM-c2_CklyEnPoVZq-j3bMU&callback=initMap">   </script>
+	                <?php $API_KEY = get_theme_mod('google_map_api'); ?>
+                    <script async defer  src="https://maps.googleapis.com/maps/api/js?key=<?php echo $API_KEY;?>&callback=initMap">   </script>
                     <script>
                         function initMap() {
                             var uluru = {lat: <?php echo $uas_location['latitude'] ?>, lng: <?php echo $uas_location['longitude'] ?>};

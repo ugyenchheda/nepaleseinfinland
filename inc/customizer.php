@@ -546,6 +546,34 @@ $wp_customize->add_control(
 );
 
 
+//google map field for customizer
+
+
+$wp_customize->add_section(
+	'section_mapapi' ,
+	array(
+		'title'       	=> __( 'Google Map API', 'nepaleseinfinland' ),
+		'description' 	=> __( 'Add google map API.', 'nepaleseinfinland' ),
+		'panel'			=> 'nepaleseinfinland_setting_panel',
+	)
+	);
+	
+	$wp_customize->add_setting(
+	'google_map_api',
+	array(
+		
+	)
+	);
+	$wp_customize->add_control(
+	'google_map_api',
+		array(
+		 'label'		=> __('Enter Map API', 'nepaleseinfinland'),
+		 'section' 	=> 'section_mapapi',
+		 'type' 		=> 'text',
+		 'settings'	=> 'google_map_api',
+		)
+	);
+
 }
 add_action( 'customize_register', 'nepaleseinfinland_customize_register' );
 
