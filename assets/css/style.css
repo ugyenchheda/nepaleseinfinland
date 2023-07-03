@@ -1630,7 +1630,6 @@ p {
     bottom: 0;
     width: 100%;
     height: 160px;
-    background: linear-gradient(rgba(23, 34, 43, 0) 0%, #17222b 100%);
     opacity: 0.85;
     z-index: 1; }
   .feature-post .feature-post-thumb {
@@ -1656,7 +1655,9 @@ p {
         .feature-post .feature-post-content .title a:hover {
           color: #002f6c; }
   .feature-post:hover .feature-post-thumb img {
-    transform: scale(1.1); }
+    transform: translateY(-20px); 
+    opacity: 0.8;
+  background-color: #000;}
 
 .feature-post-slider .slick-arrow {
   position: absolute;
