@@ -545,7 +545,190 @@ $wp_customize->add_control(
 	)
 );
 
+//Homepage Sidebar News Listing
+$wp_customize->add_section(
+	'section_sidebar_news' ,
+	array(
+		'title'       	=> __( 'Sidebar News', 'nepaleseinfinland' ),
+		'description' 	=> __( 'Setup Sidebar News.', 'nepaleseinfinland' ),
+		'panel'			=> 'nepaleseinfinland_setting_panel',
+	)
+	);
+		//sidebar news 1
+	$wp_customize->add_setting(
+	'sidebar_news_title_one',
+	array(
+		'default'			=> 'Sidebar News List One',
+	)
+	);
+	$wp_customize->add_control(
+	'sidebar_news_title_one',
+		array(
+		 'label'		=> __('Title for Sidebar News 1', 'nepaleseinfinland'),
+		 'section' 	=> 'section_sidebar_news',
+		 'type' 		=> 'text',
+		 'settings'	=> 'sidebar_news_title_one',
+		)
+	);
+	
+	$terms = get_terms(array(
+	'taxonomy'=> 'news_category',
+	'hide_empty'=> false,
+	));
+	$caters = array();
+	$i = 0;
+	foreach($terms as $category){
+	$caters[$category->term_id] = $category->name;
+	}
+	
+	$wp_customize->add_setting('sidebar_news_one', 
+	array(
+		'default'			=> 'Latest News',
+		)
+	);
+	
+	$wp_customize->add_control(
+	'sidebar_news_one',
+		array(
+		'label'		=> __('Choose Category for Sidebar News 1:', 'nepaleseinfinland'),
+		'description' => 'Select news category to display in slider  in home page.',
+		'section' 	=> 'section_sidebar_news',
+		'type' 		=> 'text',
+		'settings'	=> 'sidebar_news_one',
+		'type'    => 'select',
+		'choices' => $caters
+		)
+	);
+	
+	$wp_customize->add_setting(
+	'no_of_news_one',
+	array(
+		'default'			=> '4',
+	)
+	);
+	$wp_customize->add_control(
+	'no_of_news_one',
+		array(
+		 'label'		=> __('Select total news to display on homepage:', 'nepaleseinfinland'),
+		 'section' 	=> 'section_sidebar_news',
+		 'type' 		=> 'text',
+		 'settings'	=> 'no_of_news_one',
+		)
+	);
+	
+	$wp_customize->add_setting('sidebar_news_one', 
+	array(
+		'default'			=> 'Latest News',
+		)
+	);
 
+
+	//sidebar news 2
+	$wp_customize->add_setting(
+		'sidebar_news_title_two',
+		array(
+			'default'			=> 'Sidebar News List Two',
+		)
+		);
+		$wp_customize->add_control(
+		'sidebar_news_title_two',
+			array(
+			 'label'		=> __('Title for Sidebar News 2', 'nepaleseinfinland'),
+			 'section' 	=> 'section_sidebar_news',
+			 'type' 		=> 'text',
+			 'settings'	=> 'sidebar_news_title_two',
+			)
+		);
+
+		$wp_customize->add_setting('sidebar_news_two', 
+		array(
+			'default'			=> 'Latest News',
+			)
+		);
+	
+	$wp_customize->add_control(
+	'sidebar_news_two',
+		array(
+		'label'		=> __('Choose Category for Sidebar News 2:', 'nepaleseinfinland'),
+		'description' => 'Select news category to display in slider  in home page.',
+		'section' 	=> 'section_sidebar_news',
+		'type' 		=> 'text',
+		'settings'	=> 'sidebar_news_two',
+		'type'    => 'select',
+		'choices' => $caters
+		)
+	);
+	
+	$wp_customize->add_setting(
+	'no_of_news_two',
+	array(
+		'default'			=> '4',
+	)
+	);
+	$wp_customize->add_control(
+	'no_of_news_two',
+		array(
+		 'label'		=> __('Select total news to display on homepage:', 'nepaleseinfinland'),
+		 'section' 	=> 'section_sidebar_news',
+		 'type' 		=> 'text',
+		 'settings'	=> 'no_of_news_two',
+		)
+	);//sidebar news 3
+	$wp_customize->add_setting(
+		'sidebar_news_title_three',
+		array(
+			'default'			=> 'Sidebar News List three',
+		)
+		);
+		$wp_customize->add_control(
+		'sidebar_news_title_three',
+			array(
+			 'label'		=> __('Title for Sidebar News 2', 'nepaleseinfinland'),
+			 'section' 	=> 'section_sidebar_news',
+			 'type' 		=> 'text',
+			 'settings'	=> 'sidebar_news_title_three',
+			)
+		);
+
+		$wp_customize->add_setting('sidebar_news_three', 
+		array(
+			'default'			=> 'Latest News',
+			)
+		);
+	
+	$wp_customize->add_control(
+	'sidebar_news_three',
+		array(
+		'label'		=> __('Choose Category for Sidebar News 3:', 'nepaleseinfinland'),
+		'description' => 'Select news category to display in slider  in home page.',
+		'section' 	=> 'section_sidebar_news',
+		'type' 		=> 'text',
+		'settings'	=> 'sidebar_news_three',
+		'type'    => 'select',
+		'choices' => $caters
+		)
+	);
+	
+	$wp_customize->add_setting(
+	'no_of_news_three',
+	array(
+		'default'			=> '4',
+	)
+	);
+	$wp_customize->add_control(
+	'no_of_news_three',
+		array(
+		 'label'		=> __('Select total news to display on homepage:', 'nepaleseinfinland'),
+		 'section' 	=> 'section_sidebar_news',
+		 'type' 		=> 'text',
+		 'settings'	=> 'no_of_news_three',
+		)
+	);
+	
+	
+	
+	
+	
 //google map field for customizer
 
 
