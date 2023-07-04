@@ -190,74 +190,89 @@ global $wp_query;
                 <div class="col-lg-4">
                     <div class="post_gallery_sidebar">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            
+                        <?php 
+                        $sidebar_news_title_one = get_theme_mod('sidebar_news_title_one');
+                        $no_of_news_one = get_theme_mod('no_of_news_one');
+                        $sidebar_news_one = get_theme_mod('sidebar_news_one');
+                        
+                        $sidebar_news_title_two = get_theme_mod('sidebar_news_title_two');
+                        $no_of_news_two = get_theme_mod('no_of_news_two');
+                        $sidebar_news_two = get_theme_mod('sidebar_news_two');
+                        
+                        $sidebar_news_title_three = get_theme_mod('sidebar_news_title_three');
+                        $no_of_news_three = get_theme_mod('no_of_news_three');
+                        $sidebar_news_three = get_theme_mod('sidebar_news_three');
+
+
+                        if(!empty($sidebar_news_title_one)){
+                        ?>
                             <li class="nav-item">
-                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">TRENDY</a>
+                                <a class="nav-link active" id="sidebar_news_title_one-tab" data-toggle="pill" href="#sidebar_news_title_one" role="tab" aria-controls="sidebar_news_title_one" aria-selected="true"><?php echo $sidebar_news_title_one;?></a>
                             </li>
+                        <?php } 
+                        if(!empty($sidebar_news_title_two)){
+                        ?>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">LATEST</a>
+                                <a class="nav-link" id="sidebar_news_title_two-tab" data-toggle="pill" href="#sidebar_news_title_two" role="tab" aria-controls="sidebar_news_title_two" aria-selected="true"><?php echo $sidebar_news_title_two;?></a>
                             </li>
+                        <?php } 
+                        if(!empty($sidebar_news_title_three)){
+                        ?>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">POPULAR</a>
+                                <a class="nav-link" id="sidebar_news_title_two-tab" data-toggle="pill" href="#sidebar_news_title_three" role="tab" aria-controls="sidebar_news_title_three" aria-selected="true"><?php echo $sidebar_news_title_three;?></a>
                             </li>
+                        <?php } ?>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                <div class="post_gallery_items">
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Copa America: Luis Suarez from devastated US</a></h4>
-                                        </div>
+                        <?php
+                        $args = array(
+                            'post_type' => 'event_post_type', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                            'meta_key' => 'event_hot',
+                            'orderby' => 'meta_value_num', // Sort by meta value as numeric
+                            'order' => 'DESC', 
+                            'posts_per_page' => 5,
+                        );
+                        
+                        $query = new WP_Query($args);
+                        if ($query->have_posts()) {
+                            while ($query->have_posts()) {
+                                $query->the_post();
+                                echo '<div class="tab-pane fade show active" id="sidebar_news_title_one" role="tabpanel" aria-labelledby="sidebar_news_title_one-tab">
+                                    <div class="post_gallery_items">
+                                    <div class="gallery_item_thumb">
+                                        ' . get_the_post_thumbnail($post->ID, 'post_image_s') . '
                                     </div>
-                                </div>
+                                            <div class="gallery_item_content">
+                                                <div class="post-meta">';
+                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-categories">';
+                                                            foreach ($terms as $term) {
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+                                                            }
+                                                            echo '</div>';
+                                                        }
+                                                    }
+                                                }
+                                                echo '<div class="meta-date"><span> ' . get_the_date('F j, Y') . '</span></div></div>
+                                <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
                             </div>
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                <div class="post_gallery_items">
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Copa America: Luis Suarez from devastated US</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                <div class="post_gallery_items">
-                                    <div class="gallery_item">
-                                        <div class="gallery_item_thumb">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gallery-1.jpg" alt="gallery">
-                                        </div>
-                                        <div class="gallery_item_content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="title"><a href="#">Copa America: Luis Suarez from devastated US</a></h4>
-                                        </div>
+                        </div>
+                        </div>';
+                            }
+                        } else {
+                            // No posts found
+                        }
+                        
+                        // Restore original post data
+                        wp_reset_postdata();
+                        
+                    ?>
                                     </div>
                                 </div>
                             </div>
