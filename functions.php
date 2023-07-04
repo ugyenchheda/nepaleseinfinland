@@ -466,3 +466,58 @@ function loadingNews() {
 		flush_rewrite_rules();
 	}
 	add_action('after_switch_theme', 'flush_rewrite_rules_custom');
+
+	//sidebar news tab
+	function display_sidebar_news($no_of_news, $sidebar_news) {
+		$args = array(
+			'post_type' => 'news', 
+			'order' => 'DESC', 
+			'posts_per_page' => $no_of_news,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'news_category',
+					'field' => 'term_id',
+					'terms' => $sidebar_news,
+				),
+			),
+		);
+	
+		$query = new WP_Query($args);
+		$is_first_news = true; // Variable to track the first news item
+		if ($query->have_posts()) {
+			$tab_pane_class = $is_first_news ? 'active' : '';
+			while ($query->have_posts()) {
+				
+				$query->the_post();
+				echo '<div class="tab-pane fade show active" id="sidebar_news_title_' . $sidebar_news . '" role="tabpanel" aria-labelledby="sidebar_news_title_' . $sidebar_news . '-tab">
+						<div class="post_gallery_items"><div class="gallery_item">
+							<div class="gallery_item_thumb">' . get_the_post_thumbnail(get_the_ID(), 'post_image_xs') . '</div>
+							<div class="gallery_item_content">
+								<div class="post-meta">';
+								$taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+	
+								foreach ($taxonomies as $taxonomy) {
+									if (!in_array($taxonomy, ['category', 'post_tag'])) {
+										$terms = get_the_terms(get_the_ID(), $taxonomy);
+										if ($terms && !is_wp_error($terms)) {
+											echo '<div class="meta-categories">';
+											foreach ($terms as $term) {
+												echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+											}
+											echo '</div>';
+										}
+									}
+								}
+								echo '<div class="meta-date"><span> ' . get_the_date('F j, Y') . '</span></div></div>
+									<h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+							</div>
+						</div>
+					</div>
+				</div>';
+				$is_first_news = false; // Set to false after the first iteration
+			}
+		} else {
+			echo 'Sorry there is no post to display.';
+		}
+		wp_reset_postdata(); 
+	}

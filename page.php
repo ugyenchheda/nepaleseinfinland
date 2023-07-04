@@ -138,7 +138,7 @@ global $wp_query;
                     ?>
                 </div>
                 <div class="post_gallery_inner_slider">
-                <?php
+                    <?php
                         $args = array(
                             'post_type' => 'video_blogs', 
                             'meta_key' => 'news_hot',
@@ -190,7 +190,6 @@ global $wp_query;
                 <div class="col-lg-4">
                     <div class="post_gallery_sidebar">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                            
                         <?php 
                         $sidebar_news_title_one = get_theme_mod('sidebar_news_title_one');
                         $no_of_news_one = get_theme_mod('no_of_news_one');
@@ -205,44 +204,43 @@ global $wp_query;
                         $sidebar_news_three = get_theme_mod('sidebar_news_three');
 
 
-                        if(!empty($sidebar_news_title_one)){
-                        ?>
+                        if(!empty($sidebar_news_title_one)){ ?>
                             <li class="nav-item">
                                 <a class="nav-link active" id="sidebar_news_title_one-tab" data-toggle="pill" href="#sidebar_news_title_one" role="tab" aria-controls="sidebar_news_title_one" aria-selected="true"><?php echo $sidebar_news_title_one;?></a>
                             </li>
-                        <?php } 
-                        if(!empty($sidebar_news_title_two)){
-                        ?>
-                            <li class="nav-item">
+                        <?php }  if(!empty($sidebar_news_title_two)) { ?>
+                            <li class="nav-item"> 
                                 <a class="nav-link" id="sidebar_news_title_two-tab" data-toggle="pill" href="#sidebar_news_title_two" role="tab" aria-controls="sidebar_news_title_two" aria-selected="true"><?php echo $sidebar_news_title_two;?></a>
                             </li>
-                        <?php } 
-                        if(!empty($sidebar_news_title_three)){
-                        ?>
+                        <?php }  if(!empty($sidebar_news_title_three)) { ?>
                             <li class="nav-item">
-                                <a class="nav-link" id="sidebar_news_title_two-tab" data-toggle="pill" href="#sidebar_news_title_three" role="tab" aria-controls="sidebar_news_title_three" aria-selected="true"><?php echo $sidebar_news_title_three;?></a>
+                                <a class="nav-link" id="sidebar_news_title_three-tab" data-toggle="pill" href="#sidebar_news_title_three" role="tab" aria-controls="sidebar_news_title_three" aria-selected="true"><?php echo $sidebar_news_title_three;?></a>
                             </li>
                         <?php } ?>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
-                        <?php
+                        <?php          
+                        //query for sidebar news 1
                         $args = array(
-                            'post_type' => 'event_post_type', // Replace 'your_custom_post_type' with the actual name of your custom post type
-                            'meta_key' => 'event_hot',
-                            'orderby' => 'meta_value_num', // Sort by meta value as numeric
+                            'post_type' => 'news', 
                             'order' => 'DESC', 
-                            'posts_per_page' => 5,
+                            'posts_per_page' => $no_of_news_one,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'news_category',
+                                    'field' => 'term_id',
+                                    'terms' => $sidebar_news_one,
+                                ),
+                            ),
                         );
                         
+                        echo '<div class="tab-pane fade show active" id="sidebar_news_title_one" role="tabpanel" aria-labelledby="sidebar_news_title_one-tab">';
                         $query = new WP_Query($args);
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-                                echo '<div class="tab-pane fade show active" id="sidebar_news_title_one" role="tabpanel" aria-labelledby="sidebar_news_title_one-tab">
-                                    <div class="post_gallery_items">
-                                    <div class="gallery_item_thumb">
-                                        ' . get_the_post_thumbnail($post->ID, 'post_image_s') . '
-                                    </div>
+                                echo '<div class="post_gallery_items"><div class="gallery_item">
+                                            <div class="gallery_item_thumb">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">';
                                                 $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
@@ -260,19 +258,113 @@ global $wp_query;
                                                     }
                                                 }
                                                 echo '<div class="meta-date"><span> ' . get_the_date('F j, Y') . '</span></div></div>
-                                <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
-                            </div>
-                        </div>
-                        </div>';
+                                                    <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                                        </div></div>
+                                    </div>';
                             }
                         } else {
-                            // No posts found
+                           echo 'Sorry there is no post to display.';
                         }
-                        
-                        // Restore original post data
-                        wp_reset_postdata();
-                        
-                    ?>
+                        wp_reset_postdata(); 
+                        echo '</div>';
+
+
+                        //query for sidebar news 2
+                    $args = array(
+                        'post_type' => 'news', 
+                        'order' => 'DESC', 
+                        'posts_per_page' => $no_of_news_two,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'news_category',
+                                'field' => 'term_id',
+                                'terms' => $sidebar_news_two,
+                            ),
+                        ),
+                    );
+                    
+                    echo '<div class="tab-pane fade show" id="sidebar_news_title_two" role="tabpanel" aria-labelledby="sidebar_news_title_two-tab">';
+                        $query = new WP_Query($args);
+                        if ($query->have_posts()) {
+                            while ($query->have_posts()) {
+                                $query->the_post();
+                                echo '<div class="post_gallery_items"><div class="gallery_item">
+                                            <div class="gallery_item_thumb">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
+                                            <div class="gallery_item_content">
+                                                <div class="post-meta">';
+                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-categories">';
+                                                            foreach ($terms as $term) {
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+                                                            }
+                                                            echo '</div>';
+                                                        }
+                                                    }
+                                                }
+                                                echo '<div class="meta-date"><span> ' . get_the_date('F j, Y') . '</span></div></div>
+                                                    <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                                        </div></div>
+                                    </div>';
+                            }
+                        } else {
+                        echo 'Sorry there is no post to display.';
+                        }
+                        wp_reset_postdata(); 
+                    echo '</div>';
+
+                    //query for sidebar news three
+                $args = array(
+                    'post_type' => 'news', 
+                    'order' => 'DESC', 
+                    'posts_per_page' => $no_of_news_three,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'news_category',
+                            'field' => 'term_id',
+                            'terms' => $sidebar_news_three,
+                        ),
+                    ),
+                );
+                echo '<div class="tab-pane fade show" id="sidebar_news_title_three" role="tabpanel" aria-labelledby="sidebar_news_title_three-tab">';
+                    $query = new WP_Query($args);
+                    if ($query->have_posts()) {
+                        while ($query->have_posts()) {
+                            $query->the_post();
+                            echo    '<div class="post_gallery_items"><div class="gallery_item">
+                                        <div class="gallery_item_thumb">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
+                                        <div class="gallery_item_content">
+                                            <div class="post-meta">';
+                                            $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+
+                                            foreach ($taxonomies as $taxonomy) {
+                                                if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                    $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                    if ($terms && !is_wp_error($terms)) {
+                                                        echo '<div class="meta-categories">';
+                                                        foreach ($terms as $term) {
+                                                            echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+                                                        }
+                                                        echo '</div>';
+                                                    }
+                                                }
+                                            }
+                                            echo '<div class="meta-date"><span> ' . get_the_date('F j, Y') . '</span></div></div>
+                                                <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                                        </div></div>
+                                    </div>';
+                        }
+                    } else {
+                    echo 'Sorry there is no post to display.';
+                    }
+                    wp_reset_postdata(); 
+                
+                echo '</div>';
+            ?>
                                     </div>
                                 </div>
                             </div>
@@ -680,9 +772,8 @@ global $wp_query;
                             <div class="section-title d-flex justify-content-between align-items-center">
                                 <h3 class="title">Categories</h3>
                                 <?php $taxonomy_slug = 'news_category';
-$archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
-
-echo '<a href="' . esc_url($archive_link) . '">ALL SEE</a>';
+                                    $archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
+                                    echo '<a href="' . esc_url($archive_link) . '">ALL SEE</a>';
                                 ?>
 
                             </div>
@@ -815,9 +906,7 @@ echo '<a href="' . esc_url($archive_link) . '">ALL SEE</a>';
                                                                         }
                                                                     }
                                                                 }
-                                            echo '<div class="meta-date">
-                                                                    <span>' . get_the_date('F j, Y') . '</span>
-                                                                </div>
+                                                                echo '<div class="meta-date"><span>' . get_the_date('F j, Y') . '</span></div>
                                                             </div>
                                                             <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
                                                             <p class="text">' . wp_trim_words(get_the_excerpt(), 15) . '</p>
