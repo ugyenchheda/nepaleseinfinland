@@ -239,7 +239,7 @@ global $wp_query;
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
-                                echo '<div class="post_gallery_items"><div class="gallery_item">
+                                echo    '<div class="post_gallery_items"><div class="gallery_item">
                                             <div class="gallery_item_thumb">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">';
@@ -292,8 +292,7 @@ global $wp_query;
                                             <div class="gallery_item_thumb">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
                                             <div class="gallery_item_content">
                                                 <div class="post-meta">';
-                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
-
+                                                $taxonomies = get_object_taxonomies('news'); 
                                                 foreach ($taxonomies as $taxonomy) {
                                                     if (!in_array($taxonomy, ['category', 'post_tag'])) {
                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
@@ -753,14 +752,6 @@ global $wp_query;
                                     </div>
                                 </div>
                                 <div class="video-news-post-content">
-                                    <div class="post-meta">
-                                        <div class="meta-categories">
-                                            <a href="#">TECHNOLOGY</a>
-                                        </div>
-                                        <div class="meta-date">
-                                            <span>March 26, 2020</span>
-                                        </div>
-                                    </div>
                                     <h3 class="title"><a href="#">Riots Report Shows London Needs To Maintain Police Numbers, Says Mayor</a></h3>
                                 </div>
                             </div>

@@ -50,6 +50,7 @@ function nepaleseinfinland_customize_register( $wp_customize ) {
 			'title'       	=> __( 'Header Setting', 'nepaleseinfinland' ),
 			'description' 	=> __( 'Setup header settings.', 'nepaleseinfinland' ),
 			'panel'			=> 'nepaleseinfinland_setting_panel',
+			'priority' => 29,
 		)
 	);
 
@@ -481,9 +482,10 @@ array(
 	'title'       	=> __( 'Homepage News', 'nepaleseinfinland' ),
 	'description' 	=> __( 'Setup Homepage News.', 'nepaleseinfinland' ),
 	'panel'			=> 'nepaleseinfinland_setting_panel',
+	'priority' => 30,
 )
 );
-
+//Homepage bottom section News
 $wp_customize->add_setting(
 'hompage_news_title',
 array(
@@ -519,8 +521,8 @@ array(
 $wp_customize->add_control(
 'homepage_news_category',
 	array(
-	'label'		=> __('Choose Category:', 'nepaleseinfinland'),
-	'description' => 'Select news category to display in slider  in home page.',
+	'label'		=> __('Choose News Category:', 'nepaleseinfinland'),
+	'description' => 'Select news category to display in homepage bottom section.',
 	'section' 	=> 'section_newslist',
 	'type' 		=> 'text',
 	'settings'	=> 'homepage_news_category',
@@ -545,6 +547,37 @@ $wp_customize->add_control(
 	)
 );
 
+//Homepage Youtube video section News
+$wp_customize->add_setting(
+	'hompage_video',
+	array(
+		'default'			=> 'Video News',
+	)
+	);
+	$wp_customize->add_control(
+	'hompage_video',
+		array(
+		 'label'		=> __('Title for News', 'nepaleseinfinland'),
+		 'section' 	=> 'section_newslist',
+		 'type' 		=> 'text',
+		 'settings'	=> 'hompage_video',
+		)
+	);
+	$wp_customize->add_setting(
+		'hompage_video_link',
+		array(
+			'default'			=> 'Video News',
+		)
+		);
+		$wp_customize->add_control(
+		'hompage_video_link',
+			array(
+			 'label'		=> __('Add the youtube video link', 'nepaleseinfinland'),
+			 'section' 	=> 'section_newslist',
+			 'type' 		=> 'text',
+			 'settings'	=> 'hompage_video_link',
+			)
+		);
 //Homepage Sidebar News Listing
 $wp_customize->add_section(
 	'section_sidebar_news' ,
@@ -552,6 +585,7 @@ $wp_customize->add_section(
 		'title'       	=> __( 'Sidebar News', 'nepaleseinfinland' ),
 		'description' 	=> __( 'Setup Sidebar News.', 'nepaleseinfinland' ),
 		'panel'			=> 'nepaleseinfinland_setting_panel',
+		'priority' => 31,
 	)
 	);
 		//sidebar news 1
