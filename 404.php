@@ -10,51 +10,26 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
-
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'nepaleseinfinland' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'nepaleseinfinland' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'nepaleseinfinland' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$nepaleseinfinland_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'nepaleseinfinland' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$nepaleseinfinland_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
+<section class="error-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="error-thumb text-center">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/404.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="error-content text-center">
+                        <h3 class="title">Page not found</h3>
+                        <p>Sorry the page you were looking for cannot be found. </p>
+                        <ul>
+                            <li><a class="main-btn" href="<?php echo get_home_url(); ?>">GO TO HOME</a></li>
+                            <li><a class="main-btn btn-2" href="#">CONTACT US</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <?php
 get_footer();
