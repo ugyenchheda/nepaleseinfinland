@@ -485,6 +485,51 @@ array(
 	'priority' => 30,
 )
 );
+//Homepage Youtube video section News
+$wp_customize->add_setting(
+	'hompage_video_title',
+	array(
+		'default'			=> 'Video News',
+	)
+	);
+	$wp_customize->add_control(
+	'hompage_video_title',
+		array(
+		 'label'		=> __('Video Title', 'nepaleseinfinland'),
+		 'section' 	=> 'section_newslist',
+		 'type' 		=> 'text',
+		 'settings'	=> 'hompage_video_title',
+		)
+	);
+	$wp_customize->add_setting(
+		'hompage_video_description',
+		array(
+		)
+		);
+		$wp_customize->add_control(
+		'hompage_video_description',
+			array(
+			 'label'		=> __('Add Video Description', 'nepaleseinfinland'),
+			 'section' 	=> 'section_newslist',
+			 'type' 		=> 'textarea',
+			 'settings'	=> 'hompage_video_description',
+			)
+		);
+	$wp_customize->add_setting(
+		'hompage_video_link',
+		array(
+			'default'			=> 'Video Link',
+		)
+		);
+		$wp_customize->add_control(
+		'hompage_video_link',
+			array(
+			 'label'		=> __('Add the youtube video link', 'nepaleseinfinland'),
+			 'section' 	=> 'section_newslist',
+			 'type' 		=> 'text',
+			 'settings'	=> 'hompage_video_link',
+			)
+		);
 //Homepage bottom section News
 $wp_customize->add_setting(
 'hompage_news_title',
@@ -495,7 +540,7 @@ array(
 $wp_customize->add_control(
 'hompage_news_title',
 	array(
-	 'label'		=> __('Title for News', 'nepaleseinfinland'),
+	 'label'		=> __('Title for News Section at bottom', 'nepaleseinfinland'),
 	 'section' 	=> 'section_newslist',
 	 'type' 		=> 'text',
 	 'settings'	=> 'hompage_news_title',
@@ -547,37 +592,6 @@ $wp_customize->add_control(
 	)
 );
 
-//Homepage Youtube video section News
-$wp_customize->add_setting(
-	'hompage_video',
-	array(
-		'default'			=> 'Video News',
-	)
-	);
-	$wp_customize->add_control(
-	'hompage_video',
-		array(
-		 'label'		=> __('Title for News', 'nepaleseinfinland'),
-		 'section' 	=> 'section_newslist',
-		 'type' 		=> 'text',
-		 'settings'	=> 'hompage_video',
-		)
-	);
-	$wp_customize->add_setting(
-		'hompage_video_link',
-		array(
-			'default'			=> 'Video News',
-		)
-		);
-		$wp_customize->add_control(
-		'hompage_video_link',
-			array(
-			 'label'		=> __('Add the youtube video link', 'nepaleseinfinland'),
-			 'section' 	=> 'section_newslist',
-			 'type' 		=> 'text',
-			 'settings'	=> 'hompage_video_link',
-			)
-		);
 //Homepage Sidebar News Listing
 $wp_customize->add_section(
 	'section_sidebar_news' ,

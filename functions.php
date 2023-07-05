@@ -521,3 +521,18 @@ function loadingNews() {
 		}
 		wp_reset_postdata(); 
 	}
+
+	function get_youtube_video_id($url) {
+		$query_string = parse_url($url, PHP_URL_QUERY);
+		parse_str($query_string, $query_params);
+		if (isset($query_params['v'])) {
+			return $query_params['v'];
+		} else {
+			return false;
+		}
+	}
+	
+	
+	
+	
+	

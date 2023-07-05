@@ -2148,7 +2148,7 @@ p {
     .video-news-post-item .video-news-post-thumb img {
       width: 100%; }
   .video-news-post-item .video-news-post-content {
-    padding: 23px 30px 26px; }
+    padding: 5px 30px 12px; }
     @media (max-width: 767px) {
       .video-news-post-item .video-news-post-content {
         padding: 20px; } }

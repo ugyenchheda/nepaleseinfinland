@@ -739,25 +739,119 @@ global $wp_query;
         <div class="container custom-container">
             <div class="video-news-box">
                 <div class="row">
+                    <?php 
+						$hompage_video_link = get_theme_mod('hompage_video_link');
+                        if(!empty($hompage_video_link)){?>
                     <div class="col-lg-8">
                         <div class="video-news-post">
+                            <?php 
+								$hompage_video_title = get_theme_mod('hompage_video_title');
+								$hompage_video_description = get_theme_mod('hompage_video_description');
+                                if(!empty($hompage_video_title)){ 
+                            ?>
                             <div class="section-title section-title-2">
-                                <h3 class="title">Videos News</h3>
+                                <h3 class="title"><?php echo $hompage_video_title; ?></h3>
                             </div>
+                            <?php } ?>
                             <div class="video-news-post-item">
                                 <div class="video-news-post-thumb">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/video-post-thumb.jpg" alt="">
-                                    <div class="play-btn">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=HalMzk1FFM0"><i class="fab fa-youtube"></i></a>
-                                    </div>
+                                    <?php 
+
+                                        // Extract the video ID from the YouTube link
+                                        $video_id = get_youtube_video_id($hompage_video_link);
+
+                                        // Convert the video ID into the YouTube embed link format
+                                        $embed_link = 'https://www.youtube.com/embed/' . $video_id;
+                                    
+                                    ?>
+                                    <iframe width="100%" height="440" src="<?php echo $embed_link ; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="play-btn">
                                 </div>
+                                </div>
+                                <?php if(!empty($hompage_video_description)) {?>
                                 <div class="video-news-post-content">
-                                    <h3 class="title"><a href="#">Riots Report Shows London Needs To Maintain Police Numbers, Says Mayor</a></h3>
+                                    <h3 class="title"><a href="#"><?php echo $hompage_video_description; ?></a></h3>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div> 
-                <div class="col-lg-4">
+                    <div class="col-lg-4">
+                        <div class="all-post-sidebar">
+                            <div class="Categories-post mt-40">
+                                <div class="section-title d-flex justify-content-between align-items-center">
+                                    <h3 class="title">Categories</h3>
+                                    <?php $taxonomy_slug = 'news_category';
+                                        $archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
+                                        echo '<a href="' . esc_url($archive_link) . '">ALL SEE</a>';
+                                    ?>
+
+                                </div>
+                                <div class="Categories-item">
+                                <?php
+                                    $custom_post_type = 'news'; 
+                                    function get_top_three_taxonomies($custom_post_type) {
+                                        $taxonomies = get_object_taxonomies($custom_post_type, 'objects');
+                                        $taxonomy_counts = array();
+
+                                        if ($taxonomies) {
+                                            foreach ($taxonomies as $taxonomy) {
+                                                if ($taxonomy->name === 'post_tag') {
+                                                    continue;
+                                                }
+
+                                                $terms = get_terms($taxonomy->name);
+                                                if ($terms) {
+                                                    $post_count = 0;
+                                                    foreach ($terms as $term) {
+                                                        $post_count += $term->count;
+                                                    }
+                                                    $taxonomy_counts[$taxonomy->name] = $post_count;
+                                                }
+                                            }
+                                            arsort($taxonomy_counts);
+                                            $top_three_taxonomies = array_slice($taxonomy_counts, 0, 3);
+                                            return array_keys($top_three_taxonomies);
+                                        }
+                                        return array();
+                                    }
+                                    $top_three_taxonomies = get_top_three_taxonomies($custom_post_type);
+                                    if (!empty($top_three_taxonomies)) {
+                                        echo '<div>';
+                                        foreach ($top_three_taxonomies as $taxonomy_name) {
+                                            $taxonomy = get_taxonomy($taxonomy_name);
+                                            $terms = get_terms($taxonomy_name);
+
+                                            if ($terms) {
+                                                foreach ($terms as $term) {
+                                                    $news_taxonomy_banner = get_term_meta($term->term_id, 'news_category_thumbnail', true);
+                                                    $post_count = $term->count;
+                                                    echo '<div class="item">
+                                                            <img src="'.$news_taxonomy_banner.'" alt="categories">
+                                                            <div class="Categories-content">
+                                                                <a href="' . esc_url(get_term_link($term)) . '">
+                                                                    <span>' . $term->name . '<b class="post-count">(' . $post_count . ')</b></span>
+                                                                    <img src="'.get_template_directory_uri().'/assets/images/arrow.svg" alt="post image">
+                                                                </a>
+                                                            </div>
+                                                        </div>';
+                                                }
+                                            } else {
+                                                echo '<li>No terms found for ' . $taxonomy->label .'</li>';
+                                            }
+                                        }
+                                        echo '</div>';
+                                    } else {
+                                        echo 'No taxonomies found for this post type.';
+                                    }
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } 
+                    if(empty($hompage_video_link)){?>
+                <div class="col-lg-12">
                     <div class="all-post-sidebar">
                         <div class="Categories-post mt-40">
                             <div class="section-title d-flex justify-content-between align-items-center">
@@ -768,7 +862,7 @@ global $wp_query;
                                 ?>
 
                             </div>
-                            <div class="Categories-item">
+                            <div class="container Categories-item">
                             <?php
                                 $custom_post_type = 'news'; 
                                 function get_top_three_taxonomies($custom_post_type) {
@@ -798,7 +892,7 @@ global $wp_query;
                                 }
                                 $top_three_taxonomies = get_top_three_taxonomies($custom_post_type);
                                 if (!empty($top_three_taxonomies)) {
-                                    echo '<div>';
+                                    echo '<div class="row">';
                                     foreach ($top_three_taxonomies as $taxonomy_name) {
                                         $taxonomy = get_taxonomy($taxonomy_name);
                                         $terms = get_terms($taxonomy_name);
@@ -807,7 +901,7 @@ global $wp_query;
                                             foreach ($terms as $term) {
                                                 $news_taxonomy_banner = get_term_meta($term->term_id, 'news_category_thumbnail', true);
                                                 $post_count = $term->count;
-                                                echo '<div class="item">
+                                                echo '<div class="col-lg-4 item">
                                                         <img src="'.$news_taxonomy_banner.'" alt="categories">
                                                         <div class="Categories-content">
                                                             <a href="' . esc_url(get_term_link($term)) . '">
@@ -831,6 +925,7 @@ global $wp_query;
                         </div>
                     </div>
                 </div>
+                <?php } ?>
                 </div>
             </div>
         </div>
