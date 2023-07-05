@@ -756,13 +756,10 @@ global $wp_query;
                             <div class="video-news-post-item">
                                 <div class="video-news-post-thumb">
                                     <?php 
-
                                         // Extract the video ID from the YouTube link
                                         $video_id = get_youtube_video_id($hompage_video_link);
-
                                         // Convert the video ID into the YouTube embed link format
                                         $embed_link = 'https://www.youtube.com/embed/' . $video_id;
-                                    
                                     ?>
                                     <iframe width="100%" height="440" src="<?php echo $embed_link ; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="play-btn">
                                 </div>
@@ -782,7 +779,7 @@ global $wp_query;
                                     <h3 class="title">Categories</h3>
                                     <?php $taxonomy_slug = 'news_category';
                                         $archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
-                                        echo '<a href="' . esc_url($archive_link) . '">ALL SEE</a>';
+                                        echo '<a href="#">ALL SEE</a>';
                                     ?>
 
                                 </div>
@@ -858,7 +855,7 @@ global $wp_query;
                                 <h3 class="title">Categories</h3>
                                 <?php $taxonomy_slug = 'news_category';
                                     $archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
-                                    echo '<a href="' . esc_url($archive_link) . '">ALL SEE</a>';
+                                    echo '<a href="#">ALL SEE</a>';
                                 ?>
 
                             </div>
