@@ -15,13 +15,11 @@ get_header();
             <div class="row justify-content-center">
                 <div class="col-lg-9">
                     <div class="error-thumb text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/404.png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/404.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="error-content text-center">
-                        <h3 class="title">Page not found</h3>
-                        <p>Sorry the page you were looking for cannot be found. </p>
                         <ul>
                             <li><a class="main-btn" href="<?php echo get_home_url(); ?>">GO TO HOME</a></li>
                             <li><a class="main-btn btn-2" href="#">CONTACT US</a></li>
