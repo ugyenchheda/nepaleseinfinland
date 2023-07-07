@@ -530,84 +530,115 @@ $wp_customize->add_setting(
 			 'settings'	=> 'hompage_video_link',
 			)
 		);
-//Homepage bottom section News
-$wp_customize->add_setting(
-'hompage_news_title',
-array(
-	'default'			=> 'Homepage News List',
-)
-);
-$wp_customize->add_control(
-'hompage_news_title',
+	//Homepage bottom section News
+	$wp_customize->add_setting(
+	'hompage_news_title',
+		array(
+			'default'			=> 'Homepage News List',
+		)
+	);
+	$wp_customize->add_control(
+	'hompage_news_title',
+		array(
+		'label'		=> __('Title for News Section at bottom', 'nepaleseinfinland'),
+		'section' 	=> 'section_newslist',
+		'type' 		=> 'text',
+		'settings'	=> 'hompage_news_title',
+		)
+	);
+
+	$terms = get_terms(array(
+	'taxonomy'=> 'news_category',
+	'hide_empty'=> false,
+	));
+	$caters = array();
+	$i = 0;
+	foreach($terms as $category){
+	$caters[$category->term_id] = $category->name;
+	}
+
+	$wp_customize->add_setting('homepage_news_category', 
 	array(
-	 'label'		=> __('Title for News Section at bottom', 'nepaleseinfinland'),
-	 'section' 	=> 'section_newslist',
-	 'type' 		=> 'text',
-	 'settings'	=> 'hompage_news_title',
-	)
-);
+		'default'			=> 'Latest News',
+		)
+	);
 
-$terms = get_terms(array(
-'taxonomy'=> 'news_category',
-'hide_empty'=> false,
-));
-$caters = array();
-$i = 0;
-foreach($terms as $category){
-$caters[$category->term_id] = $category->name;
-}
+	$wp_customize->add_control(
+	'homepage_news_category',
+		array(
+		'label'		=> __('Choose News Category:', 'nepaleseinfinland'),
+		'description' => 'Select news category to display in homepage bottom section.',
+		'section' 	=> 'section_newslist',
+		'type' 		=> 'text',
+		'settings'	=> 'homepage_news_category',
+		'type'    => 'select',
+		'choices' => $caters
+		)
+	);
 
-$wp_customize->add_setting('homepage_news_category', 
-array(
-	'default'			=> 'Latest News',
+	$wp_customize->add_setting(
+	'no_of_news_hp',
+	array(
+		'default'			=> '4',
 	)
-);
+	);
+	$wp_customize->add_control(
+	'no_of_news_hp',
+		array(
+		'label'		=> __('Select total news to display on homepage:', 'nepaleseinfinland'),
+		'section' 	=> 'section_newslist',
+		'type' 		=> 'text',
+		'settings'	=> 'no_of_news_hp',
+		)
+	);
+//Homepage News Slider below menu
+
 
 $wp_customize->add_control(
-'homepage_news_category',
-	array(
-	'label'		=> __('Choose News Category:', 'nepaleseinfinland'),
-	'description' => 'Select news category to display in homepage bottom section.',
-	'section' 	=> 'section_newslist',
-	'type' 		=> 'text',
-	'settings'	=> 'homepage_news_category',
-	'type'    => 'select',
-	'choices' => $caters
-	)
-);
+	'homepage_topslider',
+		array(
+		'label'		=> __('Choose News Category:', 'nepaleseinfinland'),
+		'description' => 'Select news category to display in homepage top section.',
+		'section' 	=> 'section_newslist',
+		'type' 		=> 'text',
+		'settings'	=> 'homepage_topslider',
+		'type'    => 'select',
+		'choices' => $caters
+		)
+	);
 
-$wp_customize->add_setting(
-'no_of_news_hp',
-array(
-	'default'			=> '4',
-)
-);
-$wp_customize->add_control(
-'no_of_news_hp',
+	$wp_customize->add_setting(
+	'number_news',
 	array(
-	 'label'		=> __('Select total news to display on homepage:', 'nepaleseinfinland'),
-	 'section' 	=> 'section_newslist',
-	 'type' 		=> 'text',
-	 'settings'	=> 'no_of_news_hp',
+		'default'			=> '4',
 	)
-);
+	);
+	$wp_customize->add_control(
+	'number_news',
+		array(
+		'label'		=> __('Select total news to display on top section:', 'nepaleseinfinland'),
+		'section' 	=> 'section_newslist',
+		'type' 		=> 'text',
+		'settings'	=> 'number_news',
+		)
+	);
 
 //Homepage Sidebar News Listing
 $wp_customize->add_section(
 	'section_sidebar_news' ,
-	array(
-		'title'       	=> __( 'Sidebar News', 'nepaleseinfinland' ),
-		'description' 	=> __( 'Setup Sidebar News.', 'nepaleseinfinland' ),
-		'panel'			=> 'nepaleseinfinland_setting_panel',
-		'priority' => 31,
-	)
+		array(
+			'title'       	=> __( 'Sidebar News', 'nepaleseinfinland' ),
+			'description' 	=> __( 'Setup Sidebar News.', 'nepaleseinfinland' ),
+			'panel'			=> 'nepaleseinfinland_setting_panel',
+			'priority' => 31,
+		)
 	);
 		//sidebar news 1
 	$wp_customize->add_setting(
 	'sidebar_news_title_one',
-	array(
-		'default'			=> 'Sidebar News List One',
-	)
+		array(
+			'default'			=> 'Sidebar News List One',
+		)
 	);
 	$wp_customize->add_control(
 	'sidebar_news_title_one',
@@ -626,7 +657,7 @@ $wp_customize->add_section(
 	$caters = array();
 	$i = 0;
 	foreach($terms as $category){
-	$caters[$category->term_id] = $category->name;
+		$caters[$category->term_id] = $category->name;
 	}
 	
 	$wp_customize->add_setting('sidebar_news_one', 
@@ -650,9 +681,9 @@ $wp_customize->add_section(
 	
 	$wp_customize->add_setting(
 	'no_of_news_one',
-	array(
-		'default'			=> '4',
-	)
+		array(
+			'default'			=> '4',
+		)
 	);
 	$wp_customize->add_control(
 	'no_of_news_one',
@@ -674,9 +705,9 @@ $wp_customize->add_section(
 	//sidebar news 2
 	$wp_customize->add_setting(
 		'sidebar_news_title_two',
-		array(
-			'default'			=> 'Sidebar News List Two',
-		)
+			array(
+				'default'			=> 'Sidebar News List Two',
+			)
 		);
 		$wp_customize->add_control(
 		'sidebar_news_title_two',
