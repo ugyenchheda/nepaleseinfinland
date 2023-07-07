@@ -592,26 +592,53 @@ $wp_customize->add_setting(
 		)
 	);
 //Homepage News Slider below menu
+$post_types = get_post_types(array(
+    'public' => true, // Only retrieve public post types
+    'exclude_from_search' => false, // Exclude post types that are not meant to be searched
+    '_builtin' => false, // Exclude built-in post types like "page" and "attachment"
+));
 
-$wp_customize->add_setting('homepage_topslider', 
+$post_t = array();
+$i = 0;
+foreach ($post_types as $post_type) {
+    $post_type_object = get_post_type_object($post_type);
+    $post_t[$post_type] = $post_type_object->labels->singular_name;
+}
+
+
+$wp_customize->add_setting('homepage_topslider_posttype', 
 array(
 	'default'			=> 'Latest News',
 	)
 );
 
 $wp_customize->add_control(
-	'homepage_topslider',
+	'homepage_topslider_posttype',
 		array(
 		'label'		=> __('Choose News Category:', 'nepaleseinfinland'),
 		'description' => 'Select news category to display in homepage top section.',
 		'section' 	=> 'section_newslist',
 		'type' 		=> 'text',
-		'settings'	=> 'homepage_topslider',
+		'settings'	=> 'homepage_topslider_posttype',
 		'type'    => 'select',
-		'choices' => $caters
+		'choices' => $post_t
 		)
 	);
+	$post_type = 'your_post_type';
 
+	// Get the categories for the selected post type
+	$taxonomy =  $post_t; // Replace with the desired taxonomy
+	$terms = get_terms(array(
+		'taxonomy' => $taxonomy,
+		'hide_empty' => false,
+		'object_types' => array($post_type),
+	));
+	
+	$post_t_post = array();
+	$i = 0;
+	foreach ($terms as $category) {
+		$post_t_post[$category->term_id] = $category->name;
+	}
 	$wp_customize->add_setting(
 	'number_news',
 	array(
