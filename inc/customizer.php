@@ -593,6 +593,11 @@ $wp_customize->add_setting(
 	);
 //Homepage News Slider below menu
 
+$wp_customize->add_setting('homepage_topslider', 
+array(
+	'default'			=> 'Latest News',
+	)
+);
 
 $wp_customize->add_control(
 	'homepage_topslider',
