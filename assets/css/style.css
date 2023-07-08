@@ -3931,7 +3931,6 @@ p {
     background: #233340; }
 
 .footer-topbar {
-  border-bottom: 2px dashed #3A434B;
   padding-bottom: 40px; }
 
 @media (max-width: 767px) {

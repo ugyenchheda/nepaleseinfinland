@@ -49,7 +49,7 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="widget widget-list">
                             <div class="section-title section-title-2">
-                                <h3 class="title-footer">News categories</h3>
+                                <h3 class="title-footer">News</h3>
                             </div>
                             <div class="list d-flex justify-content-between">
                                 <ul>
@@ -67,7 +67,7 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="widget widget-list">
                             <div class="section-title section-title-2">
-                                <h3 class="title-footer">Event categories</h3>
+                                <h3 class="title-footer">Events</h3>
                             </div>
                             <div class="list d-flex justify-content-between">
                                 <ul>
@@ -85,7 +85,7 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="widget widget-list">
                             <div class="section-title section-title-2">
-                                <h3 class="title-footer">Event categories</h3>
+                                <h3 class="title-footer">Universities</h3>
                             </div>
                             <div class="list d-flex justify-content-between">
                                 <ul>
