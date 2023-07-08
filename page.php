@@ -238,9 +238,8 @@ global $wp_query;
                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                                                         if ($terms && !is_wp_error($terms)) {
                                                             echo '<div class="meta-categories">';
-                                                            foreach ($terms as $term) {
+                                                            $term = reset($terms);
                                                                 echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
-                                                            }
                                                             echo '</div>';
                                                         }
                                                     }
@@ -470,9 +469,8 @@ global $wp_query;
                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                                                         if ($terms && !is_wp_error($terms)) {
                                                             echo '<div class="meta-taxonomy">';
-                                                            foreach ($terms as $term) {
+                                                            $term = reset($terms);
                                                                 echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                            }
                                                             echo '</div>';
                                                         }
                                                     }
@@ -526,9 +524,8 @@ global $wp_query;
                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                                                         if ($terms && !is_wp_error($terms)) {
                                                             echo '<div class="meta-taxonomy">';
-                                                            foreach ($terms as $term) {
+                                                            $term = reset($terms);
                                                                 echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                            }
                                                             echo '</div>';
                                                         }
                                                     }
@@ -593,9 +590,8 @@ global $wp_query;
                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                                                         if ($terms && !is_wp_error($terms)) {
                                                             echo '<div class="meta-categories">';
-                                                            foreach ($terms as $term) {
+                                                            $term = reset($terms);
                                                                 echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                            }
                                                             echo '</div>';
                                                         }
                                                     }
@@ -683,9 +679,8 @@ global $wp_query;
                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                                                         if ($terms && !is_wp_error($terms)) {
                                                             echo '<div class="meta-categories">';
-                                                            foreach ($terms as $term) {
+                                                            $term = reset($terms);
                                                                 echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
-                                                            }
                                                             echo '</div>';
                                                         }
                                                     }
@@ -970,9 +965,8 @@ global $wp_query;
                                                                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                                                                         if ($terms && !is_wp_error($terms)) {
                                                                             echo '<div class="meta-categories">';
-                                                                            foreach ($terms as $term) {
+                                                                            $term = reset($terms);
                                                                                 echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
-                                                                            }
                                                                             echo '</div>';
                                                                         }
                                                                     }
