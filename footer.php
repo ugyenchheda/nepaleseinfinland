@@ -58,7 +58,7 @@
                                         'hide_empty' => false,
                                     ]); 
                                     foreach ($terms as $term){
-                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                        echo '<li class="category-link"><i class="far fa-star"></i><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
                                     }?>
                                 </ul>
                             </div>
@@ -76,7 +76,7 @@
                                         'hide_empty' => false,
                                     ]); 
                                     foreach ($terms as $term){
-                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                        echo '<li class="category-link"><i class="far fa-star"></i><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
                                     }?>
                                 </ul>
                             </div>
@@ -94,7 +94,7 @@
                                         'hide_empty' => false,
                                     ]); 
                                     foreach ($terms as $term){
-                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                        echo '<li class="category-link"><i class="far fa-star"></i><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
                                     }?>
                                 </ul>
                             </div>
