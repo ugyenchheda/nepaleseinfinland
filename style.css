@@ -424,7 +424,15 @@ p#fully-loaded {
   transition: ease-in 0.3s;
   color: #fff;
 }
-
+h3.title-footer {
+  color: #fff;
+  font-size: 24px;
+  border-bottom: 2px dashed #3A434B;
+  line-height: 2;
+}
+.footer-logo {
+  border-right: 2px dashed #3A434B;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;

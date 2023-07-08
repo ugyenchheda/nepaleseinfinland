@@ -13,8 +13,8 @@
     <footer class="footer-area">
         <div class="container">
             <div class="footer-topbar">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-4">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 align-items-center">
                         <div class="footer-logo">
                         <a href="<?php echo get_home_url(); ?>">
 						<?php $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -44,20 +44,12 @@
 									}
 								?>
                             </ul>
-                            
-                        <div class="footer-newaletter">
-                            <div class="input-box">
-                                <input type="text" placeholder="Your email address">
-                                <button type="button">SIGN UP</button>
-                            </div>
-                            <p>We hate spam as much as you do</p>
-                        </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-3 col-md-3">
                         <div class="widget widget-list">
                             <div class="section-title section-title-2">
-                                <h3 class="title">News categories</h3>
+                                <h3 class="title-footer">News categories</h3>
                             </div>
                             <div class="list d-flex justify-content-between">
                                 <ul>
@@ -69,33 +61,46 @@
                                         echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
                                     }?>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <div class="widget widget-list">
+                            <div class="section-title section-title-2">
+                                <h3 class="title-footer">Event categories</h3>
+                            </div>
+                            <div class="list d-flex justify-content-between">
                                 <ul>
-                                    <li><a href="#">Education</a></li>
-                                    <li><a href="#">Obituaries</a></li>
-                                    <li><a href="#">Corrections</a></li>
-                                    <li><a href="#">Education</a></li>
-                                    <li><a href="#">Today’s Paper</a></li>
-                                    <li><a href="#">Corrections</a></li>
-                                    <li><a href="#">Foods</a></li>
+                                    <?php $terms = get_terms([
+                                        'taxonomy' => 'event_category',
+                                        'hide_empty' => false,
+                                    ]); 
+                                    foreach ($terms as $term){
+                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                    }?>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="footer-rightbar mt-60">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-6">
-                                    <div class="widget widget-news">
-                                        <div class="section-title section-title-2">
-                                            <h3 class="title">Visit Our Facebook Page</h3>
-                                        </div>
-                                        <div class="footer-news"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="col-lg-3 col-md-3">
+                        <div class="widget widget-list">
+                            <div class="section-title section-title-2">
+                                <h3 class="title-footer">Event categories</h3>
+                            </div>
+                            <div class="list d-flex justify-content-between">
+                                <ul>
+                                    <?php $terms = get_terms([
+                                        'taxonomy' => 'uas_category',
+                                        'hide_empty' => false,
+                                    ]); 
+                                    foreach ($terms as $term){
+                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                    }?>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
