@@ -759,9 +759,9 @@ global $wp_query;
                                         // Extract the video ID from the YouTube link
                                         $video_id = get_youtube_video_id($hompage_video_link);
                                         // Convert the video ID into the YouTube embed link format
-                                        $embed_link = 'https://www.youtube.com/embed/' . $video_id;
+                                        $embed_link = 'https://www.youtube.com/embed/'. $video_id;
                                     ?>
-                                    <iframe width="100%" height="440" src="<?php echo $embed_link ; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="play-btn">
+                                    <iframe width="100%" height="440" src="<?php echo $embed_link.'?&showinfo=0' ; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="play-btn">
                                 </div>
                                 </div>
                                 <?php if(!empty($hompage_video_description)) {?>

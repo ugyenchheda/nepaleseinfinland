@@ -438,6 +438,9 @@ h3.title-footer {
   color: #747373;
   font-size: 14px;
 }
+.ytp-button {
+  display: none !important;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;

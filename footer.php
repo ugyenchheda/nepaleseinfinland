@@ -46,7 +46,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3">
+                    <div class="col-lg-3 col-md-3 align-items-center">
                         <div class="widget widget-list">
                             <div class="section-title section-title-2">
                                 <h3 class="title-footer">News</h3>
@@ -58,13 +58,13 @@
                                         'hide_empty' => false,
                                     ]); 
                                     foreach ($terms as $term){
-                                        echo '<li class="category-link"><i class="far fa-star"></i><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '"><i class="far fa-star"></i>'.$term->name.'</a></li>';
                                     }?>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3">
+                    <div class="col-lg-3 col-md-3 align-items-center">
                         <div class="widget widget-list">
                             <div class="section-title section-title-2">
                                 <h3 class="title-footer">Events</h3>
@@ -76,13 +76,13 @@
                                         'hide_empty' => false,
                                     ]); 
                                     foreach ($terms as $term){
-                                        echo '<li class="category-link"><i class="far fa-star"></i><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '"><i class="far fa-star"></i>'.$term->name.'</a></li>';
                                     }?>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3">
+                    <div class="col-lg-3 col-md-3 align-items-center">
                         <div class="widget widget-list">
                             <div class="section-title section-title-2">
                                 <h3 class="title-footer">Universities</h3>
@@ -94,7 +94,7 @@
                                         'hide_empty' => false,
                                     ]); 
                                     foreach ($terms as $term){
-                                        echo '<li class="category-link"><i class="far fa-star"></i><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                        echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '"><i class="far fa-star"></i>'.$term->name.'</a></li>';
                                     }?>
                                 </ul>
                             </div>
