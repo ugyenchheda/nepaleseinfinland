@@ -624,21 +624,7 @@ $wp_customize->add_control(
 		'choices' => $post_t
 		)
 	);
-	$post_type = 'your_post_type';
 
-	// Get the categories for the selected post type
-	$taxonomy =  $post_t; // Replace with the desired taxonomy
-	$terms = get_terms(array(
-		'taxonomy' => $taxonomy,
-		'hide_empty' => false,
-		'object_types' => array($post_type),
-	));
-	
-	$post_t_post = array();
-	$i = 0;
-	foreach ($terms as $category) {
-		$post_t_post[$category->term_id] = $category->name;
-	}
 	$wp_customize->add_setting(
 	'number_news',
 	array(
