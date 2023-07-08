@@ -608,14 +608,14 @@ foreach ($post_types as $post_type) {
 
 $wp_customize->add_setting('homepage_topslider_posttype', 
 array(
-	'default'			=> 'Latest News',
+	'default'			=> 'News',
 	)
 );
 
 $wp_customize->add_control(
 	'homepage_topslider_posttype',
 		array(
-		'label'		=> __('Choose News Category:', 'nepaleseinfinland'),
+		'label'		=> __('Choose Post Type:', 'nepaleseinfinland'),
 		'description' => 'Select news category to display in homepage top section.',
 		'section' 	=> 'section_newslist',
 		'type' 		=> 'text',
@@ -626,18 +626,18 @@ $wp_customize->add_control(
 	);
 
 	$wp_customize->add_setting(
-	'number_news',
+	'post_number',
 	array(
 		'default'			=> '4',
 	)
 	);
 	$wp_customize->add_control(
-	'number_news',
+	'post_number',
 		array(
 		'label'		=> __('Select total news to display on top section:', 'nepaleseinfinland'),
 		'section' 	=> 'section_newslist',
 		'type' 		=> 'text',
-		'settings'	=> 'number_news',
+		'settings'	=> 'post_number',
 		)
 	);
 
