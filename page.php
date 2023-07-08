@@ -8,24 +8,42 @@ global $wp_query;
 
 
     <!--====== POST PART START ======-->
-    <div id="myElementId">...</div>
     <div class="post-area">
         <div class="container">
             <div class="row post-slider">
                         <?php 
                         $homepage_topslider_posttype = get_theme_mod('homepage_topslider_posttype');
-                        $post_number = get_theme_mod('post_number'); ?>
-                <div class="col-lg-4">
-                    <div class="single__post">
-                        <div class="post-thumb">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/post-1.jpg" alt="post">
-                        </div>
-                        <div class="post-content">
-                            <h4 class="title"><a href="#">The home decorations document: photograph of an empty plane</a></h4>
-                            <p>People have been infected in United…</p>
-                        </div>
-                    </div>
-                </div>
+                        $post_number = get_theme_mod('post_number'); 
+                        
+                        $args = array(
+                            'post_type' => $homepage_topslider_posttype,
+                            'posts_per_page' => $post_number, // Number of posts to display
+                            'orderby' => 'date', // Order posts by date
+                            'order' => 'DESC', // Display posts in descending order (latest first)
+                        );
+                        
+                        $query = new WP_Query($args);
+                        
+                        if ($query->have_posts()) {
+                            while ($query->have_posts()) {
+                                $query->the_post();
+                                echo '
+                                <div class="col-lg-4">
+                                    <div class="single__post">
+                                        <div class="post-thumb"><a href="' . get_the_permalink() . '">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</a></div>
+                                        <div class="post-content">
+                                            <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
+                                            <p>' . wp_trim_words(get_the_excerpt(), 6) . '</p>
+                                        </div>
+                                    </div>
+                                </div>';
+                            }
+                        } else {
+                            // No posts found
+                        }
+                        
+                        // Restore original post data
+                        wp_reset_postdata();?>
             </div>
         </div>
     </div>
