@@ -696,7 +696,7 @@ global $wp_query;
                                 <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
                             </div>
                             <div class="play-btn">
-                                <a class="video-popup" href="' . get_the_permalink() . '"><i class="far fa-calendar-alt"></i></a>
+                                <a class="video-popup" ><i class="far fa-calendar-alt"></i></a>
                             </div>
                         </div>
                         </div>';
@@ -772,13 +772,13 @@ global $wp_query;
                                     function get_top_three_taxonomies($custom_post_type) {
                                         $taxonomies = get_object_taxonomies($custom_post_type, 'objects');
                                         $taxonomy_counts = array();
-
+                                    
                                         if ($taxonomies) {
                                             foreach ($taxonomies as $taxonomy) {
                                                 if ($taxonomy->name === 'post_tag') {
                                                     continue;
                                                 }
-
+                                    
                                                 $terms = get_terms($taxonomy->name);
                                                 if ($terms) {
                                                     $post_count = 0;
@@ -789,34 +789,43 @@ global $wp_query;
                                                 }
                                             }
                                             arsort($taxonomy_counts);
-                                            $top_three_taxonomies = array_slice($taxonomy_counts, 0, 3);
-                                            return array_keys($top_three_taxonomies);
+                                            $top_three_taxonomies = array_slice($taxonomy_counts, 0, 3, true);
+                                            return $top_three_taxonomies;
                                         }
                                         return array();
                                     }
+                                    
                                     $top_three_taxonomies = get_top_three_taxonomies($custom_post_type);
                                     if (!empty($top_three_taxonomies)) {
                                         echo '<div>';
-                                        foreach ($top_three_taxonomies as $taxonomy_name) {
+                                        foreach ($top_three_taxonomies as $taxonomy_name => $post_count) {
                                             $taxonomy = get_taxonomy($taxonomy_name);
-                                            $terms = get_terms($taxonomy_name);
-
+                                    
+                                            $terms = get_terms(array(
+                                                'taxonomy' => $taxonomy_name,
+                                                'hide_empty' => false,
+                                            ));
                                             if ($terms) {
-                                                foreach ($terms as $term) {
+                                                $sorted_terms = usort($terms, function ($a, $b) {
+                                                    return $b->count - $a->count;
+                                                });
+                                    
+                                                $limited_terms = array_slice($terms, 0, 3);
+                                                foreach ($limited_terms as $term) {
                                                     $news_taxonomy_banner = get_term_meta($term->term_id, 'news_category_thumbnail', true);
-                                                    $post_count = $term->count;
+                                                    $term_post_count = $term->count;
                                                     echo '<div class="item">
                                                             <img src="'.$news_taxonomy_banner.'" alt="categories">
                                                             <div class="Categories-content">
                                                                 <a href="' . esc_url(get_term_link($term)) . '">
-                                                                    <span>' . $term->name . '<b class="post-count">(' . $post_count . ')</b></span>
+                                                                    <span>' . $term->name . '<b class="post-count">(' . $term_post_count . ')</b></span>
                                                                     <img src="'.get_template_directory_uri().'/assets/images/arrow.svg" alt="post image">
                                                                 </a>
                                                             </div>
                                                         </div>';
                                                 }
                                             } else {
-                                                echo '<li>No terms found for ' . $taxonomy->label .'</li>';
+                                                echo '<p>No terms found for ' . $taxonomy->label .'</p>';
                                             }
                                         }
                                         echo '</div>';
@@ -974,7 +983,7 @@ global $wp_query;
                                                                 echo '<div class="meta-date"><span>' . get_the_date('F j, Y') . '</span></div>
                                                             </div>
                                                             <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
-                                                            <p class="text">' . wp_trim_words(get_the_excerpt(), 15) . '</p>
+                                                            <p class="text">' . wp_trim_words(get_the_excerpt(), 20) . '</p>
                                                         </div>
                                                     </div>
                                                 </div>';

@@ -446,7 +446,7 @@ function loadingNews() {
 								</div>
 							</div>
 							<h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
-							<p class="text">' . wp_trim_words(get_the_excerpt(), 15) . '</p>
+							<p class="text">' . wp_trim_words(get_the_excerpt(), 20) . '</p>
 						</div>
 					</div>
 				</div>';
