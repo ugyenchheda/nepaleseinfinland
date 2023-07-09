@@ -112,6 +112,15 @@
 			</div>
 		</div>
 	</div>
+
+	<button id="searchButton">Search</button>
+<div id="searchFormContainer" class="hidden">
+  <form id="searchForm" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+    <input type="text" name="s" placeholder="Enter your search query">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
 	<div class="header-centerbar">
 		<div class="container">
 			<div class="row align-items-center">
