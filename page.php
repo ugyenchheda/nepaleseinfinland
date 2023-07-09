@@ -92,29 +92,35 @@ global $wp_query;
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
                                 $query->the_post();
+                                $video_link = get_post_meta( get_the_ID(), 'video_link', true );
+                                $get_video_id = get_youtube_video_id($video_link);
+                                $final_video = 'https://www.youtube.com/watch?v='. $get_video_id;
+                                echo $final_video;
                                 echo ' 
                                 <div class="post_gallery_play">
-                                <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
-                                <div class="post__gallery_play_content">
-                                    <div class="post-meta">';
-                                    $terms = get_the_terms($post->ID, 'video_blogs_category'); // Replace 'post' with your desired post type
-                                    if ($terms && !is_wp_error($terms)) {
-                                        echo '<div class="meta-categories">';
-                                        foreach ($terms as $term) {
-                                            echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                        }
-                                        echo '</div>';
-                                    }
-                                echo '<div class="meta-date">
-                                            <span>' . get_the_date('F j, Y') . '</span>
+                                    <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
+                                    <div class="post__gallery_play_content">
+                                        <div class="post-meta">';
+                                            $terms = get_the_terms($post->ID, 'video_blogs_category'); // Replace 'post' with your desired post type
+                                            if ($terms && !is_wp_error($terms)) {
+                                                echo '<div class="meta-categories">';
+                                                foreach ($terms as $term) {
+                                                    echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                }
+                                                echo '</div>';
+                                            }
+                                            echo '<div class="meta-date">
+                                                    <span>' . get_the_date('F j, Y') . '</span>
+                                                </div>
                                         </div>
+                                        
+                                        <h3 class="title"><a class="video-popup" href="'.$final_video.'" a>' . get_the_title() . '</a></h3>
+                                        <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p>
                                     </div>
-                                    
-                            <h3 class="title"><a class="video-popup" href="'.get_post_meta($post->ID,'video_link', true).'" a>' . get_the_title() . '</a></h3>
-                            <p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p></div>
-                            <div class="post_play_btn">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=4mGyYNuG6us" a><i class="fas fa-play"></i></a>
-                            </div></div>';
+                                    <div class="post_play_btn">
+                                        <a class="video-popup" href="'.$final_video.'" a><i class="fas fa-play"></i></a>
+                                    </div>
+                                </div>';
                             }
                         } else {
                             // No posts found
@@ -304,19 +310,19 @@ global $wp_query;
                     echo '</div>';
 
                     //query for sidebar news three
-                $args = array(
-                    'post_type' => 'news', 
-                    'order' => 'DESC', 
-                    'posts_per_page' => $no_of_news_three,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'news_category',
-                            'field' => 'term_id',
-                            'terms' => $sidebar_news_three,
+                    $args = array(
+                        'post_type' => 'news', 
+                        'order' => 'DESC', 
+                        'posts_per_page' => $no_of_news_three,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'news_category',
+                                'field' => 'term_id',
+                                'terms' => $sidebar_news_three,
+                            ),
                         ),
-                    ),
-                );
-                echo '<div class="tab-pane fade show" id="sidebar_news_title_three" role="tabpanel" aria-labelledby="sidebar_news_title_three-tab">';
+                    );
+                 echo '<div class="tab-pane fade show" id="sidebar_news_title_three" role="tabpanel" aria-labelledby="sidebar_news_title_three-tab">';
                     $query = new WP_Query($args);
                     if ($query->have_posts()) {
                         while ($query->have_posts()) {
@@ -495,59 +501,59 @@ global $wp_query;
                     ?>
                     </div>
                     <div class="row">
-                    <?php
-                        $args = array(
-                            'post_type' => 'news', // Replace 'your_custom_post_type' with the actual name of your custom post type
-                            'meta_key' => 'news_hot',
-                            'posts_per_page' => 6,
-                        );
-                        
-                        $query = new WP_Query($args);
-                        if ($query->have_posts()) {
-                            while ($query->have_posts()) {
-                                $query->the_post();
-                                echo '
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="trending-news-post-items">
-                                        <div class="gallery_item">
-                                            <div class="gallery_item_thumb">
-                                            ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
-                                                <div class="icon"><i class="fas fa-bolt"></i></div>
-                                            </div>
-                                            <div class="gallery_item_content">
-                                                <div class="post-meta">';?>
-                                               <?php 
-                                                $taxonomies = get_object_taxonomies('news'); 
+                        <?php
+                            $args = array(
+                                'post_type' => 'news', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                                'meta_key' => 'news_hot',
+                                'posts_per_page' => 6,
+                            );
+                            
+                            $query = new WP_Query($args);
+                            if ($query->have_posts()) {
+                                while ($query->have_posts()) {
+                                    $query->the_post();
+                                    echo '
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="trending-news-post-items">
+                                            <div class="gallery_item">
+                                                <div class="gallery_item_thumb">
+                                                ' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '
+                                                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                                                </div>
+                                                <div class="gallery_item_content">
+                                                    <div class="post-meta">';?>
+                                                <?php 
+                                                    $taxonomies = get_object_taxonomies('news'); 
 
-                                                foreach ($taxonomies as $taxonomy) {
-                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
-                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
-                                                        if ($terms && !is_wp_error($terms)) {
-                                                            echo '<div class="meta-taxonomy">';
-                                                            $term = reset($terms);
-                                                                echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-                                                            echo '</div>';
+                                                    foreach ($taxonomies as $taxonomy) {
+                                                        if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                            $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                            if ($terms && !is_wp_error($terms)) {
+                                                                echo '<div class="meta-taxonomy">';
+                                                                $term = reset($terms);
+                                                                    echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
+                                                                echo '</div>';
+                                                            }
                                                         }
                                                     }
-                                                }
-                                                echo '<div class="meta-date">
-                                                        <span>' . get_the_date('F j, Y') . '</span>
+                                                    echo '<div class="meta-date">
+                                                            <span>' . get_the_date('F j, Y') . '</span>
+                                                        </div>
                                                     </div>
+                                                    <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
                                                 </div>
-                                                <h4 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>';
+                                    </div>';
+                                }
+                            } else {
+                                // No posts found
                             }
-                        } else {
-                            // No posts found
-                        }
-                        
-                        // Restore original post data
-                        wp_reset_postdata();
-                        
-                    ?>
+                            
+                            // Restore original post data
+                            wp_reset_postdata();
+                            
+                        ?>
                     </div>
                 </div>
 
@@ -739,9 +745,7 @@ global $wp_query;
                             <div class="video-news-post-item">
                                 <div class="video-news-post-thumb">
                                     <?php 
-                                        // Extract the video ID from the YouTube link
                                         $video_id = get_youtube_video_id($hompage_video_link);
-                                        // Convert the video ID into the YouTube embed link format
                                         $embed_link = 'https://www.youtube.com/embed/'. $video_id;
                                     ?>
                                     <iframe width="100%" height="440" src="<?php echo $embed_link.'?&showinfo=0' ; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="play-btn">
