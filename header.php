@@ -169,7 +169,7 @@
 </div></li>
 							</ul>
 						</div>
-						<div class="nice-select-item">
+						<!-- <div class="nice-select-item">
 							<select>
 								<option data-display="English">English</option>
 								<option value="1">Bangla</option>
@@ -177,7 +177,7 @@
 								<option value="3">option</option>
 								<option value="4">Potato</option>
 							</select>
-						</div>
+						</div> -->
 						<div class="header-temperature">
 							<div class="temperature-content text-center">
 							<h5 class="title">

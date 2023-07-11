@@ -447,21 +447,18 @@ box{
 
 .input {
   padding: 10px;
-  width: 80px;
-  height: 80px;
+  height: 33px;
   background: none;
-  border: 4px solid #ffd52d;
-  border-radius: 50px;
+  border: 2px solid #b1b1b1;
   box-sizing: border-box;
-  font-family: Comic Sans MS;
-  font-size: 26px;
-  color: #ffd52d;
+  font-size: 18px;
+  color: #6f6b6b;
   outline: none;
-  transition: .5s;
+  transition: .5s;    
+  border-radius: 10px;
 }
-.box:hover input{
-  width: 350px;
-  background: #3b3640;
+.box:hover input {
+  width: 149px;
   border-radius: 10px;
 }
 .box i{
