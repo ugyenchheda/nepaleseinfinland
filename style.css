@@ -441,18 +441,21 @@ h3.title-footer {
 .ytp-button {
   display: none !important;
 }
-#searchFormContainer {
-  position: absolute;
+.popup {
+  display: none;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
+  background-color: #fff;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.hidden {
-  display: none;
+.close-popup {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
 }
 @media(max-width:767px) {
   ul.uas-click-button {

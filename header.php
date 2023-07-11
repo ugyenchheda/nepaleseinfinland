@@ -113,12 +113,12 @@
 		</div>
 	</div>
 
-	<button id="searchButton">Search</button>
-<div id="searchFormContainer" class="hidden">
-  <form id="searchForm" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-    <input type="text" name="s" placeholder="Enter your search query">
-    <button type="submit">Submit</button>
-  </form>
+	<a href="#" class="popup-trigger">Open Popup</a>
+
+<div class="popup">
+    <h2>This is a Popup</h2>
+    <p>Popup content goes here.</p>
+    <a href="#" class="close-popup">Close</a>
 </div>
 
 	<div class="header-centerbar">
