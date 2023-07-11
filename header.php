@@ -113,13 +113,6 @@
 		</div>
 	</div>
 
-	<a href="#" class="popup-trigger">Open Popup</a>
-
-<div class="popup">
-    <h2>This is a Popup</h2>
-    <p>Popup content goes here.</p>
-    <a href="#" class="close-popup">Close</a>
-</div>
 
 	<div class="header-centerbar">
 		<div class="container">
@@ -167,8 +160,13 @@
 					<div class="header-menu-rightbar">
 						<div class="header-menu-search">
 							<ul>
-								<li><a href="#"><i class="fal fa-search"></i></a></li>
-								<li><a href="#"><i class="fal fa-user-circle"></i></a></li>
+								<li><div class="box">
+    <form name="search">
+        <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
+    </form>
+    <i class="fas fa-search"></i>
+
+</div></li>
 							</ul>
 						</div>
 						<div class="nice-select-item">

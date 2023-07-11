@@ -9,30 +9,7 @@ function toggleSearchForm() {
   }
 
 jQuery(document).ready(function(){
-    // Wait for the document to be ready
-    
-    // Select the popup trigger element
-    var popupTrigger = $('.popup-trigger');
-    
-    // Select the popup element
-    var popup = $('.popup');
-    
-    // When the trigger element is clicked
-    popupTrigger.on('click', function(e) {
-        e.preventDefault(); // Prevent default link behavior
-        
-        // Show the popup
-        popup.show();
-    });
-    
-    // When the user clicks outside the popup
-    $(document).on('click', function(e) {
-        if (!$(e.target).closest('.popup').length) {
-            // Hide the popup
-            popup.hide();
-        }
-    });
-    
+
 	$('.button').click( function() {
 		$('.overlay').fadeIn();
 	});
