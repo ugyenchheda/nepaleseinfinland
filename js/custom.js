@@ -3,10 +3,7 @@ function handleTouchStart(event) {
 	element.addEventListener('touchstart', handleTouchStart, { passive: true });
 }
 
-function toggleSearchForm() {
-    var searchFormContainer = document.getElementById('searchFormContainer');
-    searchFormContainer.classList.toggle('hidden');
-  }
+
 
 jQuery(document).ready(function(){
 

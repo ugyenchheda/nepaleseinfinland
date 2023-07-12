@@ -160,13 +160,15 @@
 					<div class="header-menu-rightbar">
 						<div class="header-menu-search">
 							<ul>
-								<li><div class="box">
-    <form name="search">
-        <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
-    </form>
-    <i class="fas fa-search"></i>
-
-</div></li>
+								<li><form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+    <label>
+        <span class="screen-reader-text"><?php echo esc_html_x( 'Search for:', 'label', 'your-theme-textdomain' ); ?></span>
+        <input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'your-theme-textdomain' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+    </label>
+    <button type="submit" class="search-submit">
+        <?php echo esc_html_x( 'Search', 'submit button', 'your-theme-textdomain' ); ?>
+    </button>
+</form></li>
 							</ul>
 						</div>
 						<!-- <div class="nice-select-item">
@@ -178,12 +180,6 @@
 								<option value="4">Potato</option>
 							</select>
 						</div> -->
-						<div class="header-temperature">
-							<div class="temperature-content text-center">
-							<h5 class="title">
-							
-							<div id="id9097fe44a8977" a='{"t":"s","v":"1.2","lang":"en","locs":[],"ssot":"c","sics":"ds","cbkg":"#FFFFFF","cfnt":"rgba(139,134,134,1)","slfs":19,"slis":20,"slgp":1,"slbr":0,"slpd":3}'><a href="https://sharpweather.com/widgets/">HTML Weather widget for website by sharpweather.com</a></div><script async src="https://static1.sharpweather.com/widgetjs/?id=id9097fe44a8977"></script>				</div>
-			</div>
 		</div>
 
 	</div>

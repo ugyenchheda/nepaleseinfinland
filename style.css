@@ -441,40 +441,56 @@ h3.title-footer {
 .ytp-button {
   display: none !important;
 }
-box{
-  position: relative;
+.search-form {
+  display: flex;
+  align-items: center;
+  
+  margin-top: 7px;
 }
 
-.input {
-  padding: 10px;
-  height: 33px;
-  background: none;
-  border: 2px solid #b1b1b1;
-  box-sizing: border-box;
-  font-size: 18px;
-  color: #6f6b6b;
-  outline: none;
-  transition: .5s;    
-  border-radius: 10px;
-}
-.box:hover input {
-  width: 149px;
-  border-radius: 10px;
-}
-.box i{
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translate(-50%,-50%);
-  font-size: 26px;
-  color: #ffd52d;
-  transition: .2s;
-}
-.box:hover i{
-  opacity: 0;
-  z-index: -1;
+.search-field {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
 }
 
+.search-submit {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #dc143c;
+  color: #fff;
+  border: none;    
+  margin-top: -7px !important;
+  transition: ease-in 0.5s;
+}
+
+.search-submit:hover {
+  background-color: #003580;
+}
+
+/* Styling the placeholder text */
+input::placeholder {
+  color: #999; /* Placeholder text color */
+  font-style: italic; /* Placeholder text style */
+}
+
+/* Styling the placeholder text for Firefox */
+input:-moz-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Styling the placeholder text for Safari, Chrome, and Opera */
+input::-webkit-input-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Styling the placeholder text for Internet Explorer 10+ */
+input:-ms-input-placeholder {
+  color: #999;
+  font-style: italic;
+}
 
 
 @media(max-width:767px) {
