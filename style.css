@@ -511,6 +511,18 @@ input:-ms-input-placeholder {
   color: #fff;
   padding: 4px 15px;
 }
+.trending-news-item.mb-30 {
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  min-height: 415px;
+  background: #f9f9f9;
+}
+.trending-news-content {
+  padding: 0px 9px;
+}
+.trending-news-item .trending-news-thumb {
+  max-height: 143px;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
