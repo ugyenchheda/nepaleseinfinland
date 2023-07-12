@@ -491,7 +491,11 @@ input:-ms-input-placeholder {
   color: #999;
   font-style: italic;
 }
-
+.meta-categories.my_posttypes {
+  color: #fff;
+  text-transform: uppercase;
+  margin-right: 12px;
+}
 
 @media(max-width:767px) {
   ul.uas-click-button {
