@@ -392,7 +392,7 @@ a.home-event {
 }
 a.home-event:hover {
   color: #fff !important;
-  background: #000 !important;
+  background: #003580 !important;
   transition: ease 1s;
 }
 .Categories-post .Categories-item .item .Categories-content a span b {
@@ -496,7 +496,21 @@ input:-ms-input-placeholder {
   text-transform: uppercase;
   margin-right: 12px;
 }
-
+.archive-btn.for-search {
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1;
+  border-bottom: 2px solid #dc143c;
+  padding-bottom: 3px;
+}
+.search-result-pad {
+  padding-bottom: 100px;
+}
+.searchresult-topic {
+  background: #dc143c;
+  color: #fff;
+  padding: 4px 15px;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
