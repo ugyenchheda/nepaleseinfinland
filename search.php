@@ -18,7 +18,7 @@
                 <div class="about-tab-btn mt-40">
                     <div class="archive-btn">
                         <ul>
-                            <li><?php printf( esc_html__( 'Search Results for: %s', 'nepaleseinfinland' ), '<span>' . get_search_query() . '</span>' ); ?></li>
+                            <li><?php printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span>' . get_search_query() . '</span>' ); ?></li>
                         </ul>
                     </div>
                     <div class="about-post-items">
@@ -30,26 +30,27 @@
                                         <div class="trending-image-content" id="post-<?php the_ID(); ?>">
                                             <div class="post-meta">
                                                 <div class="meta-categories my_posttypes">
-												<?php 
-													$post_type = get_post_type(); 
-													echo $post_type;
-												?>
-												</div>
-												<div class="meta-categories"><?php
-												$taxonomies = get_object_taxonomies($post_type); // Replace 'post' with your desired post type
-													foreach ($taxonomies as $taxonomy) {
-														if (!in_array($taxonomy, ['category', 'post_tag'])) {
-															$terms = get_the_terms(get_the_ID(), $taxonomy);
-															if ($terms && !is_wp_error($terms)) {
-																echo '<div class="meta-categories">';
-																foreach ($terms as $term) {
-																	echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
-																}
-																echo '</div>';
-															}
-														}
-													}?>
+                                                    <?php 
+                                                        $post_type = get_post_type(); 
+                                                        echo $post_type;
+                                                    ?>
                                                 </div>
+                                                <?php
+                                                $taxonomies = get_object_taxonomies($post_type); // Replace '$post_type' with your desired post type
+
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-categories">';
+                                                            $term = reset($terms);
+                                                            echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a>';
+                                                            echo '</div>';
+                                                        }
+                                                        break; // Add this line to exit the loop after the first category is displayed
+                                                    }
+                                                }
+                                                ?>
                                                 <div class="meta-date">
                                                     <span><?php echo get_the_date(); ?></span>
                                                 </div>
@@ -61,30 +62,32 @@
                             <?php endwhile; endif; ?>
                         </div>
                         <?php
-                            global $wp_query;
-                            $big = 999999999; // need an unlikely integer
+                        // Pagination
+                        global $wp_query;
+                        $big = 999999999; // need an unlikely integer
 
-                            $pages = paginate_links(array(
-                                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                                'format' => '?paged=%#%',
-                                'current' => max(1, get_query_var('paged')),
-                                'total' => $wp_query->max_num_pages,
-                                'prev_text' => '<span aria-hidden="true"><i class="fas fa-caret-left"></i></span>',
-                                'next_text' => '<span aria-hidden="true"><i class="fas fa-caret-right"></i></span>',
-                                'type'  => 'array',
-                            ));
-                            if (is_array($pages)) {
-                                $paged = (get_query_var('paged') == 0) ? 1 : get_query_var('paged'); ?>
-                                <div class="pagination-item pt-40">
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-                                            <?php foreach ($pages as $page) { ?>
-                                                <li><?php echo $page; ?></li>
-                                            <?php } ?>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            <?php } ?>        
+                        $pagination = paginate_links(array(
+                            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                            'format' => '?paged=%#%',
+                            'current' => max(1, get_query_var('paged')),
+                            'total' => $wp_query->max_num_pages,
+                            'prev_text' => '<span aria-hidden="true"><i class="fas fa-caret-left"></i></span>',
+                            'next_text' => '<span aria-hidden="true"><i class="fas fa-caret-right"></i></span>',
+                            'type'  => 'array',
+                        ));
+
+                        if ($pagination) :
+                            ?>
+                            <div class="pagination-item pt-40">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <?php foreach ($pagination as $page) : ?>
+                                            <li><?php echo $page; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </nav>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

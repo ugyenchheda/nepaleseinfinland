@@ -64,7 +64,19 @@
                 }
             ]
         });
+        //===== trending SLICK SLIDER
 
+        var SliderSearch = jQuery('.search-results-show');
+        SliderSearch.slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: false,
+            speed: 5000,
+        });
         //===== trending SLICK SLIDER
 
         var Slider2 = jQuery('.trending-image-slide');
