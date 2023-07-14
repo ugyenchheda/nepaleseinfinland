@@ -43,7 +43,7 @@ get_header();
                             </div>
                             <div class="col-lg-6">
                                 <div class="event_banner_wrap">
-                                    <h3 class="title"><span class="event_bg"><span class="event_title"><?php the_title(); ?></span></span></h3>
+                                    <h1 class="title"><span class="uas-main"><?php the_title(); ?></span></h1>
                                 </div>
                             </div>
                         </div>

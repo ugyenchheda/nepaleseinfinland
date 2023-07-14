@@ -16,7 +16,7 @@ Version: 1.0.0
 }
 .uas_banner_main {
   background-size: cover;
-  padding: 300px 10px 50px 10px;
+  padding: 262px 10px 50px 10px;
   margin-bottom: -65px;
   background-position-y: 50%;
 }
@@ -28,8 +28,39 @@ Version: 1.0.0
     padding: 50px 0px;
 }
 span.event_bg {
-    background: #004566;
     padding: 27px 13px;
+}
+.event_banner_wrap h1 {
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  padding-bottom: 0px;
+  position: relative;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  color: #ffffff;
+  font-family: 'Roboto';
+  text-shadow: 3px 2px 5px #000;
+}
+.event_banner_wrap h1:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 55px;
+  background-color: #111;
+}
+.event_banner_wrap h1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: #333;
 }
 span.event_title {
     background: #ffffff29;
