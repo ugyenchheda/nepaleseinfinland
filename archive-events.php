@@ -32,15 +32,6 @@
 										
                                         <div class="trending-image-content" id="post-<?php the_ID(); ?>">
                                             <div class="post-meta">
-                                                <div class="meta-categories my_posttypes">
-                                                    <?php 
-														$post_type = get_post_type(); 
-														$post_type_object = get_post_type_object($post_type);
-														if ($post_type_object) {
-															echo $post_type_object->labels->name;
-														}
-                                                    ?>
-                                                </div>
                                                 <?php
                                                 $taxonomies = get_object_taxonomies($post_type); // Replace '$post_type' with your desired post type
 

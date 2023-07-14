@@ -40,6 +40,16 @@ get_header();
 										
 										<div class="trending-image-content" id="post-<?php the_ID(); ?>">
 											<div class="post-meta">
+                                                <div class="meta-categories my_posttypes">
+                                                    <?php 
+														$post_type = get_post_type(); 
+														$post_type_object = get_post_type_object($post_type);
+                                                        $post_type_archive_link = get_post_type_archive_link($post_type);
+														if ($post_type_object) {
+															echo '<a href="'.$post_type_archive_link.'">'.$post_type_object->labels->name.'</a>';
+														}
+                                                    ?>
+                                                </div>
 												<div class="meta-categories">
 													<a href="#"><?php echo single_term_title();?></a>
 												</div>
