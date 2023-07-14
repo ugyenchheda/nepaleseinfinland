@@ -63,7 +63,7 @@ function events_post_meta() {
       $cmb = new_cmb2_box(array(
           'id' => 'events',
           'title' => __('More Info:', 'cmb2'),
-          'object_types' => array('event_post_type'),
+          'object_types' => array('events'),
           'context' => 'normal',
           'priority' => 'high',
           'show_names' => true,

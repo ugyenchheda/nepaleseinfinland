@@ -638,7 +638,7 @@ global $wp_query;
                 <div class="row single-play-post-slider">
                 <?php
                         $args = array(
-                            'post_type' => 'event_post_type', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                            'post_type' => 'events', // Replace 'your_custom_post_type' with the actual name of your custom post type
                             'meta_key' => 'event_hot',
                             'orderby' => 'meta_value_num', // Sort by meta value as numeric
                             'order' => 'DESC', // Sort in descending order
@@ -677,7 +677,7 @@ global $wp_query;
                                             </div>
                                             <div class="single-play-post-content">
                                                 <div class="post-meta">';
-                                                $taxonomies = get_object_taxonomies('event_post_type'); // Replace 'post' with your desired post type
+                                                $taxonomies = get_object_taxonomies('events'); // Replace 'post' with your desired post type
 
                                                 foreach ($taxonomies as $taxonomy) {
                                                     if (!in_array($taxonomy, ['category', 'post_tag'])) {

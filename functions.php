@@ -241,7 +241,7 @@ if ( ! function_exists( 'event_taxonomy' ) ) {
 			'show_in_nav_menus'          => true,
 			'show_tagcloud'              => true,
 		);
-		register_taxonomy( 'event_category', array( 'event_post_type' ), $args );
+		register_taxonomy( 'event_category', array( 'events' ), $args );
 	
 	}
 	add_action( 'init', 'event_taxonomy', 0 );

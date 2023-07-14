@@ -8,7 +8,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url()); ?>">Home</a></li>
-                            <li class="breadcrumb-item">Universities</li>
+                            <li class="breadcrumb-item">Events</li>
                             <li class="breadcrumb-item active" aria-current="page"><?php echo esc_html(single_term_title()); ?></li>
                         </ol>
                     </nav>
@@ -17,7 +17,7 @@
             <div class="col-lg-12">
                 <div class="about-tab-btn mt-40">
                     <div class="archive-btn for-search">
-						 <span class="searchresult-topic">All Universities: </span>
+						 <span class="searchresult-topic">All Events:</span>
                     </div>
                     <div class="about-post-items">
                         <div class="row">

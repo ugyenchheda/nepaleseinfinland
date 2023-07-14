@@ -17,7 +17,7 @@
             <div class="col-lg-12">
                 <div class="about-tab-btn mt-40">
                     <div class="archive-btn for-search">
-						 <span class="searchresult-topic">News</span>
+						 <span class="searchresult-topic">All News:</span>
                     </div>
                     <div class="about-post-items">
                         <div class="row">

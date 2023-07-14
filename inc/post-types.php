@@ -115,7 +115,7 @@ function uas_post_type() {
 add_action( 'init', 'uas_post_type', 0 );
 
 // Register Custom Post Type
-function event_post_type() {
+function events() {
 
 	$labels = array(
 		'name'                  => _x( 'Events', 'Post Type General Name', 'nepaleseinfinland' ),
@@ -166,10 +166,10 @@ function event_post_type() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 	);
-	register_post_type( 'Event_post_type', $args );
+	register_post_type( 'events', $args );
 
 }
-add_action( 'init', 'event_post_type', 0 );
+add_action( 'init', 'events', 0 );
 
 // Register Custom Post Type
 function video_blogs() {

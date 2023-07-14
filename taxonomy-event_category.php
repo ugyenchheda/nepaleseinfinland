@@ -27,16 +27,16 @@ get_header();
 			<div class="col-lg-8">
 				<div class="about-tab-btn mt-40">
 					<div class="archive-btn">
-						<ul>
-							<li><span>Event Category: <span><?php echo single_term_title();?></span></span></li>
-						</ul>
+						<div class="archive-btn for-search">
+							Event Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
+						</div>
 					</div>
 					<div class="about-post-items">
 						<div class="row">
 							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 								<div class="col-lg-6 col-md-6">
 									<div class="trending-image-post feature-item mt-30">
-										<?php echo get_the_post_thumbnail(get_the_ID(), 'post_image_xl'); ?>
+										<?php echo get_the_post_thumbnail(get_the_ID(), 'post_image_l'); ?>
 										
 										<div class="trending-image-content" id="post-<?php the_ID(); ?>">
 											<div class="post-meta">

@@ -26,11 +26,11 @@ get_header();
                 </div>
                 <div class="col-lg-8">
                     <div class="about-tab-btn mt-40">
-                        <div class="archive-btn">
-                            <ul>
-                                <li><span>News Category: <span><?php echo single_term_title();?></span></span></li>
-                            </ul>
-                        </div>
+					<div class="archive-btn">
+						<div class="archive-btn for-search">
+							University Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
+						</div>
+					</div>
                         <div class="about-post-items">
                             <div class="row">
 								<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
