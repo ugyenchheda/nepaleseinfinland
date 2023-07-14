@@ -73,7 +73,24 @@ get_header();
                                     <?php if($uas_sdate ) { ?>
                                         <div class="author-info">
                                             <ul>
-                                                <li><i class="far fa-calendar-alt uas_small" alt="Organizer"></i> Admission Period: <?php   echo $uas_sdate; if ($uas_edate) { echo " - $uas_edate";}?></li>
+                                                <li>
+                                                    <?php
+                                                        $admission_start = strtotime($uas_sdate);
+                                                        $admission_end = strtotime($uas_edate);
+                                                        $admission_start_formatted = date('d/m/Y', $admission_start);
+                                                        $admission_end_formatted = date('d/m/Y', $admission_end);
+                                                        if ($admission_start_formatted || $admission_start_formatted){ ?>
+                                                            <i class="far fa-calendar-alt uas_small" alt="Organizer"></i> Admission Period: 
+                                                             <?php   
+                                                            if ($admission_start_formatted){
+                                                                echo $admission_start_formatted; 
+                                                            }
+                                                            if ($admission_start_formatted) { 
+                                                                echo " - $admission_end_formatted";
+                                                            } 
+                                                        }
+                                                    ?>
+                                                </li>
                                             </ul>
                                         </div>
                                     <?php } ?>
@@ -129,7 +146,9 @@ get_header();
                                 if($uas_video ) {
                                 ?>
                                 <iframe width="100%" height="400" src="<?php echo $uas_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-                                <?php }  ?>
+                                <?php }  
+                                
+                                if($faculties_detail ) {?>
 
                                 <div class="uas-courses"><h2>Courses Available</h2></div>
                                     <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
@@ -171,6 +190,7 @@ get_header();
                                         </div>
                                     </div>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     <?php
