@@ -28,7 +28,13 @@ get_header();
 				<div class="about-tab-btn mt-40">
 					<div class="archive-btn">
 						<div class="archive-btn for-search">
-							Event Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
+					<?php
+					$post_type = 'events'; 
+					$taxonomy = 'news_category'; 
+					$category = get_queried_object();
+					$total_count = $category->count;
+					?>
+					Event Category: <span class="searchresult-topic"><?php echo single_term_title() . ' (' . $total_count . ' Events)'; ?></span>
 						</div>
 					</div>
 					<div class="about-post-items">

@@ -28,7 +28,13 @@ get_header();
                     <div class="about-tab-btn mt-40">
 					<div class="archive-btn">
 						<div class="archive-btn for-search">
-							University Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
+					<?php
+					$post_type = 'uas'; 
+					$taxonomy = 'uas_category'; 
+					$category = get_queried_object();
+					$total_count = $category->count;
+					?>
+					Univeristy Category: <span class="searchresult-topic"><?php echo single_term_title() . ' (' . $total_count . ' Universities)'; ?></span>
 						</div>
 					</div>
                         <div class="about-post-items">

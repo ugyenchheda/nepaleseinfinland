@@ -29,8 +29,8 @@ get_header();
 					<div class="archive-btn">
 						<div class="archive-btn for-search">
 					<?php
-					$post_type = 'news'; // Replace 'news' with the desired post type slug
-					$taxonomy = 'news_category'; // Replace 'category' with the desired taxonomy slug
+					$post_type = 'news'; 
+					$taxonomy = 'news_category'; 
 					$category = get_queried_object();
 					$total_count = $category->count;
 					?>

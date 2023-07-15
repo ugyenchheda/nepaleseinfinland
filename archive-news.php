@@ -15,9 +15,14 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="about-tab-btn mt-40">
+                <div class="about-tab-btn about-item-area  mt-40">
                     <div class="archive-btn for-search">
-						 <span class="searchresult-topic">All News:</span>
+						<?php
+					$post_type = 'news'; // Replace 'your_post_type' with the desired post type
+					$post_counts = wp_count_posts($post_type);
+					$total_count = $post_counts->publish;
+					?>
+					 <span class="searchresult-topic"><?php echo single_term_title() . 'All News: (' . $total_count . ' News)'; ?></span>
                     </div>
                     <div class="about-post-items">
                         <div class="row">
@@ -59,6 +64,33 @@
                             
 								<?php endwhile; endif; ?>
                         </div>   
+                        
+							<?php
+								global $wp_query;
+								$big = 999999999; // need an unlikely integer
+
+								$pages = paginate_links( array(
+										'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+										'format' => '?paged=%#%',
+										'current' => max( 1, get_query_var('paged') ),
+										'total' => $wp_query->max_num_pages,
+										'prev_text' => '<span aria-hidden="true"><i class="fas fa-caret-left"></i></span>',
+										'next_text' => '<span aria-hidden="true"><i class="fas fa-caret-right"></i></span>',
+										'type'  => 'array',
+									) );
+							if( is_array( $pages ) ) {
+								$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged'); ?>
+								<div class="pagination-item pt-40">
+									<nav aria-label="Page navigation example">
+										<ul class="pagination">
+											<?php
+											foreach ( $pages as $page ) { ?>
+												<li><?php echo $page; ?></li>
+											<?php } ?>
+										</ul>
+									</nav>
+								</div>
+							<?php } ?>   
                     </div>
                 </div>
             </div>

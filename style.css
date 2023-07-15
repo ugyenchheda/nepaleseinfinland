@@ -414,6 +414,11 @@ span.page-numbers.current {
   color: #ffffff;
   margin-right: 5px;
 }
+li .page-numbers.dots {
+  font-size: 45px;
+  vertical-align: bottom;
+  line-height: 2;
+}
 a.home-event {
   background: #fff;
   color: #000 !important;
