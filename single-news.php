@@ -144,25 +144,58 @@ get_header();
                                 <h3 class="title">Trending News</h3>
                             </div>
                             <div class="row trending-sidebar-slider">
-                                <div class="col-lg-6">
+							<?php 
+
+								$news_highlight = get_theme_mod('news_highlight');
+								$news_number = get_theme_mod('news_number');
+								$custom_terms = get_terms('news_category');
+
+								foreach($custom_terms as $custom_term) {
+									wp_reset_query();
+									$args = array('post_type' => 'news',
+										'tax_query' => array(
+											array(
+												'taxonomy' => 'news_category',
+												'field' => 'term_id',
+												'terms' => $news_highlight,
+                                                'posts_per_page' => $news_number,  
+											),
+										),
+									);
+
+									$loop = new WP_Query($args);
+									if($loop->have_posts()) {
+										while($loop->have_posts()) : $loop->the_post();
+                            echo '<div class="col-lg-6">
                                     <div class="trending-news-item">
                                         <div class="trending-news-thumb">
-                                            <img src="assets/images/trending-thumb.png" alt="trending">
+                                        '.get_the_post_thumbnail(get_the_ID(), 'post_image_l').'
                                             <div class="icon">
-                                                <a href="#"><i class="fas fa-bolt"></i></a>
+                                                <a href="'.get_the_permalink().'"><i class="fas fa-bolt"></i></a>
                                             </div>
                                         </div>
                                         <div class="trending-news-content">
                                             <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
+                                                <div class="meta-categories">';
+                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                                                foreach ($taxonomies as $taxonomy) {
+                                                    if (!in_array($taxonomy, ['category', 'post_tag'])) {
+                                                        $terms = get_the_terms(get_the_ID(), $taxonomy);
+                                                        if ($terms && !is_wp_error($terms)) {
+                                                            echo '<div class="meta-categories">';
+                                                            $term = reset($terms);
+                                                                echo '<a href="' . esc_url(get_term_link($term)) . '" class="home-event">' . esc_html($term->name) . '</a> ';
+                                                            echo '</div>';
+                                                        }
+                                                    }
+                                                }
+                                                echo '</div>
                                                 <div class="meta-date">
-                                                    <span>March 26, 2020</span>
+                                                    <span>'.get_the_date().'</span>
                                                 </div>
                                             </div>
-                                            <h3 class="title"><a href="#">There may be no consoles in the future ea exec says</a></h3>
-                                            <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                                            <h3 class="title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h3>
+                                            <p class="text">' . wp_trim_words(get_the_excerpt(), 20) . '</p>
                                         </div>
                                     </div>
                                 </div>
@@ -210,10 +243,14 @@ get_header();
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            ';endwhile;
+                        } else {
+                            echo '<div class="trending-item"><p>There is no NEWS trending currenlty...</p></div>';
+                        }
+                    }?></div>
                         </div>
                         <div class="sidebar-add pt-40">
-                            <a href="#"><img src="assets/images/ad/ad-2.jpg" alt="ad"></a>
+                            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ad/ad-2.jpg" alt="ad"></a>
                         </div>
                     </div>
                 </div>
@@ -272,15 +309,15 @@ get_header();
             
         ?>
         </div>
-        <div class="container">
+    </section>
+
+    <div class="container">
             <?php if ( comments_open() || get_comments_number() ) :
                 comments_template();
             endif;
             endwhile; // End of the loop.
             ?>
             </div>
-    </section>
-
     <!--====== LATEST NEWS PART ENDS ======-->
 
 
