@@ -28,7 +28,13 @@ get_header();
                     <div class="about-tab-btn mt-40">
 					<div class="archive-btn">
 						<div class="archive-btn for-search">
-							News Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
+					<?php
+					$post_type = 'news'; // Replace 'news' with the desired post type slug
+					$taxonomy = 'news_category'; // Replace 'category' with the desired taxonomy slug
+					$category = get_queried_object();
+					$total_count = $category->count;
+					?>
+					News Category: <span class="searchresult-topic"><?php echo single_term_title() . ' (' . $total_count . ' News)'; ?></span>
 						</div>
 					</div>
                         <div class="about-post-items">

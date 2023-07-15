@@ -17,7 +17,7 @@ global $wp_query;
                         
                         $args = array(
                             'post_type' => $homepage_topslider_posttype,
-                            'posts_per_page' => $post_number, // Number of posts to display
+                            'posts_per_page' => '12', // Number of posts to display
                             'orderby' => 'date', // Order posts by date
                             'order' => 'DESC', // Display posts in descending order (latest first)
                         );
@@ -383,6 +383,7 @@ global $wp_query;
                 <?php 
                     query_posts(array( 
                         'post_type' => 'uas',
+                        'posts_per_page' => 10,
                     ) );  
                     ?>
                     <?php while (have_posts()) : the_post(); ?>

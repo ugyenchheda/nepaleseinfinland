@@ -26,7 +26,12 @@ get_header();
 				<div class="about-tab-btn mt-40">
 					<div class="archive-btn">
 						<div class="archive-btn for-search">
-							Video Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
+						<?php
+					$post_type = 'video_blogs'; // Replace 'your_post_type' with the desired post type
+					$post_counts = wp_count_posts($post_type);
+					$total_count = $post_counts->publish;
+					?>
+					Video Category: <span class="searchresult-topic"><?php echo single_term_title() . ' (' . $total_count . ' Videos)'; ?></span>
 						</div>
 					</div>
 					<div class="about-post-items video-blog-category">
@@ -34,34 +39,32 @@ get_header();
 							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
                                 $video_link = get_post_meta( get_the_ID(), 'video_link', true );
                                 $get_video_id = get_youtube_video_id($video_link);
-                                $final_video = 'https://www.youtube.com/watch?v='. $get_video_id;
-                                echo '<div class="col-md-4 col-lg-4">
-										<div class="trending-image-post feature-item mt-30">
-											<div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
-											<div class="post__gallery_play_content trending-image-content">
-												<div class="post-meta">';
-													$terms = get_the_terms($post->ID, 'video_blogs_category'); // Replace 'post' with your desired post type
-													if ($terms && !is_wp_error($terms)) {
-														echo '<div class="meta-categories">';
-														foreach ($terms as $term) {
-															echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
-														}
-														echo '</div>';
+                                $final_video = 'https://www.youtube.com/watch?v='. $get_video_id;?>
+                                <div class="col-lg-4 col-md-4">
+								<div class="trending-image-post feature-item mt-30">
+									<?php echo get_the_post_thumbnail(get_the_ID(), 'post_image_l'); ?>
+									
+									<div class="trending-image-content" id="post-<?php the_ID(); ?>">
+										<div class="post-meta">
+											<div class="meta-categories my_posttypes">
+												<?php 
+													$post_type = get_post_type(); 
+													$post_type_object = get_post_type_object($post_type);
+													$post_type_archive_link = get_post_type_archive_link($post_type);
+													if ($post_type_object) {
+														echo '<a href="'.$post_type_archive_link.'">'.$post_type_object->labels->name.'</a>';
 													}
-													echo '<div class="meta-date">
-															<span>' . get_the_date('F j, Y') . '</span>
-														</div>
-												</div>
-												
-												<h3 class="title"><a class="video-popup" href="'.$final_video.'" a>' . get_the_title() . '</a></h3>
-												<p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p>
+												?>
 											</div>
-											<div class="post_play_btn">
-												<a class="video-popup" href="'.$final_video.'" a><i class="fas fa-play"></i></a>
+											<div class="meta-date">
+												<span><?php echo get_the_date(); ?></span>
 											</div>
 										</div>
-										</div>';
-								 endwhile; endif; ?>
+										<h3 class="title"><a class="video-popup" href="<?php echo $final_video?>" ><?php the_title(); ?></a></h3>
+									</div>
+								</div>
+							</div>
+								 <?php endwhile; endif; ?>
 						</div>
 							<?php
 								global $wp_query;
