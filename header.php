@@ -47,33 +47,36 @@
 						<span><?php echo $news_title; ?></span>
 						<div class="trending-slider">
 							<?php 
-
 								$news_highlight = get_theme_mod('news_highlight');
 								$news_number = get_theme_mod('news_number');
 								$custom_terms = get_terms('news_category');
 
 								foreach($custom_terms as $custom_term) {
 									wp_reset_query();
-									$args = array('post_type' => 'news',
+									$args = array(
+										'post_type' => 'news',
 										'tax_query' => array(
 											array(
 												'taxonomy' => 'news_category',
 												'field' => 'term_id',
 												'terms' => $news_highlight,
-                                                'posts_per_page' => $news_number,  
 											),
 										),
+										'posts_per_page' => $news_number,
 									);
 
 									$loop = new WP_Query($args);
+
 									if($loop->have_posts()) {
 										while($loop->have_posts()) : $loop->the_post();
 											echo '<div class="trending-item"><p><a href="'.get_permalink().'">'.get_the_title().'</a></p></div>';
 										endwhile;
 									} else {
-										echo '<div class="trending-item"><p>There is no NEWS trending currenlty...</p></div>';
+										echo '<div class="trending-item"><p>There is no NEWS trending currently...</p></div>';
 									}
-								}?>
+									wp_reset_postdata();
+								}
+							?>
 						</div>
 					</div>
 				</div>

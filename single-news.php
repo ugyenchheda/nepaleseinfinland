@@ -152,15 +152,16 @@ get_header();
 
 								foreach($custom_terms as $custom_term) {
 									wp_reset_query();
-									$args = array('post_type' => 'news',
+									$args = array(
+										'post_type' => 'news',
 										'tax_query' => array(
 											array(
 												'taxonomy' => 'news_category',
 												'field' => 'term_id',
 												'terms' => $news_highlight,
-                                                'posts_per_page' => $news_number,  
 											),
 										),
+										'posts_per_page' => $news_number,
 									);
 
 									$loop = new WP_Query($args);
@@ -196,50 +197,6 @@ get_header();
                                             </div>
                                             <h3 class="title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h3>
                                             <p class="text">' . wp_trim_words(get_the_excerpt(), 20) . '</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="trending-news-item">
-                                        <div class="trending-news-thumb">
-                                            <img src="assets/images/trending-news-2.jpg" alt="trending">
-                                            <div class="icon">
-                                                <a href="#"><i class="fas fa-bolt"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="trending-news-content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h3>
-                                            <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="trending-news-item">
-                                        <div class="trending-news-thumb">
-                                            <img src="assets/images/trending-news-3.jpg" alt="trending">
-                                            <div class="icon">
-                                                <a href="#"><i class="fas fa-bolt"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="trending-news-content">
-                                            <div class="post-meta">
-                                                <div class="meta-categories">
-                                                    <a href="#">TECHNOLOGY</a>
-                                                </div>
-                                                <div class="meta-date">
-                                                    <span>March 26, 2020</span>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Japan’s virus success has puzzled the world. Is its luck running out?</a></h3>
-                                            <p class="text">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
                                         </div>
                                     </div>
                                 </div>
