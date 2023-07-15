@@ -554,6 +554,9 @@ input:-ms-input-placeholder {
 .trending-news-item .trending-news-thumb {
   max-height: 143px;
 }
+.video-blog-category {
+  padding-top: 40px;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;

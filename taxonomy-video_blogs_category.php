@@ -13,55 +13,55 @@ get_header();
 <section class="about-item-area">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12">
 				<div class="about-author-content pt-15">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
-							<li class="breadcrumb-item"><a href="#">Event Category</a></li>
+							<li class="breadcrumb-item"><a href="#">Video Blogs</a></li>
 							<li class="breadcrumb-item active" aria-current="page"><?php echo single_term_title();?></li>
 						</ol>
 					</nav>
 				</div>
 			</div>
-			<div class="col-lg-8">
 				<div class="about-tab-btn mt-40">
 					<div class="archive-btn">
 						<div class="archive-btn for-search">
-							Event Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
+							Video Category: <span class="searchresult-topic"><?php echo single_term_title();?></span>
 						</div>
 					</div>
-					<div class="about-post-items">
+					<div class="about-post-items video-blog-category">
 						<div class="row">
-							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-								<div class="col-lg-6 col-md-6">
-									<div class="trending-image-post feature-item mt-30">
-										<?php echo get_the_post_thumbnail(get_the_ID(), 'post_image_l'); ?>
-										
-										<div class="trending-image-content" id="post-<?php the_ID(); ?>">
-											<div class="post-meta">
-                                                <div class="meta-categories my_posttypes">
-                                                    <?php 
-														$post_type = get_post_type(); 
-														$post_type_object = get_post_type_object($post_type);
-                                                        $post_type_archive_link = get_post_type_archive_link($post_type);
-														if ($post_type_object) {
-															echo '<a href="'.$post_type_archive_link.'">'.$post_type_object->labels->name.'</a>';
+							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+                                $video_link = get_post_meta( get_the_ID(), 'video_link', true );
+                                $get_video_id = get_youtube_video_id($video_link);
+                                $final_video = 'https://www.youtube.com/watch?v='. $get_video_id;
+                                echo '<div class="col-md-4 col-lg-4">
+										<div class="trending-image-post feature-item mt-30">
+											<div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
+											<div class="post__gallery_play_content trending-image-content">
+												<div class="post-meta">';
+													$terms = get_the_terms($post->ID, 'video_blogs_category'); // Replace 'post' with your desired post type
+													if ($terms && !is_wp_error($terms)) {
+														echo '<div class="meta-categories">';
+														foreach ($terms as $term) {
+															echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a> ';
 														}
-                                                    ?>
-                                                </div>
-												<div class="meta-categories">
-													<a href="#"><?php echo single_term_title();?></a>
+														echo '</div>';
+													}
+													echo '<div class="meta-date">
+															<span>' . get_the_date('F j, Y') . '</span>
+														</div>
 												</div>
-												<div class="meta-date">
-													<span><?php echo get_the_date(); ?></span>
-												</div>
+												
+												<h3 class="title"><a class="video-popup" href="'.$final_video.'" a>' . get_the_title() . '</a></h3>
+												<p class="text">'. wp_trim_words(get_the_excerpt(), 25) .'</p>
 											</div>
-											<h3 class="title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h3>
+											<div class="post_play_btn">
+												<a class="video-popup" href="'.$final_video.'" a><i class="fas fa-play"></i></a>
+											</div>
 										</div>
-									</div>
-								</div>
-								<?php endwhile; endif; ?>
+										</div>';
+								 endwhile; endif; ?>
 						</div>
 							<?php
 								global $wp_query;
@@ -91,8 +91,6 @@ get_header();
 							<?php } ?>        
 						</div>
 					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>
