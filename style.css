@@ -562,6 +562,11 @@ input:-ms-input-placeholder {
 .video-blog-category {
   padding-top: 40px;
 }
+.result-detail {
+  font-size: 20px;
+  margin-top: 24px;
+  font-style: italic;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;

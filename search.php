@@ -16,9 +16,22 @@
             </div>
             <div class="col-lg-12">
                 <div class="about-tab-btn about-item-area mt-40">
-                    <div class="archive-btn for-search">
-						<?php printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . '</span>' ); ?>
-                    </div>
+                    
+						<?php global $wp_query;
+                            if ($wp_query->have_posts()) {
+                                $total_posts = $wp_query->found_posts;
+                                echo '<div class="archive-btn for-search">';
+                                printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . ' </span>' ); 
+                                echo '</div>';
+                                echo '<div class="result-detail">('.$total_posts . 'posts found...)</div>';
+                            } else {
+                                echo '<div class="archive-btn for-search">';
+                                printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . ' </span>' ); 
+                                echo '</div><div class="result-detail">(No match found...)</div>';
+                                
+                            }
+
+                        ?>
                     <div class="about-post-items">
                         <div class="row">
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
