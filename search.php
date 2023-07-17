@@ -23,7 +23,7 @@
                                 echo '<div class="archive-btn for-search">';
                                 printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . ' </span>' ); 
                                 echo '</div>';
-                                echo '<div class="result-detail">('.$total_posts . 'posts found...)</div>';
+                                echo '<div class="result-detail">('.$total_posts . 'matches found...)</div>';
                             } else {
                                 echo '<div class="archive-btn for-search">';
                                 printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . ' </span>' ); 
@@ -70,9 +70,6 @@
                                                     }
                                                 }
                                                 ?>
-                                                <div class="meta-date">
-                                                    <span><?php echo get_the_date(); ?></span>
-                                                </div>
                                             </div>
                                             <h3 class="title"><a href="<?php echo esc_url(get_the_permalink()); ?>"><?php the_title(); ?></a></h3>
                                         </div>
