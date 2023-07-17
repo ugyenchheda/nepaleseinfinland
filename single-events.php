@@ -24,7 +24,18 @@ get_header();
             $latitude = $event_location['latitude'];
             $longitude = $event_location['longitude'];
             $event_address = event_location($latitude, $longitude);
-
+    
+            // Get the list of files
+            $gallery_images = get_post_meta( get_the_ID(), 'event_banner', 1 );
+        
+            echo '<div class="file-list-wrap">';
+            // Loop through them and output an image
+            foreach ( (array) $gallery_images as $attachment_id => $attachment_url ) {
+                echo '<div class="file-list-image">';
+                echo wp_get_attachment_image( $attachment_id, 'medium' );
+                echo '</div>';
+            }
+            echo '</div>';
             ?>
             <div class="event_banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
                 <div class=container>
