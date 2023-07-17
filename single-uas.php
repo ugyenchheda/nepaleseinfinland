@@ -33,7 +33,17 @@ get_header();
                 $latitude = $uas_location['latitude'];
                 $longitude = $uas_location['longitude'];
                 $uas_address = event_location($latitude, $longitude);
+            }    // Get the list of files
+            $files = get_post_meta( get_the_ID(), 'uas_banner', 1 );
+        
+            echo '<div class="file-list-wrap">';
+            // Loop through them and output an image
+            foreach ( (array) $files as $attachment_id => $attachment_url ) {
+                echo '<div class="file-list-image">';
+                echo wp_get_attachment_image( $attachment_id, 'medium' );
+                echo '</div>';
             }
+            echo '</div>';
             ?>
             <div class="row uas_banner">
                 <div class="col-lg-8 map_block">

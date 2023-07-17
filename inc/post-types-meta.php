@@ -243,7 +243,16 @@ function uas_post_meta() {
         'name'    => 'University Photos',
         'desc'    => 'Upload an image or enter an URL of image.',
         'id'      => 'uas_banner',
-        'type'    => 'file',
+        'type' => 'file_list',
+        // 'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+        // 'query_args' => array( 'type' => 'image' ), // Only images attachment
+        // Optional, override default text strings
+        'text' => array(
+            'add_upload_files_text' => 'Add or upload Files', // default: "Add or Upload Files"
+            'remove_image_text' => 'Remove Image', // default: "Remove Image"
+            'file_text' => 'Images', // default: "File:"
+            'file_download_text' => 'Download', // default: "Download"
+            'remove_text' => 'Remove', // default: "Remove"
         // Optional:
         'options' => array(
             'url' => false, // Hide the text input for the url
@@ -261,7 +270,8 @@ function uas_post_meta() {
             //     'image/png',
             // ),
         ),
-        'preview_size' => 'large', // Image size to use when previewing in the admin.
+        'preview_size' => 'large', // Image size to use when previewing in the admin. 
+        )
       ) );
       $cmb->add_field( array(
         'name' => 'Add Video',
