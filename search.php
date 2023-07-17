@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="about-tab-btn mt-40">
+                <div class="about-tab-btn about-item-area mt-40">
                     <div class="archive-btn for-search">
 						<?php printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . '</span>' ); ?>
                     </div>
