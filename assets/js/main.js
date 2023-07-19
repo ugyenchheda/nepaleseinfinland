@@ -490,6 +490,26 @@
             }
         });
 
+        jQuery('.galleries-popup').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+        });
+          
+          // Inline popups
+          jQuery('#inline-popups').magnificPopup({
+            delegate: 'a',
+            removalDelay: 500, //delay removal by X to allow out-animation
+            callbacks: {
+            beforeOpen: function() {
+                this.st.mainClass = this.st.el.attr('data-effect');
+            }
+            },
+            midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        });
+  
+
 
 
 
@@ -511,27 +531,7 @@
                 scrollTop: "0"
             }, 1200);
         });
-        
-        
-        
-        
-        // circle
-        
-        jQuery('.first.circle').circleProgress({
-            value: 0.5,
-            size: 40,
-            thickness: 4,
-            fill: {
-                gradient: ['#DC143C', '#DC143C']
-            },
-            lineCap: "round",
-            emptyFill: "rgba(255, 255, 255, .75)",
-
-        }).on('circle-animation-progress', function (event, progress) {
-            jQuery(this).find('strong').html(Math.round(25 * progress));
-        });
-
-
+    
 
     });
 

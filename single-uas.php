@@ -35,16 +35,6 @@ get_header();
                 $longitude = $uas_location['longitude'];
                 $uas_address = event_location($latitude, $longitude);
             }    
-            // Get the list of files
-        
-            echo '<div class="file-list-wrap">';
-            // Loop through them and output an image
-            foreach ( (array) $gallery_images as $attachment_id => $attachment_url ) {
-                echo '<div class="file-list-image">';
-                echo wp_get_attachment_image( $attachment_id, 'medium' );
-                echo '</div>';
-            }
-            echo '</div>';
             ?>
             <div class="row uas_banner">
                 <div class="col-lg-8 map_block">
@@ -73,24 +63,15 @@ get_header();
                         }   
                     </script>
                     <!-- Map ends here... -->
-                    <div class="view-gallery"><i class='fas fa-images gallery-iconer'></i></div>
-                    <button onclick="openGallery()">View Gallery</button>
-
-<!-- The Modal -->
-
-<button onclick="openGallery()">View Gallery</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <div id="slideshow" class="slideshow">
-    <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
-      <img src="<?php echo $attachment_url; ?>" alt="Gallery Image">
-    <?php } ?>
-  </div>
-</div>
+                    <div class="view-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in"><i class='fas fa-images gallery-iconer'></i></a></div>
+                    <div id="ugyen-uas-gallery" class="white-popup mfp-with-anim mfp-hide"> 
+                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+                            <img src="<?php echo $attachment_url; ?>" alt="Gallery Image">
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
+            
             <section class="post-layout-1-area post-layout-2-area pb-80">
                 <div class="container">
                     <div class="row justify-content-center">

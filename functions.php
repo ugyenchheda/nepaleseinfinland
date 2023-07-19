@@ -99,7 +99,6 @@ function nepaleseinfinland_scripts() {
 	wp_enqueue_script( 'slick-min', get_template_directory_uri() . '/assets/js/slick.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'jquery.nice-select.min', get_template_directory_uri() . '/assets/js/jquery.nice-select.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'stellarnav.min', get_template_directory_uri() . '/assets/js/stellarnav.min.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'circle-progress.min', get_template_directory_uri() . '/assets/js/circle-progress.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'jquery.magnific-popup.min', get_template_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), _S_VERSION, true );
