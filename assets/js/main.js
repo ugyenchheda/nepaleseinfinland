@@ -506,7 +506,8 @@
                 this.st.mainClass = this.st.el.attr('data-effect');
             }
             },
-            midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+            midClick: true, // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+            closeBtnInside: true
         });
   
 
@@ -591,7 +592,13 @@
         });
 
 
-
+  // Optional: Add a close button to the gallery
+  $(".close-button").on("click", function() {
+    // Hide the gallery
+    $(".gallery").fadeOut();
+    // Hide the gallery2 (assuming it's an overlay)
+    $(".gallery2").fadeOut();
+  });
 
 
         // Go to Top
