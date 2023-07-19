@@ -65,9 +65,37 @@ get_header();
                     <!-- Map ends here... -->
                     <div class="view-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in"><i class='fas fa-images gallery-iconer'></i></a></div>
                     <div id="ugyen-uas-gallery" class="white-popup mfp-with-anim mfp-hide"> 
-                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
-                            <img src="<?php echo $attachment_url; ?>" alt="Gallery Image">
-                        <?php } ?>
+
+                        <div class="loading">Carousel is loading...</div>
+<div class="container">
+  <div class="synch-carousels">
+
+    <div class="left child">
+      <div class="gallery">
+        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
+        <?php } ?>
+      </div>
+    </div>
+
+    <div class="right child">
+      <div class="gallery2">
+        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
+        <?php } ?>
+      </div>
+      <div class="nav-arrows">
+        <button class="arrow-left">
+          <!--SVGs from iconmonstr.com-->
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z"/></svg>
+        </button>
+        <button class="arrow-right">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
                     </div>
                 </div>
             </div>
