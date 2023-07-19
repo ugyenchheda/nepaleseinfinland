@@ -3,7 +3,40 @@ function handleTouchStart(event) {
 	element.addEventListener('touchstart', handleTouchStart, { passive: true });
 }
 
+var slideIndex = 0;
+var slideshowTimeout;
 
+function openGallery() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "block";
+
+  showSlides();
+}
+
+function closeModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
+
+  clearTimeout(slideshowTimeout);
+}
+
+function showSlides() {
+  var slides = document.getElementsByClassName("slideshow")[0].getElementsByTagName("img");
+
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slideIndex++;
+
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+
+  slideshowTimeout = setTimeout(showSlides, 2000); // Change slide every 2 seconds (adjust as needed)
+}
 
 jQuery(document).ready(function(){
 

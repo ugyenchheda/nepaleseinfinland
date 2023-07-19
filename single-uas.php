@@ -29,13 +29,13 @@ get_header();
             $uas_linkedin = get_post_meta( $post_id, 'uas_linkedin', true );
             $uas_website = get_post_meta( $post_id, 'uas_website', true );
             $faculties_detail = get_post_meta( get_the_ID(), 'faculties', true );
+            $gallery_images = get_post_meta( get_the_ID(), 'uas_banner', 1 );
             if(!empty($uas_location)){
                 $latitude = $uas_location['latitude'];
                 $longitude = $uas_location['longitude'];
                 $uas_address = event_location($latitude, $longitude);
             }    
             // Get the list of files
-            $gallery_images = get_post_meta( get_the_ID(), 'uas_banner', 1 );
         
             echo '<div class="file-list-wrap">';
             // Loop through them and output an image
@@ -73,6 +73,22 @@ get_header();
                         }   
                     </script>
                     <!-- Map ends here... -->
+                    <div class="view-gallery"><i class='fas fa-images gallery-iconer'></i></div>
+                    <button onclick="openGallery()">View Gallery</button>
+
+<!-- The Modal -->
+
+<button onclick="openGallery()">View Gallery</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <div id="slideshow" class="slideshow">
+    <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+      <img src="<?php echo $attachment_url; ?>" alt="Gallery Image">
+    <?php } ?>
+  </div>
+</div>
                 </div>
             </div>
             <section class="post-layout-1-area post-layout-2-area pb-80">

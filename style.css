@@ -567,6 +567,68 @@ input:-ms-input-placeholder {
   margin-top: 24px;
   font-style: italic;
 }
+.gallery-iconer {
+  font-size: 27px;
+  margin-top: -38px;
+  z-index: 1;
+  position: absolute;
+  color: #fff;
+  padding: 6px 14px;
+  background: #002f6c;
+  float: left;
+}
+/* Style for the gallery */
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Style for the slideshow */
+.slideshow {
+  position: relative;
+}
+
+.slideshow img {
+  width: 100%;
+  height: auto;
+}
+
+/* Style for the modal and close button */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.close {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
 @media(max-width:767px) {
   ul.uas-click-button {
     flex-direction: column;
