@@ -84,8 +84,8 @@ get_header();
                                         <?php } ?>
                                     </div>
                                     <div class="nav-arrows">
-                                        <button class="arrow-left"><i class='fas fa-caret-square-left'></i></button>
-                                        <button class="arrow-right"><i class='fas fa-caret-square-right'></i></button>
+                                        <button class="arrow-left"><i class='fas fa-chevron-left'></i></button>
+                                        <button class="arrow-right"><i class='fas fa-chevron-right'></i></button>
                                     </div>
                                 </div>
                             </div>

@@ -688,19 +688,22 @@ input:-ms-input-placeholder {
 .synch-carousels .nav-arrows {
   display: flex;
   position: absolute;
-  bottom: -50px;
+  top: -40px; /* Adjust the value as needed */
   left: 50%;
   transform: translateX(-50%);
+
 }
 
-.synch-carousels .nav-arrows svg {
-  fill: white;
+.synch-carousels .nav-arrows .slick-arrow {
+  padding: 4px 11px 2px;
+  font-size: 18px;
+  border: 1px solid #161515;
+  border-radius: 3px;
+  background: #dc143c;
+  color: #ffffff;
+  margin-left: 7px;
 }
 
-
-.mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-zoom-in.mfp-ready {
-  
-}
 @media screen and (min-width: 480px) {
   .synch-carousels .right {
     margin-bottom: 20px;

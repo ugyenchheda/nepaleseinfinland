@@ -53,8 +53,8 @@ while ( have_posts() ) :
                                         <?php } ?>
                                     </div>
                                     <div class="nav-arrows">
-                                        <button class="arrow-left"><i class='fas fa-caret-left'></i></button>
-                                        <button class="arrow-right"><i class='fas fa-caret-right'></i></button>
+                                        <button class="arrow-left"><i class='fas fa-chevron-left'></i></button>
+                                        <button class="arrow-right"><i class='fas fa-chevron-right'></i></button>
                                     </div>
                                 </div>
                             </div>
