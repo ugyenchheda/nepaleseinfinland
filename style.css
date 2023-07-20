@@ -658,9 +658,7 @@ input:-ms-input-placeholder {
   order: -1;
 }
 
-.synch-carousels .left {
-  overflow: hidden;
-}
+
 
 .synch-carousels .gallery {
   display: none;
@@ -675,7 +673,7 @@ input:-ms-input-placeholder {
 }
 
 .synch-carousels .gallery .slick-list {
-  height: auto !important;
+  height: 650px !important;
   margin: 0 -20px;
 }
 

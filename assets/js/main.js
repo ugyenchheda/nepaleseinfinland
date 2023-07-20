@@ -573,8 +573,8 @@
           _.debounce(() => {
             handleCarouselsHeight();
             /*You might need this code in your projects*/
-            //$gl1.slick("resize");
-            //$gl2.slick("resize");
+            $gl1.slick("resize");
+            $gl2.slick("resize");
           }, 200)
         );
         
@@ -583,6 +583,11 @@
           $gl2.slick("slickGoTo", index);
         });
         
+        $gl2.on("afterChange", (event, slick, currentSlide) => {
+          $photosCounterFirstSpan.text(`${slick.currentSlide + 1}/`);
+        });
+
+
         // Optional: Add a close button to the gallery
         $(".close-button").on("click", function() {
             // Hide the gallery

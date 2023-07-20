@@ -9,41 +9,61 @@
 
 get_header();
 
-		while ( have_posts() ) :
-			the_post(); 
-            $post_id =get_the_ID();
-            $events_hot = get_post_meta( $post_id, 'events_hot', true );
-            $events_free = get_post_meta( $post_id, 'events_free', true );
-            $events_price = get_post_meta( $post_id, 'events_price', true );
-            $events_organizer = get_post_meta( $post_id, 'events_organizer', true );
-            $event_sdate = get_post_meta( $post_id, 'event_sdate', true );
-            $event_edate = get_post_meta( $post_id, 'event_edate', true );
-            $event_banner = get_post_meta( $post_id, 'event_banner', true );
-            $event_video = get_post_meta( $post_id, 'event_video', true );
-            $event_location = get_post_meta( $post_id, 'event_location', true );
-            $latitude = $event_location['latitude'];
-            $longitude = $event_location['longitude'];
-            $event_address = event_location($latitude, $longitude);
-    
-            // Get the list of files
-            $gallery_images = get_post_meta( get_the_ID(), 'event_banner', 1 );
-        
-            echo '<div class="file-list-wrap">';
-            // Loop through them and output an image
-            foreach ( (array) $gallery_images as $attachment_id => $attachment_url ) {
-                echo '<div class="file-list-image">';
-                echo wp_get_attachment_image( $attachment_id, 'medium' );
-                echo '</div>';
-            }
-            echo '</div>';
-            ?>
-            <div class="event_banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
-                <div class=container>
-                    <div class="event_banner_wrap">
-                        <h3 class="title"><span class="event_bg"><span class="event_title"><?php the_title(); ?></span></span></h3>
+while ( have_posts() ) :
+    the_post(); 
+    $post_id =get_the_ID();
+    $events_hot = get_post_meta( $post_id, 'events_hot', true );
+    $events_free = get_post_meta( $post_id, 'events_free', true );
+    $events_price = get_post_meta( $post_id, 'events_price', true );
+    $events_organizer = get_post_meta( $post_id, 'events_organizer', true );
+    $event_sdate = get_post_meta( $post_id, 'event_sdate', true );
+    $event_edate = get_post_meta( $post_id, 'event_edate', true );
+    $event_banner = get_post_meta( $post_id, 'event_banner', true );
+    $event_video = get_post_meta( $post_id, 'event_video', true );
+    $event_location = get_post_meta( $post_id, 'event_location', true );
+    $latitude = $event_location['latitude'];
+    $longitude = $event_location['longitude'];
+    $event_address = event_location($latitude, $longitude);
+
+    // Get the list of files
+    $gallery_images = get_post_meta( get_the_ID(), 'event_banner', true );
+    ?>
+    <div class="event_banner" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
+        <div class=container>
+            <div class="event_banner_wrap">
+                <h3 class="title"><span class="event_bg"><span class="event_title"><?php the_title(); ?></span></span></h3>
+
+                <?php if( $gallery_images) {?>
+                    <div class="view-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in"><i class='fas fa-images gallery-iconer'></i></a></div>
+                    <div id="ugyen-uas-gallery" class="white-popup mfp-with-anim mfp-hide"> 
+                        <div class="loading">Loading Gallery Images</div>
+                        <div class="container">
+                            <div class="synch-carousels">
+                                <div class="left child">
+                                    <div class="gallery">
+                                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+                                            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                                <div class="right child">
+                                    <div class="gallery2">
+                                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+                                            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="nav-arrows">
+                                        <button class="arrow-left"><i class='fas fa-caret-left'></i></button>
+                                        <button class="arrow-right"><i class='fas fa-caret-right'></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
+        </div>
+    </div>
 <section class="post-layout-1-area post-layout-2-area pb-80">
         <div class="container">
             <div class="row justify-content-center">
