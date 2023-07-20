@@ -622,7 +622,10 @@ input:-ms-input-placeholder {
   padding-top: 50px;
 }
 
-
+#ugyen-uas-gallery .mfp-close {
+  color: #fff;
+  font-size: 40px;
+}
 .over-visible {
   overflow: visible;
 }
@@ -696,19 +699,10 @@ input:-ms-input-placeholder {
   fill: white;
 }
 
-.synch-carousels .arrow-left {
-  margin-right: 35px;
-}
 
-.synch-carousels .photos-counter {
-  position: absolute;
-  top: 10px;
-  right: 0;
-  padding: 0 20px;
-  color: white;
-  background: #292929;
+.mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-zoom-in.mfp-ready {
+  
 }
-
 @media screen and (min-width: 480px) {
   .synch-carousels .right {
     margin-bottom: 20px;

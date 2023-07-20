@@ -10,10 +10,6 @@
 
     jQuery(document).on('ready', function () {
 
-
-
-
-
         //===== Sticky
 
         jQuery(window).on('scroll', function (event) {
@@ -587,18 +583,11 @@
           $gl2.slick("slickGoTo", index);
         });
         
-        $gl2.on("afterChange", (event, slick, currentSlide) => {
-          $photosCounterFirstSpan.text(`${slick.currentSlide + 1}/`);
+        // Optional: Add a close button to the gallery
+        $(".close-button").on("click", function() {
+            // Hide the gallery
+            $("#ugyen-uas-gallery").fadeOut();
         });
-
-
-  // Optional: Add a close button to the gallery
-  $(".close-button").on("click", function() {
-    // Hide the gallery
-    $(".gallery").fadeOut();
-    // Hide the gallery2 (assuming it's an overlay)
-    $(".gallery2").fadeOut();
-  });
 
 
         // Go to Top
@@ -617,12 +606,6 @@
             }, 1200);
         });
         
-
-
-
     });
-
-
-
 
 })(jQuery);

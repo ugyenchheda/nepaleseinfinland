@@ -65,8 +65,8 @@ get_header();
                     <!-- Map ends here... -->
                     <div class="view-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in"><i class='fas fa-images gallery-iconer'></i></a></div>
                     <div id="ugyen-uas-gallery" class="white-popup mfp-with-anim mfp-hide"> 
-                        <div class="close-button">X</div>
-                        <div class="loading">Carousel is loading...</div>
+                        
+                        <div class="loading">Loading Gallery Images</div>
                         <div class="container">
                             <div class="synch-carousels">
                                 <div class="left child">
@@ -82,10 +82,10 @@ get_header();
                                             <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
                                         <?php } ?>
                                     </div>
-                                </div>
-                                <div class="nav-arrows">
-                                    <button class="arrow-left"><i class='fas fa-caret-square-left'></i></button>
-                                    <button class="arrow-right"><i class='fas fa-caret-square-right'></i></button>
+                                    <div class="nav-arrows">
+                                        <button class="arrow-left"><i class='fas fa-caret-square-left'></i></button>
+                                        <button class="arrow-right"><i class='fas fa-caret-square-right'></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
