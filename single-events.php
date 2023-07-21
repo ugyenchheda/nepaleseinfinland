@@ -32,35 +32,6 @@ while ( have_posts() ) :
         <div class=container>
             <div class="event_banner_wrap">
                 <h3 class="title"><span class="event_bg"><span class="event_title"><?php the_title(); ?></span></span></h3>
-
-                <?php if( $gallery_images) {?>
-                    <div class="view-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in"><i class='fas fa-images gallery-iconer'></i></a></div>
-                    <div id="ugyen-uas-gallery" class="white-popup mfp-with-anim mfp-hide"> 
-                        <div class="loading">Loading Gallery Images</div>
-                        <div class="container">
-                            <div class="synch-carousels">
-                                <div class="left child">
-                                    <div class="gallery">
-                                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
-                                            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                                <div class="right child">
-                                    <div class="gallery2">
-                                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
-                                            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="nav-arrows">
-                                        <button class="arrow-left"><i class='fas fa-chevron-left'></i></button>
-                                        <button class="arrow-right"><i class='fas fa-chevron-right'></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
             </div>
         </div>
     </div>
@@ -102,6 +73,35 @@ while ( have_posts() ) :
                                 <div class="post-categories d-flex justify-content-start align-content-center">
                                     <div class="categories-item">	
                                         <span><i class="fas fa-award event_small" alt="Organizer"></i> Event</span>
+
+<?php if( $gallery_images) {?>
+    <div class="view-event-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in">View Gallery<i class='fas fa-images event-gallery-iconer'></i></a></div>
+    <div id="ugyen-uas-gallery" class="white-popup mfp-with-anim mfp-hide"> 
+        <div class="loading">Loading Gallery Images</div>
+        <div class="container">
+            <div class="synch-carousels">
+                <div class="left child">
+                    <div class="gallery">
+                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+                            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="right child">
+                    <div class="gallery2">
+                        <?php foreach ((array) $gallery_images as $attachment_id => $attachment_url) { ?>
+                            <div class="item"> <img src="<?php echo $attachment_url; ?>" alt="Gallery Image"></div>
+                        <?php } ?>
+                    </div>
+                    <div class="nav-arrows">
+                        <button class="arrow-left"><i class='fas fa-chevron-left'></i></button>
+                        <button class="arrow-right"><i class='fas fa-chevron-right'></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
                                     </div>
                                     <div class="categories-share">
                                         <ul>

@@ -703,7 +703,29 @@ input:-ms-input-placeholder {
   color: #ffffff;
   margin-left: 7px;
 }
-
+.view-event-gallery a {
+  background: #000;
+  color: #fff;
+  padding: 7px 10px;
+  transition: ease-in 0.5s;
+  border: 1px solid #000;
+}
+.view-event-gallery a:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+.event-gallery-iconer {
+  padding-left: 7px;
+}.view-event-gallery {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.view-event-gallery a:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
 @media screen and (min-width: 480px) {
   .synch-carousels .right {
     margin-bottom: 20px;
