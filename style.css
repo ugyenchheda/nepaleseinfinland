@@ -40,7 +40,6 @@ span.event_bg {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   color: #ffffff;
-  font-family: 'Roboto';
   text-shadow: 3px 2px 5px #000;
 }
 .event_banner_wrap h1:before {
