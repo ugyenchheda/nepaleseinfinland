@@ -188,5 +188,4 @@ while ( have_posts() ) :
     </section>
 
 <?php
-get_sidebar();
 get_footer();
