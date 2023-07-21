@@ -8,7 +8,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url()); ?>">Home</a></li>
-                            <li class="breadcrumb-item">Search Page</li>
+                            <li class="breadcrumb-item">Search Result</li>
                             <li class="breadcrumb-item active" aria-current="page"><?php echo esc_html(single_term_title()); ?></li>
                         </ol>
                     </nav>
@@ -23,7 +23,7 @@
                                 echo '<div class="archive-btn for-search">';
                                 printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . ' </span>' ); 
                                 echo '</div>';
-                                echo '<div class="result-detail">('.$total_posts . 'matches found...)</div>';
+                                echo '<div class="result-detail">('.$total_posts . ' matches found...)</div>';
                             } else {
                                 echo '<div class="archive-btn for-search">';
                                 printf( esc_html__( 'You searched for: %s', 'nepaleseinfinland' ), '<span class="searchresult-topic">' . get_search_query() . ' </span>' ); 
