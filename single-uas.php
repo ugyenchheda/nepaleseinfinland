@@ -65,7 +65,7 @@ get_header();
                     <!-- Map ends here... -->
 
                     <?php if( $gallery_images) {?>
-                    <div class="view-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in"><i class='fas fa-images gallery-iconer'></i></a></div>
+                    <div class="view-gallery"  id="inline-popups"><a href="#ugyen-uas-gallery" data-effect="mfp-zoom-in">View Gallery <i class='fas fa-images gallery-iconer'></i></a></div>
                     <div id="ugyen-uas-gallery" class="white-popup mfp-with-anim mfp-hide"> 
                         <div class="loading">Loading Gallery Images</div>
                         <div class="container">

@@ -61,6 +61,11 @@ span.event_bg {
   max-width: 255px;
   background-color: #333;
 }
+.view-gallery a {
+  font-size: 19px;
+  background: #00000069;
+  padding: 8px 13px;
+}
 span.event_title {
     background: #ffffff29;
     padding: 15px 21px;
@@ -566,18 +571,21 @@ input:-ms-input-placeholder {
   margin-top: 24px;
   font-style: italic;
 }
-.gallery-iconer {
-  font-size: 27px;
-  margin-top: -38px;
-  z-index: 1;
+.view-gallery a {
+  font-size: 19px;
+  background: #000000b8;
+  padding: 8px 13px;
+  margin-top: -39px;
   position: absolute;
   color: #fff;
-  padding: 6px 14px;
-  background: #002f6c;
-  float: left;
+  border: 1px solid #000;
+  transition: ease-in 0.5s;
 }
-
-
+.view-gallery a:hover {
+  background: #ffffff9c;
+  color: #000;
+  border: 1px solid #000;
+}
 .mfp-zoom-in {
   
   /* start state */
