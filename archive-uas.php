@@ -8,7 +8,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url()); ?>">Home</a></li>
-                            <li class="breadcrumb-item">News</li>
+                            <li class="breadcrumb-item">Universities</li>
                             <li class="breadcrumb-item active" aria-current="page"><?php echo esc_html(single_term_title()); ?></li>
                         </ol>
                     </nav>

@@ -18,7 +18,7 @@ get_header();
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Event Category</a></li>
+                                <li class="breadcrumb-item"><a href="#">University Category</a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><?php echo single_term_title();?></li>
                             </ol>
                         </nav>
@@ -77,14 +77,14 @@ get_header();
 									$pages = paginate_links( array(
 											'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 											'format' => '?paged=%#%',
-											'current' => max( 1, get_query_var('paged') ),
+											'current' => max( 16, get_query_var('paged') ),
 											'total' => $wp_query->max_num_pages,
 											'prev_text' => '<span aria-hidden="true"><i class="fas fa-caret-left"></i></span>',
 											'next_text' => '<span aria-hidden="true"><i class="fas fa-caret-right"></i></span>',
 											'type'  => 'array',
 										) );
 								if( is_array( $pages ) ) {
-									$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged'); ?>
+									$paged = ( get_query_var('paged') == 0 ) ? 16 : get_query_var('paged'); ?>
 									<div class="pagination-item pt-40">
 										<nav aria-label="Page navigation example">
 											<ul class="pagination">

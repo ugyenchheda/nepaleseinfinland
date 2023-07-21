@@ -396,7 +396,15 @@ global $wp_query;
                             <div class="feature-post-content">
                                 <div class="post-meta">
                                     <div class="meta-categories">
-                                        <a href="#"><?php echo get_post_type( get_the_ID() );?></a>
+                                       
+                                    <?php 
+														$post_type = get_post_type(); 
+														$post_type_object = get_post_type_object($post_type);
+                                                        $post_type_archive_link = get_post_type_archive_link($post_type);
+														if ($post_type_object) {
+															echo '<a href="'.$post_type_archive_link.'">'.$post_type_object->labels->name.'</a>';
+														}
+                                                    ?>
                                     </div>
                                     <div class="meta-date">
                                         <span><?php echo get_the_date('l, F j,  Y'); ?></span>

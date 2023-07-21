@@ -376,12 +376,12 @@ function move_comment_form_to_bottom( $fields ) {
 }
 add_filter( 'comment_form_fields', 'move_comment_form_to_bottom');
 
-function custom_taxonomy_pagination( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && ( is_tax( 'news_category' ) || is_tax( 'event_category' ) || is_tax( 'uas_category' ) ) ) {
-		$query->set( 'posts_per_page', 1 );
-	}
-}
-add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
+// function custom_taxonomy_pagination( $query ) {
+// 	if ( ! is_admin() && $query->is_main_query() && ( is_tax( 'news_category' ) || is_tax( 'event_category' ) || is_tax( 'uas_category' ) ) ) {
+// 		$query->set( 'posts_per_page', 1 );
+// 	}
+// }
+// add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
 
 
 
