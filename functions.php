@@ -383,7 +383,23 @@ add_filter( 'comment_form_fields', 'move_comment_form_to_bottom');
 // }
 // add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
 
+function search_only_title_except_pages( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
+        $query->set( 's', get_query_var( 's' ) ); 
+        $query->set( 'posts_per_page', -1 ); 
+        $query->set( 'post_type', array( 'post', 'news', 'events', 'uas' ) ); 
 
+        // Exclude the 'page' post type.
+        $exclude_page = get_post_type_object( 'page' );
+        if ($exclude_page) {
+            $exclude_page_slug = $exclude_page->rewrite['slug'];
+            $query->set( 'post_type', array_diff( $query->get( 'post_type' ), array( $exclude_page_slug ) ) );
+        }
+        
+        $query->set( 'post_title', true ); 
+    }
+}
+add_action( 'pre_get_posts', 'search_only_title_except_pages' );
 
 
 add_action('wp_ajax_loadingNews', 'loadingNews');
@@ -406,23 +422,15 @@ function loadingNews() {
 
     $query = new WP_Query($args);
 
-    ob_start(); // Start output buffering
+    ob_start(); 
 
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
             $loaded_post_ids[] = get_the_ID();
-            // Output the news items HTML
             echo '<div class="col-lg-4 col-md-4">
                 <div class="trending-news-item mb-30">
-                    <div class="trending-news-thumb">
-                    ' . get_the_post_thumbnail($post->ID, 'post_image_l') . '
-					<div class="circle-bar">
-					<div class="first circle"><canvas width="40" height="40"></canvas>
-						<strong>25</strong>
-					</div>
-				</div>
-                    </div>
+                    <div class="trending-news-thumb">' . get_the_post_thumbnail($post->ID, 'post_image_l') . '</div>
                     <div class="trending-news-content">
                         <div class="post-meta">';
 
