@@ -383,23 +383,32 @@ add_filter( 'comment_form_fields', 'move_comment_form_to_bottom');
 // }
 // add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
 
-function search_only_title_except_pages( $query ) {
+function search_only_title_except_pages( $search, $query ) {
     if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
-        $query->set( 's', get_query_var( 's' ) ); 
-        $query->set( 'posts_per_page', -1 ); 
-        $query->set( 'post_type', array( 'post', 'news', 'events', 'uas' ) ); 
+        global $wpdb;
+
+        $search = '';
+        $search_terms = $query->get( 's' );
+
+        if ( ! empty( $search_terms ) ) {
+            $search = $wpdb->prepare(
+                " AND $wpdb->posts.post_type IN ( 'post', 'news', 'events', 'uas' ) 
+                AND $wpdb->posts.post_title LIKE %s",
+                '%' . $wpdb->esc_like( $search_terms ) . '%'
+            );
+        }
 
         // Exclude the 'page' post type.
         $exclude_page = get_post_type_object( 'page' );
-        if ($exclude_page) {
+        if ( $exclude_page ) {
             $exclude_page_slug = $exclude_page->rewrite['slug'];
-            $query->set( 'post_type', array_diff( $query->get( 'post_type' ), array( $exclude_page_slug ) ) );
+            $search .= $wpdb->prepare( " AND $wpdb->posts.post_type NOT LIKE %s", $exclude_page_slug );
         }
-        
-        $query->set( 'post_title', true ); 
     }
+
+    return $search;
 }
-add_action( 'pre_get_posts', 'search_only_title_except_pages' );
+add_filter( 'posts_search', 'search_only_title_except_pages', 10, 2 );
 
 
 add_action('wp_ajax_loadingNews', 'loadingNews');
