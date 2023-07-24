@@ -550,48 +550,52 @@ function loadingNews() {
 	
 	
 	function event_booking_meta_box()
-{
-    add_meta_box(
-        'event_booking_meta_box',
-        'Event Booking Details',
-        'display_event_booking_meta_box',
-        'events',
-        'normal',
-        'high'
-    );
-}
-add_action('add_meta_boxes', 'event_booking_meta_box');
-
-function display_event_booking_meta_box($post)
-{
-    // Retrieve existing booking details from the database
-    $booking_name = get_post_meta($post->ID, 'booking_name', true);
-    $booking_email = get_post_meta($post->ID, 'booking_email', true);
-    $booking_phone = get_post_meta($post->ID, 'booking_phone', true);
-    $booking_date = get_post_meta($post->ID, 'booking_date', true);
-
-    // Display the booking form fields
-    ?>
-    <label for="booking_name">Name:</label>
-    <input type="text" name="booking_name" value="<?php echo esc_attr($booking_name); ?>">
-
-    <label for="booking_email">Email:</label>
-    <input type="email" name="booking_email" value="<?php echo esc_attr($booking_email); ?>">
-
-    <label for="booking_phone">Phone:</label>
-    <input type="tel" name="booking_phone" value="<?php echo esc_attr($booking_phone); ?>">
-
-    <label for="booking_date">Booking Date:</label>
-    <input type="date" name="booking_date" value="<?php echo esc_attr($booking_date); ?>">
-    <?php
-}
-
-function save_event_booking_meta($post_id)
-{
-    if (isset($_POST['booking_details']) && is_array($_POST['booking_details'])) {
-        $booking_details = $_POST['booking_details'];
-        update_post_meta($post_id, 'booking_details', $booking_details);
-    }
-}
-add_action('save_post_event', 'save_event_booking_meta');
+	{
+		add_meta_box(
+			'event_booking_meta_box',
+			'Event Booking Details',
+			'display_event_booking_meta_box',
+			'events',
+			'normal',
+			'high'
+		);
+	}
+	add_action('add_meta_boxes', 'event_booking_meta_box');
+	function display_event_booking_meta_box($post)
+	{
+		// Retrieve existing booking details from the database
+		$booking_details = get_post_meta($post->ID, 'booking_details', true);
 	
+		// Display the booking details in the custom meta box
+		?>
+		<p><strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?></p>
+		<p><strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?></p>
+		<p><strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?></p>
+		<p><strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?></p>
+		<?php
+	}
+
+	function save_event_booking_meta($post_id)
+	{
+		if (isset($_POST['booking_details']) && is_array($_POST['booking_details'])) {
+			$booking_details = array(
+				'name' => sanitize_text_field($_POST['booking_details']['name']),
+				'email' => sanitize_email($_POST['booking_details']['email']),
+				'phone' => sanitize_text_field($_POST['booking_details']['phone']),
+				'booking_date' => sanitize_text_field($_POST['booking_details']['booking_date']),
+			);
+	
+			update_post_meta($post_id, 'booking_details', $booking_details);
+	
+			// Trigger a custom action after saving the booking details
+			do_action('booking_made', $post_id);
+		}
+	}
+	add_action('save_post_events', 'save_event_booking_meta');
+
+function custom_booking_made_action($post_id)
+{
+    // Display a custom notification when a booking is made
+    echo '<script type="text/javascript">alert("Booking for event ID ' . $post_id . ' has been made!");</script>';
+}
+add_action('booking_made', 'custom_booking_made_action');

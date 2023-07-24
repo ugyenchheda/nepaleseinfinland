@@ -85,4 +85,50 @@ jQuery(document).ready(function() {
             });
         }
     });
+      // Listen for the custom "booking_made" event triggered by PHP
+  $('#event-booking-form').submit(function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+  
+    // Serialize the form data into a URL-encoded string
+    var formData = jQuery(this).serialize();
+  
+    var ajaxurl = my_ajax_object.ajax_url;
+    // Perform the AJAX form submission
+    jQuery.ajax({
+      url: ajaxurl, // Replace with the URL to your AJAX handler
+      type: 'POST',
+      data: formData,
+      dataType: 'json',
+      beforeSend: function() {
+        // Optionally, show a loading indicator or disable the form submit button
+      },
+      success: function(response) {
+        // Process the AJAX response here (e.g., show a success message or update the page content)
+        if (response.success) {
+          // Display the booking success message
+          alert('Booking successful!');
+  
+          // Optionally, update the booking details on the page without a full refresh
+          // For example, you can append the new booking details to the booking details section.
+        } else {
+          // Display the booking failure message
+          alert('Booking failed. Please try again.');
+  
+          // Optionally, handle any error messages returned in the response.
+          // You can access them using response.data.error_message.
+        }
+      },
+      error: function(xhr, status, error) {
+        // Handle AJAX errors (if any)
+        console.error(error);
+  
+        // Optionally, display an error message to the user
+        alert('An error occurred. Please try again later.');
+      },
+      complete: function() {
+        // Optionally, perform cleanup or re-enable form elements after the AJAX request completes
+      }
+    });
+  });
 });

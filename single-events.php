@@ -40,14 +40,8 @@ while ( have_posts() ) :
             <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="post-layout-top-content post-layout-top-content-2">
-                                <div class="thumb">
-                                    <img src="assets/images/post-thumb-5.png" alt="">
-                                </div>
                                 <div class="post-author">
                                     <div class="author-info">
-                                        <div class="thumb">
-                                            <img src="assets/images/author.png" alt="">
-                                        </div>
                                         <h5 class="title"><i class="far fa-id-badge event_small" alt="Organizer"></i> Organizer: <?php echo $events_organizer;?></h5>
                                         <ul>
                                             <li><i class="far fa-calendar-alt event_small" alt="Organizer"></i> Date of Event: <?php   echo $event_sdate; if ($event_edate) { echo " - $event_edate";}?></li>
@@ -141,7 +135,7 @@ while ( have_posts() ) :
                                     <div class="post-quote-content">
                                         <p>I must explain to you how all this mistake idea denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure because it is pleasure.</p>
                                         <div class="user">
-                                            <img src="assets/images/author.png" alt="">
+                                            <img src="http://localhost/nepaleseinfinland/wp-content/uploads/2023/05/game-design-1.png" alt="">
                                             <h5 class="title">Subash Chandra</h5>
                                             <span>Founder at Seative Digital</span>
                                         </div>
@@ -176,62 +170,55 @@ while ( have_posts() ) :
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <?php
-                                if ( comments_open() || get_comments_number() ) :
-                                    comments_template();
-                                endif;
-                            ?>
                         </div>
                         <div class="col-md-6">
-                            <?php
-                                // Retrieve booking details for the current event
-                                $booking_name = get_post_meta(get_the_ID(), 'booking_name', true);
-                                $booking_email = get_post_meta(get_the_ID(), 'booking_email', true);
-                                $booking_phone = get_post_meta(get_the_ID(), 'booking_phone', true);
-                                $booking_date = get_post_meta(get_the_ID(), 'booking_date', true);
-                            ?>
+                        <?php
+$booking_details = get_post_meta(get_the_ID(), 'booking_details', true);
+?>
 
-                            <!-- Display the event details -->
+<!-- Display the event details -->
 
-                            <!-- Display the booking form -->
-                            <div class="booking-form">
-                                <h2>Booking Form</h2>
-                                <form id="event-booking-form" method="post">
-                                    <label for="name">Name:</label>
-                                    <input type="text" name="name" value="<?php echo esc_attr($booking_name); ?>" required>
+<!-- Display the booking form -->
+<div class="booking-form">
+    <h2>Booking Form</h2>
+    <form id="event-booking-form" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="booking_details[name]" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>" >
 
-                                    <label for="email">Email:</label>
-                                    <input type="email" name="email" value="<?php echo esc_attr($booking_email); ?>" required>
+        <label for="email">Email:</label>
+        <input type="email" name="booking_details[email]" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" >
 
-                                    <label for="phone">Phone:</label>
-                                    <input type="tel" name="phone" value="<?php echo esc_attr($booking_phone); ?>" required>
+        <label for="phone">Phone:</label>
+        <input type="tel" name="booking_details[phone]" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>" >
 
-                                    <label for="booking_date">Booking Date:</label>
-                                    <input type="date" name="booking_date" value="<?php echo esc_attr($booking_date); ?>" required>
+        <label for="booking_date">Booking Date:</label>
+        <input type="date" name="booking_details[booking_date]" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required>
 
-                                    <input type="submit" value="Submit">
-                                </form>
-                            </div>
-                            
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
-                            <!-- Display the booking details -->
-                            <?php if (!empty($booking_details)) : ?>
-                                <div class="booking-details">
-                                    <h2>Booking Details</h2>
-                                    <ul>
-                                        <?php foreach ($booking_details as $booking) : ?>
-                                            <li>
-                                                <strong>Name:</strong> <?php echo esc_html($booking['name']); ?><br>
-                                                <strong>Email:</strong> <?php echo esc_html($booking['email']); ?><br>
-                                                <strong>Phone:</strong> <?php echo esc_html($booking['phone']); ?><br>
-                                                <strong>Booking Date:</strong> <?php echo esc_html($booking['booking_date']); ?>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            <?php endif; ?>
+<!-- Display the booking details -->
+<?php if (!empty($booking_details)) : ?>
+    <div class="booking-details">
+        <h2>Booking Details</h2>
+        <ul>
+            <li>
+                <strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?><br>
+                <strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?><br>
+                <strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?><br>
+                <strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>
                         </div>
                     </div>
+
+
+
+
+
 
                 <?php endwhile; // End of the loop.
                 ?>
