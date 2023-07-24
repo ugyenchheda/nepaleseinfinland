@@ -174,14 +174,48 @@ while ( have_posts() ) :
                             </div>
                         </div>
                     </div>
-            <?php
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?php
+                                if ( comments_open() || get_comments_number() ) :
+                                    comments_template();
+                                endif;
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?php
+                                // Retrieve booking details for the current event
+                                $booking_name = get_post_meta(get_the_ID(), 'booking_name', true);
+                                $booking_email = get_post_meta(get_the_ID(), 'booking_email', true);
+                                $booking_phone = get_post_meta(get_the_ID(), 'booking_phone', true);
+                                $booking_date = get_post_meta(get_the_ID(), 'booking_date', true);
+                            ?>
 
-                    // If comments are open or we have at least one comment, load up the comment template.
-                    if ( comments_open() || get_comments_number() ) :
-                        comments_template();
-                    endif;
+                            <!-- Display the event details -->
 
-                endwhile; // End of the loop.
+                            <!-- Display the booking form -->
+                            <div class="booking-form">
+                                <h2>Booking Form</h2>
+                                <form id="event-booking-form" method="post">
+                                    <label for="name">Name:</label>
+                                    <input type="text" name="name" value="<?php echo esc_attr($booking_name); ?>" required>
+
+                                    <label for="email">Email:</label>
+                                    <input type="email" name="email" value="<?php echo esc_attr($booking_email); ?>" required>
+
+                                    <label for="phone">Phone:</label>
+                                    <input type="tel" name="phone" value="<?php echo esc_attr($booking_phone); ?>" required>
+
+                                    <label for="booking_date">Booking Date:</label>
+                                    <input type="date" name="booking_date" value="<?php echo esc_attr($booking_date); ?>" required>
+
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endwhile; // End of the loop.
                 ?>
 
         </div>

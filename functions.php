@@ -549,5 +549,58 @@ function loadingNews() {
 	
 	
 	
-	
+	function event_booking_meta_box()
+{
+    add_meta_box(
+        'event_booking_meta_box',
+        'Event Booking Details',
+        'display_event_booking_meta_box',
+        'events',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'event_booking_meta_box');
+
+function display_event_booking_meta_box($post)
+{
+    // Retrieve existing booking details from the database
+    $booking_name = get_post_meta($post->ID, 'booking_name', true);
+    $booking_email = get_post_meta($post->ID, 'booking_email', true);
+    $booking_phone = get_post_meta($post->ID, 'booking_phone', true);
+    $booking_date = get_post_meta($post->ID, 'booking_date', true);
+
+    // Display the booking form fields
+    ?>
+    <label for="booking_name">Name:</label>
+    <input type="text" name="booking_name" value="<?php echo esc_attr($booking_name); ?>">
+
+    <label for="booking_email">Email:</label>
+    <input type="email" name="booking_email" value="<?php echo esc_attr($booking_email); ?>">
+
+    <label for="booking_phone">Phone:</label>
+    <input type="tel" name="booking_phone" value="<?php echo esc_attr($booking_phone); ?>">
+
+    <label for="booking_date">Booking Date:</label>
+    <input type="date" name="booking_date" value="<?php echo esc_attr($booking_date); ?>">
+    <?php
+}
+
+function save_event_booking_meta($post_id)
+{
+    // Save booking details when the event is saved or updated
+    if (isset($_POST['booking_name'])) {
+        update_post_meta($post_id, 'booking_name', sanitize_text_field($_POST['booking_name']));
+    }
+    if (isset($_POST['booking_email'])) {
+        update_post_meta($post_id, 'booking_email', sanitize_email($_POST['booking_email']));
+    }
+    if (isset($_POST['booking_phone'])) {
+        update_post_meta($post_id, 'booking_phone', sanitize_text_field($_POST['booking_phone']));
+    }
+    if (isset($_POST['booking_date'])) {
+        update_post_meta($post_id, 'booking_date', sanitize_text_field($_POST['booking_date']));
+    }
+}
+add_action('save_post_event', 'save_event_booking_meta');
 	
