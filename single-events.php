@@ -212,6 +212,24 @@ while ( have_posts() ) :
                                     <input type="submit" value="Submit">
                                 </form>
                             </div>
+                            
+
+                            <!-- Display the booking details -->
+                            <?php if (!empty($booking_details)) : ?>
+                                <div class="booking-details">
+                                    <h2>Booking Details</h2>
+                                    <ul>
+                                        <?php foreach ($booking_details as $booking) : ?>
+                                            <li>
+                                                <strong>Name:</strong> <?php echo esc_html($booking['name']); ?><br>
+                                                <strong>Email:</strong> <?php echo esc_html($booking['email']); ?><br>
+                                                <strong>Phone:</strong> <?php echo esc_html($booking['phone']); ?><br>
+                                                <strong>Booking Date:</strong> <?php echo esc_html($booking['booking_date']); ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 

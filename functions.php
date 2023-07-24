@@ -588,18 +588,9 @@ function display_event_booking_meta_box($post)
 
 function save_event_booking_meta($post_id)
 {
-    // Save booking details when the event is saved or updated
-    if (isset($_POST['booking_name'])) {
-        update_post_meta($post_id, 'booking_name', sanitize_text_field($_POST['booking_name']));
-    }
-    if (isset($_POST['booking_email'])) {
-        update_post_meta($post_id, 'booking_email', sanitize_email($_POST['booking_email']));
-    }
-    if (isset($_POST['booking_phone'])) {
-        update_post_meta($post_id, 'booking_phone', sanitize_text_field($_POST['booking_phone']));
-    }
-    if (isset($_POST['booking_date'])) {
-        update_post_meta($post_id, 'booking_date', sanitize_text_field($_POST['booking_date']));
+    if (isset($_POST['booking_details']) && is_array($_POST['booking_details'])) {
+        $booking_details = $_POST['booking_details'];
+        update_post_meta($post_id, 'booking_details', $booking_details);
     }
 }
 add_action('save_post_event', 'save_event_booking_meta');
