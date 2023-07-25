@@ -566,8 +566,8 @@ function loadingNews() {
 		// Retrieve existing booking details from the database
 		$booking_details = get_post_meta($post->ID, 'booking_details', true);
 	    echo '<pre>';
-    var_dump($booking_details);
-    echo '</pre>';
+		var_dump($booking_details);
+		echo '</pre>';
 		// Display the booking details in the custom meta box
 		?>
 		<p><strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?></p>
@@ -577,14 +577,16 @@ function loadingNews() {
 		<?php
 	}
 	function save_event_booking_meta($post_id, $booking_details) {
-		if (is_array($booking_details)) {
-		  update_post_meta($post_id, 'booking_details', $booking_details);
-	  
-		  // Trigger a custom action after saving the booking details
-		  do_action('booking_made', $post_id);
+		if (is_array($booking_details) && !empty($booking_details)) {
+			// Debugging output
+			error_log(print_r($booking_details, true));
+	
+			update_post_meta($post_id, 'booking_details', $booking_details);
+	
+			// Trigger a custom action after saving the booking details
+			do_action('booking_made', $post_id);
 		}
-	  }
-	add_action('save_post_events', 'save_event_booking_meta');
+	}
 
 function custom_booking_made_action($post_id)
 {
