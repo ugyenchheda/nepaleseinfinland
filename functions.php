@@ -565,7 +565,9 @@ function loadingNews() {
 	{
 		// Retrieve existing booking details from the database
 		$booking_details = get_post_meta($post->ID, 'booking_details', true);
-	
+	    echo '<pre>';
+    var_dump($booking_details);
+    echo '</pre>';
 		// Display the booking details in the custom meta box
 		?>
 		<p><strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?></p>
@@ -574,23 +576,14 @@ function loadingNews() {
 		<p><strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?></p>
 		<?php
 	}
-
-	function save_event_booking_meta($post_id)
-	{
-		if (isset($_POST['booking_details']) && is_array($_POST['booking_details'])) {
-			$booking_details = array(
-				'name' => sanitize_text_field($_POST['booking_details']['name']),
-				'email' => sanitize_email($_POST['booking_details']['email']),
-				'phone' => sanitize_text_field($_POST['booking_details']['phone']),
-				'booking_date' => sanitize_text_field($_POST['booking_details']['booking_date']),
-			);
-	
-			update_post_meta($post_id, 'booking_details', $booking_details);
-	
-			// Trigger a custom action after saving the booking details
-			do_action('booking_made', $post_id);
+	function save_event_booking_meta($post_id, $booking_details) {
+		if (is_array($booking_details)) {
+		  update_post_meta($post_id, 'booking_details', $booking_details);
+	  
+		  // Trigger a custom action after saving the booking details
+		  do_action('booking_made', $post_id);
 		}
-	}
+	  }
 	add_action('save_post_events', 'save_event_booking_meta');
 
 function custom_booking_made_action($post_id)
@@ -606,17 +599,30 @@ add_action('wp_ajax_submit_event_booking', 'handle_event_booking');
 add_action('wp_ajax_nopriv_submit_event_booking', 'handle_event_booking');
 
 function handle_event_booking() {
-  // Perform server-side form data validation and processing here
-  // Make sure to sanitize and validate user input to prevent security vulnerabilities
-  // For example, you can use the WordPress functions like sanitize_text_field() or intval()
-
-  // Dummy response for demonstration purposes (replace this with your actual logic)
-  $response = array(
-    'success' => true, // Set to true if booking is successful, false if it fails
-    'message' => 'Booking successful!', // Custom message to display
-    // Optionally, you can include additional data here that can be used on the front-end
-  );
-
-  // Send the JSON response back to the client
-  wp_send_json($response);
-}
+	// Perform server-side form data validation and processing here
+	// Make sure to sanitize and validate user input to prevent security vulnerabilities
+	// For example, you can use the WordPress functions like sanitize_text_field() or intval()
+  
+	// Dummy response for demonstration purposes (replace this with your actual logic)
+	$response = array(
+	  'success' => true, // Set to true if booking is successful, false if it fails
+	  'message' => 'Booking successful Ugyen!', // Custom message to display
+	  'booking_details' => array(
+		'name' => sanitize_text_field($_POST['name']),
+		'email' => sanitize_email($_POST['email']),
+		'phone' => sanitize_text_field($_POST['phone']),
+		'booking_date' => sanitize_text_field($_POST['booking_date']),
+	  ),
+	);
+  
+	// Save the booking details in post meta if booking is successful
+	if ($response['success']) {
+	  $post_id = isset($_POST['event_id']) ? intval($_POST['event_id']) : 0;
+	  if ($post_id > 0) {
+		save_event_booking_meta($post_id, $response['booking_details']);
+	  }
+	}
+  
+	// Send the JSON response back to the client
+	wp_send_json($response);
+  }

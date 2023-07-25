@@ -173,45 +173,45 @@ while ( have_posts() ) :
                         </div>
                         <div class="col-md-6">
                         <?php
-$booking_details = get_post_meta(get_the_ID(), 'booking_details', true);
-?>
+                            $booking_details = get_post_meta(get_the_ID(), 'booking_details', true);
+                            ?>
 
-<!-- Display the event details -->
+                            <!-- Display the event details -->
 
-<!-- Display the booking form -->
-<div class="booking-form">
-    <h2>Booking Form</h2>
-    <form id="event-booking-form" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="booking_details[name]" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>" >
+                            <!-- Display the booking form -->
+                            <div class="booking-form">
+                                <h2>Booking Form</h2>
+                                <form id="event-booking-form" method="post">
+                                    <label for="name">Name:</label>
+                                    <input type="text" name="booking_details[name]" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>" >
 
-        <label for="email">Email:</label>
-        <input type="email" name="booking_details[email]" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" >
+                                    <label for="email">Email:</label>
+                                    <input type="email" name="booking_details[email]" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" >
 
-        <label for="phone">Phone:</label>
-        <input type="tel" name="booking_details[phone]" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>" >
+                                    <label for="phone">Phone:</label>
+                                    <input type="tel" name="booking_details[phone]" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>" >
 
-        <label for="booking_date">Booking Date:</label>
-        <input type="date" name="booking_details[booking_date]" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required>
+                                    <label for="booking_date">Booking Date:</label>
+                                    <input type="date" name="booking_details[booking_date]" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required>
 
-        <input type="submit" value="Submit">
-    </form>
-</div>
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
 
-<!-- Display the booking details -->
-<?php if (!empty($booking_details)) : ?>
-    <div class="booking-details">
-        <h2>Booking Details</h2>
-        <ul>
-            <li>
-                <strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?><br>
-                <strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?><br>
-                <strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?><br>
-                <strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?>
-            </li>
-        </ul>
-    </div>
-<?php endif; ?>
+                            <!-- Display the booking details -->
+                            <?php if (!empty($booking_details)) : ?>
+                                <div class="booking-details">
+                                    <h2>Booking Details</h2>
+                                    <ul>
+                                        <li>
+                                            <strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?><br>
+                                            <strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?><br>
+                                            <strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?><br>
+                                            <strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
