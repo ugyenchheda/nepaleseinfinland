@@ -599,3 +599,24 @@ function custom_booking_made_action($post_id)
     echo '<script type="text/javascript">alert("Booking for event ID ' . $post_id . ' has been made!");</script>';
 }
 add_action('booking_made', 'custom_booking_made_action');
+
+
+// Add an action hook for logged-in users (wp_ajax_nopriv_ for non-logged-in users)
+add_action('wp_ajax_submit_event_booking', 'handle_event_booking');
+add_action('wp_ajax_nopriv_submit_event_booking', 'handle_event_booking');
+
+function handle_event_booking() {
+  // Perform server-side form data validation and processing here
+  // Make sure to sanitize and validate user input to prevent security vulnerabilities
+  // For example, you can use the WordPress functions like sanitize_text_field() or intval()
+
+  // Dummy response for demonstration purposes (replace this with your actual logic)
+  $response = array(
+    'success' => true, // Set to true if booking is successful, false if it fails
+    'message' => 'Booking successful!', // Custom message to display
+    // Optionally, you can include additional data here that can be used on the front-end
+  );
+
+  // Send the JSON response back to the client
+  wp_send_json($response);
+}
