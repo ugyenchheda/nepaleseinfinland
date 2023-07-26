@@ -85,18 +85,23 @@ jQuery(document).ready(function() {
             });
         }
     });
-      // Listen for the custom "booking_made" event triggered by PHP
-      $('#event-booking-form').submit(function(event) {
+    $('#event-booking-form').submit(function(event) {
         event.preventDefault();
-    
+      
         var formData = $(this).serialize();
         var ajaxurl = my_ajax_object.ajax_url;
-    
+      
+        // Get the event ID from the hidden input field
+        var eventID = $('[name="event_id"]').val();
+      
+        // Add the event_id parameter to the formData
+        formData += '&event_id=' + eventID;
+      
         $.ajax({
           url: ajaxurl,
           type: 'POST',
           data: {
-            action: 'submit_event_booking', // This action name corresponds to the wp_ajax_ and wp_ajax_nopriv_ hooks
+            action: 'submit_event_booking',
             formData: formData,
           },
           dataType: 'json',
@@ -107,13 +112,13 @@ jQuery(document).ready(function() {
             if (response.success) {
               // Display the booking success message
               alert(response.message);
-    
+      
               // Optionally, update the booking details on the page without a full refresh
               // For example, you can append the new booking details to the booking details section.
             } else {
               // Display the booking failure message
               alert('Booking failed. Please try again.');
-    
+      
               // Optionally, handle any error messages returned in the response.
               // You can access them using response.data.error_message.
             }

@@ -103,12 +103,6 @@ while ( have_posts() ) :
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="post-text">
-                                    <div class="row pt-10">
-                                            <div class="text">
-                                                <?php echo get_the_content();?></div>
-                                    </div>
-                                </div>
                                 <?php
                                 if($event_video ) {
                                 ?>
@@ -130,39 +124,66 @@ while ( have_posts() ) :
                                         </div>
                                 </div>
                                 <!-- Map ends here... -->
-
+                                            </br>
                                 <div class="post-quote post-quote-2-style d-block d-md-flex align-items-center">
                                     <div class="post-quote-content">
-                                        <p>I must explain to you how all this mistake idea denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure because it is pleasure.</p>
-                                        <div class="user">
-                                            <img src="http://localhost/nepaleseinfinland/wp-content/uploads/2023/05/game-design-1.png" alt="">
-                                            <h5 class="title">Subash Chandra</h5>
-                                            <span>Founder at Seative Digital</span>
-                                        </div>
+                                        <?php the_content();?>
                                     </div>
                                 </div>
                                 <div class="post-tags">
                                     <ul>
-                                        <li><a href="#"><i class="fas fa-tag"></i> Tags</a></li>
-                                        <li><a href="#">Health</a></li>
-                                        <li><a href="#">World</a></li>
-                                        <li><a href="#">Corona</a></li>
+                                <li><a><i class="fas fa-tag"></i> Categories</a></li>
+                                    <?php 
+                                $terms = get_the_terms( $post->ID, 'event_category' ); 
+                                foreach($terms as $term) {
+                                echo '<li class="category-link"><a href="'. esc_url( get_term_link( $term )). '">'.$term->name.'</a></li>';
+                                }
+                            ?>
                                     </ul>
                                 </div>
                                 <div class="post-reader-text post-reader-text-2 pt-50">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        
+                        <?php
+                            if ($terms && !is_wp_error($terms)) {
+                                foreach($terms as $term) {
+
+                                    // Query arguments for related posts
+                                    $related_args = array(
+                                        'post_type' => 'events',
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => 'event_category',
+                                                'field' => 'slug',
+                                                'terms' => $term->slug,
+                                            ),
+                                        ),
+                                        'post__not_in' => array($post->ID), // Exclude the current post
+                                        'posts_per_page' => 2,
+                                    );
+
+                                    // The Query for related posts
+                                    $related_query = new WP_Query($related_args);
+
+                                    // The Loop for related posts
+                                    if ($related_query->have_posts()) {
+                                        while ($related_query->have_posts()) {
+                                            $related_query->the_post();
+                                            // Display the title of the related post
+                                            echo '<div class="col-md-6">
                                             <div class="post-reader-prev">
                                                 <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
-                                                <h4 class="title"><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h4>
+                                                <h4 class="title"><a href="'. get_the_permalink(). '">'.get_the_title().'</a></h4>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="post-reader-prev">
-                                                <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
-                                                <h4 class="title"><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h4>
-                                            </div>
-                                        </div>
+                                        </div>';
+                                        }
+                                    }
+
+                                    // Reset Post Data for related posts
+                                    wp_reset_postdata();
+                                }
+                            }
+                            ?>
                                     </div>
                                 </div>
                             </div>
@@ -182,6 +203,7 @@ while ( have_posts() ) :
                             <div class="booking-form">
                                 <h2>Booking Form</h2>
                                 <form id="event-booking-form" method="post">
+                                <input type="hidden" name="event_id" value="<?php echo get_the_ID(); ?>">
                                     <label for="name">Name:</label>
                                     <input type="text" name="booking_details[name]" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>" >
 
@@ -214,15 +236,7 @@ while ( have_posts() ) :
                             <?php endif; ?>
                         </div>
                     </div>
-
-
-
-
-
-
-                <?php endwhile; // End of the loop.
-                ?>
-
+                <?php endwhile; // End of the loop.?>
         </div>
     </section>
 

@@ -596,35 +596,32 @@ function custom_booking_made_action($post_id)
 add_action('booking_made', 'custom_booking_made_action');
 
 
-// Add an action hook for logged-in users (wp_ajax_nopriv_ for non-logged-in users)
 add_action('wp_ajax_submit_event_booking', 'handle_event_booking');
 add_action('wp_ajax_nopriv_submit_event_booking', 'handle_event_booking');
 
 function handle_event_booking() {
-	// Perform server-side form data validation and processing here
-	// Make sure to sanitize and validate user input to prevent security vulnerabilities
-	// For example, you can use the WordPress functions like sanitize_text_field() or intval()
-  
-	// Dummy response for demonstration purposes (replace this with your actual logic)
-	$response = array(
-	  'success' => true, // Set to true if booking is successful, false if it fails
-	  'message' => 'Booking successful Ugyen!', // Custom message to display
-	  'booking_details' => array(
-		'name' => sanitize_text_field($_POST['name']),
-		'email' => sanitize_email($_POST['email']),
-		'phone' => sanitize_text_field($_POST['phone']),
-		'booking_date' => sanitize_text_field($_POST['booking_date']),
-	  ),
-	);
-  
-	// Save the booking details in post meta if booking is successful
-	if ($response['success']) {
-	  $post_id = isset($_POST['event_id']) ? intval($_POST['event_id']) : 0;
-	  if ($post_id > 0) {
-		save_event_booking_meta($post_id, $response['booking_details']);
-	  }
-	}
-  
-	// Send the JSON response back to the client
-	wp_send_json($response);
+  $event_id = isset($_POST['event_id']) ? intval($_POST['event_id']) : 0;
+
+  // Save the booking details in post meta
+  if ($event_id > 0) {
+    $booking_details = array(
+      'name' => sanitize_text_field($_POST['name']),
+      'email' => sanitize_email($_POST['email']),
+      'phone' => sanitize_text_field($_POST['phone']),
+      'booking_date' => sanitize_text_field($_POST['booking_date']),
+      // Add other relevant booking details
+    );
+
+    foreach ($booking_details as $key => $value) {
+      update_post_meta($event_id, $key, $value);
+    }
   }
+
+  // Send the JSON response back to the client
+  $response = array(
+    'success' => true, // Set to true if booking is successful, false if it fails
+    'message' => 'Booking successful!', // Custom message to display
+    // Optionally, you can include additional data here that can be used on the front-end
+  );
+  wp_send_json($response);
+}
