@@ -112,15 +112,12 @@ jQuery(document).ready(function() {
             if (response.success) {
               // Display the booking success message
               alert(response.message);
-      
-              // Optionally, update the booking details on the page without a full refresh
-              // For example, you can append the new booking details to the booking details section.
+
+              var name = response.name;
+              var email = response.email;
             } else {
               // Display the booking failure message
               alert('Booking failed. Please try again.');
-      
-              // Optionally, handle any error messages returned in the response.
-              // You can access them using response.data.error_message.
             }
           },
           error: function(xhr, status, error) {

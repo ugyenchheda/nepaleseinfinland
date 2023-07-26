@@ -159,7 +159,7 @@ while ( have_posts() ) :
                                             ),
                                         ),
                                         'post__not_in' => array($post->ID), // Exclude the current post
-                                        'posts_per_page' => 2,
+                                        'posts_per_page' => 1,
                                     );
 
                                     // The Query for related posts

@@ -383,6 +383,15 @@ add_filter( 'comment_form_fields', 'move_comment_form_to_bottom');
 // }
 // add_action( 'pre_get_posts', 'custom_taxonomy_pagination' );
 
+function limit_related_posts_per_page($query) {
+    if (is_single() && $query->is_main_query()) {
+        if ($query->get('post_type') === 'news') {
+            $query->set('posts_per_page', 2);
+        }
+    }
+}
+add_action('pre_get_posts', 'limit_related_posts_per_page');
+
 function search_only_title_except_pages( $search, $query ) {
     if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
         global $wpdb;
@@ -616,12 +625,16 @@ function handle_event_booking() {
       update_post_meta($event_id, $key, $value);
     }
   }
-
+  parse_str($_POST['formData'], $booking_details);
+  $name = isset($booking_details['booking_details']['name']) ? sanitize_text_field($booking_details['booking_details']['name']) : '';
+  $email = isset($booking_details['booking_details']['email']) ? sanitize_email($booking_details['booking_details']['email']) : '';
   // Send the JSON response back to the client
   $response = array(
     'success' => true, // Set to true if booking is successful, false if it fails
-    'message' => 'Booking successful!', // Custom message to display
-    // Optionally, you can include additional data here that can be used on the front-end
+    'message' => 'Booking successful!',     
+	
+	'name' => $name,
+	'email' => $email,
   );
   wp_send_json($response);
 }
