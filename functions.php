@@ -627,9 +627,7 @@ function handle_event_booking() {
         // Assuming the booking was successful, you can create the response array
         $response = array(
             'success' => true,
-            'message' => 'Booking successful!',
-            'name' => $name,
-            'email' => $email,
+            'message' => 'Booking successful!. Name is: '.$name.' and Email is : '.$email.'',
             // Optionally, you can include additional data here that can be used on the front-end
         );
 
