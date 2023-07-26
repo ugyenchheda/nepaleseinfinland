@@ -609,32 +609,34 @@ add_action('wp_ajax_submit_event_booking', 'handle_event_booking');
 add_action('wp_ajax_nopriv_submit_event_booking', 'handle_event_booking');
 
 function handle_event_booking() {
-  $event_id = isset($_POST['event_id']) ? intval($_POST['event_id']) : 0;
-
-  // Save the booking details in post meta
-  if ($event_id > 0) {
-    $booking_details = array(
-      'name' => sanitize_text_field($_POST['name']),
-      'email' => sanitize_email($_POST['email']),
-      'phone' => sanitize_text_field($_POST['phone']),
-      'booking_date' => sanitize_text_field($_POST['booking_date']),
-      // Add other relevant booking details
-    );
-
-    foreach ($booking_details as $key => $value) {
-      update_post_meta($event_id, $key, $value);
+    // Ensure this action is called only for POST requests
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        wp_send_json_error('Invalid request method.');
     }
-  }
-  parse_str($_POST['formData'], $booking_details);
-  $name = isset($booking_details['booking_details']['name']) ? sanitize_text_field($booking_details['booking_details']['name']) : '';
-  $email = isset($booking_details['booking_details']['email']) ? sanitize_email($booking_details['booking_details']['email']) : '';
-  // Send the JSON response back to the client
-  $response = array(
-    'success' => true, // Set to true if booking is successful, false if it fails
-    'message' => 'Booking successful!',     
-	
-	'name' => $name,
-	'email' => $email,
-  );
-  wp_send_json($response);
+
+    if (isset($_POST['formData'])) {
+        parse_str($_POST['formData'], $booking_details);
+
+        // Extract the name and email from the booking details
+        $name = isset($booking_details['name']) ? sanitize_text_field($booking_details['name']) : '';
+        $email = isset($booking_details['email']) ? sanitize_email($booking_details['email']) : '';
+
+        // Process the booking and set the response
+        // (Add your booking processing logic here)
+
+        // Assuming the booking was successful, you can create the response array
+        $response = array(
+            'success' => true,
+            'message' => 'Booking successful!',
+            'name' => $name,
+            'email' => $email,
+            // Optionally, you can include additional data here that can be used on the front-end
+        );
+
+        // Send the JSON response back to the front-end
+        wp_send_json($response);
+    }
+
+    // If the booking details are not set, send an error response
+    wp_send_json_error('Booking details not provided.');
 }

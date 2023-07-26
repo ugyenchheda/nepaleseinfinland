@@ -86,47 +86,47 @@ jQuery(document).ready(function() {
         }
     });
     $('#event-booking-form').submit(function(event) {
-        event.preventDefault();
-      
-        var formData = $(this).serialize();
-        var ajaxurl = my_ajax_object.ajax_url;
-      
-        // Get the event ID from the hidden input field
-        var eventID = $('[name="event_id"]').val();
-      
-        // Add the event_id parameter to the formData
-        formData += '&event_id=' + eventID;
-      
-        $.ajax({
+      event.preventDefault();
+      var formData = $(this).serialize();
+      var ajaxurl = my_ajax_object.ajax_url;
+  
+      var eventID = $('[name="event_id"]').val();
+      formData += '&event_id=' + eventID;
+  
+      // Get the name and email from the input fields using their IDs
+      var name = $('#name').val();
+      var email = $('#email').val();
+  
+      // Add name and email as data parameters
+      formData += '&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
+  
+      $.ajax({
           url: ajaxurl,
           type: 'POST',
           data: {
-            action: 'submit_event_booking',
-            formData: formData,
+              action: 'submit_event_booking',
+              formData: formData,
           },
           dataType: 'json',
-          beforeSend: function() {
-            // Optionally, show a loading indicator or disable the form submit button
-          },
           success: function(response) {
-            if (response.success) {
-              // Display the booking success message
-              alert(response.message);
-
-              var name = response.name;
-              var email = response.email;
-            } else {
-              // Display the booking failure message
-              alert('Booking failed. Please try again.');
-            }
+              if (response.success) {
+                  // Display the booking success message
+                  alert(response.message);
+  
+                  // Append the booking details to the event page's text area
+                  var name = response.name;
+                  var email = response.email;
+                  var bookingDetails = "Name: " + name + "\nEmail: " + email + "\n";
+                  $('.event-textarea').val($('.event-textarea').val() + bookingDetails);
+              } else {
+                  // Display the booking failure message
+                  alert('Booking failed. Please try again.');
+              }
           },
           error: function(xhr, status, error) {
-            console.error(error);
-            alert('An error occurred. Please try again later.');
+              console.error(error);
+              alert('An error occurred. Please try again later.');
           },
-          complete: function() {
-            // Optionally, perform cleanup or re-enable form elements after the AJAX request completes
-          }
-        });
       });
+  });
 });
