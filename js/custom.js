@@ -96,12 +96,14 @@ jQuery(document).ready(function() {
       // Get the name and email from the input fields using their IDs
       var name = $('#name').val();
       var email = $('#email').val();
-      var email = $('#phone').val();
-      var email = $('#nopep').val();
-      var email = $('#bookingnum').val();
+      var phone = $('#phone').val();
+      var nopep = $('#nopep').val();
+      var bookingnum = $('#bookingnum').val();
+      var booking_date = $('#booking_date').val();
   
       // Add name and email as data parameters
-      formData += '&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
+      formData += '&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&phone=' + encodeURIComponent(phone) 
+      + '&nopep=' + encodeURIComponent(nopep) + '&bookingnum=' + encodeURIComponent(bookingnum) + '&booking_date=' + encodeURIComponent(booking_date);
   
       $.ajax({
           url: ajaxurl,

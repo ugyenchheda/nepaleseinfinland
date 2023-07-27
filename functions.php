@@ -614,27 +614,18 @@ function handle_event_booking() {
     if (isset($_POST['formData'])) {
         parse_str($_POST['formData'], $booking_details);
 
-        // Extract the name and email from the booking details
         $name = isset($booking_details['name']) ? sanitize_text_field($booking_details['name']) : '';
         $email = isset($booking_details['email']) ? sanitize_email($booking_details['email']) : '';
-        $phone = isset($booking_details['phone']) ? sanitize_email($booking_details['phone']) : '';
-        $nopep = isset($booking_details['nopep']) ? sanitize_email($booking_details['nopep']) : '';
-        $booking_date = isset($booking_details['booking_date']) ? sanitize_email($booking_details['booking_date']) : '';
+		$phone = isset($booking_details['phone']) ? sanitize_text_field($booking_details['phone']) : '';
+		$nopep = isset($booking_details['nopep']) ? sanitize_text_field($booking_details['nopep']) : '';
+		$booking_date = isset($booking_details['booking_date']) ? sanitize_text_field($booking_details['booking_date']) : '';
 
-        // Process the booking and set the response
-        // (Add your booking processing logic here)
-
-        // Assuming the booking was successful, you can create the response array
         $response = array(
             'success' => true,
             'message' => 'Booking successful!. Name : '.$name.' | Email  : '.$email.' | Phone  : '.$phone.' | No. of People  : '.$nopep.'| Booking Date  : '.$booking_date.'',
-            // Optionally, you can include additional data here that can be used on the front-end
         );
 
-        // Send the JSON response back to the front-end
         wp_send_json($response);
     }
-
-    // If the booking details are not set, send an error response
     wp_send_json_error('Booking details not provided.');
 }
