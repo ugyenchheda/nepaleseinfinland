@@ -203,7 +203,7 @@ while ( have_posts() ) :
                             <div class="booking-form">
                             <h2>Booking Form</h2>
                             <form id="event-booking-form" method="post">
-                                <input type="hidden" name="event_id" value="<?php echo get_the_ID(); ?>">
+                                <input type="hidden" name="event_id" id="event_id"  value="<?php echo get_the_ID(); ?>">
                                 <label for="name">Name:</label>
                                 <input type="text" name="booking_details[name]" id="name" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>" >
 

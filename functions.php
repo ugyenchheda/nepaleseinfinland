@@ -584,19 +584,15 @@ function loadingNews() {
 	}
 	function save_event_booking_meta($post_id, $booking_details) {
 		if (is_array($booking_details) && !empty($booking_details)) {
-			// Debugging output
 			error_log(print_r($booking_details, true));
 	
 			update_post_meta($post_id, 'booking_details', $booking_details);
-	
-			// Trigger a custom action after saving the booking details
 			do_action('booking_made', $post_id);
 		}
 	}
 
 function custom_booking_made_action($post_id)
 {
-    // Display a custom notification when a booking is made
     echo '<script type="text/javascript">alert("Booking for event ID ' . $post_id . ' has been made!");</script>';
 }
 add_action('booking_made', 'custom_booking_made_action');
@@ -606,7 +602,6 @@ add_action('wp_ajax_submit_event_booking', 'handle_event_booking');
 add_action('wp_ajax_nopriv_submit_event_booking', 'handle_event_booking');
 
 function handle_event_booking() {
-    // Ensure this action is called only for POST requests
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         wp_send_json_error('Invalid request method.');
     }
@@ -616,16 +611,41 @@ function handle_event_booking() {
 
         $name = isset($booking_details['name']) ? sanitize_text_field($booking_details['name']) : '';
         $email = isset($booking_details['email']) ? sanitize_email($booking_details['email']) : '';
-		$phone = isset($booking_details['phone']) ? sanitize_text_field($booking_details['phone']) : '';
-		$nopep = isset($booking_details['nopep']) ? sanitize_text_field($booking_details['nopep']) : '';
-		$booking_date = isset($booking_details['booking_date']) ? sanitize_text_field($booking_details['booking_date']) : '';
+        $phone = isset($booking_details['phone']) ? sanitize_text_field($booking_details['phone']) : '';
+        $nopep = isset($booking_details['nopep']) ? sanitize_text_field($booking_details['nopep']) : '';
+        $event_id = isset($booking_details['event_id']) ? sanitize_text_field($booking_details['event_id']) : '';
+        $booking_date = isset($booking_details['booking_date']) ? sanitize_text_field($booking_details['booking_date']) : '';
+
+        $post_id = $event_id; // Replace with the actual post ID where you want to store the data
+        
+        // Get existing booking details from post meta (if any)
+        $existing_booking_details = get_post_meta($post_id, 'booking_details', true);
+
+        // Create the new booking details array
+        $new_booking_details = array(
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'nopep' => $nopep,
+            'booking_date' => $booking_date,
+            'event_id' => $event_id,
+        );
+
+        // Merge existing and new booking details if there are previous entries
+        if (is_array($existing_booking_details)) {
+            $new_booking_details = array_merge($existing_booking_details, $new_booking_details);
+        }
+
+        // Save the booking details as post meta
+        update_post_meta($post_id, 'booking_details', $new_booking_details);
 
         $response = array(
             'success' => true,
-            'message' => 'Booking successful!. Name : '.$name.' | Email  : '.$email.' | Phone  : '.$phone.' | No. of People  : '.$nopep.'| Booking Date  : '.$booking_date.'',
+            'message' => 'Booking successful!. Name : '.$name.' | Email  : '.$email.' | Phone  : '.$phone.' | No. of People  : '.$nopep.' | Booking Date  : '.$booking_date.' | Booking id  : '.$event_id.'',
         );
 
         wp_send_json($response);
     }
+
     wp_send_json_error('Booking details not provided.');
 }
