@@ -211,10 +211,13 @@ while ( have_posts() ) :
                                 <input type="email" name="booking_details[email]" id="email" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" >
 
                                 <label for="phone">Phone:</label>
-                                <input type="tel" name="booking_details[phone]" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>" >
+                                <input type="tel" name="booking_details[phone]" id="phone" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>" >
+
+                                <label for="phone">No. of people attending:</label>
+                                <input type="tel" name="booking_details[nopep]" id="nopep" value="<?php echo isset($booking_details['nopep']) ? esc_attr($booking_details['nopep']) : ''; ?>" >
 
                                 <label for="booking_date">Booking Date:</label>
-                                <input type="date" name="booking_details[booking_date]" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required>
+                                <input type="date" name="booking_details[booking_date]"  id="bookingnum" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required>
 
                                 <input type="submit" value="Submit">
                                 <span class='event-textarea'></span>
@@ -230,6 +233,7 @@ while ( have_posts() ) :
                                             <strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?><br>
                                             <strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?><br>
                                             <strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?><br>
+                                            <strong>Phone:</strong> <?php echo isset($booking_details['nopep']) ? esc_html($booking_details['nopep']) : ''; ?><br>
                                             <strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?>
                                         </li>
                                     </ul>

@@ -574,14 +574,11 @@ function loadingNews() {
 	{
 		// Retrieve existing booking details from the database
 		$booking_details = get_post_meta($post->ID, 'booking_details', true);
-	    echo '<pre>';
-		var_dump($booking_details);
-		echo '</pre>';
-		// Display the booking details in the custom meta box
 		?>
 		<p><strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?></p>
 		<p><strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?></p>
 		<p><strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?></p>
+		<p><strong>No. of People:</strong> <?php echo isset($booking_details['nopep']) ? esc_html($booking_details['nopep']) : ''; ?></p>
 		<p><strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?></p>
 		<?php
 	}
@@ -620,6 +617,9 @@ function handle_event_booking() {
         // Extract the name and email from the booking details
         $name = isset($booking_details['name']) ? sanitize_text_field($booking_details['name']) : '';
         $email = isset($booking_details['email']) ? sanitize_email($booking_details['email']) : '';
+        $phone = isset($booking_details['phone']) ? sanitize_email($booking_details['phone']) : '';
+        $nopep = isset($booking_details['nopep']) ? sanitize_email($booking_details['nopep']) : '';
+        $booking_date = isset($booking_details['booking_date']) ? sanitize_email($booking_details['booking_date']) : '';
 
         // Process the booking and set the response
         // (Add your booking processing logic here)
@@ -627,7 +627,7 @@ function handle_event_booking() {
         // Assuming the booking was successful, you can create the response array
         $response = array(
             'success' => true,
-            'message' => 'Booking successful!. Name is: '.$name.' and Email is : '.$email.'',
+            'message' => 'Booking successful!. Name : '.$name.' | Email  : '.$email.' | Phone  : '.$phone.' | No. of People  : '.$nopep.'| Booking Date  : '.$booking_date.'',
             // Optionally, you can include additional data here that can be used on the front-end
         );
 

@@ -96,6 +96,9 @@ jQuery(document).ready(function() {
       // Get the name and email from the input fields using their IDs
       var name = $('#name').val();
       var email = $('#email').val();
+      var email = $('#phone').val();
+      var email = $('#nopep').val();
+      var email = $('#bookingnum').val();
   
       // Add name and email as data parameters
       formData += '&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
@@ -116,6 +119,9 @@ jQuery(document).ready(function() {
                   // Append the booking details to the event page's text area
                   var name = response.name;
                   var email = response.email;
+                  var phone = response.phone;
+                  var nopep = response.nopep;
+                  var bookingnum = response.bookingnum;
                   var bookingDetails = "Name: " + name + "\nEmail: " + email + "\n";
                   $('.event-textarea').val($('.event-textarea').val() + bookingDetails);
               } else {
