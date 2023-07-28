@@ -40,20 +40,18 @@ function news_post_meta()
       'desc'    => 'Upload an image or enter an URL.',
       'id'      => 'news_image',
       'type'    => 'file',
-      // Optional:
       'options' => array(
-          'url' => false, // Hide the text input for the url
+          'url' => false, 
       ),
       'text'    => array(
-          'add_upload_file_text' => 'Add File' // Change upload button text. Default: "Add or Upload File"
+          'add_upload_file_text' => 'Add File'
       ),
-      // query_args are passed to wp.media's library query.
       'query_args' => array(
           'type' => array(
            'image/jpeg',
           'image/png',
                 ),
-      'preview_size' => 'large',) // Image size to use when previewing in the admin.
+      'preview_size' => 'large',) 
   ) );
 
 }
@@ -110,7 +108,6 @@ function events_post_meta() {
       'name' => 'Event Starting Date',
       'desc' => 'Select event starting date.',
       'id'   => 'event_sdate',
-      // 'timezone_meta_key' => 'wiki_test_timezone',
       'type' => 'text_date',
       'date_format' => 'l, F j,  Y',
       ));
@@ -119,7 +116,6 @@ function events_post_meta() {
       'name' => 'Event Ending Date',
       'desc' => 'Select event ending date.',
       'id'   => 'event_edate',
-      // 'timezone_meta_key' => 'wiki_test_timezone',
       'type' => 'text_date',
       'date_format' => 'l, F j,  Y',
       ));
@@ -128,30 +124,12 @@ function events_post_meta() {
         'desc' => 'Select event starting time.',
         'id' => 'event_stime',
         'type' => 'text_time'
-        // Override default time-picker attributes:
-        // 'attributes' => array(
-        //     'data-timepicker' => json_encode( array(
-        //         'timeOnlyTitle' => __( 'Choose your Time', 'cmb2' ),
-        //         'timeFormat' => 'HH:mm',
-        //         'stepMinute' => 1, // 1 minute increments instead of the default 5
-        //     ) ),
-        // ),
-        // 'time_format' => 'h:i:s A',
     ) );
         $cmb->add_field( array(
           'name' => 'Ending Time',
           'desc' => 'Select event ending time.',
           'id' => 'event_etime',
           'type' => 'text_time'
-          // Override default time-picker attributes:
-          // 'attributes' => array(
-          //     'data-timepicker' => json_encode( array(
-          //         'timeOnlyTitle' => __( 'Choose your Time', 'cmb2' ),
-          //         'timeFormat' => 'HH:mm',
-          //         'stepMinute' => 1, // 1 minute increments instead of the default 5
-          //     ) ),
-          // ),
-          // 'time_format' => 'h:i:s A',
       ) );
           
       ;$cmb->add_field( array(
@@ -162,29 +140,26 @@ function events_post_meta() {
         'preview_size' => array( 200, 200 ), 
         'query_args' => array( 'type' => 'image' ), 
         'text' => array(
-            'add_upload_files_text' => 'Add or upload Files', // default: "Add or Upload Files"
-            'remove_image_text' => 'Remove Image', // default: "Remove Image"
-            'file_text' => 'Images', // default: "File:"
-            'file_download_text' => 'Download', // default: "Download"
-            'remove_text' => 'Remove', // default: "Remove"
-        // Optional:
+            'add_upload_files_text' => 'Add or upload Files', 
+            'remove_image_text' => 'Remove Image', 
+            'file_text' => 'Images', 
+            'file_download_text' => 'Download', 
+            'remove_text' => 'Remove', 
         'options' => array(
-            'url' => false, // Hide the text input for the url
+            'url' => false, 
         ),
         'text'    => array(
-            'add_upload_file_text' => 'Add Image' // Change upload button text. Default: "Add or Upload File"
+            'add_upload_file_text' => 'Add Image' 
         ),
-        // query_args are passed to wp.media's library query.
         'query_args' => array(
-            'type' => 'application/pdf', // Make library only display PDFs.
-            // Or only allow gif, jpg, or png images
+            'type' => 'application/pdf', 
             // 'type' => array(
             //     'image/gif',
             //     'image/jpeg',
             //     'image/png',
             // ),
         ),
-        'preview_size' => 'large', // Image size to use when previewing in the admin. 
+        'preview_size' => 'large',
         )
       ) );
       $cmb->add_field( array(
@@ -199,9 +174,45 @@ function events_post_meta() {
       'desc' => 'Drag the marker to set the exact location',
       'id' => 'event_location',
       'type' => 'pw_map',
-      'split_values' => true, // Save latitude and longitude as two separate fields
-      'api_key' => $API_KEY, // Google API Key
+      'split_values' => true, 
+      'api_key' => $API_KEY, 
     ) );
+}
+
+add_action('cmb2_admin_init', 'event_booking_requests');
+function event_booking_requests()
+{
+
+  $cmb_group = new_cmb2_box(array(
+        'id' => 'event_booking',
+        'title' => __('Booking Requestion Information', 'nepaleseinfinland'),
+        'object_types' => array('events'),
+        'context' => 'normal',
+        'priority' => 'high',
+        'show_names' => true,
+        'closed' => false,
+
+    ));
+
+    $group_field_id = $cmb_group->add_field(array(
+      'id' => 'event_booking_meta_box',
+      'type' => 'group',
+      'options' => array(
+          'group_title' => esc_html__('Booking Orders {#}', 'nepaleseinfinland'),
+          'add_button' => esc_html__('Add New Booking', 'nepaleseinfinland'),
+          'remove_button' => esc_html__('Remove Booking', 'nepaleseinfinland'),
+          'sortable' => true,
+
+      ),
+  ));
+
+  $cmb_group->add_group_field($group_field_id, array(
+      'name' => esc_html__('Booking Details', 'nepaleseinfinland'),
+      'id' => 'booker_ind_details',
+      'type' => 'textarea',
+  ));
+
+  
 }
 
 
@@ -253,33 +264,28 @@ function uas_post_meta() {
         'desc'    => 'Add images to show on gallery.',
         'id'      => 'uas_banner',
         'type' => 'file_list',
-        // 'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-        // 'query_args' => array( 'type' => 'image' ), // Only images attachment
-        // Optional, override default text strings
         'text' => array(
-            'add_upload_files_text' => 'Add or upload Files', // default: "Add or Upload Files"
-            'remove_image_text' => 'Remove Image', // default: "Remove Image"
-            'file_text' => 'Images', // default: "File:"
-            'file_download_text' => 'Download', // default: "Download"
-            'remove_text' => 'Remove', // default: "Remove"
-        // Optional:
+            'add_upload_files_text' => 'Add or upload Files',
+            'remove_image_text' => 'Remove Image', 
+            'file_text' => 'Images', 
+            'file_download_text' => 'Download', 
+            'remove_text' => 'Remove', 
         'options' => array(
-            'url' => false, // Hide the text input for the url
+            'url' => false,
         ),
         'text'    => array(
-            'add_upload_file_text' => 'Add Image' // Change upload button text. Default: "Add or Upload File"
+            'add_upload_file_text' => 'Add Image' 
         ),
-        // query_args are passed to wp.media's library query.
+        
         'query_args' => array(
-            'type' => 'application/pdf', // Make library only display PDFs.
-            // Or only allow gif, jpg, or png images
+            'type' => 'application/pdf', 
             // 'type' => array(
             //     'image/gif',
             //     'image/jpeg',
             //     'image/png',
             // ),
         ),
-        'preview_size' => 'large', // Image size to use when previewing in the admin. 
+        'preview_size' => 'large', 
         )
       ) );
       $cmb->add_field( array(
@@ -294,8 +300,8 @@ function uas_post_meta() {
       'desc' => 'Drag the marker to set the exact location',
       'id' => 'uas_location',
       'type' => 'pw_map',
-      'split_values' => true, // Save latitude and longitude as two separate fields
-      'api_key' => $API_KEY, // Google API Key
+      'split_values' => true, 
+      'api_key' => $API_KEY, 
     ) )
     ;$cmb->add_field( [
       'name' => __( 'Facebook Page Link', 'nepaleseinfinland' ),
@@ -453,7 +459,6 @@ function video_blogs_meta()
     ));
 
 }
-
 
 add_action( 'cmb2_admin_init', 'news_taxonomy_image' ); 
 function news_taxonomy_image () {
