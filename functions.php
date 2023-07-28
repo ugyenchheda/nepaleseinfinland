@@ -575,11 +575,7 @@ function loadingNews() {
 		// Retrieve existing booking details from the database
 		$booking_details = get_post_meta($post->ID, 'booking_details', true);
 		?>
-		<p><strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?></p>
-		<p><strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?></p>
-		<p><strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?></p>
-		<p><strong>No. of People:</strong> <?php echo isset($booking_details['nopep']) ? esc_html($booking_details['nopep']) : ''; ?></p>
-		<p><strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?></p>
+		<p><strong>Booking Details:</strong> <?php echo isset($booking_details) ? esc_html($booking_details) : ''; ?></p>
 		<?php
 	}
 	function save_event_booking_meta($post_id, $booking_details) {
@@ -609,39 +605,27 @@ function handle_event_booking() {
     if (isset($_POST['formData'])) {
         parse_str($_POST['formData'], $booking_details);
 
-        $name = isset($booking_details['name']) ? sanitize_text_field($booking_details['name']) : '';
-        $email = isset($booking_details['email']) ? sanitize_email($booking_details['email']) : '';
-        $phone = isset($booking_details['phone']) ? sanitize_text_field($booking_details['phone']) : '';
-        $nopep = isset($booking_details['nopep']) ? sanitize_text_field($booking_details['nopep']) : '';
-        $event_id = isset($booking_details['event_id']) ? sanitize_text_field($booking_details['event_id']) : '';
-        $booking_date = isset($booking_details['booking_date']) ? sanitize_text_field($booking_details['booking_date']) : '';
+        $name = isset($booking_details['booking_details']['name']) ? sanitize_text_field($booking_details['booking_details']['name']) : '';
+        $email = isset($booking_details['booking_details']['email']) ? sanitize_email($booking_details['booking_details']['email']) : '';
+        $phone = isset($booking_details['booking_details']['phone']) ? sanitize_text_field($booking_details['booking_details']['phone']) : '';
+        $nopep = isset($booking_details['booking_details']['nopep']) ? absint($booking_details['booking_details']['nopep']) : '';
+        $booking_date = isset($booking_details['booking_details']['booking_date']) ? sanitize_text_field($booking_details['booking_details']['booking_date']) : '';
 
-        $post_id = $event_id; // Replace with the actual post ID where you want to store the data
-        
-        // Get existing booking details from post meta (if any)
-        $existing_booking_details = get_post_meta($post_id, 'booking_details', true);
+        // Process the booking and set the response
+        // (Add your booking processing logic here)
 
-        // Create the new booking details array
-        $new_booking_details = array(
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'nopep' => $nopep,
-            'booking_date' => $booking_date,
-            'event_id' => $event_id,
-        );
+        // Assuming the booking was successful, save the data to post meta
+        $post_id = isset($booking_details['event_id']) ? absint($booking_details['event_id']) : 0;
 
-        // Merge existing and new booking details if there are previous entries
-        if (is_array($existing_booking_details)) {
-            $new_booking_details = array_merge($existing_booking_details, $new_booking_details);
-        }
+        // Concatenate all booking details as a single text
+        $booking_info = "Name: $name\nEmail: $email\nPhone: $phone\nNo. of People: $nopep\nBooking Date: $booking_date";
 
         // Save the booking details as post meta
-        update_post_meta($post_id, 'booking_details', $new_booking_details);
+        update_post_meta($post_id, 'booking_details', $booking_info);
 
         $response = array(
             'success' => true,
-            'message' => 'Booking successful!. Name : '.$name.' | Email  : '.$email.' | Phone  : '.$phone.' | No. of People  : '.$nopep.' | Booking Date  : '.$booking_date.' | Booking id  : '.$event_id.'',
+            'message' => 'Booking successful!. Name : '.$name.' | Email  : '.$email.' | Phone  : '.$phone.' | No. of People  : '.$nopep.' | Booking Date  : '.$booking_date.'',
         );
 
         wp_send_json($response);
