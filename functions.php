@@ -557,6 +557,8 @@ function loadingNews() {
 	}
 	
 	
+	//code for handling event booking.... 
+	//save all the booking details into same textarea
 	
 	function event_booking_meta_box()
 	{
@@ -569,40 +571,34 @@ function loadingNews() {
 			'high'
 		);
 	}
+	
 	add_action('add_meta_boxes', 'event_booking_meta_box');
 	function display_event_booking_meta_box($post)
 	{
-		// Retrieve existing booking details from the database
 		$booking_details = get_post_meta($post->ID, 'booking_details', true);
+		$booking_details = isset($booking_details) ? esc_textarea($booking_details) : '';
 		?>
-		<p><strong>Booking Details:</strong> <?php echo isset($booking_details) ? esc_html($booking_details) : ''; ?></p>
 		<?php
+		$settings = array(
+			'textarea_name' => 'booking_details',
+			'textarea_rows' => 10,
+			'teeny' => true,
+		);
+		wp_editor($booking_details, 'booking_details', $settings);
 	}
 	function save_event_booking_details($post_id, $updated, $cmb_id, $cmb)
 	{
-		// Check if the metabox is the correct one
 		if ($cmb_id !== 'event_booking_meta_box') {
 			return;
 		}
 	
-		// Initialize an empty array to store all booking details
 		$all_booking_details = array();
-	
-		// Get the current saved booking details (if any)
 		$existing_booking_details = get_post_meta($post_id, 'booking_details', true);
-	
-		// If there are existing booking details, convert them to an array
 		if ($existing_booking_details) {
 			$all_booking_details = json_decode($existing_booking_details, true);
 		}
-	
-		// Get the booking details from the CMB2 group field
 		$booking_details = $cmb->get_group_values($cmb_id);
-	
-		// Append the new booking details to the array
 		$all_booking_details[] = $booking_details;
-	
-		// Convert the array back to a JSON string and save it as post meta
 		update_post_meta($post_id, 'booking_details', json_encode($all_booking_details));
 	}
 
@@ -638,9 +634,16 @@ function handle_event_booking() {
 
         // Concatenate all booking details as a single text
         $booking_info = "Name: $name\nEmail: $email\nPhone: $phone\nNo. of People: $nopep\nBooking Date: $booking_date";
+        $existing_booking_info = get_post_meta($post_id, 'booking_details', true);
+       // Combine the existing booking details with the new booking details
+	   $updated_booking_info = '';
+	   if ($existing_booking_info) {
+		   $updated_booking_info .= $existing_booking_info . "\n\n";
+	   }
+	   $updated_booking_info .= "Name: $name\nEmail: $email\nPhone: $phone\nNo. of People: $nopep\nBooking Date: $booking_date";
 
         // Save the booking details as post meta
-        update_post_meta($post_id, 'booking_details', $booking_info);
+        update_post_meta($post_id, 'booking_details', $updated_booking_info);
 
         $response = array(
             'success' => true,
