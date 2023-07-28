@@ -179,41 +179,7 @@ function events_post_meta() {
     ) );
 }
 
-add_action('cmb2_admin_init', 'event_booking_requests');
-function event_booking_requests()
-{
 
-  $cmb_group = new_cmb2_box(array(
-        'id' => 'event_booking',
-        'title' => __('Booking Requestion Information', 'nepaleseinfinland'),
-        'object_types' => array('events'),
-        'context' => 'normal',
-        'priority' => 'high',
-        'show_names' => true,
-        'closed' => false,
-
-    ));
-
-    $group_field_id = $cmb_group->add_field(array(
-      'id' => 'event_booking_meta_box',
-      'type' => 'group',
-      'options' => array(
-          'group_title' => esc_html__('Booking Orders {#}', 'nepaleseinfinland'),
-          'add_button' => esc_html__('Add New Booking', 'nepaleseinfinland'),
-          'remove_button' => esc_html__('Remove Booking', 'nepaleseinfinland'),
-          'sortable' => true,
-
-      ),
-  ));
-
-  $cmb_group->add_group_field($group_field_id, array(
-      'name' => esc_html__('Booking Details', 'nepaleseinfinland'),
-      'id' => 'booker_ind_details',
-      'type' => 'textarea',
-  ));
-
-  
-}
 
 
 add_action('cmb2_admin_init', 'uas_post_meta');

@@ -578,13 +578,32 @@ function loadingNews() {
 		<p><strong>Booking Details:</strong> <?php echo isset($booking_details) ? esc_html($booking_details) : ''; ?></p>
 		<?php
 	}
-	function save_event_booking_meta($post_id, $booking_details) {
-		if (is_array($booking_details) && !empty($booking_details)) {
-			error_log(print_r($booking_details, true));
-	
-			update_post_meta($post_id, 'booking_details', $booking_details);
-			do_action('booking_made', $post_id);
+	function save_event_booking_details($post_id, $updated, $cmb_id, $cmb)
+	{
+		// Check if the metabox is the correct one
+		if ($cmb_id !== 'event_booking_meta_box') {
+			return;
 		}
+	
+		// Initialize an empty array to store all booking details
+		$all_booking_details = array();
+	
+		// Get the current saved booking details (if any)
+		$existing_booking_details = get_post_meta($post_id, 'booking_details', true);
+	
+		// If there are existing booking details, convert them to an array
+		if ($existing_booking_details) {
+			$all_booking_details = json_decode($existing_booking_details, true);
+		}
+	
+		// Get the booking details from the CMB2 group field
+		$booking_details = $cmb->get_group_values($cmb_id);
+	
+		// Append the new booking details to the array
+		$all_booking_details[] = $booking_details;
+	
+		// Convert the array back to a JSON string and save it as post meta
+		update_post_meta($post_id, 'booking_details', json_encode($all_booking_details));
 	}
 
 function custom_booking_made_action($post_id)
