@@ -557,50 +557,57 @@ function loadingNews() {
 	}
 	
 	
-	//code for handling event booking.... 
-	//save all the booking details into same textarea
+//code for handling event booking.... 
+//save all the booking details into same textarea
+
+function event_booking_meta_box()
+{
+	add_meta_box(
+		'event_booking_meta_box',
+		'Event Booking Details',
+		'display_event_booking_meta_box',
+		'events',
+		'normal',
+		'high'
+	);
+}
+add_action('add_meta_boxes', 'event_booking_meta_box');
+
 	
-	function event_booking_meta_box()
-	{
-		add_meta_box(
-			'event_booking_meta_box',
-			'Event Booking Details',
-			'display_event_booking_meta_box',
-			'events',
-			'normal',
-			'high'
-		);
+function display_event_booking_meta_box($post)
+{
+	$booking_details = get_post_meta($post->ID, 'booking_details', true);
+	$booking_details = isset($booking_details) ? esc_textarea($booking_details) : '';
+	?>
+	<?php
+	$settings = array(
+		'textarea_name' => 'booking_details',
+		'textarea_rows' => 20,
+		'teeny' => true,
+	);
+	echo wp_editor($booking_details, 'booking_details', $settings);
+}
+
+
+add_action('save_post', 'save_event_booking_details');
+function save_event_booking_details($post_id)
+{
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+		return;
 	}
 	
-	add_action('add_meta_boxes', 'event_booking_meta_box');
-	function display_event_booking_meta_box($post)
-	{
-		$booking_details = get_post_meta($post->ID, 'booking_details', true);
-		$booking_details = isset($booking_details) ? esc_textarea($booking_details) : '';
-		?>
-		<?php
-		$settings = array(
-			'textarea_name' => 'booking_details',
-			'textarea_rows' => 10,
-			'teeny' => true,
-		);
-		wp_editor($booking_details, 'booking_details', $settings);
+	if (!current_user_can('edit_post', $post_id)) {
+		return;
 	}
-	function save_event_booking_details($post_id, $updated, $cmb_id, $cmb)
-	{
-		if ($cmb_id !== 'event_booking_meta_box') {
-			return;
-		}
+
+	if (get_post_type($post_id) !== 'events') {
+		return;
+	}
 	
-		$all_booking_details = array();
-		$existing_booking_details = get_post_meta($post_id, 'booking_details', true);
-		if ($existing_booking_details) {
-			$all_booking_details = json_decode($existing_booking_details, true);
-		}
-		$booking_details = $cmb->get_group_values($cmb_id);
-		$all_booking_details[] = $booking_details;
-		update_post_meta($post_id, 'booking_details', json_encode($all_booking_details));
-	}
+	$booking_details = isset($_POST['booking_details']) ? sanitize_textarea_field($_POST['booking_details']) : '';
+	
+	update_post_meta($post_id, 'booking_details', $booking_details);
+}
 
 function custom_booking_made_action($post_id)
 {
@@ -625,22 +632,24 @@ function handle_event_booking() {
         $phone = isset($booking_details['booking_details']['phone']) ? sanitize_text_field($booking_details['booking_details']['phone']) : '';
         $nopep = isset($booking_details['booking_details']['nopep']) ? absint($booking_details['booking_details']['nopep']) : '';
         $booking_date = isset($booking_details['booking_details']['booking_date']) ? sanitize_text_field($booking_details['booking_details']['booking_date']) : '';
-
-        // Process the booking and set the response
-        // (Add your booking processing logic here)
-
-        // Assuming the booking was successful, save the data to post meta
+		
         $post_id = isset($booking_details['event_id']) ? absint($booking_details['event_id']) : 0;
 
-        // Concatenate all booking details as a single text
+		
         $booking_info = "Name: $name\nEmail: $email\nPhone: $phone\nNo. of People: $nopep\nBooking Date: $booking_date";
         $existing_booking_info = get_post_meta($post_id, 'booking_details', true);
-       // Combine the existing booking details with the new booking details
-	   $updated_booking_info = '';
-	   if ($existing_booking_info) {
-		   $updated_booking_info .= $existing_booking_info . "\n\n";
-	   }
-	   $updated_booking_info .= "Name: $name\nEmail: $email\nPhone: $phone\nNo. of People: $nopep\nBooking Date: $booking_date";
+		
+		$updated_booking_info = '';
+        $existing_booking_info = get_post_meta($post_id, 'booking_details', true);
+        if ($existing_booking_info) {
+            $updated_booking_info .= wp_kses_post($existing_booking_info) . "\n\n";
+        }
+		
+        $updated_booking_info .= "<p><strong>Name:</strong> " . esc_html($name) . "</p>";
+        $updated_booking_info .= "<p><strong>Email:</strong> " . esc_html($email) . "</p>";
+        $updated_booking_info .= "<p><strong>Phone:</strong> " . esc_html($phone) . "</p>";
+        $updated_booking_info .= "<p><strong>No. of People:</strong> " . esc_html($nopep) . "</p>";
+        $updated_booking_info .= "<p><strong>Booking Date:</strong> " . esc_html($booking_date) . "</p>";
 
         // Save the booking details as post meta
         update_post_meta($post_id, 'booking_details', $updated_booking_info);
