@@ -117,7 +117,6 @@ jQuery(document).ready(function() {
         success: function(response) {
           if (response.success) {
             // Display the booking success message in a Bootstrap modal
-            var bookingDetails = "Name: " + response.name + "\nEmail: " + response.email + "\n";
             var modalContent = $('<div>').addClass('modal-content')
               .append(
                 $('<div>').addClass('modal-header')
@@ -127,7 +126,6 @@ jQuery(document).ready(function() {
               .append(
                 $('<div>').addClass('modal-body')
                   .append('<p>' + response.message + '</p>')
-                  .append('<p>' + bookingDetails + '</p>')
               )
               .append(
                 $('<div>').addClass('modal-footer')

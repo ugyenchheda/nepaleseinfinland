@@ -656,7 +656,7 @@ function handle_event_booking() {
 
         $response = array(
             'success' => true,
-            'message' => 'Booking successful!. Name : '.$name.' | Email  : '.$email.' | Phone  : '.$phone.' | No. of People  : '.$nopep.' | Booking Date  : '.$booking_date.'',
+            'message' => 'Booking successful!. Name : '.$name.' <br> Email  : '.$email.' <br> Phone  : '.$phone.' <br> No. of People  : '.$nopep.' <br> Booking Date  : '.$booking_date.'',
         );
 
         wp_send_json($response);
