@@ -104,38 +104,84 @@ jQuery(document).ready(function() {
   
       // Add name and email as data parameters
       formData += '&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&phone=' + encodeURIComponent(phone) 
-      + '&nopep=' + encodeURIComponent(nopep) + '&bookingnum=' + encodeURIComponent(bookingnum) + '&booking_date=' + encodeURIComponent(booking_date)+ '&event_id=' + encodeURIComponent(event_id);
+        + '&nopep=' + encodeURIComponent(nopep) + '&bookingnum=' + encodeURIComponent(bookingnum) + '&booking_date=' + encodeURIComponent(booking_date)+ '&event_id=' + encodeURIComponent(event_id);
   
       $.ajax({
-          url: ajaxurl,
-          type: 'POST',
-          data: {
-              action: 'submit_event_booking',
-              formData: formData,
-          },
-          dataType: 'json',
-          success: function(response) {
-              if (response.success) {
-                  // Display the booking success message
-                  alert(response.message);
+        url: ajaxurl,
+        type: 'POST',
+        data: {
+          action: 'submit_event_booking',
+          formData: formData,
+        },
+        dataType: 'json',
+        success: function(response) {
+          if (response.success) {
+            // Display the booking success message in a Bootstrap modal
+            var bookingDetails = "Name: " + response.name + "\nEmail: " + response.email + "\n";
+            var modalContent = $('<div>').addClass('modal-content')
+              .append(
+                $('<div>').addClass('modal-header')
+                  .append('<h5 class="modal-title">Booking Success</h5>')
+                  .append('<button type="button" class="close" data-dismiss="modal">&times;</button>')
+              )
+              .append(
+                $('<div>').addClass('modal-body')
+                  .append('<p>' + response.message + '</p>')
+                  .append('<p>' + bookingDetails + '</p>')
+              )
+              .append(
+                $('<div>').addClass('modal-footer')
+                  .append('<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>')
+              );
   
-                  // Append the booking details to the event page's text area
-                  var name = response.name;
-                  var email = response.email;
-                  var phone = response.phone;
-                  var nopep = response.nopep;
-                  var bookingnum = response.bookingnum;
-                  var bookingDetails = "Name: " + name + "\nEmail: " + email + "\n";
-                  $('.event-textarea').val($('.event-textarea').val() + bookingDetails);
-              } else {
-                  // Display the booking failure message
-                  alert('Booking failed. Please try again.');
-              }
-          },
-          error: function(xhr, status, error) {
-              console.error(error);
-              alert('An error occurred. Please try again later.');
-          },
+            // Create and show the Bootstrap modal
+            var modal = $('<div>').addClass('modal fade')
+              .attr('id', 'bookingModal')
+              .append(modalContent)
+              .appendTo('body');
+  
+            modal.modal('show');
+  
+            modal.on('hidden.bs.modal', function() {
+              // Append the booking details to the event page's text area
+              $('.event-textarea').val($('.event-textarea').val() + bookingDetails);
+              modal.remove();
+            });
+          } else {
+            // Display the booking failure message in a Bootstrap modal
+            var modalContent = $('<div>').addClass('modal-content')
+              .append(
+                $('<div>').addClass('modal-header')
+                  .append('<h5 class="modal-title">Booking Failure</h5>')
+                  .append('<button type="button" class="close" data-dismiss="modal">&times;</button>')
+              )
+              .append(
+                $('<div>').addClass('modal-body')
+                  .append('<p>Booking failed. Please try again.</p>')
+              )
+              .append(
+                $('<div>').addClass('modal-footer')
+                  .append('<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>')
+              );
+  
+            // Create and show the Bootstrap modal
+            var modal = $('<div>').addClass('modal fade')
+              .attr('id', 'bookingModal')
+              .append(modalContent)
+              .appendTo('body');
+  
+            modal.modal('show');
+  
+            modal.on('hidden.bs.modal', function() {
+              modal.remove();
+            });
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error(error);
+          alert('An error occurred. Please try again later.');
+        },
       });
-  });
+    });
+  
 });

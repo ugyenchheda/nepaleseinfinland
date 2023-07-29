@@ -223,22 +223,6 @@ while ( have_posts() ) :
                                 <span class='event-textarea'></span>
                             </form>
                         </div>
-
-                            <!-- Display the booking details -->
-                            <?php if (!empty($booking_details)) : ?>
-                                <div class="booking-details">
-                                    <h2>Booking Details</h2>
-                                    <ul>
-                                        <li>
-                                            <strong>Name:</strong> <?php echo isset($booking_details['name']) ? esc_html($booking_details['name']) : ''; ?><br>
-                                            <strong>Email:</strong> <?php echo isset($booking_details['email']) ? esc_html($booking_details['email']) : ''; ?><br>
-                                            <strong>Phone:</strong> <?php echo isset($booking_details['phone']) ? esc_html($booking_details['phone']) : ''; ?><br>
-                                            <strong>No. of People:</strong> <?php echo isset($booking_details['nopep']) ? esc_html($booking_details['nopep']) : ''; ?><br>
-                                            <strong>Booking Date:</strong> <?php echo isset($booking_details['booking_date']) ? esc_html($booking_details['booking_date']) : ''; ?>
-                                        </li>
-                                    </ul>
-                                </div>
-                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endwhile; // End of the loop.?>
