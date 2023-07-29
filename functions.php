@@ -645,18 +645,18 @@ function handle_event_booking() {
             $updated_booking_info .= wp_kses_post($existing_booking_info) . "\n\n";
         }
 		
-        $updated_booking_info .= "<p><strong>Name:</strong> " . esc_html($name) . "</p>";
-        $updated_booking_info .= "<p><strong>Email:</strong> " . esc_html($email) . "</p>";
-        $updated_booking_info .= "<p><strong>Phone:</strong> " . esc_html($phone) . "</p>";
-        $updated_booking_info .= "<p><strong>No. of People:</strong> " . esc_html($nopep) . "</p>";
-        $updated_booking_info .= "<p><strong>Booking Date:</strong> " . esc_html($booking_date) . "</p>";
+        $updated_booking_info .= " || Name: " . esc_html($name) . "  | ";
+        $updated_booking_info .= " | Email: " . esc_html($email) . "  | ";
+        $updated_booking_info .= " | Phone: " . esc_html($phone) . "  | ";
+        $updated_booking_info .= " | No. of People: " . esc_html($nopep) . " |  ";
+        $updated_booking_info .= " | Booking Date: " . esc_html($booking_date) . "  || ";
 
         // Save the booking details as post meta
         update_post_meta($post_id, 'booking_details', $updated_booking_info);
 
         $response = array(
             'success' => true,
-            'message' => 'Booking successful!. Name : '.$name.' <br> Email  : '.$email.' <br> Phone  : '.$phone.' <br> No. of People  : '.$nopep.' <br> Booking Date  : '.$booking_date.'',
+            'message' => '<strong>Booking successful!</strong> <br> Name : '.$name.' <br> Email  : '.$email.' <br> Phone  : '.$phone.' <br> No. of People  : '.$nopep.' <br> Booking Date  : '.$booking_date.'',
         );
 
         wp_send_json($response);
