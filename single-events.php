@@ -202,26 +202,44 @@ while ( have_posts() ) :
                             <!-- Display the booking form -->
                             <div class="booking-form">
                             <h2>Booking Form</h2>
-                            <form id="event-booking-form" method="post">
+                           
+                            <form  id="event-booking-form" method="post">
                                 <input type="hidden" name="event_id" id="event_id"  value="<?php echo get_the_ID(); ?>">
-                                <label for="name">Name:</label>
-                                <input type="text" name="booking_details[name]" id="name" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>" >
-
-                                <label for="email">Email:</label>
-                                <input type="email" name="booking_details[email]" id="email" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" >
-
-                                <label for="phone">Phone:</label>
-                                <input type="tel" name="booking_details[phone]" id="phone" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>" >
-
-                                <label for="phone">No. of people attending:</label>
-                                <input type="num" name="booking_details[nopep]" id="nopep" value="<?php echo isset($booking_details['nopep']) ? esc_attr($booking_details['nopep']) : ''; ?>" >
-
-                                <label for="booking_date">Booking Date:</label>
-                                <input type="date" name="booking_details[booking_date]"  id="booking_date" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required>
-
-                                <input type="submit" value="Submit">
-                                <span class='event-textarea'></span>
-                            </form>
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input  type="text" name="booking_details[name]" id="name" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>"  class="form-control" placeholder="Full name" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input type="email" name="booking_details[email]" id="email" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" class="form-control" placeholder="Email address">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		</div>
+    	<input type="tel" name="booking_details[phone]" id="phone" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>"  class="form-control" placeholder="Phone number">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-users"></i> </span>
+		</div>
+    	<input type="num" name="booking_details[nopep]" id="nopep" value="<?php echo isset($booking_details['nopep']) ? esc_attr($booking_details['nopep']) : ''; ?>" class="form-control" placeholder="Number of Visitors">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+		</div>
+    	<input type="date" name="booking_details[booking_date]"  id="booking_date" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required class="form-control" placeholder="Booking Date">
+    </div>                                        
+    <div class="form-group">
+        <button type="submit" class="btn btn-default btn-block"> Book Now</button>
+    </div>          
+    <span class='event-textarea'></span>                                                 
+</form>
 <!-- Popup for Booking Notification -->
 <div id="popup1" class="modal fade">
   <div class="modal-dialog">
@@ -239,47 +257,7 @@ while ( have_posts() ) :
     </div>
   </div>
 </div>
-<form>
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input name="" class="form-control" placeholder="Full name" type="text">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="" class="form-control" placeholder="Email address" type="email">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-		</div>
-		<select class="custom-select" style="max-width: 120px;">
-		    <option selected="">+971</option>
-		    <option value="1">+972</option>
-		    <option value="2">+198</option>
-		    <option value="3">+701</option>
-		</select>
-    	<input name="" class="form-control" placeholder="Phone number" type="text">
-    </div>
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input class="form-control" placeholder="Create password" type="password">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input class="form-control" placeholder="Repeat password" type="password">
-    </div> <!-- form-group// -->                                      
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-    </div>                                                           
-</form>
+
                         </div>
                         </div>
                     </div>
