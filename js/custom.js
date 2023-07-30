@@ -116,17 +116,15 @@ jQuery(document).ready(function() {
           dataType: 'json',
           success: function(response) {
             if (response.success) {
-              // Set the booking details inside the popup (using .html() to handle HTML)
+
               $('#bookingDetails').html(response.message);
     
-              // Show the Bootstrap modal for booking notification
               $('#popup1').modal('show');
-    
-              // Append the booking details to the event page's text area
+              
               var bookingDetails = response.message;
+
               $('.event-textarea').val($('.event-textarea').val() + bookingDetails);
             } else {
-              // Display the booking failure message in a Bootstrap modal
               alert('Booking failed. Please try again.');
             }
           },

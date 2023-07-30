@@ -189,81 +189,90 @@ while ( have_posts() ) :
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                        </div>
-                        <div class="col-md-6">
-                        <?php
-                            $booking_details = get_post_meta(get_the_ID(), 'booking_details', true);
-                            ?>
-
-                            <!-- Display the event details -->
-
-                            <!-- Display the booking form -->
-                            <div class="booking-form">
-                            <h2>Booking Form</h2>
-                           
-                            <form  id="event-booking-form" method="post">
-                                <input type="hidden" name="event_id" id="event_id"  value="<?php echo get_the_ID(); ?>">
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input  type="text" name="booking_details[name]" id="name" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>"  class="form-control" placeholder="Full name" type="text">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input type="email" name="booking_details[email]" id="email" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" class="form-control" placeholder="Email address">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-		</div>
-    	<input type="tel" name="booking_details[phone]" id="phone" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>"  class="form-control" placeholder="Phone number">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-users"></i> </span>
-		</div>
-    	<input type="num" name="booking_details[nopep]" id="nopep" value="<?php echo isset($booking_details['nopep']) ? esc_attr($booking_details['nopep']) : ''; ?>" class="form-control" placeholder="Number of Visitors">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
-		</div>
-    	<input type="date" name="booking_details[booking_date]"  id="booking_date" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required class="form-control" placeholder="Booking Date">
-    </div>                                        
-    <div class="form-group">
-        <button type="submit" class="btn btn-default btn-block"> Book Now</button>
-    </div>          
-    <span class='event-textarea'></span>                                                 
-</form>
-<!-- Popup for Booking Notification -->
-<div id="popup1" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Booking Notification</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div id="bookingDetails"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                        </div>
-                        </div>
-                    </div>
                 <?php endwhile; // End of the loop.?>
         </div>
     </section>
+<section  class="latest-news-area">
+    <div class="container">
+        <div class="row comment-registration">
+            <div class="col-md-6">
+                <h4>Leave A Comment:</h4>
+                <?php 
+                    if ( comments_open() || get_comments_number() ) :
+                        comments_template();
+                    endif;
+                ?>
+            </div>
+            <div class="col-md-6">
+            <?php
+                $booking_details = get_post_meta(get_the_ID(), 'booking_details', true);
+                ?>
+
+                <!-- Display the event details -->
+
+                <!-- Display the booking form -->
+                <div class="booking-form">
+                <h4>Make A Reservation:</h4>
+                
+                <form  id="event-booking-form" method="post">
+                    <input type="hidden" name="event_id" id="event_id"  value="<?php echo get_the_ID(); ?>">
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input  type="text" name="booking_details[name]" id="name" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>"  class="form-control" placeholder="Full name" type="text">
+                        </div> <!-- form-group// -->
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                            </div>
+                            <input type="email" name="booking_details[email]" id="email" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" class="form-control" placeholder="Email address">
+                        </div> <!-- form-group// -->
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                            </div>
+                            <input type="tel" name="booking_details[phone]" id="phone" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>"  class="form-control" placeholder="Phone number">
+                        </div> <!-- form-group// -->
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-users"></i> </span>
+                            </div>
+                            <input type="num" name="booking_details[nopep]" id="nopep" value="<?php echo isset($booking_details['nopep']) ? esc_attr($booking_details['nopep']) : ''; ?>" class="form-control" placeholder="Number of Visitors">
+                        </div> <!-- form-group// -->
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                            </div>
+                            <input type="date" name="booking_details[booking_date]"  id="booking_date" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required class="form-control" placeholder="Booking Date">
+                        </div>                                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-defaulter btn-block"> Book Now</button>
+                        </div>          
+                        <span class='event-textarea'></span>                                                 
+                    </form>
+                    <!-- Popup for Booking Notification -->
+                    <div id="popup1" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Booking Notification</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="bookingDetails"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 
 <?php
 get_footer();

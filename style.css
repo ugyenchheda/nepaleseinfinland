@@ -677,14 +677,14 @@ input:-ms-input-placeholder {
   left: 0;
   z-index: 1;
 }
-
-.btn-facebook {
-  background-color: #405D9D;
-  color: #fff;
+.btn-defaulter {
+  background: #c80c34 !important;
+  color: #fff !important;
+  transition: ease-in 0.5s !important;
 }
-.btn-twitter {
-  background-color: #42AEEC;
-  color: #fff;
+.btn-defaulter:hover {
+  background: #003580 !important;
+  color: #fff !important;
 }
 .mfp-zoom-in {
   
