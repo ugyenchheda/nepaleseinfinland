@@ -104,10 +104,27 @@ while ( have_posts() ) :
                                     </div>
                                 </div>
                                 <?php
-                                if($event_video ) {
-                                ?>
-                                  <iframe width="100%" height="400" src="<?php echo $event_video; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-                                <?php }  ?>
+                                    if ($event_video) {
+                                        // Get the YouTube video ID from the event_video URL
+                                        $get_video_id = get_youtube_video_id($event_video);
+
+                                        // Check if the video ID is valid
+                                        if ($get_video_id) {
+                                            // Create the YouTube embed link
+                                            $youtube_embed_link = 'https://www.youtube.com/embed/' . $get_video_id;
+                                    ?>
+                                        <hr>
+                                        <div class="video-container">
+                                            <iframe width="100%" height="400" src="<?php echo $youtube_embed_link; ?>" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+                                        </div>
+                                        <hr>
+                                    <?php
+                                        } else {
+                                            // Handle the case where the video ID couldn't be extracted
+                                            echo 'Invalid YouTube Video URL';
+                                        }
+                                    }
+                                    ?>
                                 <!-- Map shown in pop up -->
                                 <div class="overlay">
                                         <div class="popup">
@@ -143,47 +160,49 @@ while ( have_posts() ) :
                                 </div>
                                 <div class="post-reader-text post-reader-text-2 pt-50">
                                     <div class="row">
-                                        
-                        <?php
-                            if ($terms && !is_wp_error($terms)) {
-                                foreach($terms as $term) {
+                                    <?php
+                                        $max_related_posts = 2; 
+                                        $related_post_ids = array(); 
+                                        if ($terms && !is_wp_error($terms)) {
+                                            foreach ($terms as $term) {
+                                                $related_args = array(
+                                                    'post_type' => 'events',
+                                                    'tax_query' => array(
+                                                        array(
+                                                            'taxonomy' => 'event_category',
+                                                            'field' => 'slug',
+                                                            'terms' => $term->slug,
+                                                        ),
+                                                    ),
+                                                    'post__not_in' => array($post->ID), 
+                                                    'posts_per_page' => 2,
+                                                );
 
-                                    // Query arguments for related posts
-                                    $related_args = array(
-                                        'post_type' => 'events',
-                                        'tax_query' => array(
-                                            array(
-                                                'taxonomy' => 'event_category',
-                                                'field' => 'slug',
-                                                'terms' => $term->slug,
-                                            ),
-                                        ),
-                                        'post__not_in' => array($post->ID), // Exclude the current post
-                                        'posts_per_page' => 1,
-                                    );
-
-                                    // The Query for related posts
-                                    $related_query = new WP_Query($related_args);
-
-                                    // The Loop for related posts
-                                    if ($related_query->have_posts()) {
-                                        while ($related_query->have_posts()) {
-                                            $related_query->the_post();
-                                            // Display the title of the related post
-                                            echo '<div class="col-md-6">
-                                            <div class="post-reader-prev">
-                                                <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
-                                                <h4 class="title"><a href="'. get_the_permalink(). '">'.get_the_title().'</a></h4>
-                                            </div>
-                                        </div>';
+                                                $related_query = new WP_Query($related_args);
+                                                if ($related_query->have_posts()) {
+                                                    while ($related_query->have_posts()) {
+                                                        $related_query->the_post();
+                                                        $related_post_id = get_the_ID();
+                                                        if (!in_array($related_post_id, $related_post_ids)) {
+                                                            $related_post_ids[] = $related_post_id;
+                                                            echo '<div class="col-md-6">
+                                                                <div class="post-reader-prev">
+                                                                    <span>RELATED POST <i class="fal fa-angle-right"></i></span>
+                                                                    <h4 class="title"><a href="'. get_the_permalink(). '">'.get_the_title().'</a></h4>
+                                                                </div>
+                                                            </div>';
+                                                        }
+                                                    }
+                                                }
+                                                wp_reset_postdata();
+                                                if (count($related_post_ids) >= $max_related_posts) {
+                                                    break;
+                                                }
+                                            }
                                         }
-                                    }
+                                        ?>
 
-                                    // Reset Post Data for related posts
-                                    wp_reset_postdata();
-                                }
-                            }
-                            ?>
+
                                     </div>
                                 </div>
                             </div>
