@@ -654,10 +654,26 @@ function handle_event_booking() {
         // Save the booking details as post meta
         update_post_meta($post_id, 'booking_details', $updated_booking_info);
 
-        $response = array(
-            'success' => true,
-            'message' => '<strong>Booking successful!</strong> <br> Name : '.$name.' <br> Email  : '.$email.' <br> Phone  : '.$phone.' <br> No. of People  : '.$nopep.' <br> Booking Date  : '.$booking_date.'',
-        );
+        // Send the booking details via email
+        $subject = 'Booking Reservation Details';
+        $message = $booking_info; // You can customize the email message as per your requirements
+        $headers = 'From: Your Website <ugyenchheda@gmail.com>'; // Replace with your website's email address or any other email you want to use as "From" address.
+
+        // Send the email
+        $email_sent = wp_mail($email, $subject, $message, $headers);
+
+        // Prepare the response to send back to the client
+        if ($email_sent) {
+            $response = array(
+                'success' => true,
+                'message' => '<strong>Booking successful!</strong> <br> Name : '.$name.' <br> Email  : '.$email.' <br> Phone  : '.$phone.' <br> No. of People  : '.$nopep.' <br> Booking Date  : '.$booking_date.'',
+            );
+        } else {
+            $response = array(
+                'success' => false,
+                'message' => 'Booking successful, but failed to send the email.',
+            );
+        }
 
         wp_send_json($response);
     }
