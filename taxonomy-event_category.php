@@ -24,7 +24,7 @@ get_header();
 					</nav>
 				</div>
 			</div>
-			<div class="col-lg-8">
+			<div class="col-lg-12">
 				<div class="about-tab-btn mt-40">
 					<div class="archive-btn">
 						<div class="archive-btn for-search">
@@ -40,7 +40,7 @@ get_header();
 					<div class="about-post-items">
 						<div class="row">
 							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-								<div class="col-lg-6 col-md-6">
+								<div class="col-lg-4 col-md-4">
 									<div class="trending-image-post feature-item mt-30">
 										<?php echo get_the_post_thumbnail(get_the_ID(), 'post_image_l'); ?>
 										

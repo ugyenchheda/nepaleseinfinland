@@ -161,7 +161,7 @@ get_header();
 												'terms' => $news_highlight,
 											),
 										),
-										'posts_per_page' => $news_number,
+										'posts_per_page' => 2,
 									);
 
 									$loop = new WP_Query($args);
@@ -217,6 +217,14 @@ get_header();
 
     <!--====== POST LAYOUT 1 PART ENDS ======-->
 
+
+    <div class="container">
+            <?php if ( comments_open() || get_comments_number() ) :
+                comments_template();
+            endif;
+            endwhile; // End of the loop.
+            ?>
+            </div>
     <!--====== LATEST NEWS PART START ======-->
 
     <section class="latest-news-area">
@@ -267,14 +275,6 @@ get_header();
         ?>
         </div>
     </section>
-
-    <div class="container">
-            <?php if ( comments_open() || get_comments_number() ) :
-                comments_template();
-            endif;
-            endwhile; // End of the loop.
-            ?>
-            </div>
     <!--====== LATEST NEWS PART ENDS ======-->
 
 
