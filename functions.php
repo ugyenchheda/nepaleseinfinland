@@ -632,6 +632,7 @@ function handle_event_booking() {
         $phone = isset($booking_details['booking_details']['phone']) ? sanitize_text_field($booking_details['booking_details']['phone']) : '';
         $nopep = isset($booking_details['booking_details']['nopep']) ? absint($booking_details['booking_details']['nopep']) : '';
         $booking_date = isset($booking_details['booking_details']['booking_date']) ? sanitize_text_field($booking_details['booking_details']['booking_date']) : '';
+        $booking_message = isset($booking_details['booking_details']['booking_message']) ? sanitize_text_field($booking_details['booking_details']['booking_message']) : '';
 		
         $post_id = isset($booking_details['event_id']) ? absint($booking_details['event_id']) : 0;
 
@@ -650,23 +651,25 @@ function handle_event_booking() {
         $updated_booking_info .= " | Phone: " . esc_html($phone) . "  | ";
         $updated_booking_info .= " | No. of People: " . esc_html($nopep) . " |  ";
         $updated_booking_info .= " | Booking Date: " . esc_html($booking_date) . "  || ";
+        $updated_booking_info .= " | Booking message: " . esc_html($booking_message) . "  || ";
 
         // Save the booking details as post meta
         update_post_meta($post_id, 'booking_details', $updated_booking_info);
 
         // Send the booking details via email
+		$email = 'ugyenchheda@gmail.com';
         $subject = 'Booking Reservation Details';
-        $message = $booking_info; // You can customize the email message as per your requirements
-        $headers = 'From: Your Website <ugyenchheda@gmail.com>'; // Replace with your website's email address or any other email you want to use as "From" address.
-
+        $message = $booking_info; 
+        $headers = 'From: Your Website <ugyenchheda@gmail.com>'; 
         // Send the email
         $email_sent = wp_mail($email, $subject, $message, $headers);
 
         // Prepare the response to send back to the client
-        if ($email_sent) {
+        if ($email) {
             $response = array(
                 'success' => true,
-                'message' => '<strong>Booking successful!</strong> <br> Name : '.$name.' <br> Email  : '.$email.' <br> Phone  : '.$phone.' <br> No. of People  : '.$nopep.' <br> Booking Date  : '.$booking_date.'',
+                'message' => '<p class="mywight">Booking Reservation has been made!</p>
+				We will contact you with further information. <br> Name : '.$name.' <br> Email  : '.$email.' <br> Phone  : '.$phone.' <br> No. of People  : '.$nopep.' <br> Booking Date  : '.$booking_date.'<br> Message  : '.$booking_message.'',
             );
         } else {
             $response = array(

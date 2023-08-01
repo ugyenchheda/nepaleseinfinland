@@ -232,39 +232,45 @@ while ( have_posts() ) :
                 <!-- Display the booking form -->
                 <div class="booking-form">
                 <h4>Make A Reservation:</h4>
-                
+                <p>You can directly make a reservation for event. Just fill out the form and send it. We will get back to you with further information.</p>
                 <form  id="event-booking-form" method="post">
                     <input type="hidden" name="event_id" id="event_id"  value="<?php echo get_the_ID(); ?>">
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                <span class="input-group-text"> <i class="far fa-user"></i> </span>
                             </div>
-                            <input  type="text" name="booking_details[name]" id="name" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>"  class="form-control" placeholder="Full name" type="text">
+                            <input  type="text" name="booking_details[name]" id="name" value="<?php echo isset($booking_details['name']) ? esc_attr($booking_details['name']) : ''; ?>"  class="form-control" placeholder="Full name" type="text" required>
                         </div> <!-- form-group// -->
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                <span class="input-group-text"> <i class="far fa-at"></i> </span>
                             </div>
-                            <input type="email" name="booking_details[email]" id="email" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" class="form-control" placeholder="Email address">
+                            <input type="email" name="booking_details[email]" id="email" value="<?php echo isset($booking_details['email']) ? esc_attr($booking_details['email']) : ''; ?>" class="form-control" placeholder="Email address" required>
                         </div> <!-- form-group// -->
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                                <span class="input-group-text"> <i class="far fa-mobile"></i> </span>
                             </div>
-                            <input type="tel" name="booking_details[phone]" id="phone" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>"  class="form-control" placeholder="Phone number">
+                            <input type="tel" name="booking_details[phone]" id="phone" value="<?php echo isset($booking_details['phone']) ? esc_attr($booking_details['phone']) : ''; ?>"  class="form-control" placeholder="Phone number" required>
                         </div> <!-- form-group// -->
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-users"></i> </span>
+                                <span class="input-group-text"> <i class="far fa-users"></i> </span>
                             </div>
-                            <input type="num" name="booking_details[nopep]" id="nopep" value="<?php echo isset($booking_details['nopep']) ? esc_attr($booking_details['nopep']) : ''; ?>" class="form-control" placeholder="Number of Visitors">
+                            <input type="num" name="booking_details[nopep]" id="nopep" value="<?php echo isset($booking_details['nopep']) ? esc_attr($booking_details['nopep']) : ''; ?>" class="form-control" placeholder="Number of Visitors" required>
                         </div> <!-- form-group// -->
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                                <span class="input-group-text"> <i class="far fa-calendar-alt"></i> </span>
                             </div>
                             <input type="date" name="booking_details[booking_date]"  id="booking_date" value="<?php echo isset($booking_details['booking_date']) ? esc_attr($booking_details['booking_date']) : ''; ?>" required class="form-control" placeholder="Booking Date">
-                        </div>                                        
+                        </div>             
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="far fa-comment"></i> </span>
+                            </div>
+                            <textarea type="text" name="booking_details[booking_message]"  rows="5" cols="40" id="booking_message" value="<?php echo isset($booking_details['booking_message']) ? esc_attr($booking_details['booking_message']) : ''; ?>" required class="form-control" placeholder="Want to include a message?"></textarea>
+                        </div>                           
                         <div class="form-group">
                             <button type="submit" class="btn btn-defaulter btn-block"> Book Now</button>
                         </div>          

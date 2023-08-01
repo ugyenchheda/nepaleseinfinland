@@ -99,12 +99,14 @@ jQuery(document).ready(function() {
         var phone = $('#phone').val();
         var nopep = $('#nopep').val();
         var bookingnum = $('#bookingnum').val();
+        var booking_message = $('#booking_message').val();
         var booking_date = $('#booking_date').val();
         var event_id = $('#event_id').val();
     
         // Add name and email as data parameters
         formData += '&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&phone=' + encodeURIComponent(phone) 
-          + '&nopep=' + encodeURIComponent(nopep) + '&bookingnum=' + encodeURIComponent(bookingnum) + '&booking_date=' + encodeURIComponent(booking_date)+ '&event_id=' + encodeURIComponent(event_id);
+          + '&nopep=' + encodeURIComponent(nopep) + '&bookingnum=' + encodeURIComponent(bookingnum) + '&booking_date=' + encodeURIComponent(booking_date) 
+          + '&booking_message=' + encodeURIComponent(booking_message)+ '&event_id=' + encodeURIComponent(event_id);
     
         $.ajax({
           url: ajaxurl,

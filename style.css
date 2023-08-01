@@ -221,9 +221,10 @@ li.category-link {
   background: #e4e5e6;
 }
 h2.comments-title {
-  font-size: 21px;
-  font-style: italic;    
-  margin-top: 30px;
+  font-size: 15px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #b9b9b9;
+  padding-bottom: 9px;
 }
 .top-and-bottom, .left-and-right, .corner-border, .bottom-corner {
   position: relative;
@@ -231,7 +232,9 @@ h2.comments-title {
   margin-bottom: 30px;
 
 }
-
+li.comment.byuser.comment-author-admin.bypostauthor.even.thread-even.depth-1 {
+  border-bottom: 1px dashed #bfbbbb;
+}
 /* top line */
 .top-and-bottom::before {
   content:'';
@@ -685,6 +688,9 @@ input:-ms-input-placeholder {
 .btn-defaulter:hover {
   background: #003580 !important;
   color: #fff !important;
+}
+.mywight {
+  font-weight: bold;
 }
 .mfp-zoom-in {
   
