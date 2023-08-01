@@ -586,7 +586,6 @@ global $wp_query;
                                     $count = 1;
                                     while ($query->have_posts()) {
                                         $query->the_post();
-                                        // Output the post title or perform other actions
                                         echo '
                                         <div class="gallery_item gallery_item-style-2">
                                             <div class="gallery_item_thumb">
@@ -704,7 +703,21 @@ global $wp_query;
                                     <span><?php 
                                     $event_sdate = get_post_meta( get_the_ID(), 'event_sdate', true );
                                     $event_edate = get_post_meta( get_the_ID(), 'event_edate', true );
-                                    echo $event_sdate; if ($event_edate) { echo " - $event_edate";}?> </span>
+                                    $event_start = strtotime($event_sdate);
+                                    $event_end = strtotime($event_edate);
+                                    $event_start_formatted = date('d/m/Y', $event_start);
+                                    $event_end_formatted = date('d/m/Y', $event_end);
+                                    if ($event_start_formatted || $event_start_formatted){ ?>
+                                        <i class="far fa-calendar-alt uas_small" alt="event period"></i> Event Period: 
+                                         <?php   
+                                        if ($event_start_formatted){
+                                            echo $event_start_formatted; 
+                                        }
+                                        if ($event_start_formatted) { 
+                                            echo " - $event_end_formatted";
+                                        } 
+                                    }
+                                    ?></span>
                                 </div>
                                 <?php echo '</div>
                                 <h3 class="title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
