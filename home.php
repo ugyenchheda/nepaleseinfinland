@@ -17,9 +17,9 @@ global $wp_query;
                         
                         $args = array(
                             'post_type' => $homepage_topslider_posttype,
-                            'posts_per_page' => '12', // Number of posts to display
-                            'orderby' => 'date', // Order posts by date
-                            'order' => 'DESC', // Display posts in descending order (latest first)
+                            'posts_per_page' => '12', 
+                            'orderby' => 'date', 
+                            'order' => 'DESC', 
                         );
                         
                         $query = new WP_Query($args);
@@ -41,8 +41,6 @@ global $wp_query;
                         } else {
                             // No posts found
                         }
-                        
-                        // Restore original post data
                         wp_reset_postdata();?>
             </div>
         </div>
@@ -100,7 +98,7 @@ global $wp_query;
                                     <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
                                     <div class="post__gallery_play_content">
                                         <div class="post-meta">';
-                                            $terms = get_the_terms($post->ID, 'video_blogs_category'); // Replace 'post' with your desired post type
+                                            $terms = get_the_terms($post->ID, 'video_blogs_category'); 
                                             if ($terms && !is_wp_error($terms)) {
                                                 echo '<div class="meta-categories">';
                                                 foreach ($terms as $term) {
@@ -124,8 +122,6 @@ global $wp_query;
                         } else {
                             // No posts found
                         }
-                        
-                        // Restore original post data
                         wp_reset_postdata();
                         
                     ?>
@@ -173,8 +169,6 @@ global $wp_query;
                         } else {
                             // No posts found
                         }
-                        
-                        // Restore original post data
                         wp_reset_postdata();
                         
                     ?>
@@ -330,7 +324,7 @@ global $wp_query;
                                         <div class="gallery_item_thumb">' . get_the_post_thumbnail($post->ID, 'post_image_xs') . '</div>
                                         <div class="gallery_item_content">
                                             <div class="post-meta">';
-                                            $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                                            $taxonomies = get_object_taxonomies('news'); 
 
                                             foreach ($taxonomies as $taxonomy) {
                                                 if (!in_array($taxonomy, ['category', 'post_tag'])) {
@@ -434,10 +428,10 @@ global $wp_query;
                     <div class="row trending-news-slider">
                     <?php
                         $args = array(
-                            'post_type' => 'news', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                            'post_type' => 'news', 
                             'meta_key' => 'news_hot',
-                            'orderby' => 'meta_value_num', // Sort by meta value as numeric
-                            'order' => 'DESC', // Sort in descending order
+                            'orderby' => 'meta_value_num', 
+                            'order' => 'DESC', 
                             'meta_query' => array(
                                 'relation' => 'OR',
                                 array(
@@ -503,7 +497,6 @@ global $wp_query;
                             // No posts found
                         }
                         
-                        // Restore original post data
                         wp_reset_postdata();
                         
                     ?>
@@ -511,7 +504,7 @@ global $wp_query;
                     <div class="row">
                         <?php
                             $args = array(
-                                'post_type' => 'news', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                                'post_type' => 'news', 
                                 'meta_key' => 'news_hot',
                                 'posts_per_page' => 6,
                             );
@@ -558,7 +551,6 @@ global $wp_query;
                                 // No posts found
                             }
                             
-                            // Restore original post data
                             wp_reset_postdata();
                             
                         ?>
@@ -575,8 +567,8 @@ global $wp_query;
                             <div class="trending-sidebar-slider">
                                 <div class="post_gallery_items"><?php
                                 $args = array(
-                                    'post_type'      => 'news', // Change 'post' to your desired post type if needed
-                                    'posts_per_page' => 5,     // Adjust the number of posts you want to retrieve
+                                    'post_type'      => 'news', 
+                                    'posts_per_page' => 6,     
                                     'orderby'        => 'comment_count',
                                 );
                                 
@@ -596,7 +588,7 @@ global $wp_query;
                                                 <div class="post-meta">
                                                 ';?>
                                                 <?php 
-                                                $taxonomies = get_object_taxonomies('news'); // Replace 'post' with your desired post type
+                                                $taxonomies = get_object_taxonomies('news'); 
 
                                                 foreach ($taxonomies as $taxonomy) {
                                                     if (!in_array($taxonomy, ['category', 'post_tag'])) {
@@ -646,10 +638,10 @@ global $wp_query;
                 <div class="row single-play-post-slider">
                 <?php
                         $args = array(
-                            'post_type' => 'events', // Replace 'your_custom_post_type' with the actual name of your custom post type
+                            'post_type' => 'events', 
                             'meta_key' => 'event_hot',
-                            'orderby' => 'meta_value_num', // Sort by meta value as numeric
-                            'order' => 'DESC', // Sort in descending order
+                            'orderby' => 'meta_value_num', 
+                            'order' => 'DESC', 
                             'meta_query' => array(
                                 'relation' => 'OR',
                                 array(
@@ -685,7 +677,7 @@ global $wp_query;
                                             </div>
                                             <div class="single-play-post-content">
                                                 <div class="post-meta">';
-                                                $taxonomies = get_object_taxonomies('events'); // Replace 'post' with your desired post type
+                                                $taxonomies = get_object_taxonomies('events'); 
 
                                                 foreach ($taxonomies as $taxonomy) {
                                                     if (!in_array($taxonomy, ['category', 'post_tag'])) {
