@@ -159,6 +159,9 @@ while ( have_posts() ) :
                                     </ul>
                                 </div>
                                 <div class="post-reader-text post-reader-text-2 pt-50">
+                                    <div class="archive-btn for-search">
+                                        <span class="searchresult-topic">Other Events</span>
+                                    </div>
                                     <div class="row">
                                     <?php
                                         $max_related_posts = 2; 
@@ -187,7 +190,7 @@ while ( have_posts() ) :
                                                             $related_post_ids[] = $related_post_id;
                                                             echo '<div class="col-md-6">
                                                                 <div class="post-reader-prev">
-                                                                    <span>RELATED POST <i class="fal fa-angle-right"></i></span>
+                                                                    <span>View Details <i class="fal fa-angle-right"></i></span>
                                                                     <h4 class="title"><a href="'. get_the_permalink(). '">'.get_the_title().'</a></h4>
                                                                 </div>
                                                             </div>';
