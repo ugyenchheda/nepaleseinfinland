@@ -93,8 +93,13 @@ get_header();
                         </div>
                     </div>
                     <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                        <div class="archive-btn for-search">
+                            <span class="searchresult-topic">Related News</span>
+                        </div>
                         <div class="row">
+                            
                         <?php
+                        
                             if ($terms && !is_wp_error($terms)) {
                                 foreach($terms as $term) {
 
@@ -102,14 +107,15 @@ get_header();
                                     $related_args = array(
                                         'post_type' => 'news',
                                         'tax_query' => array(
+                                            'relation' => 'AND', // To apply both conditions (taxonomy and post__not_in)
                                             array(
                                                 'taxonomy' => 'news_category',
                                                 'field' => 'slug',
                                                 'terms' => $term->slug,
                                             ),
                                         ),
-                                        'post__not_in' => array($post->ID), // Exclude the current post
-                                        'posts_per_page' => 2,
+                                        'post__not_in' => array($post->ID),
+                                        'posts_per_page' => 1,
                                     );
 
                                     // The Query for related posts
@@ -119,7 +125,6 @@ get_header();
                                     if ($related_query->have_posts()) {
                                         while ($related_query->have_posts()) {
                                             $related_query->the_post();
-                                            // Display the title of the related post
                                             echo '<div class="col-md-6">
                                             <div class="post-reader-prev">
                                                 <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
@@ -240,9 +245,9 @@ get_header();
             <?php 
             $latest_news_args = array(
                 'post_type' => 'news',
-                'posts_per_page' => 3, // Display 3 latest news posts
-                'orderby' => 'date', // Order by the latest date
-                'order' => 'DESC', // Display in descending order
+                'posts_per_page' => 3, 
+                'orderby' => 'date', 
+                'order' => 'DESC', 
             );
             
             $latest_news_query = new WP_Query($latest_news_args);
