@@ -92,7 +92,7 @@ global $wp_query;
                                 $query->the_post();
                                 $video_link = get_post_meta( get_the_ID(), 'video_link', true );
                                 $get_video_id = get_youtube_video_id($video_link);
-                                $final_video = 'https://www.youtube.com/watch?v='. $get_video_id;
+                                415744
                                 echo ' 
                                 <div class="post_gallery_play">
                                     <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
@@ -392,13 +392,13 @@ global $wp_query;
                                     <div class="meta-categories">
                                        
                                     <?php 
-														$post_type = get_post_type(); 
-														$post_type_object = get_post_type_object($post_type);
-                                                        $post_type_archive_link = get_post_type_archive_link($post_type);
-														if ($post_type_object) {
-															echo '<a href="'.$post_type_archive_link.'">'.$post_type_object->labels->name.'</a>';
-														}
-                                                    ?>
+                                        $post_type = get_post_type(); 
+                                        $post_type_object = get_post_type_object($post_type);
+                                        $post_type_archive_link = get_post_type_archive_link($post_type);
+                                        if ($post_type_object) {
+                                            echo '<a href="'.$post_type_archive_link.'">'.$post_type_object->labels->name.'</a>';
+                                        }
+                                    ?>
                                     </div>
                                     <div class="meta-date">
                                         <span><?php echo get_the_date('l, F j,  Y'); ?></span>
