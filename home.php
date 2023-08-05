@@ -92,7 +92,6 @@ global $wp_query;
                                 $query->the_post();
                                 $video_link = get_post_meta( get_the_ID(), 'video_link', true );
                                 $get_video_id = get_youtube_video_id($video_link);
-                                415744
                                 echo ' 
                                 <div class="post_gallery_play">
                                     <div class="bg-image" style="background-image: url(' . get_the_post_thumbnail_url(get_the_ID(), 'feature_galleries') . ');"></div>
