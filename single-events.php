@@ -98,7 +98,7 @@ while ( have_posts() ) :
                                     </div>
                                     <div class="categories-share">
                                         <ul>
-                                            <li><i class="fas fa-comment"></i>45020</li>
+                                            <li><i class="fas fa-comment"></i><?php echo get_comments_number(); ?></li>
                                             <li><i class="fas fa-fire"></i>45020</li>
                                         </ul>
                                     </div>
