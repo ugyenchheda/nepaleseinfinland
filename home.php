@@ -166,7 +166,7 @@ global $wp_query;
                     </div>';
                             }
                         } else {
-                            // No posts found
+                            echo 'There is no related videos to show.';
                         }
                         wp_reset_postdata();
                         
@@ -493,7 +493,7 @@ global $wp_query;
                         </div>';
                             }
                         } else {
-                            // No posts found
+                    echo 'Sorry there is no post to display.';
                         }
                         
                         wp_reset_postdata();
@@ -547,7 +547,7 @@ global $wp_query;
                                     </div>';
                                 }
                             } else {
-                                // No posts found
+                                echo 'Sorry there is no post to display.';
                             }
                             
                             wp_reset_postdata();
@@ -720,7 +720,7 @@ global $wp_query;
                         </div>';
                             }
                         } else {
-                            // No posts found
+                            echo 'Sorry there is no post to display.';
                         }
                         
                         // Restore original post data
