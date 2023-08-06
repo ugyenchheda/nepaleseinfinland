@@ -28,11 +28,11 @@
 	<body class="home-1-bg">
 
 <!--====== PRELOADER PART START ======-->
-<!-- <div class="preloader">
+<div class="preloader">
 	<div>
 		<div class="nb-spinner"></div>
 	</div>
-</div> -->
+</div>
 <!--====== PRELOADER PART ENDS ======-->
 
 <!--====== HEADER PART START ======-->
@@ -184,7 +184,7 @@
 								<option value="3">option</option>
 								<option value="4">Potato</option>
 							</select>
-						</div> -->
+						</div>  -->
 		</div>
 
 	</div>
