@@ -39,7 +39,7 @@ global $wp_query;
                                 </div>';
                             }
                         } else {
-                            // No posts found
+                            echo 'Sorry there is no post to display.';
                         }
                         wp_reset_postdata();?>
             </div>
@@ -119,7 +119,7 @@ global $wp_query;
                                 </div>';
                             }
                         } else {
-                            // No posts found
+                            echo 'Sorry there is no post to display.';
                         }
                         wp_reset_postdata();
                         
@@ -454,7 +454,6 @@ global $wp_query;
                             ),
                             'posts_per_page' => 6,
                         );
-                        
                         $query = new WP_Query($args);
                         if ($query->have_posts()) {
                             while ($query->have_posts()) {
@@ -495,9 +494,7 @@ global $wp_query;
                         } else {
                     echo 'Sorry there is no post to display.';
                         }
-                        
                         wp_reset_postdata();
-                        
                     ?>
                     </div>
                     <div class="row">
@@ -507,7 +504,6 @@ global $wp_query;
                                 'meta_key' => 'news_hot',
                                 'posts_per_page' => 6,
                             );
-                            
                             $query = new WP_Query($args);
                             if ($query->have_posts()) {
                                 while ($query->have_posts()) {
@@ -524,7 +520,6 @@ global $wp_query;
                                                     <div class="post-meta">';?>
                                                 <?php 
                                                     $taxonomies = get_object_taxonomies('news'); 
-
                                                     foreach ($taxonomies as $taxonomy) {
                                                         if (!in_array($taxonomy, ['category', 'post_tag'])) {
                                                             $terms = get_the_terms(get_the_ID(), $taxonomy);
@@ -549,13 +544,10 @@ global $wp_query;
                             } else {
                                 echo 'Sorry there is no post to display.';
                             }
-                            
-                            wp_reset_postdata();
-                            
+                            wp_reset_postdata();                       
                         ?>
                     </div>
                 </div>
-
                 <div class="col-lg-4">
                         <div class="trending-right-sidebar">
                             <div class="trending-most-view mt-25">
@@ -570,9 +562,7 @@ global $wp_query;
                                     'posts_per_page' => 6,     
                                     'orderby'        => 'comment_count',
                                 );
-                                
                                 $query = new WP_Query($args);
-                                
                                 if ($query->have_posts()) {
                                     $count = 1;
                                     while ($query->have_posts()) {
@@ -780,7 +770,6 @@ global $wp_query;
                                         $archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
                                         echo '<a href="#">ALL SEE</a>';
                                     ?>
-
                                 </div>
                                 <div class="Categories-item">
                                 <?php
@@ -793,8 +782,7 @@ global $wp_query;
                                             foreach ($taxonomies as $taxonomy) {
                                                 if ($taxonomy->name === 'post_tag') {
                                                     continue;
-                                                }
-                                    
+                                                }                                   
                                                 $terms = get_terms($taxonomy->name);
                                                 if ($terms) {
                                                     $post_count = 0;
@@ -810,7 +798,6 @@ global $wp_query;
                                         }
                                         return array();
                                     }
-                                    
                                     $top_three_taxonomies = get_top_three_taxonomies($custom_post_type);
                                     if (!empty($top_three_taxonomies)) {
                                         echo '<div>';
@@ -849,7 +836,6 @@ global $wp_query;
                                         echo 'No taxonomies found for this post type.';
                                     }
                                     ?>
-
                                 </div>
                             </div>
                         </div>
@@ -865,7 +851,6 @@ global $wp_query;
                                     $archive_link = get_post_type_archive_link('news') . $taxonomy_slug . '/';
                                     echo '<a href="#">ALL SEE</a>';
                                 ?>
-
                             </div>
                             <div class="container Categories-item">
                             <?php
@@ -879,7 +864,6 @@ global $wp_query;
                                             if ($taxonomy->name === 'post_tag') {
                                                 continue;
                                             }
-
                                             $terms = get_terms($taxonomy->name);
                                             if ($terms) {
                                                 $post_count = 0;
@@ -925,7 +909,6 @@ global $wp_query;
                                     echo 'No taxonomies found for this post type.';
                                 }
                                 ?>
-
                             </div>
                         </div>
                     </div>
@@ -954,7 +937,6 @@ global $wp_query;
                                 $homepage_news_category = get_theme_mod('homepage_news_category');
                                 $no_of_news_hp = get_theme_mod('no_of_news_hp');
                                 $loaded_post_ids = isset($_POST['loaded_post_ids']) ? $_POST['loaded_post_ids'] : array();
-
                                 // Check if $homepage_news is an array and not empty
                                 if (!empty($homepage_news_category)) {
 
@@ -965,9 +947,7 @@ global $wp_query;
                                         'order' => 'DESC', 
                                         'post__not_in' => $loaded_post_ids,
                                     );
-
                                     $query = new WP_Query($args);
-
                                     if ($query->have_posts()) {
                                         while ($query->have_posts()) {
                                             $query->the_post();
@@ -1044,10 +1024,6 @@ global $wp_query;
         </div>
     </div>
     <!--====== GO TO TOP PART ENDS ======-->
-
-
-
-
 </body>
 
 <?php
