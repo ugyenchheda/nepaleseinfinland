@@ -132,6 +132,17 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
+    <!--====== GO TO TOP PART START ======-->
+    <div class="go-top-area">
+        <div class="go-top-wrap">
+            <div class="go-top-btn-wrap">
+                <div class="go-top go-top-btn">
+                    <i class="fa fa-angle-double-up"></i>
+                    <i class="fa fa-angle-double-up"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== GO TO TOP PART ENDS ======-->
 </body>
 </html>
